@@ -9,10 +9,10 @@ var ComingSoon = function () {
             $('#year').text(austDay.getFullYear());
 
             $.backstretch([
-		            "../assets/pages/media/bg/1.jpg",
-		            "../assets/pages/media/bg/2.jpg",
-		            "../assets/pages/media/bg/3.jpg",
-		    		"../assets/pages/media/bg/4.jpg"
+		            "/admin/assets/pages/media/bg/1.jpg",
+		            "/admin/assets/pages/media/bg/2.jpg",
+		            "/admin/assets/pages/media/bg/3.jpg",
+		    		"/admin/assets/pages/media/bg/4.jpg"
 		        ], {
 		        fade: 1000,
 		        duration: 10000
