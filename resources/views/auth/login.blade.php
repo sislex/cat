@@ -63,7 +63,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN LOGIN -->
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
-    <form class="login-form" role="form" action="{{ url('/auth/login') }}" method="POST">
+    <form class="login-form" role="form" action="{{ url('/admin/login') }}" method="POST">
         <h3 class="form-title">Войти</h3>
 
         <div class="alert alert-danger display-hide">
