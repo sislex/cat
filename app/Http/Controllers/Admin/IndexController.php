@@ -10,6 +10,8 @@ class IndexController extends Controller
 
     protected function index()
     {
+
+
         return view('admin/index');
     }
 
