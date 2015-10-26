@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 
+<!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
 Version: 4.5
 Author: KeenThemes
@@ -106,10 +106,16 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN SIDEBAR -->
     <div class="page-sidebar-wrapper">
         <!-- BEGIN SIDEBAR -->
-        @section('sidebar_menu')
-            This is the master sidebar.
-        @show
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
         <div class="page-sidebar navbar-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+            <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+            <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+            <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+            <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
                 <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
                 <li class="sidebar-toggler-wrapper hide">
@@ -140,12 +146,12 @@ License: You must have a valid license purchased only from themeforest(the above
                     <ul class="sub-menu">
                         <li class="nav-item  ">
                             <a href="form_controls.html" class="nav-link ">
-                                        <span class="title">Верхнее меню</span>
+                                <span class="title">Верхнее меню</span>
                             </a>
                         </li>
                         <li class="nav-item  ">
                             <a href="form_controls_md.html" class="nav-link ">
-                                        <span class="title">Категории для Блога (сбоку)</span>
+                                <span class="title">Категории для Блога (сбоку)</span>
                             </a>
                         </li>
                         <li class="nav-item  ">
@@ -229,7 +235,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     </ul>
                 </li>
                 <!-- END MENU -->
+
             </ul>
+            <!-- END SIDEBAR MENU -->
+            <!-- END SIDEBAR MENU -->
         </div>
         <!-- END SIDEBAR -->
     </div>
@@ -238,12 +247,11 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            <!-- BEGIN PAGE HEADER-->
-            <!-- BEGIN PAGE BAR -->
-            @section('page_bar')@show
-            <!-- END PAGE BAR -->
-
-            @section('content')@show
+            @yield('page_bar')
+            <!-- END PAGE HEADER-->
+            @yield('content')
+        </div>
+        <!-- END CONTENT BODY -->
     </div>
     <!-- END CONTENT -->
 </div>

@@ -11,9 +11,8 @@
                 <span>General</span>
             </li>
         </ul>
-
     </div>
-@show
+@endsection
 
 @section('content')
 <!-- BEGIN PAGE TITLE-->
