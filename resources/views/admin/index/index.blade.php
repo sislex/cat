@@ -20,12 +20,14 @@
     <small>описание</small>
 </h3>
 <!-- END PAGE TITLE-->
-<!-- END PAGE HEADER-->
+
+<div class="left-side-menu">
+    @include('admin.left-side-menu')
+</div>
+
 <div class="blog-page">
     <div class="row">
         Content
     </div>
 </div>
-</div>
-<!-- END CONTENT BODY -->
 @endsection
