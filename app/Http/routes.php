@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('admin/index', 'Admin\IndexController@index');
+Route::get('admin/filters', 'Admin\FiltersController@index');
+Route::get('admin/filter/{name}', 'Admin\FiltersController@filter');
 
 
 // Authentication routes...

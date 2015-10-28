@@ -37,7 +37,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="/admin/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN PAGE LEVEL STYLES -->
-    <link href="/admin/assets/pages/css/blog.min.css" rel="stylesheet" type="text/css" />
+    @yield('PAGE-LEVEL-STYLES')
     <!-- END PAGE LEVEL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <link href="/admin/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
@@ -265,6 +265,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <i class="icon-arrow-up"></i>
     </div>
 </div>
+@include('admin.welcome')
 <!-- END FOOTER -->
 <!--[if lt IE 9]>
 <script src="/admin/assets/global/plugins/respond.min.js"></script>
@@ -287,6 +288,11 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/admin/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
 <script src="/admin/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
+
+@yield('PAGE-LEVEL-PLUGINS')
+
+@yield('PAGE-LEVEL-SCRIPTS')
+
 </body>
 
 </html>
