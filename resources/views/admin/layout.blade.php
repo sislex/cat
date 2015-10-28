@@ -124,7 +124,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </li>
 
                 <!-- BEGIN MENU -->
-                @yield('left-side-menu')
+                @include('admin.left-side-menu')
                 <!-- END MENU -->
 
             </ul>

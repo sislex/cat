@@ -21,9 +21,8 @@
 </h3>
 <!-- END PAGE TITLE-->
 
-<div class="left-side-menu">
-    @include('admin.left-side-menu')
-</div>
+{{--<div class="left-side-menu">--}}
+{{--</div>--}}
 
 <div class="blog-page">
     <div class="row">
