@@ -94,7 +94,6 @@ License: You must have a valid license purchased only from themeforest(the above
             </ul>
         </div>
         <!-- END TOP NAVIGATION MENU -->
-    </div>
     <!-- END HEADER INNER -->
 </div>
 <!-- END HEADER -->
@@ -265,7 +264,6 @@ License: You must have a valid license purchased only from themeforest(the above
         <i class="icon-arrow-up"></i>
     </div>
 </div>
-@include('admin.welcome')
 <!-- END FOOTER -->
 <!--[if lt IE 9]>
 <script src="/admin/assets/global/plugins/respond.min.js"></script>
