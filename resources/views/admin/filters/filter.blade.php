@@ -7,10 +7,6 @@
                 <a href="{{action('Admin\FiltersController@index')}}">Фильтры</a>
                 <i class="fa fa-circle"></i>
             </li>
-            <li>
-                <a href="{{action('Admin\FiltersController@index')}}">Фильтры</a>
-                <i class="fa fa-circle"></i>
-            </li>
         </ul>
     </div>
 @endsection
@@ -48,14 +44,13 @@
 <!-- END CONTENT BODY -->
 @endsection
 
-@section('PAGE-LEVEL-PLUGINS')
-    <script src="/admin/assets/global/plugins/jstree/dist/jstree.min.js" type="text/javascript"></script>
-@endsection
-
-@section('PAGE-LEVEL-SCRIPTS')
-    <script src="/admin/assets/pages/scripts/ui-tree.js" type="text/javascript"></script>
-@endsection
-
-@section('PAGE-LEVEL-STYLES')
-    <link href="/admin/assets/global/plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css" />
+@section('page_bar')
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{action('Admin\FiltersController@index')}}">Фильтры</a>
+                <i class="fa fa-circle"></i>
+            </li>
+        </ul>
+    </div>
 @endsection

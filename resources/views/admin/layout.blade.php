@@ -94,6 +94,7 @@ License: You must have a valid license purchased only from themeforest(the above
             </ul>
         </div>
         <!-- END TOP NAVIGATION MENU -->
+    </div>
     <!-- END HEADER INNER -->
 </div>
 <!-- END HEADER -->

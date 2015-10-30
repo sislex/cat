@@ -5,7 +5,7 @@
     </a>
 </li>
 <li class="nav-item  ">
-    <a href="javascript:;" class="nav-link nav-toggle">
+    <a href="{{action('Admin\FiltersController@index')}}" class="nav-link nav-toggle">
         <i class="icon-puzzle"></i>
         <span class="title">Фильтр</span>
     </a>
