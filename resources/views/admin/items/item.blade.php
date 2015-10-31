@@ -43,14 +43,14 @@
                     <!-- BEGIN FORM-->
                     <form action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                        <input type="hidden" name="id" value="{{ $item{'id'} }}" />
+                        <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_0" />
 
                         <div class="form-body">
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Name </label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="name" value="{{ $item{'name'} }}" placeholder="Enter text">
+                                    <input type="text" class="form-control input-circle" name="name" value="{{ $item['name'] or '' }}" placeholder="Enter text">
                                     <!-- <span class="help-block"> Title </span> -->
                                 </div>
                             </div>
@@ -58,14 +58,14 @@
                                 <label class="col-md-3 control-label"> Short_text </label>
                                 <div class="col-md-4">
                                     {{--<input type="text" class="form-control input-circle" value="{{ $item{'short_text'} }}" placeholder="Enter text">--}}
-                                    <textarea rows="4" class="form-control input-circle" name="short_text" placeholder="Enter text">{{ $item{'short_text'} }}</textarea>
+                                    <textarea rows="4" class="form-control input-circle" name="short_text" placeholder="Enter text">{{ $item['short_text'] or '' }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Text </label>
                                 <div class="col-md-4">
                                     {{--<input type="text" class="form-control input-circle" value="{{ $item{'text'} }}" placeholder="Enter text">--}}
-                                    <textarea rows="6" class="form-control input-circle" name="text" placeholder="Enter text">{{ $item{'text'} }}</textarea>
+                                    <textarea rows="6" class="form-control input-circle" name="text" placeholder="Enter text">{{ $item['text'] or '' }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -93,28 +93,28 @@
                     <!-- BEGIN FORM-->
                     <form action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                        <input type="hidden" name="id" value="{{ $item{'id'} }}" />
+                        <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_1" />
 
                         <div class="form-body">
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Title </label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="title" value="{{ $item{'title'} }}" placeholder="Enter text">
+                                    <input type="text" class="form-control input-circle" name="title" value="{{ $item['title'] or '' }}" placeholder="Enter text">
                                     <!-- <span class="help-block"> Title </span> -->
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Keywords </label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="keywords" value="{{ $item{'keywords'} }}" placeholder="Enter text">
+                                    <input type="text" class="form-control input-circle" name="keywords" value="{{ $item['keywords'] or '' }}" placeholder="Enter text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Description </label>
                                 <div class="col-md-4">
                                     {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
-                                    <textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item{'description'} }}</textarea>
+                                    <textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>
                                 </div>
                             </div>
                         </div>

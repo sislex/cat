@@ -20,26 +20,6 @@ class ItemsController extends Controller
         return view('admin/items/index', ['items' => $items]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -60,17 +40,6 @@ class ItemsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -80,7 +49,12 @@ class ItemsController extends Controller
     public function update()
     {
         $input = \Request::all();
-        $item = Items::find($input['id'])->update($input);
+        if ($input['id']) {
+            Items::find($input['id'])->update($input);
+        }else{
+            $input['id'] = Items::create($input);
+        }
+
         return \Redirect::action('Admin\ItemsController@show', ['id' => $input['id'], $input['tab']]);
     }
 
@@ -90,8 +64,11 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $item = Items::find($id);
+        $item->delete();
+
+        return \Redirect::action('Admin\ItemsController@index');
     }
 }

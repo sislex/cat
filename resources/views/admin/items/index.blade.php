@@ -29,7 +29,12 @@
                         <th> Name </th>
                         <th> Created </th>
                         <th> Updated </th>
-                        <th>  </th>
+                        <th>
+                            <a href="{{action('Admin\ItemsController@show', ['id' => ''])}}" class="btn btn-outline btn-circle btn-sm green">
+                                <i class="fa fa-plus"></i>
+                                Add
+                            </a>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,6 +48,10 @@
                                 <a href="{{action('Admin\ItemsController@show', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
                                     <i class="fa fa-edit"></i>
                                     Edit
+                                </a>
+                                <a href="{{action('Admin\ItemsController@delete', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm red">
+                                    <i class="fa fa-remove"></i>
+                                    Delete
                                 </a>
                             </td>
                         </tr>

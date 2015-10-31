@@ -24,7 +24,8 @@ Route::post('admin/filter/{name}', 'Admin\FiltersController@update');
 
 Route::get('admin/items', 'Admin\ItemsController@index');
 Route::get('admin/item/{id?}', 'Admin\ItemsController@show');
-Route::post('admin/item/', 'Admin\ItemsController@update');
+Route::post('admin/item', 'Admin\ItemsController@update');
+Route::get('admin/item/delete/{id}', 'Admin\ItemsController@delete');
 
 // Authentication routes...
 Route::get('admin/login', 'Auth\AuthController@getLogin');
