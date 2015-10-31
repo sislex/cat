@@ -6,6 +6,7 @@
             <li>
                 <a href="{{action('Admin\FiltersController@index')}}">Фильтры</a>
                 <i class="fa fa-circle"></i>
+                {{$filter->name}}
             </li>
         </ul>
     </div>
@@ -13,8 +14,7 @@
 
 @section('content')
 <!-- BEGIN PAGE TITLE-->
-<h3 class="page-title"> Фильтры
-    <small>Список фильтров</small>
+<h3 class="page-title"> Фильтр: {{$filter->name}}
 </h3>
 <!-- END PAGE TITLE-->
 <!-- END PAGE HEADER-->
@@ -24,11 +24,12 @@
             <div class="portlet yellow-lemon box">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-cogs"></i>Contextual Menu with Drag & Drop
+                        <i class="fa fa-cogs"></i> {{$filter->name}}
                     </div>
                 </div>
                 <div class="portlet-body">
                     <div id="tree_3" class="tree-demo"> </div>
+                    <button style="margin-top: 20px" class="btn blue btn-block" id="saveFilter" token="{{ Session::token() }}">Сохранить</button>
                     {{--<div class="alert alert-success no-margin margin-top-10"> Note! Opened and selected nodes will be saved in the user's browser, so when returning to the same tree the previous state will be restored. </div>--}}
                 </div>
             </div>
@@ -45,6 +46,14 @@
 
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/admin/assets/pages/scripts/ui-tree.js" type="text/javascript"></script>
+    <script>
+        if (App.isAngularJsApp() === false) {
+            var data = {!!$filter->obj!!};
+            jQuery(document).ready(function() {
+                UITree.init(data);
+            });
+        }
+    </script>
 @endsection
 
 @section('PAGE-LEVEL-STYLES')

@@ -23,34 +23,6 @@
         <div class="col-md-12">
             <!-- BEGIN BORDERED TABLE PORTLET-->
             <div class="portlet light portlet-fit bordered">
-                {{--<div class="portlet-title">--}}
-                    {{--<div class="caption">--}}
-                        {{--<i class="icon-bubble font-dark"></i>--}}
-                        {{--<span class="caption-subject font-dark bold uppercase">Bordered Table</span>--}}
-                    {{--</div>--}}
-                    {{--<div class="actions">--}}
-                        {{--<div class="btn-group">--}}
-                            {{--<a class="btn dark btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions--}}
-                                {{--<i class="fa fa-angle-down"></i>--}}
-                            {{--</a>--}}
-                            {{--<ul class="dropdown-menu pull-right">--}}
-                                {{--<li>--}}
-                                    {{--<a href="javascript:;"> Option 1</a>--}}
-                                {{--</li>--}}
-                                {{--<li class="divider"> </li>--}}
-                                {{--<li>--}}
-                                    {{--<a href="javascript:;">Option 2</a>--}}
-                                {{--</li>--}}
-                                {{--<li>--}}
-                                    {{--<a href="javascript:;">Option 3</a>--}}
-                                {{--</li>--}}
-                                {{--<li>--}}
-                                    {{--<a href="javascript:;">Option 4</a>--}}
-                                {{--</li>--}}
-                            {{--</ul>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
                 <div class="portlet-body">
                     <div class="table-scrollable">
                         @if(count($filters))
@@ -75,7 +47,7 @@
                                         $value['arr'] = json_decode($value['obj'], true);
                                         ?>
                                         @if(is_array($value['arr']))
-                                        {{$value['arr']}}
+                                        {{count($value['arr'])}}
                                         @endif
                                     </td>
                                     <td>

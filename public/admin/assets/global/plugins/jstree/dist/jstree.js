@@ -7402,7 +7402,6 @@
 			parent.bind.call(this);
 		};
 		this.get_json = function (obj, options, flat) {
-			debugger;
 			var i, j,
 				m = this._model.data,
 				opt = options ? $.extend(true, {}, options, {no_id:false}) : {},
