@@ -18,8 +18,17 @@ class FiltersController extends Controller
 
     protected function filter($name)
     {
-        $filter = Filters::where('name', '=', $name)->get();
+        $filter = Filters::where('name', '=', $name)->get()->first();
 
         return view('admin/filters/filter', ['filter' => $filter]);
+    }
+
+    protected function update($name)
+    {
+        $input = \Request::all();
+        $filter = Filters::where('name', '=', $name)->get()->first();
+        $filter->obj = json_encode($input['json']);
+        $filter->save();
+        return $filter;
     }
 }
