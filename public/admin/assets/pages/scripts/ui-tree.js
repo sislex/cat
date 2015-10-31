@@ -72,7 +72,7 @@ var UITree = function () {
     return {
         //main function to initiate the module
         init: function (data) {
-            if(!data || !data.length){data = [{text:'Авто транспорт'}];}
+            if(!data || !data.length || data == ''){data = [{text:'Авто транспорт'}];}
             self.data = data;
 
             self.contextualMenuSample();

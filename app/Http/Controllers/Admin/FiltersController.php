@@ -19,6 +19,7 @@ class FiltersController extends Controller
     protected function filter($name)
     {
         $filter = Filters::where('name', '=', $name)->get()->first();
+        if($filter->obj == ''){$filter->obj = '[]';}
 
         return view('admin/filters/filter', ['filter' => $filter]);
     }

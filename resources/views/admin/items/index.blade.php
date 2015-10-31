@@ -27,12 +27,6 @@
                     <tr>
                         <th> # </th>
                         <th> Name </th>
-                        <th> Title </th>
-                        <th> Description </th>
-                        <th> Keywords </th>
-                        <th> Short_text </th>
-                        <th> Text </th>
-                        <th> Obj </th>
                         <th> Created </th>
                         <th> Updated </th>
                         <th>  </th>
@@ -43,19 +37,6 @@
                         <tr>
                             <td> {{$value['id']}} </td>
                             <td> {{$value['name']}} </td>
-                            <td> {{$value['title']}} </td>
-                            <td> {{$value['description']}} </td>
-                            <td> {{$value['keywords']}} </td>
-                            <td> {{$value['short_text']}} </td>
-                            <td> {{$value['text']}} </td>
-                            <td>
-                                <?php
-                                $value['arr'] = json_decode($value['obj'], true);
-                                ?>
-                                @if(is_array($value['arr']))
-                                    {{$value['arr']}}
-                                @endif
-                            </td>
                             <td> {{$value['created_at']}} </td>
                             <td> {{$value['updated_at']}} </td>
                             <td>
