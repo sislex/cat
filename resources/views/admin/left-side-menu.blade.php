@@ -1,5 +1,5 @@
 <li class="nav-item  ">
-    <a href="javascript:;" class="nav-link nav-toggle">
+    <a href="{{action('Admin\ItemsController@index')}}" class="nav-link nav-toggle">
         <i class="icon-diamond"></i>
         <span class="title">Авто Каталог</span>
     </a>

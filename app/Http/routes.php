@@ -19,6 +19,9 @@ Route::get('admin/index', 'Admin\IndexController@index');
 Route::get('admin/filters', 'Admin\FiltersController@index');
 Route::get('admin/filter/{name}', 'Admin\FiltersController@filter');
 
+Route::get('admin/items', 'Admin\ItemsController@index');
+Route::get('admin/item/{id?}', 'Admin\ItemsController@show');
+Route::post('admin/item/', 'Admin\ItemsController@update');
 
 // Authentication routes...
 Route::get('admin/login', 'Auth\AuthController@getLogin');
