@@ -13,7 +13,7 @@
 
     @section('content')
 
-    <!-- BEGIN CONTENT BODY -->
+            <!-- BEGIN CONTENT BODY -->
 
     <!-- BEGIN NAV TAB -->
     <ul class="nav nav-tabs">
@@ -31,7 +31,10 @@
         </li>
     </ul>
     <!-- END NAV TAB -->
-    <div class="tab-content">
+    <div class="tab-content"
+         ng-app="myApp"
+         ng-controller="myCtrl"
+            >
         <div class="tab-pane active" id="tab_0">
             <div class="portlet box green">
                 <div class="portlet-title">
@@ -47,6 +50,18 @@
                         <input type="hidden" name="tab" value="#tab_0" />
 
                         <div class="form-body">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Name </label>
+                                <div class="col-md-4">
+                                    <select
+                                            ng-model="selectedItem"
+                                            ng-options="item for item in func()"
+                                            ng-change="event.select(selectedItem)"
+                                            data-placeholder="Выбрать...">
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Name </label>
                                 <div class="col-md-4">
@@ -118,21 +133,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn btn-circle green">Сохранить</button>
-                                    {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
-                                </div>
-                            </div>
-                        </div>
                     </form>
-                    <!-- END FORM-->
                 </div>
             </div>
         </div>
     </div>
-    <!-- END CONTENT BODY -->
+
 @endsection
 
 @section('page_bar')
@@ -144,4 +150,25 @@
             </li>
         </ul>
     </div>
+@endsection
+
+@section('PAGE-LEVEL-PLUGINS')
+    <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
+@endsection
+
+@section('PAGE-LEVEL-SCRIPTS')
+    <script>
+        var myApp = angular.module('myApp', []);
+
+        myApp.controller('myCtrl', ['$scope', '$http',
+            function($scope, $http) {
+                $scope.func = function(){
+                    return ['qwe', 'wfd', 'wfd', 'wfd'];
+                }
+            }
+        ]);
+    </script>
+@endsection
+
+@section('PAGE-LEVEL-STYLES')
 @endsection
