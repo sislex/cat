@@ -47,19 +47,43 @@
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_0" />
+                        <input type="text" name="obj" ng-model="obj.objJson" value="{{ $item['obj'] }}" class="col-md-12"/>
 
                         <div class="form-body">
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Name </label>
+                                <label class="col-md-3 control-label"> Тип  </label>
                                 <div class="col-md-4">
                                     <select
-                                            ng-model="selectedItem"
-                                            ng-options="item for item in func()"
-                                            ng-change="event.select(selectedItem)"
-                                            data-placeholder="Выбрать...">
+                                            ng-model="obj.time.type_auto"
+                                            ng-options="item.text for item in arr"
+                                            ng-change="obj.helpers.makeObj(obj.obj.type_auto, obj.time.type_auto.text)"
+                                            >
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group" ng-show="(obj.time.type_auto.children)">
+                                <label class="col-md-3 control-label"> марка </label>
+                                <div class="col-md-4">
+                                    <select
+                                            ng-model="obj.time.type_auto.mark"
+                                            ng-options="item.text for item in obj.time.type_auto.children"
+                                            ng-change="obj.helpers.makeObj(obj.obj.type_auto[0].children, obj.time.type_auto.mark.text)"
+                                            >
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="(obj.time.type_auto.mark.children)">
+                                <label class="col-md-3 control-label"> Модель </label>
+                                <div class="col-md-4">
+                                    <select
+                                            ng-model="obj.time.type_auto.mark.model"
+                                            ng-options="item.text for item in obj.time.type_auto.mark.children"
+                                            ng-change="obj.helpers.makeObj(obj.obj.type_auto[0].children[0].children, obj.time.type_auto.mark.model.text)"
+                                            >
+                                    </select>
+                                </div>
+                            </div>
+
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Name </label>
@@ -304,10 +328,50 @@
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-validate.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" type="text/javascript"></script>
+
+    <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/admin/assets/pages/scripts/form-fileupload.min.js" type="text/javascript"></script>
+
+    <script>
+        var myApp = angular.module('myApp', []);
+
+        myApp.controller('myCtrl', ['$scope', '$http',
+            function($scope, $http, Company) {
+                $scope.arr = [];
+                $scope.func = (function(){
+                    $http.post('/filter/ajax', {name:'type_auto'}).
+                        success(function(data, status, headers, config) {
+                                console.log(data);
+                                $scope.arr = data;
+                        }).
+                        error(function(data, status, headers, config) {
+                            console.log('Ошибка при отправки объекта');
+                        });
+                })();
+
+                $scope.obj = {
+                    time:{},
+                    objJson:'',
+                    obj : {
+                        type_auto : []
+                    },
+                    helpers : {
+                        makeObj : function(obj, text){
+                            obj.pop();
+                            obj.push({text: text, children: []});
+                            $scope.obj.objJson = angular.toJson($scope.obj.obj);
+                        }
+                    }
+                };
+
+
+
+            }
+        ]);
+    </script>
 @endsection
 
 @section('PAGE-LEVEL-STYLES')
@@ -315,25 +379,4 @@
     <link href="/admin/assets/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css" rel="stylesheet" type="text/css" />
     <link href="/admin/assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" type="text/css" />
     <link href="/admin/assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" type="text/css" />
-@endsection@endsection
-
-@section('PAGE-LEVEL-PLUGINS')
-    <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
-@endsection
-
-@section('PAGE-LEVEL-SCRIPTS')
-    <script>
-        var myApp = angular.module('myApp', []);
-
-        myApp.controller('myCtrl', ['$scope', '$http',
-            function($scope, $http) {
-                $scope.func = function(){
-                    return ['qwe', 'wfd', 'wfd', 'wfd'];
-                }
-            }
-        ]);
-    </script>
-@endsection
-
-@section('PAGE-LEVEL-STYLES')
 @endsection

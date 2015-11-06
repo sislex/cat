@@ -32,4 +32,12 @@ class FiltersController extends Controller
         $filter->save();
         return $filter;
     }
+
+    protected function getJSONByName()
+    {
+        $input = \Request::all();
+        $filter = Filters::where('name', '=', $input['name'])->get()->first();
+
+        return $filter->obj;
+    }
 }
