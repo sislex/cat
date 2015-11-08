@@ -50,39 +50,56 @@
                         <input type="text" name="obj" ng-model="obj.objJson" value="{{ $item['obj'] }}" class="col-md-12"/>
 
                         <div class="form-body">
+                            {{--<div class="form-group">--}}
+                                {{--<label class="col-md-3 control-label"> Тип  </label>--}}
+                                {{--<div class="col-md-4">--}}
+                                    {{--@{{obj.time.type_auto}}--}}
+                                    {{--<select--}}
+                                            {{--ng-model="obj.time.type_auto"--}}
+                                            {{--ng-options="item.text for item in arr"--}}
+                                            {{--ng-change="obj.helpers.makeObj(obj.obj.type_auto, obj.time.type_auto.text)"--}}
+                                            {{-->--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group" ng-show="(obj.time.type_auto.children)">--}}
+                                {{--<label class="col-md-3 control-label"> марка </label>--}}
+                                {{--<div class="col-md-4">--}}
+                                    {{--<select--}}
+                                            {{--ng-model="obj.time.type_auto.mark"--}}
+                                            {{--ng-options="item.text for item in obj.time.type_auto.children"--}}
+                                            {{--ng-change="obj.helpers.makeObj(obj.obj.type_auto[0].children, obj.time.type_auto.mark.text)"--}}
+                                            {{-->--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group" ng-show="(obj.time.type_auto.mark.children)">--}}
+                                {{--<label class="col-md-3 control-label"> Модель </label>--}}
+                                {{--<div class="col-md-4">--}}
+                                    {{--<select--}}
+                                            {{--ng-model="obj.time.type_auto.mark.model"--}}
+                                            {{--ng-options="item.text for item in obj.time.type_auto.mark.children"--}}
+                                            {{--ng-change="obj.helpers.makeObj(obj.obj.type_auto[0].children[0].children, obj.time.type_auto.mark.model.text)"--}}
+                                            {{-->--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+
+
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Тип  </label>
                                 <div class="col-md-4">
                                     <select
-                                            ng-model="obj.time.type_auto"
-                                            ng-options="item.text for item in arr"
-                                            ng-change="obj.helpers.makeObj(obj.obj.type_auto, obj.time.type_auto.text)"
+                                            ng-model="obj.obj.type_auto[0]"
+                                            ng-options="item.text for item in obj.helpers.getArr()"
+                                            ng-change="obj.helpers.makeObj(obj.obj.type_auto[0])"
                                             >
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group" ng-show="(obj.time.type_auto.children)">
-                                <label class="col-md-3 control-label"> марка </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.time.type_auto.mark"
-                                            ng-options="item.text for item in obj.time.type_auto.children"
-                                            ng-change="obj.helpers.makeObj(obj.obj.type_auto[0].children, obj.time.type_auto.mark.text)"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="(obj.time.type_auto.mark.children)">
-                                <label class="col-md-3 control-label"> Модель </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.time.type_auto.mark.model"
-                                            ng-options="item.text for item in obj.time.type_auto.mark.children"
-                                            ng-change="obj.helpers.makeObj(obj.obj.type_auto[0].children[0].children, obj.time.type_auto.mark.model.text)"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
+
+
+                            @{{arr}}
 
 
                             <div class="form-group">
@@ -352,17 +369,39 @@
                         });
                 })();
 
+//                $scope.obj = {
+//                    time:{type_auto:'object:5'},
+//                    objJson:'',
+//                    obj : {
+//                        type_auto : []
+//                    },
+//                    helpers : {
+//                        makeObj : function(obj, text){
+//                            obj.pop();
+//                            obj.push({text: text, children: []});
+//                            $scope.obj.objJson = angular.toJson($scope.obj.obj);
+//                        }
+//                    }
+//                };
+
                 $scope.obj = {
-                    time:{},
                     objJson:'',
                     obj : {
                         type_auto : []
                     },
                     helpers : {
                         makeObj : function(obj, text){
-                            obj.pop();
-                            obj.push({text: text, children: []});
-                            $scope.obj.objJson = angular.toJson($scope.obj.obj);
+                            obj.children = [];
+                        },
+                        childrenArr : function(arr, text){
+                            angular.forEach(arr, function(value) {
+                                if(text==value.text) {
+                                return value.children;
+                                }
+                            });
+                        },
+                        getArr : function(){
+                            return $scope.arr;
                         }
                     }
                 };
