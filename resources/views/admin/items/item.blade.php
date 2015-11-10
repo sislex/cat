@@ -47,45 +47,44 @@
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_0" />
-                        {{--<input type="text" name="obj" ng-model="obj.objJson" value="{{ $item['obj'] }}" class="col-md-12"/>--}}
+                        <input type="text" name="obj" ng-model="obj.objJson" value="{{ $item['obj'] }}" class="col-md-12"/>
 
-                        <div class="form-body">@{{obj.obj}}
+                        <div class="form-body">
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Тип  </label>
                                 <div class="col-md-4">
                                     <select
-                                            ng-model="obj.obj.type_auto[0].text"
-                                            ng-options="item for item in obj.help.type_auto"
-                                            ng-change="obj.helpers.makeObj(filter.type_auto, key)"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="(obj.obj.type_auto[0].children.length>0)">
-                                <label class="col-md-3 control-label"> марка </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.time.type_auto.mark"
-                                            ng-options="item.text for item in obj.help.mark"
-                                            ng-change="obj.helpers.makeObj(obj.obj.type_auto[0].children, obj.time.type_auto.mark.text)"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="(obj.time.type_auto.mark.children)">
-                                <label class="col-md-3 control-label"> Модель </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.time.type_auto.mark.model"
-                                            ng-options="item.text for item in obj.time.type_auto.mark.children"
-                                            ng-change="obj.helpers.makeObj(obj.obj.type_auto[0].children[0].children, obj.time.type_auto.mark.model.text)"
+                                            ng-model="obj.help.type_auto"
+                                            ng-options="item.text for item in filter.type_auto"
+                                            ng-change="obj.helpers.makeObj()"
                                             >
                                     </select>
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Марки </label>
+                                <div class="col-md-4">
+                                    <select
+                                            ng-model="obj.help.mark"
+                                            ng-options="item.text for item in obj.help.type_auto.children"
+                                            ng-change="obj.helpers.makeObj()"
+                                            >
+                                    </select>
+                                </div>
+                            </div>
 
-                            @{{arr}}
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Модели </label>
+                                <div class="col-md-4">
+                                    <select
+                                            ng-model="obj.help.model"
+                                            ng-options="item.text for item in obj.help.mark.children"
+                                            ng-change="obj.helpers.makeObj()"
+                                            >
+                                    </select>
+                                </div>
+                            </div>
 
 
                             <div class="form-group">
@@ -365,7 +364,7 @@
                     $http.post('/filter/ajax', {name:'type_auto'}).
                         success(function(data, status, headers, config) {
                                 $scope.filter.type_auto = data;
-                                $scope.obj.helpers.makeObj($scope.filter, 'type_auto');
+//                                console.log(data);
                         }).
                         error(function(data, status, headers, config) {
                             console.log('Ошибка при отправки объекта');
@@ -375,32 +374,47 @@
                 $scope.obj = {
                     filter : {type_auto : []},
                     help : {
-                        type_auto : [],
-                        mark : [],
-                        model : [],
+                        type_auto : null,
+                        mark : null,
+                        model : null,
                     },
                     objJson : '',
                     obj : {
                         type_auto : []
                     },
                     helpers : {
-                        makeObj : function(obj, key1){
+                        makeObj : function(parentObj, parent){
+                            var type_auto = angular.copy($scope.obj.help.type_auto);
+                            var mark = angular.copy($scope.obj.help.mark);
+                            var model = angular.copy($scope.obj.help.model);
 
-                            if(obj[key]){
-                                var arr = obj[key];
+                            if(type_auto){
+                                type_auto.children = [];
+                                $scope.obj.obj.type_auto = [];
+                                $scope.obj.obj.type_auto.push(type_auto);
                             }
-                            else{
-                                angular.forEach(obj, function(value){
-                                    if(value.text = key){var arr = value.children;}
-                                });
+
+                            if(mark){
+                                mark.children = [];
+                                type_auto.children.push(mark);
                             }
-                            if(arr.length){
-                                angular.forEach(arr, function(value){
-                                    $scope.obj.help[key].push(value.text);
-                                });
-//                            console.log( $scope.obj.help[key]);
-                                $scope.obj.objJson = angular.toJson($scope.obj.obj);
+
+                            if(model){
+                                model.children = [];
+                                mark.children.push(model);
                             }
+
+                            $scope.obj.objJson = angular.toJson($scope.obj.obj.type_auto);
+
+//                            if(obj[key]){
+//                                var arr = obj[key];
+//                            }
+//                            else{
+//                                angular.forEach(obj, function(value){
+//                                    if(value.text = key){var arr = value.children;}
+//                                });
+//                            }
+
 
                         }
                     }
