@@ -10,6 +10,9 @@ class IndexController extends Controller
 
     protected function index()
     {
-        return view('admin/index/index');
+        $new = 'òåêñò';
+        $filters = 'òåêñòssssssssss';
+
+        return view('admin/index/index', ['filters' => $filters]);
     }
 }

@@ -23,7 +23,7 @@
 
 <div class="blog-page">
     <div class="row">
-        Content
+        Contentsdfsdf
     </div>
 </div>
 @endsection
