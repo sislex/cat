@@ -2,7 +2,6 @@ var FormFileUpload = function () {
     return {
         //main function to initiate the module
         init: function () {
-
              // Initialize the jQuery File Upload widget:
             $('#fileupload').fileupload({
                 disableImageResize: false,
@@ -12,6 +11,7 @@ var FormFileUpload = function () {
                 //previewMaxWidth: 300,
                 //previewMaxHeight: 200,
                 acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+                autoUpload: true
                 // Uncomment the following to send cross-domain cookies:
                 //xhrFields: {withCredentials: true},                
             });
