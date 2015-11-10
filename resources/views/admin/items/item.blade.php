@@ -210,7 +210,7 @@
                         </div>
                     <!-- The table listing the files available for upload/download -->
                     <table role="presentation" class="table table-striped clearfix">
-                        <tbody class="files"> </tbody>
+                        <tbody class="files sortable"> </tbody>
                     </table>
                 </form>
                 <div class="panel panel-success">
@@ -298,6 +298,7 @@
                                 </button> {% } %} </td>
                         </tr> {% } %}
         </script>
+
     </div>
     <!-- END CONTENT BODY -->
 @endsection
@@ -316,6 +317,7 @@
 @section('PAGE-LEVEL-PLUGINS')
     <script src="/admin/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+    <script src="/admin/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/vendor/tmpl.min.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/vendor/load-image.min.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js" type="text/javascript"></script>
@@ -333,7 +335,22 @@
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')
-    <script src="/admin/assets/pages/scripts/form-fileupload.min.js" type="text/javascript"></script>
+    <script src="/admin/assets/pages/scripts/form-fileupload.js" type="text/javascript"></script>
+
+    <script id="files-order" type="text/javascript">
+        $(".sortable").sortable({
+            items: "> tr",
+            axis: "y",
+            update: function( event, ui ) {
+                var sortedIDs = $(this).sortable("toArray");
+                var arr = [];
+                $(sortedIDs).find('.name a').each(function(){
+                    arr.push($(this).html());
+                });
+                console.log();
+            }
+        });
+    </script>
 
     <script>
         var myApp = angular.module('myApp', []);
