@@ -364,6 +364,7 @@
                     $http.post('/filter/ajax', {name:'type_auto'}).
                         success(function(data, status, headers, config) {
                                 $scope.filter.type_auto = data;
+                                $scope.obj.helpers.objToModel();
 //                                console.log(data);
                         }).
                         error(function(data, status, headers, config) {
@@ -380,9 +381,20 @@
                     },
                     objJson : '',
                     obj : {
-                        type_auto : []
+                        type_auto : [{"text":"Авто транспорт","children":[]}]
                     },
                     helpers : {
+                        objToModel : function(){
+                            angular.forEach($scope.obj.obj.type_auto, function(value){
+                                angular.forEach($scope.filter.type_auto, function(val){
+                                    if(val.text == value.text){
+                                        $scope.obj.help.type_auto = val;
+                                        console.log(val.text)
+                                    }
+
+                                });
+                            });
+                        },
                         makeObj : function(parentObj, parent){
                             var type_auto = angular.copy($scope.obj.help.type_auto);
                             var mark = angular.copy($scope.obj.help.mark);
