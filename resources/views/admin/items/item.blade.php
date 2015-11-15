@@ -47,40 +47,40 @@
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_0" />
-                        <input type="text" name="obj" ng-model="obj.objJson" value="{{ $item['obj'] }}" class="col-md-12"/>
+                        <input ng-init="obj.objJson='{{ $item['obj'] }}'" type="text" name="obj" ng-model="obj.objJson" value="{{ $item['obj'] }}" class="col-md-12 hide"/>
 
                         <div class="form-body">
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Тип  </label>
+                                <label class="col-md-3 control-label"> Тип </label>
                                 <div class="col-md-4">
                                     <select
-                                            ng-model="obj.help.type_auto"
+                                            ng-model="obj.help.type_auto[0]"
                                             ng-options="item.text for item in filter.type_auto"
-                                            ng-change="obj.helpers.makeObj()"
+                                            ng-change="obj.helpers.makeObj('type_auto')"
                                             >
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" ng-show="obj.help.type_auto[0].children">
                                 <label class="col-md-3 control-label"> Марки </label>
                                 <div class="col-md-4">
                                     <select
-                                            ng-model="obj.help.mark"
-                                            ng-options="item.text for item in obj.help.type_auto.children"
-                                            ng-change="obj.helpers.makeObj()"
+                                            ng-model="obj.help.type_auto[1]"
+                                            ng-options="item.text for item in obj.help.type_auto[0].children"
+                                            ng-change="obj.helpers.makeObj('type_auto')"
                                             >
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" ng-show="obj.help.type_auto[1].children">
                                 <label class="col-md-3 control-label"> Модели </label>
                                 <div class="col-md-4">
                                     <select
-                                            ng-model="obj.help.model"
-                                            ng-options="item.text for item in obj.help.mark.children"
-                                            ng-change="obj.helpers.makeObj()"
+                                            ng-model="obj.help.type_auto[2]"
+                                            ng-options="item.text for item in obj.help.type_auto[1].children"
+                                            ng-change="obj.helpers.makeObj('type_auto')"
                                             >
                                     </select>
                                 </div>
@@ -364,8 +364,9 @@
                     $http.post('/filter/ajax', {name:'type_auto'}).
                         success(function(data, status, headers, config) {
                                 $scope.filter.type_auto = data;
-                                $scope.obj.helpers.objToModel();
-//                                console.log(data);
+                                $scope.obj.obj = angular.fromJson($scope.obj.objJson);
+                                $scope.obj.helpers.objToModel('type_auto', $scope.obj.obj.type_auto, $scope.filter.type_auto);
+//                                console.log($scope.obj.obj);
                         }).
                         error(function(data, status, headers, config) {
                             console.log('Ошибка при отправки объекта');
@@ -374,60 +375,56 @@
 
                 $scope.obj = {
                     filter : {type_auto : []},
-                    help : {
-                        type_auto : null,
-                        mark : null,
-                        model : null,
-                    },
+                    help : {type_auto:[]},
                     objJson : '',
                     obj : {
-                        type_auto : [{"text":"Авто транспорт","children":[]}]
+//                        type_auto : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}],
+//                        img : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}]
                     },
                     helpers : {
-                        objToModel : function(){
-                            angular.forEach($scope.obj.obj.type_auto, function(value){
-                                angular.forEach($scope.filter.type_auto, function(val){
-                                    if(val.text == value.text){
-                                        $scope.obj.help.type_auto = val;
-                                        console.log(val.text)
-                                    }
+                        jsonToObj : function(){
 
+                        },
+                        objToModel : function(key, arr, filter, i){//Разбор объекта из базы
+                            if(!i){i = 0;}
+                            angular.forEach(arr, function(value){
+                                angular.forEach(filter, function(val){
+                                    if(val.text == value.text){
+                                        $scope.obj.help[key][i] = val;
+                                        i++;
+                                        if(value.children && value.children.length){
+                                            $scope.obj.helpers.objToModel(key, value.children, val.children, i);
+                                        }
+                                    }
                                 });
                             });
+
+                            if(i == 1){
+                                $scope.obj.objJson = angular.toJson($scope.obj.obj); // Серриализуем объект, его будем в базу ложить
+                            }
                         },
-                        makeObj : function(parentObj, parent){
-                            var type_auto = angular.copy($scope.obj.help.type_auto);
-                            var mark = angular.copy($scope.obj.help.mark);
-                            var model = angular.copy($scope.obj.help.model);
 
-                            if(type_auto){
-                                type_auto.children = [];
-                                $scope.obj.obj.type_auto = [];
-                                $scope.obj.obj.type_auto.push(type_auto);
+                        makeObj : function(parentKey){
+                            $scope.obj.obj[parentKey] = [];
+                            var children = $scope.obj.obj[parentKey]; //В этот массив будем вставлять объект
+
+                            angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель
+                                var obj = $scope.obj.helpers.pushChildren(val);//Клонируем модель
+                                if(obj){
+                                    children.push(obj); //Добавляем модель в массив
+                                    children = obj.children; //Меняем ссылку на массив куда будем вставлять данные при следующем проходе
+                                }
+                            });
+
+                            $scope.obj.objJson = angular.toJson($scope.obj.obj); // Серриализуем объект, его будем в базу ложить
+                        },
+                        pushChildren : function(obj){
+                            if(obj){
+                                obj = angular.copy(obj);
+                                obj.children = [];
+                                return obj;
                             }
-
-                            if(mark){
-                                mark.children = [];
-                                type_auto.children.push(mark);
-                            }
-
-                            if(model){
-                                model.children = [];
-                                mark.children.push(model);
-                            }
-
-                            $scope.obj.objJson = angular.toJson($scope.obj.obj.type_auto);
-
-//                            if(obj[key]){
-//                                var arr = obj[key];
-//                            }
-//                            else{
-//                                angular.forEach(obj, function(value){
-//                                    if(value.text = key){var arr = value.children;}
-//                                });
-//                            }
-
-
+                            return;
                         }
                     }
                 };
