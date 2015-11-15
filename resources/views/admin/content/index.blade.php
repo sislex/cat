@@ -4,7 +4,7 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{action('Admin\ItemsController@index')}}">Авто Каталог</a>
+                <a href="{{action('Admin\ContentController@index')}}">Верхнее меню</a>
                 <i class="fa fa-circle"></i>
             </li>
         </ul>
@@ -12,16 +12,16 @@
     @endsection
 
     @section('content')
-    <!-- BEGIN PAGE TITLE-->
-    <h3 class="page-title"> Авто Каталог
-        <small>Список авто</small>
+            <!-- BEGIN PAGE TITLE-->
+    <h3 class="page-title"> Верхнее меню
+        <small>Пункты меню</small>
     </h3>
     <!-- END PAGE TITLE-->
 
     <!-- BEGIN CONTENT BODY -->
     <div class="portlet-body">
         <div class="table-scrollable">
-            @if(count($items))
+            @if(count($content))
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -30,7 +30,9 @@
                         <th> Created </th>
                         <th> Updated </th>
                         <th>
-                            <a href="{{action('Admin\ItemsController@add')}}" class="btn btn-outline btn-circle btn-sm green">
+                            {{--Add--}}
+                            <a href="{{action('Admin\ContentController@add')}}" class="btn btn-outline btn-circle btn-sm green">
+{{--                            <a href="{{action('Admin\ContentController@show', ['id' => ''])}}" class="btn btn-outline btn-circle btn-sm green">--}}
                                 <i class="fa fa-plus"></i>
                                 Add
                             </a>
@@ -38,18 +40,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($items as $value)
+                    @foreach($content as $value)
                         <tr>
                             <td> {{$value['id']}} </td>
                             <td> {{$value['name']}} </td>
                             <td> {{$value['created_at']}} </td>
                             <td> {{$value['updated_at']}} </td>
                             <td>
-                                <a href="{{action('Admin\ItemsController@show', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
+                                <a href="{{action('Admin\ContentController@show', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
                                     <i class="fa fa-edit"></i>
                                     Edit
                                 </a>
-                                <a href="{{action('Admin\ItemsController@delete', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm red">
+                                <a href="{{action('Admin\ContentController@delete', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm red">
                                     <i class="fa fa-remove"></i>
                                     Delete
                                 </a>
@@ -68,7 +70,7 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{action('Admin\ItemsController@index')}}">Авто Каталог</a>
+                <a href="{{action('Admin\ContentController@index')}}">Верхнее меню</a>
                 <i class="fa fa-circle"></i>
             </li>
         </ul>

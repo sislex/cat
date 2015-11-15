@@ -31,3 +31,20 @@ $factory->define(App\Items::class, function (Faker\Generator $faker) {
         'obj' => str_random(20),
     ];
 });
+
+$factory->define(App\Content::class, function (Faker\Generator $faker) {
+    return [
+        'parent_id' => $faker->numberBetween(1,20),
+        'type' => $faker->word,
+        'menu' => $faker->word,
+        'name' => $faker->word,
+        'order' => $faker->numberBetween(1,100),
+        'pseudo_url' => $faker->url,
+        'title' => $faker->word,
+        'description' => $faker->sentence,
+        'keywords' => implode(' ',$faker->words(3)),
+        'short_text' => $faker->sentence,
+        'text' => $faker->text,
+//        'obj' => str_random(20),
+    ];
+});

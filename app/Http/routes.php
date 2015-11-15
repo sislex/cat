@@ -22,10 +22,21 @@ Route::get('admin/filters', 'Admin\FiltersController@index');
 Route::get('admin/filter/{name}', 'Admin\FiltersController@filter');
 Route::post('admin/filter/{name}', 'Admin\FiltersController@update');
 
+// Items routes
 Route::get('admin/items', 'Admin\ItemsController@index');
-Route::get('admin/item/{id?}', 'Admin\ItemsController@show');
-Route::post('admin/item', 'Admin\ItemsController@update');
-Route::get('admin/item/delete/{id}', 'Admin\ItemsController@delete');
+Route::get('admin/items/add', 'Admin\ItemsController@add');
+Route::get('admin/items/show/{id}', 'Admin\ItemsController@show');
+Route::get('admin/items/delete/{id}', 'Admin\ItemsController@delete');
+Route::post('admin/items/update', 'Admin\ItemsController@update');
+
+
+// Content routes
+Route::get('admin/content', 'Admin\ContentController@index');
+Route::get('admin/content/add', 'Admin\ContentController@add');
+Route::get('admin/content/show/{id}', 'Admin\ContentController@show');
+Route::get('admin/content/delete/{id}', 'Admin\ContentController@delete');
+Route::post('admin/content/update', 'Admin\ContentController@update');
+
 
 // Authentication routes...
 Route::get('admin/login', 'Auth\AuthController@getLogin');

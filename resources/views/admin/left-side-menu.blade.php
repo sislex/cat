@@ -18,22 +18,22 @@
     </a>
     <ul class="sub-menu">
         <li class="nav-item  ">
-            <a href="form_controls.html" class="nav-link ">
+            <a href="{{action('Admin\ContentController@index')}}" class="nav-link ">
                 <span class="title">Верхнее меню</span>
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="form_controls_md.html" class="nav-link ">
+            <a href="{{action('Admin\ContentController@index')}}" class="nav-link ">
                 <span class="title">Категории для Блога (сбоку)</span>
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="form_icheck.html" class="nav-link ">
+            <a href="{{action('Admin\ContentController@index')}}" class="nav-link ">
                 <span class="title">Новости</span>
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="form_layouts.html" class="nav-link ">
+            <a href="{{action('Admin\ContentController@index')}}" class="nav-link ">
                 <span class="title">Блог</span>
             </a>
         </li>

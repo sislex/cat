@@ -20,6 +20,16 @@ class ItemsController extends Controller
         return view('admin/items/index', ['items' => $items]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function add()
+    {
+        $item = '';
+        return view('admin/items/item', ['item' => $item]);
+    }
 
     /**
      * Display the specified resource.
@@ -27,7 +37,7 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = '')
+    public function show($id)
     {
         if ($id != '') {
 //            $item = Items::where('id', '=', $id)->get()->first();
