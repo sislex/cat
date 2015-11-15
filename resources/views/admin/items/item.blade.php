@@ -47,7 +47,7 @@
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_0" />
-                        <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" value="{{ $item['obj'] }}" class="col-md-12 hide"/>
+                        <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 hide"/>
 
                         <div class="form-body">
                             <div class="form-group">
