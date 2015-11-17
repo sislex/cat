@@ -16,7 +16,7 @@ class ContentController extends Controller
      */
     public function index()
     {
-        $content = Content::get();
+        $content = Content::orderBy('id','desc')->get();
         return view('admin/content/index', ['content' => $content]);
     }
 
@@ -82,6 +82,19 @@ class ContentController extends Controller
     public function update()
     {
         $input = \Request::all();
+
+        if ($input['pseudo_url'] == '') {
+            $input['pseudo_url'] = $input['name'];
+        }
+        if ($input['title'] == '') {
+            $input['title'] = $input['name'];
+        }
+        if ($input['keywords'] == '') {
+            $input['keywords'] = $input['name'];
+        }
+        if ($input['description'] == '') {
+            $input['description'] = $input['short_text'];
+        }
 
         if ($input['id']) {
             Content::find($input['id'])->update($input);

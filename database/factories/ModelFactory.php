@@ -39,7 +39,7 @@ $factory->define(App\Content::class, function (Faker\Generator $faker) {
         'menu' => $faker->word,
         'name' => $faker->word,
         'order' => $faker->numberBetween(1,100),
-        'pseudo_url' => $faker->url,
+        'pseudo_url' => $faker->word,
         'title' => $faker->word,
         'description' => $faker->sentence,
         'keywords' => implode(' ',$faker->words(3)),
