@@ -20,6 +20,24 @@ class ItemsController extends Controller
         return view('admin/items/index', ['items' => $items]);
     }
 
+    public function getItemsObj()
+    {
+        $items = Items::get()->toArray();
+        $arr = [];
+
+        foreach($items as $value){
+            if($value['obj']!=''){
+                $obj = json_decode($value['obj'], true);
+                unset($value['obj']);
+            }
+            else{$obj = [];}
+            $obj['item'] = $value;
+            $arr[] = $obj;
+        }
+
+     return $arr;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

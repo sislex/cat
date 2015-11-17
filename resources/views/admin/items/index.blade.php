@@ -18,10 +18,54 @@
     </h3>
     <!-- END PAGE TITLE-->
 
-    <!-- BEGIN CONTENT BODY -->
-    <div class="portlet-body">
-        <div class="table-scrollable">
-            @if(count($items))
+    <div ng-app="myApp"
+            ng-controller="myCtrl">
+        <div class="note note-info">
+            <!-- BEGIN FORM-->
+            <div class="form-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label">Тип</label>
+                            <select
+                                    class="form-control input-circle"
+                                    ng-model="obj.help.type_auto[0]"
+                                    ng-options="item.text for item in filter.type_auto"
+                                    ng-change="obj.helpers.makeObj('type_auto')"
+                                    >
+                            </select>
+                        </div>
+                        <div class="col-md-4" ng-show="obj.help.type_auto[0].children">
+                            <label class="control-label">Марка</label>
+                            <select
+                                    class="form-control input-circle"
+                                    ng-model="obj.help.type_auto[1]"
+                                    ng-options="item.text for item in obj.help.type_auto[0].children"
+                                    ng-change="obj.helpers.makeObj('type_auto')"
+                                    >
+                            </select>
+                        </div>
+                        <div class="col-md-4" ng-show="obj.help.type_auto[1].children">
+                            <label class="control-label">Модель</label>
+                            <select
+                                    class="form-control input-circle"
+                                    ng-model="obj.help.type_auto[2]"
+                                    ng-options="item.text for item in obj.help.type_auto[1].children"
+                                    ng-change="obj.helpers.makeObj('type_auto')"
+                                    >
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- END FORM-->
+        </div>
+
+        <!-- BEGIN CONTENT BODY -->
+        <div class="portlet-body">
+            <div class="table-scrollable">
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -37,31 +81,31 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody>
-                    @foreach($items as $value)
-                        <tr>
-                            <td> {{$value['id']}} </td>
-                            <td> {{$value['name']}} </td>
-                            <td> {{$value['created_at']}} </td>
-                            <td> {{$value['updated_at']}} </td>
+                    <tbody ng-show="items">
+                        <tr ng-repeat="item in items | orderBy:'name'">
+                            <td> @{{ item.item['id'] }} </td>
+                            <td> @{{ item.item['name'] }} </td>
+                            <td> @{{ item.item['created_at'] }} </td>
+                            <td> @{{ item.item['updated_at'] }} </td>
                             <td>
-                                <a href="{{action('Admin\ItemsController@show', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
+                                <a href="{{action('Admin\ItemsController@show')}}/@{{ item.item['id'] }}" class="btn btn-outline btn-circle btn-sm purple">
                                     <i class="fa fa-edit"></i>
                                     Edit
                                 </a>
-                                <a href="{{action('Admin\ItemsController@delete', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm red">
+                                <a href="{{action('Admin\ItemsController@delete')}}/@{{ item.item['id'] }}" class="btn btn-outline btn-circle btn-sm red">
                                     <i class="fa fa-remove"></i>
                                     Delete
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
                     </tbody>
                 </table>
-            @endif
+            </div>
         </div>
+
+
+        <!-- END CONTENT BODY -->
     </div>
-    <!-- END CONTENT BODY -->
 @endsection
 
 @section('page_bar')
@@ -73,4 +117,13 @@
             </li>
         </ul>
     </div>
+@endsection
+
+@section('PAGE-LEVEL-PLUGINS')
+    <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
+@endsection
+
+@section('PAGE-LEVEL-SCRIPTS')
+    <script src="/admin/js/items/index.js" type="text/javascript"></script>
+    </script>
 @endsection
