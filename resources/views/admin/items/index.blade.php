@@ -85,7 +85,7 @@
                     <tbody ng-show="cloneItems">
                         <tr ng-repeat="item in cloneItems | orderBy:'name'">
                             <td> @{{ item.item['id'] }} </td>
-                            <td><img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt=""> </td>
+                            <td><img class="img-rounded" ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt=""> </td>
                             <td> @{{ item.item['name'] }} </td>
                             <td> @{{ item.item['created_at'] }} </td>
                             <td> @{{ item.item['updated_at'] }} </td>
