@@ -71,13 +71,13 @@
                     <tr>
                         <th>  </th>
                         <th> # </th>
-                        <th> Name </th>
-                        <th> Created </th>
-                        <th> Updated </th>
+                        <th> Тип </th>
+                        <th> Марка </th>
+                        <th> Модель </th>
                         <th>
                             <a href="{{action('Admin\ItemsController@add')}}" class="btn btn-outline btn-circle btn-sm green">
                                 <i class="fa fa-plus"></i>
-                                Add
+                                Добавить
                             </a>
                         </th>
                     </tr>
@@ -86,17 +86,17 @@
                         <tr ng-repeat="item in cloneItems | orderBy:'name'">
                             <td> @{{ item.item['id'] }} </td>
                             <td><img class="img-rounded" ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt=""> </td>
-                            <td> @{{ item.item['name'] }} </td>
-                            <td> @{{ item.item['created_at'] }} </td>
-                            <td> @{{ item.item['updated_at'] }} </td>
-                            <td>
+                            <td> @{{ item.type_auto[0].text }} </td>
+                            <td> @{{ item.type_auto[0].children[0].text }} </td>
+                            <td> @{{ item.type_auto[0].children[0].children[0].text }} </td>
+                            <td class="itemActions">
                                 <a href="{{action('Admin\ItemsController@show')}}/@{{ item.item['id'] }}" class="btn btn-outline btn-circle btn-sm purple">
                                     <i class="fa fa-edit"></i>
-                                    Edit
+                                    Редактировать
                                 </a>
                                 <a href="{{action('Admin\ItemsController@delete')}}/@{{ item.item['id'] }}" class="btn btn-outline btn-circle btn-sm red">
                                     <i class="fa fa-remove"></i>
-                                    Delete
+                                    Удалить
                                 </a>
                             </td>
                         </tr>
@@ -134,6 +134,9 @@
         tbody img {
             width: 100%;
             max-width: 100px;
+        }
+            .itemActions{
+            width: 150px;
         }
     </style>
 @endsection
