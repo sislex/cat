@@ -33,7 +33,6 @@ Route::get('admin/get/items', 'Admin\ItemsController@getItemsObj');
 Route::post('admin/get/items', 'Admin\ItemsController@getItemsObj');
 Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
 
-
 // Content routes
 Route::get('admin/content', 'Admin\ContentController@index');
 Route::get('admin/content/add', 'Admin\ContentController@add');

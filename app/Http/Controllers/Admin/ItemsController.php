@@ -64,7 +64,11 @@ class ItemsController extends Controller
             $item = '';
         }
         $obj = json_decode($item['obj'], true);
-        $item->images = json_encode($obj['images']);
+        if (!isset($obj['images'])){
+            $item->images = json_encode([]);
+        } else {
+            $item->images = json_encode($obj['images']);
+        }
 
         return view('admin/items/item', ['item' => $item]);
     }
