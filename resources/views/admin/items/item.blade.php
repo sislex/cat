@@ -19,6 +19,7 @@
         <li class="active">
             <a href="#tab_0" data-toggle="tab"> Данные по авто </a>
         </li>
+        @if(isset($item['id']))
         <li>
             <a href="#tab_1" data-toggle="tab"> СЕО данные </a>
         </li>
@@ -28,6 +29,7 @@
         <li>
             <a href="#tab_3" data-toggle="tab"> Видео </a>
         </li>
+        @endif
     </ul>
     <!-- END NAV TAB -->
     <div class="tab-content"
@@ -122,6 +124,7 @@
                 </div>
             </div>
         </div>
+        @if(isset($item['id']))
         <div class="tab-pane" id="tab_1">
             <div class="portlet box green">
                 <div class="portlet-title">
@@ -301,7 +304,7 @@
                                 {% } %}</td>
                         </tr> {% } %}
         </script>
-
+        @endif
     </div>
     <!-- END CONTENT BODY -->
 @endsection
