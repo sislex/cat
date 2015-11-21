@@ -60,14 +60,15 @@ class ItemsController extends Controller
         if ($id != '') {
 //            $item = Items::where('id', '=', $id)->get()->first();
             $item = Items::find($id);
+
+            $obj = json_decode($item['obj'], true);
+            if (!isset($obj['images'])){
+                $item->images = json_encode([]);
+            } else {
+                $item->images = json_encode($obj['images']);
+            }
         } else {
             $item = '';
-        }
-        $obj = json_decode($item['obj'], true);
-        if (!isset($obj['images'])){
-            $item->images = json_encode([]);
-        } else {
-            $item->images = json_encode($obj['images']);
         }
 
         return view('admin/items/item', ['item' => $item]);
@@ -108,13 +109,10 @@ class ItemsController extends Controller
             $arr['images'] = $input['images'];
             $item->obj = json_encode($arr);
             $item->save();
-
-//            return $item['obj'];
         }else{
             $input['id'] = Items::create($input);
         }
-
-//        return $input['images'];
+        return 'images updated';
     }
 
 

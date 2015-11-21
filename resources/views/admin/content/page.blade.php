@@ -87,9 +87,9 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Text </label>
-                                <div class="col-md-4">
+                                <div class="col-md-7">
                                     {{--<textarea rows="6" class="form-control input-circle" name="text" placeholder="Enter text">{{ $page['text'] or '' }}</textarea>--}}
-                                    <div rows="6" class="form-control input-circle" name="text" id="summernote_1" placeholder="Enter text">{{ $page['text'] or '' }}</div>
+                                    <div rows="6" class="" name="text" id="summernote_1" placeholder="Enter text">{{ $page['text'] or '' }}</div>
                                 </div>
                             </div>
                         </div>
@@ -181,32 +181,16 @@
 @section('PAGE-LEVEL-PLUGINS')
     <script src="/admin/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-
-    <script src="/admin/assets/global/plugins/bootstrap-summernote.min.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
-
-
-    <link href="/admin/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/global/plugins/bootstrap-summernote/summernote.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')
-    <script src="/admin/assets/pages/scripts/components-editors.min.js" type="text/javascript"></script>
+    <script src="/admin/assets/pages/scripts/components-editors.js" type="text/javascript"></script>
 @endsection
 
 @section('PAGE-LEVEL-STYLES')
     <link href="/admin/assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <link href="/admin/assets/global/plugins/bootstrap-summernote/summernote.css" rel="stylesheet" type="text/css" />
-
-
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
-
 
     <style>
         .preview img {

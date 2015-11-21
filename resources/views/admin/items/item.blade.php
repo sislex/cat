@@ -174,7 +174,7 @@
         <div class="tab-pane" id="tab_2">
             <div class="row">
                 <div class="col-md-12">
-                    <form id="fileupload" sort="{{ $item->images }}" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?id={{ $item['id'] or '' }}" method="POST" enctype="multipart/form-data">
+                    <form id="fileupload" sort="{{ $item->images or ''}}" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?id={{ $item['id'] or '' }}" method="POST" enctype="multipart/form-data">
                     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                         <div class="row fileupload-buttonbar">
                             <div class="col-lg-7">
@@ -351,8 +351,7 @@
                 $(sortedIDs).find('.name a').each(function(){
                     arr.push($(this).html());
                 });
-                console.log(arr);
-
+//                console.log(arr);
                 $.post('/admin/items/update/images', {_token: '{{ Session::token() }}', id: '{{$item['id'] or ''}}', images: arr}, function(callback){
                     console.log(callback);
                 });
