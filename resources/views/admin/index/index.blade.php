@@ -16,14 +16,14 @@
 
 @section('content')
 <!-- BEGIN PAGE TITLE-->
-<h3 class="page-title"> Больое название
-    <small>описание</small>
+<h3 class="page-title"> Название
+    <small>Описание</small>
 </h3>
 <!-- END PAGE TITLE-->
 
 <div class="blog-page">
     <div class="row">
-        Contentsdfsdf
+        Тест..
     </div>
 </div>
 @endsection
