@@ -1,5 +1,5 @@
 /**
- * Created by Рожнов on 15.11.2015.
+ * Created by Р РѕР¶РЅРѕРІ on 15.11.2015.
  */
 
 var myApp = angular.module('myApp', []);
@@ -16,7 +16,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
 //                                console.log($scope.obj.obj);
                 }).
                 error(function(data, status, headers, config) {
-                    console.log('Ошибка при отправки объекта');
+                    console.log('РћС€РёР±РєР° РїСЂРё РѕС‚РїСЂР°РІРєРµ РѕР±СЉРµРєС‚Р°');
                 });
         })();
 
@@ -25,14 +25,14 @@ myApp.controller('myCtrl', ['$scope', '$http',
             help : {type_auto:[]},
             objJson : '',
             obj : {
-//                        type_auto : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}],
-//                        img : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}]
+//                        type_auto : [{"text":"РђРІС‚Рѕ С‚СЂР°РЅСЃРїРѕСЂС‚","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}],
+//                        img : [{"text":"РђРІС‚Рѕ С‚СЂР°РЅСЃРїРѕСЂС‚","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}]
             },
             helpers : {
                 jsonToObj : function(){
 
                 },
-                objToModel : function(key, arr, filter, i){//Разбор объекта из базы
+                objToModel : function(key, arr, filter, i){//Р Р°Р·Р±РѕСЂ РѕР±СЉРµРєС‚Р° РёР· Р±Р°Р·С‹
                     if(!i){i = 0;}
                     angular.forEach(arr, function(value){
                         angular.forEach(filter, function(val){
@@ -47,23 +47,23 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     });
 
                     if(i == 1){
-                        $scope.obj.objJson = angular.toJson($scope.obj.obj); // Серриализуем объект, его будем в базу ложить
+                        $scope.obj.objJson = angular.toJson($scope.obj.obj); // РЎРµСЂСЂРёР°Р»РёР·СѓРµРј РѕР±СЉРµРєС‚, РµРіРѕ Р±СѓРґРµРј РІ Р±Р°Р·Сѓ Р»РѕР¶РёС‚СЊ
                     }
                 },
 
                 makeObj : function(parentKey){
                     $scope.obj.obj[parentKey] = [];
-                    var children = $scope.obj.obj[parentKey]; //В этот массив будем вставлять объект
+                    var children = $scope.obj.obj[parentKey]; //Р’ СЌС‚РѕС‚ РјР°СЃСЃРёРІ Р±СѓРґРµРј РІСЃС‚Р°РІР»СЏС‚СЊ РѕР±СЉРµРєС‚
 
-                    angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель
-                        var obj = $scope.obj.helpers.pushChildren(val);//Клонируем модель
+                    angular.forEach($scope.obj.help[parentKey], function(val, key){//Р Р°Р·РІРѕСЂР°С‡РёРІР°РµРј РјР°СЃСЃРёРІ РґР»СЏ С‚РѕРіРѕ С‡С‚РѕР± СЃРѕР±СЂР°С‚СЊ РјРѕРґРµР»СЊ
+                        var obj = $scope.obj.helpers.pushChildren(val);//РљР»РѕРЅРёСЂСѓРµРј РјРѕРґРµР»СЊ
                         if(obj){
-                            children.push(obj); //Добавляем модель в массив
-                            children = obj.children; //Меняем ссылку на массив куда будем вставлять данные при следующем проходе
+                            children.push(obj); //Р”РѕР±Р°РІР»СЏРµРј РјРѕРґРµР»СЊ РІ РјР°СЃСЃРёРІ
+                            children = obj.children; //РњРµРЅСЏРµРј СЃСЃС‹Р»РєСѓ РЅР° РјР°СЃСЃРёРІ РєСѓРґР° Р±СѓРґРµРј РІСЃС‚Р°РІР»СЏС‚СЊ РґР°РЅРЅС‹Рµ РїСЂРё СЃР»РµРґСѓСЋС‰РµРј РїСЂРѕС…РѕРґРµ
                         }
                     });
 
-                    $scope.obj.objJson = angular.toJson($scope.obj.obj); // Серриализуем объект, его будем в базу ложить
+                    $scope.obj.objJson = angular.toJson($scope.obj.obj); // РЎРµСЂСЂРёР°Р»РёР·СѓРµРј РѕР±СЉРµРєС‚, РµРіРѕ Р±СѓРґРµРј РІ Р±Р°Р·Сѓ Р»РѕР¶РёС‚СЊ
                 },
                 pushChildren : function(obj){
                     if(obj){

@@ -49,6 +49,20 @@ var FormFileUpload = function () {
             }).always(function () {
                 $(this).removeClass('fileupload-processing');
             }).done(function (result) {
+                var sort = $.parseJSON($('#fileupload').attr("sort"));
+                if (sort && sort.length){
+                    var new_files_arr = [];
+                    $(sort).each(function(key,value){
+                        $(result.files).each(function(k,v){
+                            //console.log(v);
+                            if (v.name == value){
+                                new_files_arr.push(v);
+                            };
+                        });
+                    });
+                    result.files = new_files_arr;
+                };
+
                 $(this).fileupload('option', 'done')
                 .call(this, $.Event('done'), {result: result});
             });

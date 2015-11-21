@@ -174,28 +174,28 @@
         <div class="tab-pane" id="tab_2">
             <div class="row">
                 <div class="col-md-12">
-                    <form id="fileupload" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?id={{ $item['id'] or '' }}" method="POST" enctype="multipart/form-data">
+                    <form id="fileupload" sort="{{ $item->images }}" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?id={{ $item['id'] or '' }}" method="POST" enctype="multipart/form-data">
                     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                         <div class="row fileupload-buttonbar">
                             <div class="col-lg-7">
                                 <!-- The fileinput-button span is used to style the file input field as button -->
                                 <span class="btn green btn-circle fileinput-button">
                                     <i class="fa fa-plus"></i>
-                                    <span> Add files... </span>
+                                    <span> Добавить... </span>
                                     <input type="file" name="files[]" multiple="">
                                 </span>
-                                <button type="submit" class="btn btn-circle blue start">
-                                    <i class="fa fa-upload"></i>
-                                    <span> Start upload </span>
-                                </button>
-                                <button type="reset" class="btn btn-circle warning cancel">
-                                    <i class="fa fa-ban-circle"></i>
-                                    <span> Cancel upload </span>
-                                </button>
-                                <button type="button" class="btn btn-circle red delete">
-                                    <i class="fa fa-trash"></i>
-                                    <span> Delete </span>
-                                </button>
+                                {{--<button type="submit" class="btn btn-circle blue start">--}}
+                                    {{--<i class="fa fa-upload"></i>--}}
+                                    {{--<span> Start upload </span>--}}
+                                {{--</button>--}}
+                                {{--<button type="reset" class="btn btn-circle warning cancel">--}}
+                                    {{--<i class="fa fa-ban-circle"></i>--}}
+                                    {{--<span> Cancel upload </span>--}}
+                                {{--</button>--}}
+                                {{--<button type="button" class="btn btn-circle red delete">--}}
+                                    {{--<i class="fa fa-trash"></i>--}}
+                                    {{--<span> Delete </span>--}}
+                                {{--</button>--}}
                                 {{--<input type="checkbox" class="toggle">--}}
                                 <!-- The global file processing state -->
                                 <span class="fileupload-process"> </span>
@@ -291,13 +291,14 @@
                             <td> {% if (file.deleteUrl) { %}
                                 <button class="btn red delete btn-sm btn-circle" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}" {% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}' {% } %}>
                                     <i class="fa fa-trash-o"></i>
-                                    <span>Delete</span>
+                                    <span>Удалить</span>
                                 </button>
-                                <input type="checkbox" name="delete" value="1" class="toggle"> {% } else { %}
-                                <button class="btn yellow cancel btn-sm btn-circle">
-                                    <i class="fa fa-ban"></i>
-                                    <span>Cancel</span>
-                                </button> {% } %} </td>
+                                {{--<input type="checkbox" name="delete" value="1" class="toggle"> {% } else { %}--}}
+                                {{--<button class="btn yellow cancel btn-sm btn-circle">--}}
+                                    {{--<i class="fa fa-ban"></i>--}}
+                                    {{--<span>Cancel</span>--}}
+                                {{--</button>--}}
+                                {% } %}</td>
                         </tr> {% } %}
         </script>
 
@@ -350,7 +351,11 @@
                 $(sortedIDs).find('.name a').each(function(){
                     arr.push($(this).html());
                 });
-                console.log();
+//                console.log(arr);
+
+                $.post('/admin/items/update/images', {_token: '{{ Session::token() }}', id: '{{$item['id'] or ''}}', images: arr}, function(callback){
+                    console.log(callback);
+                });
             }
         });
     </script>

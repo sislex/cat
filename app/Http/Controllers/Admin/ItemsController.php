@@ -63,6 +63,8 @@ class ItemsController extends Controller
         } else {
             $item = '';
         }
+        $obj = json_decode($item['obj'], true);
+        $item->images = json_encode($obj['images']);
 
         return view('admin/items/item', ['item' => $item]);
     }
@@ -85,6 +87,32 @@ class ItemsController extends Controller
 
         return \Redirect::action('Admin\ItemsController@show', ['id' => $input['id'], $input['tab']]);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateImages()
+    {
+        $input = \Request::all();
+        if ($input['id'] and is_array($input['images']) and count($input['images'])) {
+            $item = Items::find($input['id']);
+            $arr = json_decode($item->obj, true);
+            $arr['images'] = $input['images'];
+            $item->obj = json_encode($arr);
+            $item->save();
+
+//            return $item['obj'];
+        }else{
+            $input['id'] = Items::create($input);
+        }
+
+//        return $input['images'];
+    }
+
 
     /**
      * Remove the specified resource from storage.

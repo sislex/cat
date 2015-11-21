@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('admin/index', 'Admin\IndexController@index');
 
+// Filter routes
 Route::post('filter/ajax', 'Admin\FiltersController@getJSONByName');
 Route::get('admin/filters', 'Admin\FiltersController@index');
 Route::get('admin/filter/{name}', 'Admin\FiltersController@filter');
@@ -30,6 +31,7 @@ Route::get('admin/items/delete/{id?}', 'Admin\ItemsController@delete');
 Route::post('admin/items/update', 'Admin\ItemsController@update');
 Route::get('admin/get/items', 'Admin\ItemsController@getItemsObj');
 Route::post('admin/get/items', 'Admin\ItemsController@getItemsObj');
+Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
 
 
 // Content routes
