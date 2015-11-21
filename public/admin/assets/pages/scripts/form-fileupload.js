@@ -14,7 +14,7 @@ var FormFileUpload = function () {
                 autoUpload: true
 
                 // Uncomment the following to send cross-domain cookies:
-                //xhrFields: {withCredentials: true},                
+                //xhrFields: {withCredentials: true},
             });
 
             // Enable iframe cross-domain access via redirect option:
@@ -50,18 +50,21 @@ var FormFileUpload = function () {
             }).always(function () {
                 $(this).removeClass('fileupload-processing');
             }).done(function (result) {
-                var sort = $.parseJSON($('#fileupload').attr("sort"));
-                if (sort && sort.length){
-                    var new_files_arr = [];
-                    $(sort).each(function(key,value){
-                        $(result.files).each(function(k,v){
-                            if (v.name == value){
-                                new_files_arr.push(v);
-                            };
+                var sortStr = $('#fileupload').attr("sort");
+                if(sortStr!=''){
+                    var sort = $.parseJSON(sortStr);
+                    if (sort && sort.length){
+                        var new_files_arr = [];
+                        $(sort).each(function(key,value){
+                            $(result.files).each(function(k,v){
+                                if (v.name == value){
+                                    new_files_arr.push(v);
+                                };
+                            });
                         });
-                    });
-                    result.files = new_files_arr;
-                };
+                        result.files = new_files_arr;
+                    };
+                }
 
                 $(this).fileupload('option', 'done')
                 .call(this, $.Event('done'), {result: result});
