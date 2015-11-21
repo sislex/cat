@@ -61,24 +61,43 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     }
                     return;
                 },
-                makeCloneItems : function(arr, dataArr){
+                makeCloneItems : function(){
                     var items = angular.copy($scope.items);
-                    var dataArr = $scope.obj.obj;
+                    var filterObj = $scope.obj.obj;
                     var newArr = [];
 
-                    angular.forEach(arr, function(value, key){
-                        angular.forEach(dataArr, function(val){
-                            if(val[key]){
-                                //console.log(val);
-                                newArr.push(val);
+                    angular.forEach(items, function(value, key){
+                        angular.forEach(filterObj, function($val, $key){
+                            if(value[$key]){
+                                var itemFilter = value[$key];
+                                var filter = $val;
+                                var compare = $scope.obj.helpers.compareFilters(itemFilter, filter); //сравнение фильтров
+                                if(compare){
+                                    newArr.push(value);
+                                }
                             }
                         });
                     });
-                    console.log(newArr);
+                    $scope.cloneItems = newArr;
+                    //console.log(newArr);
                     //console.log($scope.obj.obj);
                 },
-                makeCloneItems1 : function(newArr, dataArr){
+                compareFilters : function(itemFilter, filter){
+                    var rez = false;
+                    angular.forEach(itemFilter, function(itemValue, itemKey){
+                        angular.forEach(filter, function(filterValue, filterKey){
+                            if(itemValue.text == filterValue.text){
+                                if(filterValue.children && filterValue.children.length){
+                                    rez = $scope.obj.helpers.compareFilters(itemValue.children, filterValue.children);
+                                }
+                                else{
+                                    rez = true;
+                                }
+                            }
+                        });
+                    });
 
+                    return rez;
                 }
             }
         };
