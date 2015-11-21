@@ -29,7 +29,6 @@ Route::get('admin/items/add', 'Admin\ItemsController@add');
 Route::get('admin/items/show/{id?}', 'Admin\ItemsController@show');
 Route::get('admin/items/delete/{id?}', 'Admin\ItemsController@delete');
 Route::post('admin/items/update', 'Admin\ItemsController@update');
-Route::get('admin/get/items', 'Admin\ItemsController@getItemsObj');
 Route::post('admin/get/items', 'Admin\ItemsController@getItemsObj');
 Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
 

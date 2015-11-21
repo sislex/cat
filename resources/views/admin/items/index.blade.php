@@ -62,13 +62,14 @@
             </div>
             <!-- END FORM-->
         </div>
-
+@{{ obj.obj }}
         <!-- BEGIN CONTENT BODY -->
         <div class="portlet-body">
             <div class="table-scrollable">
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
+                        <th>  </th>
                         <th> # </th>
                         <th> Name </th>
                         <th> Created </th>
@@ -81,9 +82,10 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody ng-show="items">
-                        <tr ng-repeat="item in items | orderBy:'name'">
+                    <tbody ng-show="cloneItems">
+                        <tr ng-repeat="item in cloneItems | orderBy:'name'">
                             <td> @{{ item.item['id'] }} </td>
+                            <td><img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt=""> </td>
                             <td> @{{ item.item['name'] }} </td>
                             <td> @{{ item.item['created_at'] }} </td>
                             <td> @{{ item.item['updated_at'] }} </td>
@@ -125,5 +127,13 @@
 
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/admin/js/items/index.js" type="text/javascript"></script>
-    </script>
+@endsection
+
+@section('PAGE-LEVEL-STYLES')
+    <style>
+        tbody img {
+            width: 100%;
+            max-width: 100px;
+        }
+    </style>
 @endsection

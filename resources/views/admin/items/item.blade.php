@@ -351,7 +351,7 @@
                 $(sortedIDs).find('.name a').each(function(){
                     arr.push($(this).html());
                 });
-//                console.log(arr);
+                console.log(arr);
 
                 $.post('/admin/items/update/images', {_token: '{{ Session::token() }}', id: '{{$item['id'] or ''}}', images: arr}, function(callback){
                     console.log(callback);
