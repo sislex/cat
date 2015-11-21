@@ -11,10 +11,8 @@ var FormFileUpload = function () {
                 //previewMaxWidth: 300,
                 //previewMaxHeight: 200,
                 acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-                autoUpload: true,
-                done: function(){
-                    console.log('123')
-                }
+                autoUpload: true
+
                 // Uncomment the following to send cross-domain cookies:
                 //xhrFields: {withCredentials: true},                
             });

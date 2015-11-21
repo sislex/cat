@@ -61,11 +61,13 @@ class ItemsController extends Controller
 //            $item = Items::where('id', '=', $id)->get()->first();
             $item = Items::find($id);
 
-            $obj = json_decode($item['obj'], true);
-            if (!isset($obj['images'])){
-                $item->images = json_encode([]);
-            } else {
-                $item->images = json_encode($obj['images']);
+            if ($item['obj']){
+                $obj = json_decode($item['obj'], true);
+                if (!isset($obj['images'])){
+                    $item->images = json_encode([]);
+                } else {
+                    $item->images = json_encode($obj['images']);
+                }
             }
         } else {
             $item = '';
