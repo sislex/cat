@@ -254,7 +254,7 @@
                                 <strong class="error text-danger label label-danger"></strong>
                             </td>
                             <td>
-                                <p class="size">Processing...</p>
+                                <p class="size">Обработка...</p>
                                 <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                                     <div class="progress-bar progress-bar-success" style="width:0%;"></div>
                                 </div>
@@ -262,11 +262,11 @@
                             <td> {% if (!i && !o.options.autoUpload) { %}
                                 <button class="btn blue btn-circle start" disabled>
                                     <i class="fa fa-upload"></i>
-                                    <span>Start</span>
+                                    <span>Запустить</span>
                                 </button> {% } %} {% if (!i) { %}
                                 <button class="btn red btn-circle cancel">
                                     <i class="fa fa-ban"></i>
-                                    <span>Cancel</span>
+                                    <span>Отменить</span>
                                 </button> {% } %} </td>
                         </tr> {% } %}
         </script>
@@ -284,7 +284,7 @@
                                     <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl? 'data-gallery': ''%}>{%=file.name%}</a> {% } else { %}
                                     <span>{%=file.name%}</span> {% } %} </p> {% if (file.error) { %}
                                 <div>
-                                    <span class="label label-danger">Error</span> {%=file.error%}</div> {% } %} </td>
+                                    <span class="label label-danger">Ошибка</span> {%=file.error%}</div> {% } %} </td>
                             <td>
                                 <span class="size">{%=o.formatFileSize(file.size)%}</span>
                             </td>
