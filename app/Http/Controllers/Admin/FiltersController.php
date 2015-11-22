@@ -36,8 +36,19 @@ class FiltersController extends Controller
     protected function getJSONByName()
     {
         $input = \Request::all();
-        $filter = Filters::where('name', '=', $input['name'])->get()->first();
+        if(isset($input['name'])){
+            return Filters::where('name', '=', $input['name'])->get()->first()->obj;
+        }
+        else{
+            $filter = Filters::get();
+            $arr = [];
+            $i = 0;
+            foreach($filter as $key => $value){
+                $i++;
+                $arr[$value->name] = json_decode($value->obj, true);
+            }
 
-        return $filter->obj;
+            return $arr;
+        }
     }
 }

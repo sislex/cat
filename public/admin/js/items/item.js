@@ -8,12 +8,14 @@ myApp.controller('myCtrl', ['$scope', '$http',
     function($scope, $http, Company) {
         $scope.filter = {};
         $scope.func = (function(){
-            $http.post('/filter/ajax', {name:'type_auto'}).
+            //$http.post('/filter/ajax', {name:'type_auto'}).
+            $http.post('/filter/ajax').
                 success(function(data, status, headers, config) {
-                    $scope.filter.type_auto = data;
+                    $scope.filter = data;
                     if($scope.obj.objJson!=''){$scope.obj.obj = angular.fromJson($scope.obj.objJson);}
                     $scope.obj.helpers.objToModel('type_auto', $scope.obj.obj.type_auto, $scope.filter.type_auto);
-//                                console.log($scope.obj.obj);
+                    $scope.obj.helpers.objToModel('Тип кузова', $scope.obj.obj['Тип кузова'], $scope.filter['Тип кузова']);
+                                console.log($scope.obj.help);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправке объекта');
@@ -21,12 +23,18 @@ myApp.controller('myCtrl', ['$scope', '$http',
         })();
 
         $scope.obj = {
-            filter : {type_auto : []},
-            help : {type_auto:[]},
+            filter : {
+                //type_auto:[],
+                //'Тип кузова':[]
+            },
+            help : {
+                //type_auto:[],
+                //'Тип кузова':[]
+            },
             objJson : '',
             obj : {
-//                        type_auto : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}],
-//                        img : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}]
+                //type_auto : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}],
+                //img : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}]
             },
             helpers : {
                 jsonToObj : function(){
@@ -34,6 +42,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 },
                 objToModel : function(key, arr, filter, i){//Разбор объекта из базы
                     if(!i){i = 0;}
+                    if(!$scope.obj.help[key]){$scope.obj.help[key] = [];}
                     angular.forEach(arr, function(value){
                         angular.forEach(filter, function(val){
                             if(val.text == value.text){
@@ -57,6 +66,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
                     angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель
                         var obj = $scope.obj.helpers.pushChildren(val);//Клонируем модель
+                        debugger;
                         if(obj){
                             children.push(obj); //Добавляем модель в массив
                             children = obj.children; //Меняем ссылку на массив куда будем вставлять данные при следующем проходе

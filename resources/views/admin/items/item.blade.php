@@ -49,7 +49,7 @@
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_0" />
-                        <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 hide"/>
+                        <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12"/>
 
                         <div class="form-body">
                             <div class="form-group">
@@ -83,6 +83,18 @@
                                             ng-model="obj.help.type_auto[2]"
                                             ng-options="item.text for item in obj.help.type_auto[1].children"
                                             ng-change="obj.helpers.makeObj('type_auto')"
+                                            >
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Тип кузова </label>
+                                <div class="col-md-4">
+                                    <select
+                                            ng-model="obj.help['Тип кузова'][0]"
+                                            ng-options="item.text for item in filter['Тип кузова']"
+                                            ng-change="obj.helpers.makeObj('Тип кузова')"
                                             >
                                     </select>
                                 </div>

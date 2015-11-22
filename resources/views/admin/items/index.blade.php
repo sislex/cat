@@ -57,6 +57,19 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="control-label">Тип кузова</label>
+                            <select
+                                    class="form-control input-circle"
+                                    ng-model="obj.help['Тип кузова'][0]"
+                                    ng-options="item.text for item in filter['Тип кузова']"
+                                    ng-change="obj.helpers.makeObj('Тип кузова')"
+                                    >
+                            </select>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
@@ -74,6 +87,7 @@
                         <th> Тип </th>
                         <th> Марка </th>
                         <th> Модель </th>
+                        <th> Кузов </th>
                         <th>
                             <a href="{{action('Admin\ItemsController@add')}}" class="btn btn-outline btn-circle btn-sm green">
                                 <i class="fa fa-plus"></i>
@@ -89,6 +103,7 @@
                             <td> @{{ item.type_auto[0].text }} </td>
                             <td> @{{ item.type_auto[0].children[0].text }} </td>
                             <td> @{{ item.type_auto[0].children[0].children[0].text }} </td>
+                            <td> @{{ item['Тип кузова'][0].text }} </td>
                             <td class="itemActions">
                                 <a href="{{action('Admin\ItemsController@show')}}/@{{ item.item['id'] }}" class="btn btn-outline btn-circle btn-sm purple">
                                     <i class="fa fa-edit"></i>
