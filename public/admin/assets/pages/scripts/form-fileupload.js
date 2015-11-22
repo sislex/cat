@@ -15,6 +15,27 @@ var FormFileUpload = function () {
 
                 // Uncomment the following to send cross-domain cookies:
                 //xhrFields: {withCredentials: true},
+            }).bind('fileuploadfinished', function(e, data){
+                var id = $('[name=id]').val();
+                var token = $('#csrf-token').val();
+                var arr = [];
+                $('.files.sortable.ui-sortable').find('.name a').each(function(){
+                    arr.push($(this).html());
+                });
+                $.post('/admin/items/update/images', {_token: token, id: id, images: arr}, function(callback) {
+                    console.log(callback);
+                });
+            }).bind('fileuploaddestroyed', function(e, data){
+                var id = $('[name=id]').val();
+                var token = $('#csrf-token').val();
+                var arr = [];
+                $('.files.sortable.ui-sortable').find('.name a').each(function(){
+                    arr.push($(this).html());
+                });
+                //console.log(arr);
+                $.post('/admin/items/update/images', {_token: token, id: id, images: arr}, function(callback) {
+                    console.log(callback);
+                });
             });
 
             // Enable iframe cross-domain access via redirect option:
