@@ -66,7 +66,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
                     angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель
                         var obj = $scope.obj.helpers.pushChildren(val);//Клонируем модель
-                        debugger;
+                        //debugger;
                         if(obj){
                             children.push(obj); //Добавляем модель в массив
                             children = obj.children; //Меняем ссылку на массив куда будем вставлять данные при следующем проходе

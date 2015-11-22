@@ -105,14 +105,17 @@ class ItemsController extends Controller
     public function updateImages()
     {
         $input = \Request::all();
-        if ($input['id'] and is_array($input['images']) and count($input['images'])) {
+//        dd($input);
+
+        if(!isset($input['images'])){
+            $input['images'] = [];
+        }
+        if ($input['id'] && is_array($input['images'])) {
             $item = Items::find($input['id']);
             $arr = json_decode($item->obj, true);
             $arr['images'] = $input['images'];
             $item->obj = json_encode($arr);
             $item->save();
-        }else{
-            $input['id'] = Items::create($input);
         }
         return 'images updated';
     }

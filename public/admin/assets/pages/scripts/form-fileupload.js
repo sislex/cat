@@ -32,7 +32,7 @@ var FormFileUpload = function () {
                 $('.files.sortable.ui-sortable').find('.name a').each(function(){
                     arr.push($(this).html());
                 });
-                //console.log(arr);
+                //console.log({_token: token, id: id, images: arr});
                 $.post('/admin/items/update/images', {_token: token, id: id, images: arr}, function(callback) {
                     console.log(callback);
                 });
