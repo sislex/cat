@@ -8,9 +8,9 @@ myApp.controller('myCtrl', ['$scope', '$http',
     function($scope, $http, Company) {
         $scope.filter = {};
         $scope.init = (function(){
-            $http.post('/filter/ajax', {name:'type_auto'}).
+            $http.post('/filter/ajax').
                 success(function(data, status, headers, config) {
-                    $scope.filter.type_auto = data;
+                    $scope.filter = data;
 //                                console.log($scope.obj.obj);
                 }).
                 error(function(data, status, headers, config) {
