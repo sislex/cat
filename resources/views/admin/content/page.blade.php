@@ -4,8 +4,11 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{action('Admin\ContentController@index')}}"> Контентные страницы </a>
-                <i class="fa fa-circle"></i>
+                <a href="{{action('Admin\ContentController@index', ['type' => $page['type']])}}" class="nav-link ">
+                    Контентные страницы - {{ $page['type'] == 'menu' ? 'Меню' :
+                                                ($page['type'] == 'news' ? 'Новости' :
+                                                    ($page['type'] == 'blog' ? 'Блог' : '')) }}
+                </a>
             </li>
         </ul>
     </div>
@@ -26,7 +29,7 @@
     <!-- END NAV TAB -->
 
     <!-- BEGIN FORM-->
-    <form action="{{action('Admin\ContentController@update')}}" method="post" class="form-horizontal">
+    <form id="content_form" action="{{action('Admin\ContentController@update')}}" method="post" class="form-horizontal">
         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
         <input type="hidden" name="id" value="{{ $page['id'] or '' }}" />
         <input type="hidden" name="tab" value="#tab_0" />
@@ -53,7 +56,12 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Type </label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="type" value="{{ $page['type'] or '' }}" placeholder="Enter text">
+                                    {{--<input type="text" class="form-control input-circle" name="type" value="{{ $page['type'] or '' }}" placeholder="Enter text">--}}
+                                    <select name="type" id="" form="content_form" required  class="form-control input-circle">
+                                        <option value="menu" {{ $page['type'] == 'menu' ? 'selected' : '' }}>меню</option>
+                                        <option value="news" {{ $page['type'] == 'news' ? 'selected' : '' }}>новости</option>
+                                        <option value="blog" {{ $page['type'] == 'blog' ? 'selected' : '' }}>блог</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -88,8 +96,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Text </label>
                                 <div class="col-md-7">
-                                    {{--<textarea rows="6" class="form-control input-circle" name="text" placeholder="Enter text">{{ $page['text'] or '' }}</textarea>--}}
-                                    <div rows="6" class="" name="text" id="summernote_1" placeholder="Enter text">{{ $page['text'] or '' }}</div>
+                                    <textarea rows="6" id="summernote_1" class="form-control input-circle" name="text" placeholder="Enter text">{{ $page['text'] or '' }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +106,6 @@
                                 <div class="col-md-offset-3 col-md-9">
                                     <button type="submit" class="btn btn-circle green">Сохранить</button>
                                     <a href="{{action('Admin\ContentController@show', ['id' => $page['id']])}}" class="btn btn-circle red btn-outline">Отменить</a>
-                                    {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Отменить</button>--}}
                                 </div>
                             </div>
                         </div>

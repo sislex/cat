@@ -4,8 +4,13 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{action('Admin\ContentController@index')}}">Верхнее меню</a>
-                <i class="fa fa-circle"></i>
+                {{--<a href="{{action('Admin\ContentController@index')}}">Верхнее меню</a>--}}
+                {{--<i class="fa fa-circle"></i>--}}
+                <a href="{{action('Admin\ContentController@index', ['type' => $type])}}" class="nav-link ">
+                    Контентные страницы - {{ $type == 'menu' ? 'Меню' :
+                                                ($type == 'news' ? 'Новости' :
+                                                    ($type == 'blog' ? 'Блог' : '')) }}
+                </a>
             </li>
         </ul>
     </div>
@@ -13,8 +18,11 @@
 
     @section('content')
             <!-- BEGIN PAGE TITLE-->
-    <h3 class="page-title"> Верхнее меню
-        <small>Пункты меню</small>
+    <h3 class="page-title">
+        {{ $type == 'menu' ? 'Меню' :
+            ($type == 'news' ? 'Новости' :
+                ($type == 'blog' ? 'Блог' : '')) }}
+        <small>список страниц</small>
     </h3>
     <!-- END PAGE TITLE-->
 
@@ -34,7 +42,7 @@
                             <a href="{{action('Admin\ContentController@add')}}" class="btn btn-outline btn-circle btn-sm green">
 {{--                            <a href="{{action('Admin\ContentController@show', ['id' => ''])}}" class="btn btn-outline btn-circle btn-sm green">--}}
                                 <i class="fa fa-plus"></i>
-                                Add
+                                Добавить
                             </a>
                         </th>
                     </tr>
@@ -49,11 +57,11 @@
                             <td>
                                 <a href="{{action('Admin\ContentController@show', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
                                     <i class="fa fa-edit"></i>
-                                    Edit
+                                    Редактировать
                                 </a>
                                 <a href="{{action('Admin\ContentController@delete', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm red">
                                     <i class="fa fa-remove"></i>
-                                    Delete
+                                    Удалить
                                 </a>
                             </td>
                         </tr>

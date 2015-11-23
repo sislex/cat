@@ -14,10 +14,13 @@ class ContentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type)
     {
-        $content = Content::orderBy('id','desc')->get();
-        return view('admin/content/index', ['content' => $content]);
+//        dd($type);
+        if ($type) {
+            $content = Content::where('type', '=', $type)->orderBy('id','desc')->get();
+        }
+        return view('admin/content/index', ['content' => $content, 'type' => $type]);
     }
 
     /**
@@ -27,7 +30,8 @@ class ContentController extends Controller
      */
     public function add()
     {
-        $page = '';
+        $page = [];
+        $page['id']  = '';
         return view('admin/content/page', ['page' => $page]);
     }
 
@@ -48,15 +52,15 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id = '')
     {
         if ($id != '') {
 //            $page = Content::where('id', '=', $id)->get()->first();
             $page = Content::find($id);
         } else {
-            $page = '';
+            $page = [];
+            $page['id'] = '';
         }
-//        dd($page);
 
         return view('admin/content/page', ['page' => $page]);
     }
