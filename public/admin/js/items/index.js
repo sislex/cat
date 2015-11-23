@@ -66,12 +66,31 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     var filterObj = $scope.obj.obj;
                     var newArr = [];
 
+
+
                     angular.forEach(items, function(value, key){
+                        var i = 0;
                         angular.forEach(filterObj, function($val, $key){
-                            if(value[$key]){
-                                var itemFilter = value[$key];
-                                var filter = $val;
-                                var compare = $scope.obj.helpers.compareFilters(itemFilter, filter); //сравнение фильтров
+                            i++;
+                        });
+                        var j = 0;
+                        var compare = true;
+                        angular.forEach(filterObj, function($val, $key){
+                            var item = value[$key];
+                            if(compare){
+                                if(item != undefined){
+
+                                    var itemFilter = value[$key];
+                                    var filter = $val;
+                                    compare = $scope.obj.helpers.compareFilters(itemFilter, filter); //сравнение фильтров
+
+                                }
+                                else{
+                                    compare = false;
+                                }
+                            }
+                            j++;
+                            if(i == j){
                                 if(compare){
                                     newArr.push(value);
                                 }
@@ -79,8 +98,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
                         });
                     });
                     $scope.cloneItems = newArr;
-                    //console.log(newArr);
-                    //console.log($scope.obj.obj);
                 },
                 compareFilters : function(itemFilter, filter){
                     var rez = false;
