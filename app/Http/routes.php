@@ -25,7 +25,7 @@ Route::post('admin/filter/{name}', 'Admin\FiltersController@update');
 
 // Items routes
 Route::get('admin/items', 'Admin\ItemsController@index');
-Route::get('admin/items/add', 'Admin\ItemsController@add');
+Route::get('admin/items/add/{type}', 'Admin\ItemsController@add');
 Route::get('admin/items/show/{id?}', 'Admin\ItemsController@show');
 Route::get('admin/items/delete/{id?}', 'Admin\ItemsController@delete');
 Route::post('admin/items/update', 'Admin\ItemsController@update');
@@ -34,7 +34,7 @@ Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
 
 // Content routes
 Route::get('admin/content/{type}', 'Admin\ContentController@index');
-Route::get('admin/content/add', 'Admin\ContentController@add');
+Route::get('admin/content/add/{type}', 'Admin\ContentController@add');
 Route::get('admin/content/show/{id?}', 'Admin\ContentController@show');
 Route::get('admin/content/delete/{id}', 'Admin\ContentController@delete');
 Route::post('admin/content/update', 'Admin\ContentController@update');

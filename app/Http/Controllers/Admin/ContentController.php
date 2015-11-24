@@ -16,7 +16,6 @@ class ContentController extends Controller
      */
     public function index($type)
     {
-//        dd($type);
         if ($type) {
             $content = Content::where('type', '=', $type)->orderBy('id','desc')->get();
         }
@@ -28,22 +27,12 @@ class ContentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function add()
+    public function add($type)
     {
         $page = [];
         $page['id']  = '';
+        $page['type']  = $type;
         return view('admin/content/page', ['page' => $page]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -65,16 +54,6 @@ class ContentController extends Controller
         return view('admin/content/page', ['page' => $page]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -118,8 +97,9 @@ class ContentController extends Controller
     public function delete($id)
     {
         $page = Content::find($id);
+        $type = $page['type'];
         $page->delete();
 
-        return \Redirect::action('Admin\ContentController@index');
+        return \Redirect::action('Admin\ContentController@index', ['type' => $type]);
     }
 }

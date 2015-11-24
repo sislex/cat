@@ -12,9 +12,9 @@
             </li>
         </ul>
     </div>
-    @endsection
+@endsection
 
-    @section('content')
+@section('content')
     <!-- BEGIN CONTENT BODY -->
 
     <!-- BEGIN NAV TAB -->
