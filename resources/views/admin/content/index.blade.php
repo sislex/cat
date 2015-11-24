@@ -29,7 +29,7 @@
     <!-- BEGIN CONTENT BODY -->
     <div class="portlet-body">
         <div class="table-scrollable">
-            @if(count($content))
+            {{--@if(count($content))--}}
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -47,28 +47,32 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody>
-                    @foreach($content as $value)
-                        <tr>
-                            <td> {{$value['id']}} </td>
-                            <td> {{$value['name']}} </td>
-                            <td> {{$value['created_at']}} </td>
-                            <td> {{$value['updated_at']}} </td>
-                            <td>
-                                <a href="{{action('Admin\ContentController@show', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
-                                    <i class="fa fa-edit"></i>
-                                    Редактировать
-                                </a>
-                                <a href="{{action('Admin\ContentController@delete', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm red">
-                                    <i class="fa fa-remove"></i>
-                                    Удалить
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
+
+                    @if(count($content))
+                        <tbody>
+                            @foreach($content as $value)
+                                <tr>
+                                    <td> {{$value['id']}} </td>
+                                    <td> {{$value['name']}} </td>
+                                    <td> {{$value['created_at']}} </td>
+                                    <td> {{$value['updated_at']}} </td>
+                                    <td>
+                                        <a href="{{action('Admin\ContentController@show', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
+                                            <i class="fa fa-edit"></i>
+                                            Редактировать
+                                        </a>
+                                        <a href="{{action('Admin\ContentController@delete', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm red">
+                                            <i class="fa fa-remove"></i>
+                                            Удалить
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    @endif
+
                 </table>
-            @endif
+            {{--@endif--}}
         </div>
     </div>
     <!-- END CONTENT BODY -->
