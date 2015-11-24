@@ -31,8 +31,8 @@
     <!-- BEGIN FORM-->
     <form id="content_form" action="{{action('Admin\ContentController@update')}}" method="post" class="form-horizontal">
         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-        <input type="hidden" name="id" value="{{ $page['id'] or '' }}" />
-        <input type="hidden" name="tab" value="#tab_0" />
+        <input type="hidden" name="id" id="id" value="{{ $page['id'] or '' }}" />
+        <input type="hidden" name="tab" id="tab" value="#tab_0" />
         {{--<input type="hidden" name="tab" value="#tab_1" />--}}
 
         <div class="tab-content">
@@ -96,6 +96,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Text </label>
                                 <div class="col-md-7">
+                                    {{--<progress></progress>--}}
                                     <textarea rows="6" id="summernote_1" class="form-control input-circle" name="text" placeholder="Enter text">{{ $page['text'] or '' }}</textarea>
                                 </div>
                             </div>
@@ -187,7 +188,7 @@
 @section('PAGE-LEVEL-PLUGINS')
     <script src="/admin/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="/admin/assets/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
+    <script src="/admin/assets/global/plugins/bootstrap-summernote/summernote.js" type="text/javascript"></script>
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')
