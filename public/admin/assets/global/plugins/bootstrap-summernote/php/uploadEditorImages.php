@@ -16,7 +16,7 @@ if ($_FILES['file']['name']) {
         $destination = $dir .  '/' . $filename;
         $location = $_FILES["file"]["tmp_name"];
         move_uploaded_file($location, $destination);
-        echo 'http://cat/images/content/' . $_POST['id'] . '/' . $filename;//change this URL
+        echo '/images/content/' . $_POST['id'] . '/' . $filename;//change this URL
     }
     else
     {
