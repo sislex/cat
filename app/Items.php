@@ -13,6 +13,7 @@ class Items extends Model
         'keywords',
         'short_text',
         'text',
+        'published',
         'obj'
     ];
 }

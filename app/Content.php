@@ -18,6 +18,7 @@ class Content extends Model
         'description',
         'keywords',
         'short_text',
-        'text'
+        'text',
+        'published'
     ];
 }

@@ -45,6 +45,5 @@ $factory->define(App\Content::class, function (Faker\Generator $faker) {
         'keywords' => implode(' ',$faker->words(3)),
         'short_text' => $faker->sentence,
         'text' => $faker->text,
-//        'obj' => str_random(20),
     ];
 });

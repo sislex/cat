@@ -60,7 +60,7 @@
                                 <label class="col-md-3 control-label"> Type </label>
                                 <div class="col-md-4">
                                     {{--<input type="text" class="form-control input-circle" name="type" value="{{ $page['type'] or '' }}" placeholder="Enter text">--}}
-                                    <select name="type" id="" form="content_form" required  class="form-control input-circle">
+                                    <select name="type" id="" form="content_form" required class="form-control input-circle">
                                         <option value="menu" {{ $page['type'] == 'menu' ? 'selected' : '' }}>меню</option>
                                         <option value="news" {{ $page['type'] == 'news' ? 'selected' : '' }}>новости</option>
                                         <option value="blog" {{ $page['type'] == 'blog' ? 'selected' : '' }}>блог</option>
@@ -155,6 +155,17 @@
                                     <label class="col-md-3 control-label"> Pseudo_URL </label>
                                     <div class="col-md-4">
                                         <input type="text" class="form-control input-circle" name="pseudo_url" value="{{ $page['pseudo_url'] or '' }}" placeholder="Enter text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Published </label>
+                                    <div class="col-md-4">
+                                        {{--<input type="text" class="form-control input-circle" name="pseudo_url" value="{{ $page['published'] or 0 }}" placeholder="Enter text">--}}
+                                        <select form="content_form" name="published" class="form-control input-circle">
+                                            <option value="0" {{ $page['published'] == false ? 'selected' : '' }}>нет</option>
+                                            <option value="1" {{ $page['published'] == true ? 'selected' : '' }}>да</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

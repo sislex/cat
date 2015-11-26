@@ -45,7 +45,7 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    <form action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                    <form id="content_data" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_0" />
@@ -137,7 +137,9 @@
             </div>
         </div>
         @if(isset($item['id']))
-        <div class="tab-pane" id="tab_1">
+{{--        @if($item['id'] != '')--}}
+
+            <div class="tab-pane" id="tab_1">
             <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption">
@@ -146,7 +148,7 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    <form action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                    <form id="content_seo" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_1" />
@@ -170,6 +172,17 @@
                                 <div class="col-md-4">
                                     {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
                                     <textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Published </label>
+                                <div class="col-md-4">
+                                    {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
+                                    {{--<textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>--}}
+                                    <select form="content_seo" name="published" class="form-control input-circle">
+                                        <option value="0" {{ $item['published'] == false ? 'selected' : '' }}>нет</option>
+                                        <option value="1" {{ $item['published'] == true ? 'selected' : '' }}>да</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
