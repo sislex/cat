@@ -49,6 +49,11 @@ myApp.controller('myCtrl', ['$scope', '$http',
                             children = obj.children; //Меняем ссылку на массив куда будем вставлять данные при следующем проходе
                         }
                     });
+                    console.log($scope.obj.obj[parentKey].length);
+
+                    if(!$scope.obj.obj[parentKey].length){
+                        delete $scope.obj.obj[parentKey];
+                    }
 
                     $scope.obj.helpers.makeCloneItems();
                     //$scope.obj.objJson = angular.toJson($scope.obj.obj); // Серриализуем объект, его будем в базу ложить
@@ -66,13 +71,14 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     var filterObj = $scope.obj.obj;
                     var newArr = [];
 
-
-
                     angular.forEach(items, function(value, key){
                         var i = 0;
                         angular.forEach(filterObj, function($val, $key){
                             i++;
                         });
+
+                        if(!i){newArr.push(value);}
+
                         var j = 0;
                         var compare = true;
                         angular.forEach(filterObj, function($val, $key){

@@ -57,7 +57,7 @@
                                 <div class="col-md-4">
                                     <select
                                             ng-model="obj.help.type_auto[0]"
-                                            ng-options="item.text for item in filter.type_auto"
+                                            ng-options="item.text for item in filter.type_auto | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto')"
                                             >
                                     </select>
@@ -69,7 +69,7 @@
                                 <div class="col-md-4">
                                     <select
                                             ng-model="obj.help.type_auto[1]"
-                                            ng-options="item.text for item in obj.help.type_auto[0].children"
+                                            ng-options="item.text for item in obj.help.type_auto[0].children | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto')"
                                             >
                                     </select>
@@ -81,7 +81,7 @@
                                 <div class="col-md-4">
                                     <select
                                             ng-model="obj.help.type_auto[2]"
-                                            ng-options="item.text for item in obj.help.type_auto[1].children"
+                                            ng-options="item.text for item in obj.help.type_auto[1].children | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto')"
                                             >
                                     </select>
@@ -93,7 +93,7 @@
                                 <div class="col-md-4">
                                     <select
                                             ng-model="obj.help['Тип кузова'][0]"
-                                            ng-options="item.text for item in filter['Тип кузова']"
+                                            ng-options="item.text for item in filter['Тип кузова'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Тип кузова')"
                                             >
                                     </select>

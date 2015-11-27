@@ -27,33 +27,34 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-4">
-                            <label class="control-label">Тип</label>
                             <select
                                     class="form-control input-circle"
                                     ng-model="obj.help.type_auto[0]"
-                                    ng-options="item.text for item in filter.type_auto"
+                                    ng-options="item.text for item in filter.type_auto | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('type_auto')"
                                     >
+                                <option value="">Тип</option>
                             </select>
                         </div>
                         <div class="col-md-4" ng-show="obj.help.type_auto[0].children">
-                            <label class="control-label">Марка</label>
                             <select
                                     class="form-control input-circle"
                                     ng-model="obj.help.type_auto[1]"
-                                    ng-options="item.text for item in obj.help.type_auto[0].children"
+                                    ng-options="item.text for item in obj.help.type_auto[0].children | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('type_auto')"
                                     >
+                                <option value="">Марка</option>
                             </select>
+
                         </div>
                         <div class="col-md-4" ng-show="obj.help.type_auto[1].children">
-                            <label class="control-label">Модель</label>
                             <select
                                     class="form-control input-circle"
                                     ng-model="obj.help.type_auto[2]"
-                                    ng-options="item.text for item in obj.help.type_auto[1].children"
+                                    ng-options="item.text for item in obj.help.type_auto[1].children | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('type_auto')"
                                     >
+                                <option value="">Модель</option>
                             </select>
                         </div>
                     </div>
@@ -62,10 +63,12 @@
                             <label class="control-label">Тип кузова</label>
                             <select
                                     class="form-control input-circle"
+                                    ng-init="obj.help.type_auto[0].text='bug'"
                                     ng-model="obj.help['Тип кузова'][0]"
-                                    ng-options="item.text for item in filter['Тип кузова']"
+                                    ng-options="item.text for item in filter['Тип кузова'] | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('Тип кузова')"
                                     >
+                                <option value="">Тип кузова</option>
                             </select>
                         </div>
 
@@ -75,7 +78,7 @@
             </div>
             <!-- END FORM-->
         </div>
-{{--@{{ obj.obj }}--}}
+@{{ obj.obj }}
         <!-- BEGIN CONTENT BODY -->
         <div class="portlet-body">
             <div class="table-scrollable">
