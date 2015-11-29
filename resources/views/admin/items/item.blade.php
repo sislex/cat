@@ -17,17 +17,20 @@
     <!-- BEGIN NAV TAB -->
     <ul class="nav nav-tabs">
         <li class="active">
-            <a href="#tab_0" data-toggle="tab"> Данные по авто </a>
+            <a href="#tab_0" data-toggle="tab"> Опции </a>
         </li>
         @if(isset($item['id']))
+            <li>
+                <a href="#tab_1" data-toggle="tab"> Данные по авто </a>
+            </li>
         <li>
-            <a href="#tab_1" data-toggle="tab"> СЕО данные </a>
+            <a href="#tab_2" data-toggle="tab"> СЕО данные </a>
         </li>
         <li>
-            <a href="#tab_2" data-toggle="tab"> Фото </a>
+            <a href="#tab_3" data-toggle="tab"> Фото </a>
         </li>
         <li>
-            <a href="#tab_3" data-toggle="tab"> Видео </a>
+            <a href="#tab_4" data-toggle="tab"> Видео </a>
         </li>
         @endif
     </ul>
@@ -110,29 +113,6 @@
                                     </select>
                                 </div>
                             </div>
-
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Name </label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="name" value="{{ $item['name'] or '' }}" placeholder="Enter text">
-                                    <!-- <span class="help-block"> Title </span> -->
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Short_text </label>
-                                <div class="col-md-4">
-                                    {{--<input type="text" class="form-control input-circle" value="{{ $item{'short_text'} }}" placeholder="Enter text">--}}
-                                    <textarea rows="4" class="form-control input-circle" name="short_text" placeholder="Enter text">{{ $item['short_text'] or '' }}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Text </label>
-                                <div class="col-md-4">
-                                    {{--<input type="text" class="form-control input-circle" value="{{ $item{'text'} }}" placeholder="Enter text">--}}
-                                    <textarea rows="6" class="form-control input-circle" name="text" placeholder="Enter text">{{ $item['text'] or '' }}</textarea>
-                                </div>
-                            </div>
                         </div>
                         <div class="form-actions">
                             <div class="row">
@@ -149,68 +129,117 @@
         </div>
         @if(isset($item['id']))
 {{--        @if($item['id'] != '')--}}
-
             <div class="tab-pane" id="tab_1">
-            <div class="portlet box green">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-gift"></i> СЕО данные
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-gift"></i> Описание товара
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <!-- BEGIN FORM-->
+                        <form id="content_data" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                            <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
+                            <input type="hidden" name="tab" value="#tab_1" />
+                            <div class="form-body">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Name </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="name" value="{{ $item['name'] or '' }}" placeholder="Enter text">
+                                        <!-- <span class="help-block"> Title </span> -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Short_text </label>
+                                    <div class="col-md-4">
+                                        {{--<input type="text" class="form-control input-circle" value="{{ $item{'short_text'} }}" placeholder="Enter text">--}}
+                                        <textarea rows="4" class="form-control input-circle" name="short_text" placeholder="Enter text">{{ $item['short_text'] or '' }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Text </label>
+                                    <div class="col-md-4">
+                                        {{--<input type="text" class="form-control input-circle" value="{{ $item{'text'} }}" placeholder="Enter text">--}}
+                                        <textarea rows="6" class="form-control input-circle" name="text" placeholder="Enter text">{{ $item['text'] or '' }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button type="submit" class="btn btn-circle green">Сохранить</button>
+                                        {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- END FORM-->
                     </div>
                 </div>
-                <div class="portlet-body form">
-                    <!-- BEGIN FORM-->
-                    <form id="content_seo" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
-                        <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                        <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
-                        <input type="hidden" name="tab" value="#tab_1" />
+            </div>
+            <div class="tab-pane" id="tab_2">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-gift"></i> СЕО данные
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <!-- BEGIN FORM-->
+                        <form id="content_seo" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                            <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
+                            <input type="hidden" name="tab" value="#tab_2" />
 
-                        <div class="form-body">
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Title </label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="title" value="{{ $item['title'] or '' }}" placeholder="Enter text">
-                                    <!-- <span class="help-block"> Title </span> -->
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Title </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="title" value="{{ $item['title'] or '' }}" placeholder="Enter text">
+                                        <!-- <span class="help-block"> Title </span> -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Keywords </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="keywords" value="{{ $item['keywords'] or '' }}" placeholder="Enter text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Description </label>
+                                    <div class="col-md-4">
+                                        {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
+                                        <textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Published </label>
+                                    <div class="col-md-4">
+                                        {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
+                                        {{--<textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>--}}
+                                        <select form="content_seo" name="published" class="form-control input-circle">
+                                            <option value="0" {{ $item['published'] == false ? 'selected' : '' }}>нет</option>
+                                            <option value="1" {{ $item['published'] == true ? 'selected' : '' }}>да</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Keywords </label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="keywords" value="{{ $item['keywords'] or '' }}" placeholder="Enter text">
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button type="submit" class="btn btn-circle green">Сохранить</button>
+                                        {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Description </label>
-                                <div class="col-md-4">
-                                    {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
-                                    <textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Published </label>
-                                <div class="col-md-4">
-                                    {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
-                                    {{--<textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>--}}
-                                    <select form="content_seo" name="published" class="form-control input-circle">
-                                        <option value="0" {{ $item['published'] == false ? 'selected' : '' }}> нет </option>
-                                        <option value="1" {{ $item['published'] == true ? 'selected' : '' }}> да </option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn btn-circle green">Сохранить</button>
-                                    {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- END FORM-->
+                        </form>
+                        <!-- END FORM-->
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane" id="tab_2">
+            <div class="tab-pane" id="tab_3">
             <div class="row">
                 <div class="col-md-12">
                     <form id="fileupload" sort="{{ $item->images or ''}}" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?id={{ $item['id'] or '' }}" method="POST" enctype="multipart/form-data">
