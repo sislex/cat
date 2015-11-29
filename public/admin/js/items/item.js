@@ -13,9 +13,9 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 success(function(data, status, headers, config) {
                     $scope.filter = data;
                     if($scope.obj.objJson!=''){$scope.obj.obj = angular.fromJson($scope.obj.objJson);}
-                    $scope.obj.helpers.objToModel('type_auto', $scope.obj.obj.type_auto, $scope.filter.type_auto);
+                    $scope.obj.helpers.objToModel('type_auto', $scope.obj.obj['type_auto'], $scope.filter['type_auto']);
                     $scope.obj.helpers.objToModel('Тип кузова', $scope.obj.obj['Тип кузова'], $scope.filter['Тип кузова']);
-                                console.log($scope.obj.help);
+                    $scope.obj.helpers.objToModel('Трансмиссия', $scope.obj.obj['Трансмиссия'], $scope.filter['Трансмиссия']);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправке объекта');

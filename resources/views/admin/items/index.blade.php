@@ -60,15 +60,23 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label class="control-label">Тип кузова</label>
                             <select
                                     class="form-control input-circle"
-                                    ng-init="obj.help.type_auto[0].text='bug'"
                                     ng-model="obj.help['Тип кузова'][0]"
                                     ng-options="item.text for item in filter['Тип кузова'] | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('Тип кузова')"
                                     >
                                 <option value="">Тип кузова</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select
+                                    class="form-control input-circle"
+                                    ng-model="obj.help['Трансмиссия'][0]"
+                                    ng-options="item.text for item in filter['Трансмиссия'] | orderBy:'text':false"
+                                    ng-change="obj.helpers.makeObj('Трансмиссия')"
+                                    >
+                                <option value="">Трансмиссия</option>
                             </select>
                         </div>
 
