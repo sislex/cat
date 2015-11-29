@@ -25,6 +25,9 @@ class ItemsAddPublished extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('items', function($table)
+        {
+            $table->dropColumn('published');
+        });
     }
 }

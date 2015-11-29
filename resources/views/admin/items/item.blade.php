@@ -191,8 +191,8 @@
                                     {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
                                     {{--<textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>--}}
                                     <select form="content_seo" name="published" class="form-control input-circle">
-                                        <option value="0" {{ $item['published'] == false ? 'selected' : '' }}>нет</option>
-                                        <option value="1" {{ $item['published'] == true ? 'selected' : '' }}>да</option>
+                                        <option value="0" {{ $item['published'] == false ? 'selected' : '' }}> нет </option>
+                                        <option value="1" {{ $item['published'] == true ? 'selected' : '' }}> да </option>
                                     </select>
                                 </div>
                             </div>

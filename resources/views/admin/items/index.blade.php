@@ -79,6 +79,16 @@
                                 <option value="">Трансмиссия</option>
                             </select>
                         </div>
+                        <div class="col-md-4">
+                            <select
+                                    class="form-control input-circle"
+                                    ng-model="obj.help['Привод'][0]"
+                                    ng-options="item.text for item in filter['Привод'] | orderBy:'text':false"
+                                    ng-change="obj.helpers.makeObj('Привод')"
+                                    >
+                                <option value="">Привод</option>
+                            </select>
+                        </div>
 
                     </div>
                 </div>

@@ -25,6 +25,9 @@ class ContentAddPublishedField extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('content', function($table)
+        {
+            $table->dropColumn('published');
+        });
     }
 }
