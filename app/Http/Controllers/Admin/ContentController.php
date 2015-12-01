@@ -32,6 +32,7 @@ class ContentController extends Controller
         $page = [];
         $page['id']  = '';
         $page['type']  = $type;
+//        $page['published']  = '';
         return view('admin/content/page', ['page' => $page]);
     }
 
@@ -66,16 +67,16 @@ class ContentController extends Controller
     {
         $input = \Request::all();
 
-        if ($input['pseudo_url'] == '') {
+        if (isset($input['pseudo_url'])) {
             $input['pseudo_url'] = $input['name'];
         }
-        if ($input['title'] == '') {
+        if (isset($input['title'])) {
             $input['title'] = $input['name'];
         }
-        if ($input['keywords'] == '') {
+        if (isset($input['keywords'])) {
             $input['keywords'] = $input['name'];
         }
-        if ($input['description'] == '') {
+        if (isset($input['description'])) {
             $input['description'] = $input['short_text'];
         }
 

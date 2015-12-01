@@ -121,7 +121,9 @@
                 </div>
             </div>
 
-            <div class="tab-pane" id="tab_1">
+            @if($page['id'] != '')
+
+                <div class="tab-pane" id="tab_1">
                     <div class="portlet box green">
                         <div class="portlet-title">
                             <div class="caption">
@@ -184,6 +186,7 @@
                     </div>
                 </div>
 
+            @endif
         </div>
 
     </form>
