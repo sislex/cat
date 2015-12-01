@@ -184,6 +184,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
 @yield('PAGE-LEVEL-SCRIPTS')
 
+<!-- BEGIN MODALS -->
+@include('admin.modals')
+<!-- END MODALS -->
+
 </body>
 
 </html>

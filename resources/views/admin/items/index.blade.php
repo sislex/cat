@@ -130,7 +130,10 @@
                                     <i class="fa fa-edit"></i>
                                     Редактировать
                                 </a>
-                                <a href="{{action('Admin\ItemsController@delete')}}/@{{ item.item['id'] }}" class="btn btn-outline btn-circle btn-sm red">
+                                <a class="btn btn-outline btn-circle btn-sm red modal-del-confirm"
+                                   data-toggle="modal"
+                                   del-obj="Вы действительно хотите удалить запись '@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }}' ?"
+                                   del-url="{{action('Admin\ItemsController@delete')}}/@{{ item.item['id'] }}">
                                     <i class="fa fa-remove"></i>
                                     Удалить
                                 </a>

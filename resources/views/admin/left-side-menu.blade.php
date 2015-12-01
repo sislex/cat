@@ -1,13 +1,13 @@
 <li class="nav-item  ">
     <a href="{{action('Admin\ItemsController@index')}}" class="nav-link nav-toggle">
         <i class="icon-diamond"></i>
-        <span class="title">Авто Каталог</span>
+        <span class="title">Каталог транспорта</span>
     </a>
 </li>
 <li class="nav-item  ">
     <a href="{{action('Admin\FiltersController@index')}}" class="nav-link nav-toggle">
         <i class="icon-puzzle"></i>
-        <span class="title">Фильтр</span>
+        <span class="title">Список фильтров</span>
     </a>
 </li>
 <li class="nav-item  ">

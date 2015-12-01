@@ -16,6 +16,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.obj.helpers.objToModel('type_auto', $scope.obj.obj['type_auto'], $scope.filter['type_auto']);
                     $scope.obj.helpers.objToModel('Тип кузова', $scope.obj.obj['Тип кузова'], $scope.filter['Тип кузова']);
                     $scope.obj.helpers.objToModel('Трансмиссия', $scope.obj.obj['Трансмиссия'], $scope.filter['Трансмиссия']);
+                    $scope.obj.helpers.objToModel('Привод', $scope.obj.obj['Привод'], $scope.filter['Привод']);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправке объекта');

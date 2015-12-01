@@ -113,6 +113,17 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Привод </label>
+                                <div class="col-md-4">
+                                    <select
+                                            ng-model="obj.help['Привод'][0]"
+                                            ng-options="item.text for item in filter['Привод'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Привод')"
+                                            >
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-actions">
                             <div class="row">

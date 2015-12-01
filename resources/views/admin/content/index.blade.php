@@ -61,7 +61,10 @@
                                             <i class="fa fa-edit"></i>
                                             Редактировать
                                         </a>
-                                        <a href="{{action('Admin\ContentController@delete', ['id' => $value['id']])}}" class="btn btn-outline btn-circle btn-sm red">
+                                        <a class="btn btn-outline btn-circle btn-sm red modal-del-confirm"
+                                           data-toggle="modal"
+                                           del-obj="Вы действительно хотите удалить страницу '{{ $value['name'] }}' ?"
+                                           del-url="{{action('Admin\ContentController@delete', ['id' => $value['id']])}}" >
                                             <i class="fa fa-remove"></i>
                                             Удалить
                                         </a>
