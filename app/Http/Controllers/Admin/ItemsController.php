@@ -16,7 +16,7 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $items = Items::get();
+        $items = Items::orderBy('id','desc');
         return view('admin/items/index', ['items' => $items]);
     }
 
