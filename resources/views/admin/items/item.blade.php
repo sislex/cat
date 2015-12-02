@@ -13,7 +13,7 @@
 
     @section('content')
 
-    <!-- BEGIN CONTENT BODY -->
+    <!-- BEGIN CONTENT ghjBODY -->
     <!-- BEGIN NAV TAB -->
     <ul class="nav nav-tabs">
         <li class="active">
@@ -114,7 +114,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-<<<<<<< HEAD
                                 <label class="col-md-3 control-label"> Привод </label>
                                 <div class="col-md-4">
                                     <select
@@ -123,7 +122,10 @@
                                             ng-change="obj.helpers.makeObj('Привод')"
                                             >
                                     </select>
-=======
+                                </div>
+
+                            </div>
+                            <div class="form-group">
                                 <label class="col-md-3 control-label"> Опции </label>
                                 <div class="col-md-4">
                                     <select multiple
@@ -134,8 +136,8 @@
                                     </select>
                                     <br>
                                     {{--<label ng-show="obj.help['Опции'][0]">Value2:--}}
-                                        {{--<input type="checkbox" ng-model="obj.help['Опции'][0]"--}}
-                                               {{--ng-true-value="filter['Опции'][0].text" ng-false-value="'NO'">--}}
+                                    {{--<input type="checkbox" ng-model="obj.help['Опции'][0]"--}}
+                                    {{--ng-true-value="filter['Опции'][0].text" ng-false-value="'NO'">--}}
                                     {{--</label>--}}
                                     {{--<input type="checkbox" ng-model="asd">--}}
                                     {{--<input type="checkbox" ng-model="asd">--}}
@@ -145,13 +147,12 @@
                                         <input type="checkbox" checklist-model="obj.help['Опции']" checklist-value="role"> @{{role.text}}
                                     </label>
                                     {{--<label ng-repeat="role in filter['Опции']">--}}
-                                        {{--<input type="checkbox" checklist-model="obj.help['Опции'][$index]" checklist-value="role"> @{{role.text}}--}}
+                                    {{--<input type="checkbox" checklist-model="obj.help['Опции'][$index]" checklist-value="role"> @{{role.text}}--}}
                                     {{--</label>--}}
 
                                     {{--<input type="checkbox" ng-model="obj.help['Опции'][0]" ng-change="obj.helpers.makeObj('Опции')" value="123">--}}
                                     {{--<input type="checkbox" ng-model="obj.help['Опции'][1]" ng-change="obj.helpers.makeObj('Опции')" value="123">--}}
                                     <br>@{{ obj.help['Опции'] }}
->>>>>>> 12baef4b1301b4fd982a674ec4bf2834c8608ffa
                                 </div>
                             </div>
                         </div>

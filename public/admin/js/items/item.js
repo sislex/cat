@@ -2,12 +2,6 @@
  * Created by Рожнов on 15.11.2015.
  */
 
-/**
- * Checklist-model
- * AngularJS directive for list of checkboxes
- * https://github.com/vitalets/checklist-model
- * License: MIT http://opensource.org/licenses/MIT
- */
 
 angular.module('checklist-model', [])
     .directive('checklistModel', ['$parse', '$compile', function($parse, $compile) {
@@ -165,11 +159,8 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.obj.helpers.objToModel('type_auto', $scope.obj.obj['type_auto'], $scope.filter['type_auto']);
                     $scope.obj.helpers.objToModel('Тип кузова', $scope.obj.obj['Тип кузова'], $scope.filter['Тип кузова']);
                     $scope.obj.helpers.objToModel('Трансмиссия', $scope.obj.obj['Трансмиссия'], $scope.filter['Трансмиссия']);
-<<<<<<< HEAD
-                    $scope.obj.helpers.objToModel('Привод', $scope.obj.obj['Привод'], $scope.filter['Привод']);
-=======
                     $scope.obj.helpers.objToModel('Опции', $scope.obj.obj['Опции'], $scope.filter['Опции']);
->>>>>>> 12baef4b1301b4fd982a674ec4bf2834c8608ffa
+                    $scope.obj.helpers.objToModel('Привод', $scope.obj.obj['Привод'], $scope.filter['Привод']);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправке объекта');
