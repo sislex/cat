@@ -13,7 +13,7 @@
 
     @section('content')
 
-    <!-- BEGIN CONTENT BODY -->
+    <!-- BEGIN CONTENT ghjBODY -->
     <!-- BEGIN NAV TAB -->
     <ul class="nav nav-tabs">
         <li class="active">
