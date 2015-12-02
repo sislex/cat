@@ -61,7 +61,7 @@
                                     <select
                                             ng-model="obj.help.type_auto[0]"
                                             ng-options="item.text for item in filter.type_auto | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('type_auto')"
+                                            ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             >
                                     </select>
                                 </div>
@@ -73,7 +73,7 @@
                                     <select
                                             ng-model="obj.help.type_auto[1]"
                                             ng-options="item.text for item in obj.help.type_auto[0].children | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('type_auto')"
+                                            ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             >
                                     </select>
                                 </div>
@@ -85,7 +85,7 @@
                                     <select
                                             ng-model="obj.help.type_auto[2]"
                                             ng-options="item.text for item in obj.help.type_auto[1].children | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('type_auto')"
+                                            ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             >
                                     </select>
                                 </div>
@@ -113,7 +113,38 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Опции </label>
+                                <div class="col-md-4">
+                                    <select multiple
+                                            ng-model="obj.help['Опции']"
+                                            ng-options="item.text for item in filter['Опции'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Опции')"
+                                            >
+                                    </select>
+                                    <br>
+                                    {{--<label ng-show="obj.help['Опции'][0]">Value2:--}}
+                                        {{--<input type="checkbox" ng-model="obj.help['Опции'][0]"--}}
+                                               {{--ng-true-value="filter['Опции'][0].text" ng-false-value="'NO'">--}}
+                                    {{--</label>--}}
+                                    {{--<input type="checkbox" ng-model="asd">--}}
+                                    {{--<input type="checkbox" ng-model="asd">--}}
+                                    {{--<label ng-repeat="role in filter['Опции']">@{{ role.text }}:</label>--}}
+                                    {{--<input type="checkbox" ng-model="obj.help['Опции'][0]">--}}
+                                    <label ng-repeat="role in filter['Опции']">
+                                        <input type="checkbox" checklist-model="obj.help['Опции']" checklist-value="role"> @{{role.text}}
+                                    </label>
+                                    {{--<label ng-repeat="role in filter['Опции']">--}}
+                                        {{--<input type="checkbox" checklist-model="obj.help['Опции'][$index]" checklist-value="role"> @{{role.text}}--}}
+                                    {{--</label>--}}
+
+                                    {{--<input type="checkbox" ng-model="obj.help['Опции'][0]" ng-change="obj.helpers.makeObj('Опции')" value="123">--}}
+                                    {{--<input type="checkbox" ng-model="obj.help['Опции'][1]" ng-change="obj.helpers.makeObj('Опции')" value="123">--}}
+                                    <br>@{{ obj.help['Опции'] }}
+                                </div>
+                            </div>
                         </div>
+{{--                        @{{obj.help['Опции']}}--}}
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
