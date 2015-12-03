@@ -168,7 +168,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/admin/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
 <script src="/admin/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <script src="/admin/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="/admin/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+{{--<script src="/admin/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>--}}
 <script src="/admin/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->

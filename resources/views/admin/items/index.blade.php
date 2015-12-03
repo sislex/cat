@@ -30,8 +30,8 @@
                             <select
                                     class="form-control input-circle"
                                     ng-model="obj.help.type_auto[0]"
-                                    ng-options="item.text for item in filter.type_auto | orderBy:'text':false"
-                                    ng-change="obj.helpers.makeObj('type_auto')"
+                                    ng-options="item.text for item in filter['type_auto'] | orderBy:'text':false"
+                                    ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                     >
                                 <option value="">Тип</option>
                             </select>
@@ -40,8 +40,8 @@
                             <select
                                     class="form-control input-circle"
                                     ng-model="obj.help.type_auto[1]"
-                                    ng-options="item.text for item in obj.help.type_auto[0].children | orderBy:'text':false"
-                                    ng-change="obj.helpers.makeObj('type_auto')"
+                                    ng-options="item.text for item in obj.help['type_auto'][0].children | orderBy:'text':false"
+                                    ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                     >
                                 <option value="">Марка</option>
                             </select>
@@ -51,8 +51,8 @@
                             <select
                                     class="form-control input-circle"
                                     ng-model="obj.help.type_auto[2]"
-                                    ng-options="item.text for item in obj.help.type_auto[1].children | orderBy:'text':false"
-                                    ng-change="obj.helpers.makeObj('type_auto')"
+                                    ng-options="item.text for item in obj.help['type_auto'][1].children | orderBy:'text':false"
+                                    ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                     >
                                 <option value="">Модель</option>
                             </select>
@@ -89,7 +89,22 @@
                                 <option value="">Привод</option>
                             </select>
                         </div>
-
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 control-label"> Опции </label>
+                        <div class="col-md-9">
+                            {{--<select multiple--}}
+                                    {{--ng-model="obj.help['Опции']"--}}
+                                    {{--ng-options="item.text for item in filter['Опции'] | orderBy:'text':false"--}}
+                                    {{--ng-change="obj.helpers.makeObj('Опции')"--}}
+                                    {{-->--}}
+                            {{--</select>--}}
+                            {{--<br>--}}
+                            <label ng-repeat="role in filter['Опции'] | orderBy:'-text'" class="col-md-4">
+                                <input type="checkbox" checklist-model="obj.help['Опции']" checklist-value="role" checklist-change="obj.helpers.makeObj('Опции')"> @{{role.text}}
+                            </label>
+                        </div>
+{{--                        @{{obj.help['Опции']}}--}}
                     </div>
                 </div>
 
