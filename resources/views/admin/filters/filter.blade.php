@@ -111,27 +111,19 @@
 
         @if(isset($filter['name']) and $filter['name'] != '')
             <div class="tab-pane" id="tab_1">
-                <div class="portlet box green">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa"></i> Структура фильтра
+                <div class="portlet-body form">
+                    <div class="portlet green box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>
+                                {{ $filter['name'] }}
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="portlet-body form">
-                        <div class="portlet yellow-lemon box">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-cogs"></i>
-                                    {{ $filter['name'] }}
-                                </div>
-                            </div>
-                            <div class="portlet-body">
-                                <div id="tree_3" class="tree-demo"> </div>
-                                <button style="margin-top: 20px" class="btn blue btn-block" id="saveFilter" token="{{ Session::token() }}">
-                                    Сохранить
-                                </button>
-                            </div>
+                        <div class="portlet-body">
+                            <div id="tree_3" class="tree-demo"> </div>
+                            <button style="margin-top: 20px" class="btn blue btn-block" id="saveFilter" token="{{ Session::token() }}">
+                                Сохранить
+                            </button>
                         </div>
                     </div>
                 </div>

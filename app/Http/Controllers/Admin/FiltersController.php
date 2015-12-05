@@ -17,7 +17,6 @@ class FiltersController extends Controller
     }
 
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -25,34 +24,20 @@ class FiltersController extends Controller
      */
     public function add()
     {
-//        $filter = [];
-//        $filter['id']  = '';
-//        $filter['name']  = '';
-//        $filter['type']  = '';
-//        $filter['obj']  = '';
-
-//        return view('admin/filters/filter', ['filter' => $filter]);
         return view('admin/filters/filter');
     }
-
 
 
     protected function filter($name)
     {
         $filter = Filters::where('name', '=', $name)->get()->first();
-
-//        echo '<pre>';
-//        dd($filter);
-//        echo '</pre>';
-
         if ($filter['obj'] == ''){
             $filter['obj'] = '[]';
         }
 
-
-
         return view('admin/filters/filter', ['filter' => $filter]);
     }
+
 
     protected function update($name = null)
     {
@@ -76,6 +61,22 @@ class FiltersController extends Controller
             return \Redirect::action('Admin\FiltersController@filter', ['name' => $filter->name]);
         }
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $filter = Filters::find($id);
+        $filter->delete();
+
+        return \Redirect::action('Admin\FiltersController@index');
+    }
+
 
     protected function getJSONByName()
     {

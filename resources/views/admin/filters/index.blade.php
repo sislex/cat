@@ -60,6 +60,13 @@
                                             <i class="fa fa-edit"></i>
                                             Edit
                                         </a>
+                                        <a class="btn btn-outline btn-circle btn-sm red modal-del-confirm"
+                                           data-toggle="modal"
+                                           del-obj="Вы действительно хотите удалить фильтр '{{ $value['name'] }}' ?"
+                                           del-url="{{action('Admin\FiltersController@delete', ['id' => $value['id']])}}" >
+                                            <i class="fa fa-remove"></i>
+                                            Удалить
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
