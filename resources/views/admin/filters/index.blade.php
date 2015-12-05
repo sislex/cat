@@ -33,7 +33,12 @@
                                     <th> Название </th>
                                     <th> Тип </th>
                                     <th> Количество элементов </th>
-                                    <th>  </th>
+                                    <th>
+                                        <a href="{{action('Admin\FiltersController@add')}}" class="btn btn-outline btn-circle btn-sm green">
+                                            <i class="fa fa-plus"></i>
+                                            Добавить
+                                        </a>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
