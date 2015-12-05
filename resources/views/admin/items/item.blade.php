@@ -127,32 +127,17 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Опции </label>
-                                <div class="col-md-4">
-                                    <select multiple
-                                            ng-model="obj.help['Опции']"
-                                            ng-options="item.text for item in filter['Опции'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Опции')"
-                                            >
-                                    </select>
-                                    <br>
-                                    {{--<label ng-show="obj.help['Опции'][0]">Value2:--}}
-                                    {{--<input type="checkbox" ng-model="obj.help['Опции'][0]"--}}
-                                    {{--ng-true-value="filter['Опции'][0].text" ng-false-value="'NO'">--}}
-                                    {{--</label>--}}
-                                    {{--<input type="checkbox" ng-model="asd">--}}
-                                    {{--<input type="checkbox" ng-model="asd">--}}
-                                    {{--<label ng-repeat="role in filter['Опции']">@{{ role.text }}:</label>--}}
-                                    {{--<input type="checkbox" ng-model="obj.help['Опции'][0]">--}}
-                                    <label ng-repeat="role in filter['Опции']">
-                                        <input type="checkbox" checklist-model="obj.help['Опции']" checklist-value="role"> @{{role.text}}
+                                <div class="col-md-9">
+                                    {{--<select multiple--}}
+                                            {{--ng-model="obj.help['Опции']"--}}
+                                            {{--ng-options="item.text for item in filter['Опции'] | orderBy:'text':false"--}}
+                                            {{--ng-change="obj.helpers.makeObj('Опции')"--}}
+                                            {{-->--}}
+                                    {{--</select>--}}
+                                    {{--<br>--}}
+                                    <label ng-repeat="role in filter['Опции'] | orderBy:'-text'" class="col-md-4">
+                                        <input type="checkbox" checklist-model="obj.help['Опции']" checklist-value="role" checklist-change="obj.helpers.makeObj('Опции')"> @{{role.text}}
                                     </label>
-                                    {{--<label ng-repeat="role in filter['Опции']">--}}
-                                    {{--<input type="checkbox" checklist-model="obj.help['Опции'][$index]" checklist-value="role"> @{{role.text}}--}}
-                                    {{--</label>--}}
-
-                                    {{--<input type="checkbox" ng-model="obj.help['Опции'][0]" ng-change="obj.helpers.makeObj('Опции')" value="123">--}}
-                                    {{--<input type="checkbox" ng-model="obj.help['Опции'][1]" ng-change="obj.helpers.makeObj('Опции')" value="123">--}}
-                                    <br>@{{ obj.help['Опции'] }}
                                 </div>
                             </div>
                         </div>
