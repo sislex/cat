@@ -38,9 +38,7 @@
                         <th> Created </th>
                         <th> Updated </th>
                         <th>
-                            Add
                             <a href="{{action('Admin\ContentController@add', ['type' => $type])}}" class="btn btn-outline btn-circle btn-sm green">
-                            <a href="{{action('Admin\ContentController@show', ['id' => ''])}}" class="btn btn-outline btn-circle btn-sm green">
                                 <i class="fa fa-plus"></i>
                                 Добавить
                             </a>
