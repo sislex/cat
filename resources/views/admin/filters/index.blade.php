@@ -33,7 +33,12 @@
                                     <th> Название </th>
                                     <th> Тип </th>
                                     <th> Количество элементов </th>
-                                    <th>  </th>
+                                    <th>
+                                        <a href="{{action('Admin\FiltersController@add')}}" class="btn btn-outline btn-circle btn-sm green">
+                                            <i class="fa fa-plus"></i>
+                                            Добавить
+                                        </a>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -54,6 +59,13 @@
                                         <a href="{{action('Admin\FiltersController@filter', ['name' => $value['name']])}}" class="btn btn-outline btn-circle btn-sm purple">
                                             <i class="fa fa-edit"></i>
                                             Edit
+                                        </a>
+                                        <a class="btn btn-outline btn-circle btn-sm red modal-del-confirm"
+                                           data-toggle="modal"
+                                           del-obj="Вы действительно хотите удалить фильтр '{{ $value['name'] }}' ?"
+                                           del-url="{{action('Admin\FiltersController@delete', ['id' => $value['id']])}}" >
+                                            <i class="fa fa-remove"></i>
+                                            Удалить
                                         </a>
                                     </td>
                                 </tr>
