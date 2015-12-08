@@ -54,7 +54,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="index.html">
+            <a href="{{ action('Admin\IndexController@index') }}">
                 <img src="/admin/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" /> </a>
             <div class="menu-toggler sidebar-toggler"> </div>
         </div>

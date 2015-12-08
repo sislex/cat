@@ -4,11 +4,7 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="index.html">Home</a>
-                <i class="fa fa-circle"></i>
-            </li>
-            <li>
-                <span>General</span>
+                <a href="{{ action('Admin\IndexController@index') }}">Home</a>
             </li>
         </ul>
     </div>
