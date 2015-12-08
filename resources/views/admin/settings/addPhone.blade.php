@@ -7,11 +7,11 @@
                 Настройки меню
                 <i class="fa fa-circle"></i>
                 <a href="{{action('Admin\SettingsController@counters')}}" class="nav-link ">
-                    Счетчики
+                    Телефоны
                 </a>
                 <i class="fa fa-circle"></i>
 
-                Добавить счетчик
+                Добавить телефон
             </li>
         </ul>
     </div>
@@ -42,14 +42,14 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Тип контактных данных </label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="name" value="" placeholder="название счетчика">
+                                    <input type="text" class="form-control input-circle" name="name" value="" placeholder="тип контактных данных">
                                 </div>
                             </div>
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Номер </label>
                                     <div class="col-md-7">
-                                        <textarea rows="6" class="form-control input-circle" name="text" placeholder="Текст счетчика"></textarea>
+                                        <textarea rows="6" class="form-control input-circle" name="text" placeholder="номер"></textarea>
                                     </div>
                                 </div>
 
