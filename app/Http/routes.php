@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+    return 'Admin Console - Main Page';
 });
 
 Route::get('admin/index', 'Admin\IndexController@index');
