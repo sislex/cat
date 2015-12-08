@@ -42,14 +42,20 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Тип контактных данных </label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="name" value="" placeholder="тип контактных данных">
+                                    <select class="form-control input-circle" name="name">
+                                        <option value="" disabled selected>Выберите тип контактных данных</option>
+                                        <option value="факс">факс</option>
+                                        <option value="телефон">телефон</option>
+                                        <option value="мобильный телефон">мобильный телефон</option>
+                                        <option value="телефон/факс">телефон/факс</option>
+                                    </select>
                                 </div>
                             </div>
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Номер </label>
                                     <div class="col-md-7">
-                                        <textarea rows="6" class="form-control input-circle" name="text" placeholder="номер"></textarea>
+                                        <input required class="form-control input-circle masked" name="text" placeholder="номер">
                                     </div>
                                 </div>
 
@@ -83,16 +89,19 @@
             </li>
         </ul>
     </div>
+
 @endsection
 
 @section('PAGE-LEVEL-PLUGINS')
     <script src="/admin/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/bootstrap-summernote/summernote.js" type="text/javascript"></script>
+    <script src="/admin/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/admin/assets/pages/scripts/components-editors.js" type="text/javascript"></script>
+    <script>$('.masked').inputmask("+375-(99)-999-99-99");</script>
 @endsection
 
 @section('PAGE-LEVEL-STYLES')
