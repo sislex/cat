@@ -4,8 +4,8 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                {{--<a href="{{action('Admin\ContentController@index')}}">Верхнее меню</a>--}}
-                {{--<i class="fa fa-circle"></i>--}}
+                <a href="{{action('Admin\ContentController@index')}}">Верхнее меню</a>
+                <i class="fa fa-circle"></i>
                 <a href="{{action('Admin\ContentController@index', ['type' => $type])}}" class="nav-link ">
                     Контентные страницы - {{ $type == 'menu' ? 'Меню' :
                                                 ($type == 'news' ? 'Новости' :
@@ -29,7 +29,7 @@
     <!-- BEGIN CONTENT BODY -->
     <div class="portlet-body">
         <div class="table-scrollable">
-            {{--@if(count($content))--}}
+            @if(count($content))
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -38,9 +38,9 @@
                         <th> Created </th>
                         <th> Updated </th>
                         <th>
-                            {{--Add--}}
+                            Add
                             <a href="{{action('Admin\ContentController@add', ['type' => $type])}}" class="btn btn-outline btn-circle btn-sm green">
-{{--                            <a href="{{action('Admin\ContentController@show', ['id' => ''])}}" class="btn btn-outline btn-circle btn-sm green">--}}
+                            <a href="{{action('Admin\ContentController@show', ['id' => ''])}}" class="btn btn-outline btn-circle btn-sm green">
                                 <i class="fa fa-plus"></i>
                                 Добавить
                             </a>
@@ -75,7 +75,7 @@
                     @endif
 
                 </table>
-            {{--@endif--}}
+            @endif
         </div>
     </div>
     <!-- END CONTENT BODY -->

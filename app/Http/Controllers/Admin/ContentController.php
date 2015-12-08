@@ -103,4 +103,5 @@ class ContentController extends Controller
 
         return \Redirect::action('Admin\ContentController@index', ['type' => $type]);
     }
+
 }

@@ -76,7 +76,7 @@
     </a>
     <ul class="sub-menu">
         <li class="nav-item  ">
-            <a href="portlet_boxed.html" class="nav-link ">
+            <a href="{{action('Admin\SettingsController@phones')}}" class="nav-link ">
                 <span class="title">Телефоны</span>
             </a>
         </li>
@@ -91,7 +91,7 @@
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="portlet_ajax.html" class="nav-link ">
+            <a href="{{action('Admin\SettingsController@counters')}}" class="nav-link nav-toggle">
                 <span class="title">Счетчики</span>
             </a>
         </li>
