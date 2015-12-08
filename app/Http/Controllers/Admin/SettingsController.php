@@ -10,6 +10,12 @@ use App\Phones;
 
 class SettingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
 //    counter settings
     public function counters()
     {
