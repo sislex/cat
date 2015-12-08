@@ -8,7 +8,7 @@ class Phones extends Model
 {
     protected $table = 'phones';
     protected $fillable = [
-        'name',
-        'text',
+        'type',
+        'phone',
     ];
 }

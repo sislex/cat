@@ -417,15 +417,12 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END REGISTRATION FORM -->
 </div>
 <div class="copyright">
-    2015 © ГрузовичкоФ.
+    2015 © ООО "Голден Моторс"
 </div>
 <!--<div class="copyright">-->
 <!--2014 © Metronic. Admin Dashboard Template.-->
 <!--</div>-->
 <!-- END LOGIN -->
-<!-- BEGIN COPYRIGHT -->
-<div class="copyright"> 2014 &copy; Metronic - Admin Dashboard Template. </div>
-<!-- END COPYRIGHT -->
 <!--[if lt IE 9]>
 <script src="/admin/assets/global/plugins/respond.min.js"></script>
 <script src="/admin/assets/global/plugins/excanvas.min.js"></script>

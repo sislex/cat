@@ -49,14 +49,14 @@ Route::get('admin/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-//Settings routes..
-//    counters routes
-Route::get('admin/counters', 'Admin\SettingsController@counters');
-Route::get('admin/counters/add', 'Admin\SettingsController@addCounter');
-Route::post('admin/counters/add', 'Admin\SettingsController@insertCounter');
-Route::get('admin/counters/delete/{id}', 'Admin\SettingsController@deleteCounter');
-//    phones settings
-Route::get('admin/phones', 'Admin\SettingsController@phones');
-Route::get('admin/phones/add', 'Admin\SettingsController@addPhone');
-Route::post('admin/phones/add', 'Admin\SettingsController@insertPhone');
-Route::get('admin/phones/delete/{id}', 'Admin\SettingsController@deletePhone');
+// Settings routes..
+//    counters
+Route::get('admin/settings/counters', 'Admin\SettingsController@counters');
+Route::get('admin/settings/counters/add', 'Admin\SettingsController@addCounter');
+Route::post('admin/settings/counters/add', 'Admin\SettingsController@insertCounter');
+Route::get('admin/settings/counters/delete/{id}', 'Admin\SettingsController@deleteCounter');
+//    phones
+Route::get('admin/settings/phones', 'Admin\SettingsController@phones');
+Route::get('admin/settings/phones/add', 'Admin\SettingsController@addPhone');
+Route::post('admin/settings/phones/add', 'Admin\SettingsController@insertPhone');
+Route::get('admin/settings/phones/delete/{id}', 'Admin\SettingsController@deletePhone');

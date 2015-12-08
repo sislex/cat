@@ -24,7 +24,7 @@
     <!-- BEGIN CONTENT BODY -->
     <div class="portlet-body col-xs-12 col-md-6">
         <div class="table-scrollable">
-            {{--@if(count($counters))--}}
+            @if(count($counters))
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -62,7 +62,7 @@
                     @endif
 
                 </table>
-            {{--@endif--}}
+            @endif
         </div>
     </div>
     <!-- END CONTENT BODY -->

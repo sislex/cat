@@ -10,6 +10,12 @@ use App\Phones;
 
 class SettingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
 //    counter settings
     public function counters()
     {
@@ -48,7 +54,7 @@ class SettingsController extends Controller
     }
     public function insertPhone()
     {
-        $input = \Request::all();
+        $input = \Request::all();   
         Phones::create($input);
         return \Redirect::action('Admin\SettingsController@phones');
     }

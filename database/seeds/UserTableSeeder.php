@@ -21,6 +21,12 @@ class UserTableSeeder extends Seeder {
             'password' => Hash::make('pass')
         ]);
 
+        User::create([
+            'name' => 'Maxim Nadolski',
+            'email' => 'maximusdreddoff@gmail.com',
+            'password' => Hash::make('pass')
+        ]);
+
         $this->command->info('User table seeded!');
     }
 
