@@ -43,12 +43,12 @@
                         @foreach($phones as $phones)
                             <tr>
                                 <td>{{$phones['id']}}</td>
-                                <td>{{$phones['name']}}</td>
-                                <td>{{$phones['text']}}</td>
+                                <td>{{$phones['type']}}</td>
+                                <td>{{$phones['phone']}}</td>
                                 <td>
                                     <a class="btn btn-outline btn-circle btn-sm red modal-del-confirm"
                                        data-toggle="modal"
-                                       del-obj="Вы действительно хотите удалить телефон '{{ $phones['name'] }}' ?"
+                                       del-obj="Вы действительно хотите удалить телефон '{{ $phones['type'] }}' ?"
                                        del-url="{{action('Admin\SettingsController@deletePhone', ['id' => $phones['id']])}}" >
                                         <i class="fa fa-remove"></i>
                                         Удалить

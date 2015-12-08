@@ -54,7 +54,7 @@ class SettingsController extends Controller
     }
     public function insertPhone()
     {
-        $input = \Request::all();
+        $input = \Request::all();   
         Phones::create($input);
         return \Redirect::action('Admin\SettingsController@phones');
     }

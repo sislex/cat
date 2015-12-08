@@ -12,8 +12,12 @@ class RemovePhonesUniqueName extends Migration
      */
     public function up()
     {
-        Schema::table('phones', function ($table) {
-            $table->string('name')->change();
+        Schema::drop('phones');
+        Schema::create('phones', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('type');
+            $table->string('phone');
+            $table->timestamps();
         });
     }
 

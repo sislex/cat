@@ -42,7 +42,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Тип контактных данных </label>
                                 <div class="col-md-4">
-                                    <select class="form-control input-circle" name="name">
+                                    <select class="form-control input-circle" name="type">
                                         <option value="" disabled selected>Выберите тип контактных данных</option>
                                         <option value="факс">факс</option>
                                         <option value="телефон">телефон</option>
@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Номер </label>
                                     <div class="col-md-7">
-                                        <input required class="form-control input-circle masked" name="text" placeholder="номер">
+                                        <input required class="form-control input-circle masked" name="phone" placeholder="номер">
                                     </div>
                                 </div>
 
