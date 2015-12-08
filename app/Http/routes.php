@@ -22,6 +22,9 @@ Route::post('filter/ajax', 'Admin\FiltersController@getJSONByName');
 Route::get('admin/filters', 'Admin\FiltersController@index');
 Route::get('admin/filter/{name}', 'Admin\FiltersController@filter');
 Route::post('admin/filter/{name}', 'Admin\FiltersController@update');
+Route::post('admin/filter/{name?}', 'Admin\FiltersController@update');
+Route::get('admin/filters/add', 'Admin\FiltersController@add');
+Route::get('admin/filters/delete/{id}', 'Admin\FiltersController@delete');
 
 // Items routes
 Route::get('admin/items', 'Admin\ItemsController@index');
