@@ -17,7 +17,6 @@ Route::get('/', function () {
 });
 
 Route::get('admin/index', 'Admin\IndexController@index');
-//Route::get('admin/index', 'Admin\IndexController@index');
 
 // Filter routes
 Route::post('filter/ajax', 'Admin\FiltersController@getJSONByName');
