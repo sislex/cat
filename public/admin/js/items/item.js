@@ -161,6 +161,12 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.obj.helpers.objToModel('Трансмиссия', $scope.obj.obj['Трансмиссия'], $scope.filter['Трансмиссия']);
                     $scope.obj.helpers.objToModel('Опции', $scope.obj.obj['Опции'], $scope.filter['Опции']);
                     $scope.obj.helpers.objToModel('Привод', $scope.obj.obj['Привод'], $scope.filter['Привод']);
+                    $scope.obj.helpers.objToModel('Аудиооборудование', $scope.obj.obj['Аудиооборудование'], $scope.filter['Аудиооборудование']);
+                    $scope.obj.helpers.objToModel('Интерьер и экстерьер', $scope.obj.obj['Интерьер и экстерьер'], $scope.filter['Интерьер и экстерьер']);
+                    $scope.obj.helpers.objToModel('Оснащение', $scope.obj.obj['Оснащение'], $scope.filter['Оснащение']);
+                    $scope.obj.helpers.objToModel('Противоугонная система', $scope.obj.obj['Противоугонная система'], $scope.filter['Противоугонная система']);
+                    $scope.obj.helpers.objToModel('Системы безопасности', $scope.obj.obj['Системы безопасности'], $scope.filter['Системы безопасности']);
+                    $scope.obj.helpers.objToModel('Электропакет', $scope.obj.obj['Электропакет'], $scope.filter['Электропакет']);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправке объекта');

@@ -92,8 +92,6 @@ class ItemsController extends Controller
     {
         $input = \Request::all();
 
-//        dd($input['published']);
-
         if ($input['id']) {
             Items::find($input['id'])->update($input);
         }else{
