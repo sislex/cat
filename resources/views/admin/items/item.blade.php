@@ -58,6 +58,7 @@
                         <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 "/>
 
                         <div class="form-body">
+
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Тип </label>
                                 <div class="col-md-4">
@@ -127,8 +128,6 @@
                                     </select>
                                 </div>
                             </div>
-
-
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Аудиооборудование </label>
@@ -299,18 +298,9 @@
 
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Опции </label>
+                                <label class="col-md-3 control-label"> VIN </label>
                                 <div class="col-md-9">
-                                    {{--<select multiple--}}
-                                    {{--ng-model="obj.help['Опции']"--}}
-                                    {{--ng-options="item.text for item in filter['Опции'] | orderBy:'text':false"--}}
-                                    {{--ng-change="obj.helpers.makeObj('Опции')"--}}
-                                    {{-->--}}
-                                    {{--</select>--}}
-                                    {{--<br>--}}
-                                    <label ng-repeat="role in filter['Опции'] | orderBy:'-text'" class="col-md-4">
-                                        <input type="checkbox" checklist-model="obj.help['Опции']" checklist-value="role" checklist-change="obj.helpers.makeObj('Опции')"> @{{role.text}}
-                                    </label>
+                                    <input type="text" ng-model="obj.help['VIN']" ng-change="obj.helpers.makeObj('VIN')">
                                 </div>
                             </div>
                         </div>

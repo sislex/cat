@@ -160,6 +160,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.obj.helpers.objToModel('Тип кузова', $scope.obj.obj['Тип кузова'], $scope.filter['Тип кузова']);
                     $scope.obj.helpers.objToModel('Трансмиссия', $scope.obj.obj['Трансмиссия'], $scope.filter['Трансмиссия']);
                     $scope.obj.helpers.objToModel('Опции', $scope.obj.obj['Опции'], $scope.filter['Опции']);
+                    $scope.obj.helpers.objToModel('VIN', $scope.obj.obj['VIN'], $scope.filter['VIN']);
                     $scope.obj.helpers.objToModel('Привод', $scope.obj.obj['Привод'], $scope.filter['Привод']);
                 }).
                 error(function(data, status, headers, config) {
@@ -194,6 +195,10 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
                 },
                 objToModel : function(key, arr, filter, i){//Разбор объекта из базы
+                    if(angular.isString(arr)){
+                        $scope.obj.help[key] = arr;
+                        return;
+                    }
                     if(!i){i = 0;}
                     if(!$scope.obj.help[key]){$scope.obj.help[key] = [];}
                     angular.forEach(arr, function(value){
@@ -217,16 +222,20 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.obj.obj[parentKey] = [];
                     var children = $scope.obj.obj[parentKey]; //В этот массив будем вставлять объект
 
-                    angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель
-                        var obj = $scope.obj.helpers.pushChildren(val);//Клонируем модель
-                        //debugger;
-                        if(obj){
-                            children.push(obj); //Добавляем модель в массив
-                            if(type == 'sublist'){
-                                children = obj.children; //Меняем ссылку на массив куда будем вставлять данные при следующем проходе
+                    if(angular.isString($scope.obj.help[parentKey])){
+                        $scope.obj.obj[parentKey] = $scope.obj.help[parentKey];
+                    }else{
+                        angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель
+                            var obj = $scope.obj.helpers.pushChildren(val);//Клонируем модель
+                            //debugger;
+                            if(obj){
+                                children.push(obj); //Добавляем модель в массив
+                                if(type == 'sublist'){
+                                    children = obj.children; //Меняем ссылку на массив куда будем вставлять данные при следующем проходе
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
 
                     $scope.obj.objJson = angular.toJson($scope.obj.obj); // Серриализуем объект, его будем в базу ложить
                 },
