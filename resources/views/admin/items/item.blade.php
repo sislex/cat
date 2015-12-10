@@ -17,7 +17,10 @@
     <!-- BEGIN NAV TAB -->
     <ul class="nav nav-tabs">
         <li class="active">
-            <a href="#tab_0" data-toggle="tab"> Опции </a>
+            <a href="#tab_0" data-toggle="tab"> Основные поля </a>
+        </li>
+        <li>
+            <a href="#tab_5" data-toggle="tab"> Опции </a>
         </li>
         @if(isset($item['id']))
             <li>
@@ -299,10 +302,10 @@
                                 <label class="col-md-3 control-label"> Опции </label>
                                 <div class="col-md-9">
                                     {{--<select multiple--}}
-                                            {{--ng-model="obj.help['Опции']"--}}
-                                            {{--ng-options="item.text for item in filter['Опции'] | orderBy:'text':false"--}}
-                                            {{--ng-change="obj.helpers.makeObj('Опции')"--}}
-                                            {{-->--}}
+                                    {{--ng-model="obj.help['Опции']"--}}
+                                    {{--ng-options="item.text for item in filter['Опции'] | orderBy:'text':false"--}}
+                                    {{--ng-change="obj.helpers.makeObj('Опции')"--}}
+                                    {{-->--}}
                                     {{--</select>--}}
                                     {{--<br>--}}
                                     <label ng-repeat="role in filter['Опции'] | orderBy:'-text'" class="col-md-4">
@@ -311,7 +314,45 @@
                                 </div>
                             </div>
                         </div>
-{{--                        @{{obj.help['Опции']}}--}}
+                        {{--                        @{{obj.help['Опции']}}--}}
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn btn-circle green">Сохранить</button>
+                                    {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_5">
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i> Опции
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    <form id="content_data" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                        <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 "/>
+
+                        <div class="form-body">
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Аудиооборудование </label>
+                                <div class="col-md-9">
+                                    <label ng-repeat="role in filter['Аудиооборудование'] | orderBy:'-text'" class="col-md-4">
+                                        <input type="checkbox" checklist-model="obj.help['Аудиооборудование']" checklist-value="role" checklist-change="obj.helpers.makeObj('Аудиооборудование')"> @{{role.text}}
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        {{--                        @{{obj.help['Опции']}}--}}
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
