@@ -81,6 +81,9 @@
                                         <option value="sublist" @if (isset($filter) && $filter['type'] == 'sublist') selected @endif>
                                             sublist
                                         </option>
+                                        <option value="value" @if (isset($filter) && $filter['type'] == 'value') selected @endif>
+                                            value
+                                        </option>
                                     </select>
                                 </div>
                             </div>
