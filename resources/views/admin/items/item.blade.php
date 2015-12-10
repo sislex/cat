@@ -26,15 +26,15 @@
             <li>
                 <a href="#tab_1" data-toggle="tab"> Данные по авто </a>
             </li>
-        <li>
-            <a href="#tab_2" data-toggle="tab"> СЕО данные </a>
-        </li>
-        <li>
-            <a href="#tab_3" data-toggle="tab"> Фото </a>
-        </li>
-        <li>
-            <a href="#tab_4" data-toggle="tab"> Видео </a>
-        </li>
+            <li>
+                <a href="#tab_2" data-toggle="tab"> СЕО данные </a>
+            </li>
+            <li>
+                <a href="#tab_3" data-toggle="tab"> Фото </a>
+            </li>
+            <li>
+                <a href="#tab_4" data-toggle="tab"> Видео </a>
+            </li>
         @endif
     </ul>
     <!-- END NAV TAB -->
@@ -51,7 +51,7 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    <form id="content_data" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                    <form id="main" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                         <input type="hidden" name="tab" value="#tab_0" />
@@ -308,7 +308,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn btn-circle green">Сохранить</button>
+                                    <button type="submit" class="btn btn-circle green"> Сохранить </button>
                                     {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
                                 </div>
                             </div>
@@ -327,7 +327,10 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    <form id="content_data" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                    <form id="options" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                        <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                        <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
+                        <input type="hidden" name="tab" value="#tab_5" />
                         <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 "/>
 
                         <div class="form-body">
@@ -340,13 +343,53 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Интерьер и экстерьер </label>
+                                <div class="col-md-9">
+                                    <label ng-repeat="role in filter['Интерьер и экстерьер'] | orderBy:'-text'" class="col-md-4">
+                                        <input type="checkbox" checklist-model="obj.help['Интерьер и экстерьер']" checklist-value="role" checklist-change="obj.helpers.makeObj('Интерьер и экстерьер')"> @{{role.text}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Оснащение </label>
+                                <div class="col-md-9">
+                                    <label ng-repeat="role in filter['Оснащение'] | orderBy:'-text'" class="col-md-4">
+                                        <input type="checkbox" checklist-model="obj.help['Оснащение']" checklist-value="role" checklist-change="obj.helpers.makeObj('Оснащение')"> @{{role.text}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Противоугонная система </label>
+                                <div class="col-md-9">
+                                    <label ng-repeat="role in filter['Противоугонная система'] | orderBy:'-text'" class="col-md-4">
+                                        <input type="checkbox" checklist-model="obj.help['Противоугонная система']" checklist-value="role" checklist-change="obj.helpers.makeObj('Противоугонная система')"> @{{role.text}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Системы безопасности </label>
+                                <div class="col-md-9">
+                                    <label ng-repeat="role in filter['Системы безопасности'] | orderBy:'-text'" class="col-md-4">
+                                        <input type="checkbox" checklist-model="obj.help['Системы безопасности']" checklist-value="role" checklist-change="obj.helpers.makeObj('Системы безопасности')"> @{{role.text}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Электропакет </label>
+                                <div class="col-md-9">
+                                    <label ng-repeat="role in filter['Электропакет'] | orderBy:'-text'" class="col-md-4">
+                                        <input type="checkbox" checklist-model="obj.help['Электропакет']" checklist-value="role" checklist-change="obj.helpers.makeObj('Электропакет')"> @{{role.text}}
+                                    </label>
+                                </div>
+                            </div>
 
                         </div>
                         {{--                        @{{obj.help['Опции']}}--}}
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn btn-circle green">Сохранить</button>
+                                    <button type="submit" class="btn btn-circle green"> Сохранить </button>
                                     {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
                                 </div>
                             </div>
@@ -367,10 +410,11 @@
                     </div>
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form id="content_data" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                        <form id="description" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
                             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                             <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                             <input type="hidden" name="tab" value="#tab_1" />
+
                             <div class="form-body">
 
                                 <div class="form-group">
@@ -395,6 +439,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-offset-3 col-md-9">
@@ -417,7 +462,7 @@
                     </div>
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form id="content_seo" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                        <form id="seo" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
                             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                             <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
                             <input type="hidden" name="tab" value="#tab_2" />
@@ -448,17 +493,18 @@
                                     <div class="col-md-4">
                                         {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
                                         {{--<textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>--}}
-                                        <select form="content_seo" name="published" class="form-control input-circle">
+                                        <select form="seo" name="published" class="form-control input-circle">
                                             <option value="0" {{ $item['published'] == false ? 'selected' : '' }}>нет</option>
                                             <option value="1" {{ $item['published'] == true ? 'selected' : '' }}>да</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button type="submit" class="btn btn-circle green">Сохранить</button>
+                                        <button type="submit" class="btn btn-circle green"> Сохранить </button>
                                         {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
                                     </div>
                                 </div>
