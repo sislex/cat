@@ -77,32 +77,44 @@
     <ul class="sub-menu">
         <li class="nav-item  ">
             <a href="{{action('Admin\SettingsController@currencies')}}" class="nav-link ">
-                <span class="title">Валюта</span>
+                <span class="title">
+                    Валюта
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="{{action('Admin\SettingsController@phones')}}" class="nav-link ">
-                <span class="title">Телефоны</span>
+                <span class="title">
+                    Телефоны
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="portlet_light.html" class="nav-link ">
-                <span class="title">Email</span>
+                <span class="title">
+                    Email
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="portlet_solid.html" class="nav-link ">
-                <span class="title">Цвета</span>
+                <span class="title">
+                    Цвета
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="{{action('Admin\SettingsController@counters')}}" class="nav-link nav-toggle">
-                <span class="title">Счетчики</span>
+                <span class="title">
+                    Счетчики
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="portlet_draggable.html" class="nav-link ">
-                <span class="title">Служебные файлы</span>
+                <span class="title">
+                    Служебные файлы
+                </span>
             </a>
         </li>
     </ul>

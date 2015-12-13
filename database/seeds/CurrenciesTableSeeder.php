@@ -15,7 +15,8 @@ class CurrenciesTableSeeder extends Seeder
         Currencies::create([
             'name' => 'USD',
             'rate' => '1.0',
-            'icon' => '$'
+            'icon' => '$',
+            'default' => true
         ]);
 
         $this->command->info('Currencies table seeded!');

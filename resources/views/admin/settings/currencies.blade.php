@@ -23,7 +23,40 @@
     <!-- END PAGE TITLE-->
 
     <!-- BEGIN CONTENT BODY -->
-    <div class="portlet-body col-xs-12 col-md-6">
+    <div class="portlet-body col-xs-12 col-md-9">
+
+        <!-- BEGIN FORM-->
+        <form id="default_currency_form" action="{{action('Admin\SettingsController@updateDefaultCurrency')}}" method="post" class="form-horizontal">
+            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+
+            <div class="table-scrollable">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th> Валюта по-умолчанию </th>
+                            <th>  </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select name="default-currency" id="">
+                                    @foreach($currencies as $currency)
+                                        <option value="{{ $currency['name'] }}" {{ $currency['default'] == true ? 'selected' : '' }}>
+                                            {{ $currency['name'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-circle green"> Применить </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+
         <div class="table-scrollable">
             <table class="table table-bordered table-hover">
                 <thead>

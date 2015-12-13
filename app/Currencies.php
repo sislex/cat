@@ -11,5 +11,6 @@ class Currencies extends Model
         'name',
         'rate',
         'icon',
+        'default',
     ];
 }

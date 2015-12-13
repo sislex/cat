@@ -10,7 +10,6 @@
                     Валюта
                 </a>
                 <i class="fa fa-circle"></i>
-
                 Добавить валюту
             </li>
         </ul>
@@ -99,11 +98,4 @@
 @section('PAGE-LEVEL-STYLES')
     <link href="/admin/assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <link href="/admin/assets/global/plugins/bootstrap-summernote/summernote.css" rel="stylesheet" type="text/css" />
-
-    <style>
-        .preview img {
-            width: 100%;
-            max-width: 80px;
-        }
-    </style>
 @endsection

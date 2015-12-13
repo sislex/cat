@@ -103,12 +103,27 @@ class SettingsController extends Controller
             $currency['id'] = Currencies::create($input);
         }
 
-        return \Redirect::action('Admin\SettingsController@showCurrency', ['id' => $currency['id']]);
+//        return \Redirect::action('Admin\SettingsController@showCurrency', ['id' => $currency['id']]);
+        return \Redirect::action('Admin\SettingsController@currencies');
     }
 
     public function deleteCurrency($id)
     {
+        $currency = Currencies::find($id);
+        if ($currency['default'] == true) {
+            Currencies::where('id', '=', 1)->update(['default' => true]);
+        }
         Currencies::destroy($id);
+
+        return \Redirect::action('Admin\SettingsController@currencies');
+    }
+
+    public function updateDefaultCurrency()
+    {
+        $input = \Request::all();
+        Currencies::where('name', '=', $input['default-currency'])->first()->update(['default' => true]);
+        Currencies::where('name', '!=', $input['default-currency'])->update(['default' => false]);
+
         return \Redirect::action('Admin\SettingsController@currencies');
     }
 }

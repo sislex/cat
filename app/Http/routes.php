@@ -72,3 +72,4 @@ Route::get('admin/settings/currencies/add', 'Admin\SettingsController@addCurrenc
 Route::get('admin/settings/currencies/show/{id?}', 'Admin\SettingsController@showCurrency');
 Route::get('admin/settings/currencies/delete/{id}', 'Admin\SettingsController@deleteCurrency');
 Route::post('admin/settings/currencies/update', 'Admin\SettingsController@updateCurrency');
+Route::post('admin/settings/currencies/default/update', 'Admin\SettingsController@updateDefaultCurrency');
