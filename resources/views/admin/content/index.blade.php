@@ -4,12 +4,12 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{action('Admin\ContentController@index')}}">Верхнее меню</a>
+                Контентные страницы
                 <i class="fa fa-circle"></i>
                 <a href="{{action('Admin\ContentController@index', ['type' => $type])}}" class="nav-link ">
-                    Контентные страницы - {{ $type == 'menu' ? 'Меню' :
-                                                ($type == 'news' ? 'Новости' :
-                                                    ($type == 'blog' ? 'Блог' : '')) }}
+                    {{ $type == 'menu' ? 'Меню' :
+                        ($type == 'news' ? 'Новости' :
+                            ($type == 'blog' ? 'Блог' : '')) }}
                 </a>
             </li>
         </ul>
@@ -29,7 +29,7 @@
     <!-- BEGIN CONTENT BODY -->
     <div class="portlet-body">
         <div class="table-scrollable">
-            @if(count($content))
+            {{--@if(count($content))--}}
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -73,7 +73,7 @@
                     @endif
 
                 </table>
-            @endif
+            {{--@endif--}}
         </div>
     </div>
     <!-- END CONTENT BODY -->

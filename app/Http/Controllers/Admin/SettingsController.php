@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Counters;
 use App\Phones;
+use App\Currencies;
 
 class SettingsController extends Controller
 {
@@ -40,7 +41,7 @@ class SettingsController extends Controller
         return \Redirect::action('Admin\SettingsController@counters');
 
     }
-//    counter settings
+
 
 //    phones settings
     public function phones()
@@ -63,5 +64,51 @@ class SettingsController extends Controller
         Phones::destroy($id);
         return \Redirect::action('Admin\SettingsController@phones');
 
+    }
+
+
+    //    currencies settings
+    public function currencies()
+    {
+        $currencies = Currencies::get();
+        return view('admin/settings/currencies', ['currencies' => $currencies]);
+    }
+
+    public function addCurrency()
+    {
+        $currency = [];
+        $currency['id'] = '';
+        return view('admin/settings/showCurrency', ['currency' => $currency]);
+    }
+
+    public function showCurrency($id = '')
+    {
+        if ($id != '') {
+            $currency = Currencies::find($id);
+        } else {
+            $currency = [];
+            $currency['id'] = '';
+        }
+        return view('admin/settings/showCurrency', ['currency' => $currency]);
+    }
+
+    public function updateCurrency()
+    {
+        $input = \Request::all();
+
+        if ($input['id']) {
+            Currencies::find($input['id'])->update($input);
+            $currency['id'] = $input['id'];
+        } else {
+            $currency['id'] = Currencies::create($input);
+        }
+
+        return \Redirect::action('Admin\SettingsController@showCurrency', ['id' => $currency['id']]);
+    }
+
+    public function deleteCurrency($id)
+    {
+        Currencies::destroy($id);
+        return \Redirect::action('Admin\SettingsController@currencies');
     }
 }
