@@ -25,10 +25,11 @@ class CatalogController extends Controller
         if ($item['obj']){
             $obj = json_decode($item['obj'], true);
             $item['obj'] = $obj;
+
             if (!isset($obj['images'])){
-                $item->images = json_encode([]);
+                $item->images = [];
             } else {
-                $item->images = json_encode($obj['images']);
+                $item->images = $obj['images'];
             }
         }
 
