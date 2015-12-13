@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Counters;
 use App\Phones;
+use App\Currencies;
 
 class SettingsController extends Controller
 {
@@ -62,6 +63,30 @@ class SettingsController extends Controller
     {
         Phones::destroy($id);
         return \Redirect::action('Admin\SettingsController@phones');
+
+    }
+
+
+    //    currencies settings
+    public function currencies()
+    {
+        $currencies = Currencies::get();
+        return view('admin/settings/currencies', ['currencies' => $currencies]);
+    }
+    public function addCurrency()
+    {
+        return view('admin/settings/addCurrency');
+    }
+    public function insertCurrency()
+    {
+        $input = \Request::all();
+        Currencies::create($input);
+        return \Redirect::action('Admin\SettingsController@currencies');
+    }
+    public function deleteCurrency($id)
+    {
+        Currencies::destroy($id);
+        return \Redirect::action('Admin\SettingsController@currencies');
 
     }
 }

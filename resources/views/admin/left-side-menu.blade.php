@@ -76,6 +76,11 @@
     </a>
     <ul class="sub-menu">
         <li class="nav-item  ">
+            <a href="{{action('Admin\SettingsController@currencies')}}" class="nav-link ">
+                <span class="title">Валюта</span>
+            </a>
+        </li>
+        <li class="nav-item  ">
             <a href="{{action('Admin\SettingsController@phones')}}" class="nav-link ">
                 <span class="title">Телефоны</span>
             </a>

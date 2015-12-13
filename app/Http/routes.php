@@ -63,3 +63,8 @@ Route::get('admin/settings/phones', 'Admin\SettingsController@phones');
 Route::get('admin/settings/phones/add', 'Admin\SettingsController@addPhone');
 Route::post('admin/settings/phones/add', 'Admin\SettingsController@insertPhone');
 Route::get('admin/settings/phones/delete/{id}', 'Admin\SettingsController@deletePhone');
+//    currencies
+Route::get('admin/settings/currencies', 'Admin\SettingsController@currencies');
+Route::get('admin/settings/currencies/add', 'Admin\SettingsController@addCurrency');
+Route::post('admin/settings/currencies/add', 'Admin\SettingsController@insertCurrency');
+Route::get('admin/settings/currencies/delete/{id}', 'Admin\SettingsController@deleteCurrency');

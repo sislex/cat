@@ -43,7 +43,7 @@
                 <div class="portlet box green">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa"></i> Описание товара
+                            <i class="fa"></i> Описание страницы
                         </div>
                     </div>
                     <div class="portlet-body form">
