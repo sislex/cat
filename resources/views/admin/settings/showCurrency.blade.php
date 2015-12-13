@@ -30,8 +30,9 @@
     <!-- END NAV TAB -->
 
     <!-- BEGIN FORM-->
-    <form id="content_form" action="{{action('Admin\SettingsController@insertCurrency')}}" method="post" class="form-horizontal">
+    <form id="currency_form" action="{{action('Admin\SettingsController@updateCurrency')}}" method="post" class="form-horizontal">
         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+        <input type="hidden" name="id" id="id" value="{{ $currency['id'] or '' }}" />
 
         <div class="tab-content">
             <div class="tab-pane active" id="tab_0">
@@ -47,19 +48,19 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Наименование (буквенный код) </label>
                                 <div class="col-md-7">
-                                    <input required class="form-control input-circle" name="name" placeholder="Наименование валюты">
+                                    <input required class="form-control input-circle" name="name" value="{{ $currency['name'] or ''}}" placeholder="Введите наименование валюты">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Курс по отношению к у.е. </label>
                                 <div class="col-md-7">
-                                    <input required class="form-control input-circle" name="rate" placeholder="Курс к у.е.">
+                                    <input required class="form-control input-circle" name="rate" value="{{ $currency['rate'] or ''}}" placeholder="Введите курс к у.е.">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Знак или краткое наименование </label>
                                 <div class="col-md-7">
-                                    <input required class="form-control input-circle" name="icon" placeholder="Знак валюты">
+                                    <input required class="form-control input-circle" name="icon" value="{{ $currency['icon'] or ''}}" placeholder="Введите знак валюты">
                                 </div>
                             </div>
 
@@ -69,6 +70,7 @@
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
                                     <button type="submit" class="btn btn-circle green">Сохранить</button>
+                                    <a href="{{action('Admin\SettingsController@showCurrency', ['id' => $currency['id']])}}" class="btn btn-circle red btn-outline">Отменить</a>
                                 </div>
                             </div>
                         </div>

@@ -50,6 +50,10 @@
                             <td>{{$currency['rate']}}</td>
                             <td>{{$currency['icon']}}</td>
                             <td>
+                                <a href="{{action('Admin\SettingsController@showCurrency', ['id' => $currency['id']])}}" class="btn btn-outline btn-circle btn-sm purple">
+                                    <i class="fa fa-edit"></i>
+                                    Редактировать
+                                </a>
                                 <a class="btn btn-outline btn-circle btn-sm red modal-del-confirm"
                                    data-toggle="modal"
                                    del-obj="Вы действительно хотите удалить валюту '{{ $currency['name'] }}' ?"

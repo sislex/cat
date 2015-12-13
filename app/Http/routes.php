@@ -69,5 +69,6 @@ Route::get('admin/settings/phones/delete/{id}', 'Admin\SettingsController@delete
 //    currencies
 Route::get('admin/settings/currencies', 'Admin\SettingsController@currencies');
 Route::get('admin/settings/currencies/add', 'Admin\SettingsController@addCurrency');
-Route::post('admin/settings/currencies/add', 'Admin\SettingsController@insertCurrency');
+Route::get('admin/settings/currencies/show/{id?}', 'Admin\SettingsController@showCurrency');
 Route::get('admin/settings/currencies/delete/{id}', 'Admin\SettingsController@deleteCurrency');
+Route::post('admin/settings/currencies/update', 'Admin\SettingsController@updateCurrency');
