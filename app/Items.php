@@ -14,6 +14,7 @@ class Items extends Model
         'short_text',
         'text',
         'published',
+        'price',
         'obj'
     ];
 }

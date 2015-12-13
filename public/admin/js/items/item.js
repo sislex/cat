@@ -156,12 +156,24 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 success(function(data, status, headers, config) {
                     $scope.filter = data;
                     if($scope.obj.objJson!=''){$scope.obj.obj = angular.fromJson($scope.obj.objJson);}
+
+                    // Описание товара
                     $scope.obj.helpers.objToModel('type_auto', $scope.obj.obj['type_auto'], $scope.filter['type_auto']);
                     $scope.obj.helpers.objToModel('Тип кузова', $scope.obj.obj['Тип кузова'], $scope.filter['Тип кузова']);
                     $scope.obj.helpers.objToModel('Трансмиссия', $scope.obj.obj['Трансмиссия'], $scope.filter['Трансмиссия']);
-                    $scope.obj.helpers.objToModel('Опции', $scope.obj.obj['Опции'], $scope.filter['Опции']);
-                    $scope.obj.helpers.objToModel('VIN', $scope.obj.obj['VIN'], $scope.filter['VIN']);
                     $scope.obj.helpers.objToModel('Привод', $scope.obj.obj['Привод'], $scope.filter['Привод']);
+                    $scope.obj.helpers.objToModel('Количество дверей', $scope.obj.obj['Количество дверей'], $scope.filter['Количество дверей']);
+                    $scope.obj.helpers.objToModel('Состояние', $scope.obj.obj['Состояние'], $scope.filter['Состояние']);
+                    $scope.obj.helpers.objToModel('Класс автомобиля', $scope.obj.obj['Класс автомобиля'], $scope.filter['Класс автомобиля']);
+                    $scope.obj.helpers.objToModel('Единица пробега', $scope.obj.obj['Единица пробега'], $scope.filter['Единица пробега']);
+                    $scope.obj.helpers.objToModel('Год выпуска', $scope.obj.obj['Год выпуска'], $scope.filter['Год выпуска']);
+                    $scope.obj.helpers.objToModel('Цвет', $scope.obj.obj['Цвет'], $scope.filter['Цвет']);
+                    $scope.obj.helpers.objToModel('Тип двигателя', $scope.obj.obj['Тип двигателя'], $scope.filter['Тип двигателя']);
+                    $scope.obj.helpers.objToModel('Обмен', $scope.obj.obj['Обмен'], $scope.filter['Обмен']);
+                    $scope.obj.helpers.objToModel('Страна', $scope.obj.obj['Страна'], $scope.filter['Страна']);
+                    $scope.obj.helpers.objToModel('VIN', $scope.obj.obj['VIN'], $scope.filter['VIN']);
+
+                    // Опции
                     $scope.obj.helpers.objToModel('Аудиооборудование', $scope.obj.obj['Аудиооборудование'], $scope.filter['Аудиооборудование']);
                     $scope.obj.helpers.objToModel('Интерьер и экстерьер', $scope.obj.obj['Интерьер и экстерьер'], $scope.filter['Интерьер и экстерьер']);
                     $scope.obj.helpers.objToModel('Оснащение', $scope.obj.obj['Оснащение'], $scope.filter['Оснащение']);

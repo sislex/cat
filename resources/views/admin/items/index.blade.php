@@ -123,6 +123,7 @@
                         <th> Марка </th>
                         <th> Модель </th>
                         <th> Кузов </th>
+                        <th> Цена </th>
                         <th>
                             <a href="{{action('Admin\ItemsController@add')}}" class="btn btn-outline btn-circle btn-sm green">
                                 <i class="fa fa-plus"></i>
@@ -139,6 +140,7 @@
                             <td> @{{ item.type_auto[0].children[0].text }} </td>
                             <td> @{{ item.type_auto[0].children[0].children[0].text }} </td>
                             <td> @{{ item['Тип кузова'][0].text }} </td>
+                            <td> @{{ item.item['price'] }} </td>
                             <td class="itemActions">
                                 <a href="{{action('Admin\ItemsController@show')}}/@{{ item.item['id'] }}" class="btn btn-outline btn-circle btn-sm purple">
                                     <i class="fa fa-edit"></i>

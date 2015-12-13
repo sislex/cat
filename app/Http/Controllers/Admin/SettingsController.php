@@ -110,10 +110,11 @@ class SettingsController extends Controller
     public function deleteCurrency($id)
     {
         $currency = Currencies::find($id);
-        if ($currency['default'] == true) {
-            Currencies::where('id', '=', 1)->update(['default' => true]);
-        }
         Currencies::destroy($id);
+
+        if ($currency['default']) {
+            Currencies::all()->first()->update(['default' => true]);
+        }
 
         return \Redirect::action('Admin\SettingsController@currencies');
     }

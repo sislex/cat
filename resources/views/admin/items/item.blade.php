@@ -60,12 +60,21 @@
                         <div class="form-body">
 
                             <div class="form-group">
+                                <label class="col-md-3 control-label"> Цена </label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control input-circle" name="price" value="{{ $item['price'] or '' }}" placeholder="Введите цену">
+                                    <!-- <span class="help-block"> Title </span> -->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-3 control-label"> Тип </label>
                                 <div class="col-md-4">
                                     <select
                                             ng-model="obj.help.type_auto[0]"
                                             ng-options="item.text for item in filter.type_auto | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -78,6 +87,7 @@
                                             ng-model="obj.help.type_auto[1]"
                                             ng-options="item.text for item in obj.help.type_auto[0].children | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -90,6 +100,7 @@
                                             ng-model="obj.help.type_auto[2]"
                                             ng-options="item.text for item in obj.help.type_auto[1].children | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -102,6 +113,7 @@
                                             ng-model="obj.help['Тип кузова'][0]"
                                             ng-options="item.text for item in filter['Тип кузова'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Тип кузова')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -113,6 +125,7 @@
                                             ng-model="obj.help['Трансмиссия'][0]"
                                             ng-options="item.text for item in filter['Трансмиссия'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Трансмиссия')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -124,6 +137,7 @@
                                             ng-model="obj.help['Привод'][0]"
                                             ng-options="item.text for item in filter['Привод'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Привод')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -136,6 +150,7 @@
                                             ng-model="obj.help['Количество дверей'][0]"
                                             ng-options="item.text for item in filter['Количество дверей'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Количество дверей')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -147,6 +162,7 @@
                                             ng-model="obj.help['Состояние'][0]"
                                             ng-options="item.text for item in filter['Состояние'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Состояние')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -158,6 +174,7 @@
                                             ng-model="obj.help['Класс автомобиля'][0]"
                                             ng-options="item.text for item in filter['Класс автомобиля'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Класс автомобиля')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -169,6 +186,7 @@
                                             ng-model="obj.help['Единица пробега'][0]"
                                             ng-options="item.text for item in filter['Единица пробега'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Единица пробега')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -180,6 +198,7 @@
                                             ng-model="obj.help['Год выпуска'][0]"
                                             ng-options="item.text for item in filter['Год выпуска'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Год выпуска')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -191,6 +210,7 @@
                                             ng-model="obj.help['Цвет'][0]"
                                             ng-options="item.text for item in filter['Цвет'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Цвет')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -202,6 +222,7 @@
                                             ng-model="obj.help['Тип двигателя'][0]"
                                             ng-options="item.text for item in filter['Тип двигателя'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Тип двигателя')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -213,6 +234,7 @@
                                             ng-model="obj.help['Обмен'][0]"
                                             ng-options="item.text for item in filter['Обмен'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Обмен')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -224,6 +246,7 @@
                                             ng-model="obj.help['Страна'][0]"
                                             ng-options="item.text for item in filter['Страна'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Страна')"
+                                            class="form-control input-circle"
                                             >
                                     </select>
                                 </div>
@@ -232,7 +255,12 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> VIN </label>
                                 <div class="col-md-9">
-                                    <input type="text" ng-model="obj.help['VIN']" ng-change="obj.helpers.makeObj('VIN')">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['VIN']"
+                                            ng-change="obj.helpers.makeObj('VIN')"
+                                            class="form-control input-circle"
+                                            >
                                 </div>
                             </div>
                         </div>

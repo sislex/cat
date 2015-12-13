@@ -40,7 +40,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <select name="default-currency" id="">
+                                <select name="default-currency" id="" class="form-control input-circle">
                                     @foreach($currencies as $currency)
                                         <option value="{{ $currency['name'] }}" {{ $currency['default'] == true ? 'selected' : '' }}>
                                             {{ $currency['name'] }}
