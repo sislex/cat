@@ -15,6 +15,7 @@
 
 Route::get('/', 'Catalog\IndexController@index');
 Route::get('catalog/index', 'Catalog\CatalogController@index');
+Route::get('catalog/item/{id?}', 'Catalog\CatalogController@item');
 
 
 //admin module
