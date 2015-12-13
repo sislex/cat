@@ -130,17 +130,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Аудиооборудование </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Аудиооборудование'][0]"
-                                            ng-options="item.text for item in filter['Аудиооборудование'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Аудиооборудование')"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="col-md-3 control-label"> Количество дверей </label>
                                 <div class="col-md-4">
                                     <select
@@ -239,63 +228,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Интерьер и экстерьер </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Интерьер и экстерьер'][0]"
-                                            ng-options="item.text for item in filter['Интерьер и экстерьер'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Интерьер и экстерьер')"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Оснащение </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Оснащение'][0]"
-                                            ng-options="item.text for item in filter['Оснащение'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Оснащение')"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Противоугонная система </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Противоугонная система'][0]"
-                                            ng-options="item.text for item in filter['Противоугонная система'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Противоугонная система')"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Системы безопасности </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Системы безопасности'][0]"
-                                            ng-options="item.text for item in filter['Системы безопасности'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Системы безопасности')"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Электропакет </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Электропакет'][0]"
-                                            ng-options="item.text for item in filter['Электропакет'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Электропакет')"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-
-
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> VIN </label>
@@ -322,7 +254,7 @@
             <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-gift"></i> Опции
+                        <i class="fa fa-gift"></i> Комплектация товара
                     </div>
                 </div>
                 <div class="portlet-body form">
