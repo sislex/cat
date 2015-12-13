@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return 'Admin Console - Main Page';
-});
+//catalog module
+
+Route::get('/', 'Catalog\IndexController@index');
+
+
+//admin module
 
 Route::get('admin/index', 'Admin\IndexController@index');
 
