@@ -45,7 +45,6 @@
                                     >
                                 <option value="">Марка</option>
                             </select>
-
                         </div>
                         <div class="col-md-4" ng-show="obj.help.type_auto[1].children">
                             <select
