@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Counters;
 use App\Phones;
 use App\Currencies;
+use App\Email;
 
 class SettingsController extends Controller
 {
@@ -127,4 +128,64 @@ class SettingsController extends Controller
 
         return \Redirect::action('Admin\SettingsController@currencies');
     }
+    //    email settings
+    public function email()
+    {
+        $emails = Email::get();
+        return view('admin/settings/email', ['emails' => $emails]);
+    }
+
+    public function addEmail()
+    {
+        $email = [];
+        $email['id'] = '';
+        return view('admin/settings/showEmail', ['email' => $email]);
+    }
+
+    public function showEmail($id = '')
+    {
+        if ($id != '') {
+            $email = Email::find($id);
+        } else {
+            $email = [];
+            $email['id'] = '';
+        }
+        return view('admin/settings/showEmail', ['email' => $email]);
+    }
+
+    public function updateEmail()
+    {
+        $input = \Request::all();
+
+        if ($input['id']) {
+            Email::find($input['id'])->update($input);
+            $email['id'] = $input['id'];
+        } else {
+            $email['id'] = Email::create($input);
+        }
+
+        return \Redirect::action('Admin\SettingsController@email');
+    }
+
+    public function deleteEmail($id)
+    {
+        $email = Email::find($id);
+        Email::destroy($id);
+
+        if ($email['default']) {
+            Email::all()->first()->update(['default' => true]);
+        }
+
+        return \Redirect::action('Admin\SettingsController@email');
+    }
+
+    public function updateDefaultEmail()
+    {
+        $input = \Request::all();
+        Email::where('name', '=', $input['default-email'])->first()->update(['default' => true]);
+        Email::where('name', '!=', $input['default-email'])->update(['default' => false]);
+
+        return \Redirect::action('Admin\SettingsController@email');
+    }
+
 }
