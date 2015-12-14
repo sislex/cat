@@ -158,10 +158,10 @@ class SettingsController extends Controller
         $input = \Request::all();
 
         if ($input['id']) {
-            Email::find($input['id'])->update($input);
-            $email['id'] = $input['id'];
+            $email = Email::find($input['id'])->update($input);
+///            $email['id'] = $input['id'];
         } else {
-            $email['id'] = Email::create($input);
+            Email::create($input);
         }
 
         return \Redirect::action('Admin\SettingsController@email');
@@ -169,22 +169,7 @@ class SettingsController extends Controller
 
     public function deleteEmail($id)
     {
-        $email = Email::find($id);
         Email::destroy($id);
-
-        if ($email['default']) {
-            Email::all()->first()->update(['default' => true]);
-        }
-
-        return \Redirect::action('Admin\SettingsController@email');
-    }
-
-    public function updateDefaultEmail()
-    {
-        $input = \Request::all();
-        Email::where('name', '=', $input['default-email'])->first()->update(['default' => true]);
-        Email::where('name', '!=', $input['default-email'])->update(['default' => false]);
-
         return \Redirect::action('Admin\SettingsController@email');
     }
 

@@ -79,7 +79,6 @@ Route::post('admin/settings/currencies/default/update', 'Admin\SettingsControlle
 //email
 Route::get('admin/settings/email', 'Admin\SettingsController@email');
 Route::get('admin/settings/email/add', 'Admin\SettingsController@addEmail');
-Route::get('admin/settings/currencies/show/{id?}', 'Admin\SettingsController@showEmail');
-Route::get('admin/settings/currencies/delete/{id}', 'Admin\SettingsController@deleteEmail');
-Route::post('admin/settings/currencies/update', 'Admin\SettingsController@updateEmail');
-Route::post('admin/settings/currencies/default/update', 'Admin\SettingsController@updateDefaultEmail');
+Route::get('admin/settings/email/show/{id?}', 'Admin\SettingsController@showEmail');
+Route::get('admin/settings/email/delete/{id}', 'Admin\SettingsController@deleteEmail');
+Route::post('admin/settings/email/update', 'Admin\SettingsController@updateEmail');

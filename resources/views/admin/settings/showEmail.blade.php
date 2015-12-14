@@ -47,7 +47,7 @@
                            <div class="form-group">
                                 <label class="col-md-3 control-label"> Email - адрес </label>
                                 <div class="col-md-7">
-                                    <input required class="form-control input-circle" name="icon" value="{{ $email['icon'] or ''}}" placeholder="Введите email - адрес">
+                                    <input required class="form-control input-circle" name="email" type="email" value="{{ $email['email'] or ''}}" placeholder="Введите email - адрес">
                                 </div>
                             </div>
 
