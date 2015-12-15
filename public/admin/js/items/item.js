@@ -161,7 +161,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.obj.helpers.objToModel('type_auto', $scope.obj.obj['type_auto'], $scope.filter['type_auto']);
                     $scope.obj.helpers.objToModel('Версия/Модификация', $scope.obj.obj['Версия/Модификация'], $scope.filter['Версия/Модификация']);
                     $scope.obj.helpers.objToModel('VIN', $scope.obj.obj['VIN'], $scope.filter['VIN']);
-                    $scope.obj.helpers.objToModel('Год выпуска', $scope.obj.obj['Год выпуска'], $scope.filter['Год выпуска']);
+                    $scope.obj.helpers.objToModel('God_vypuska', $scope.obj.obj['God_vypuska'], $scope.filter['God_vypuska']);
                     $scope.obj.helpers.objToModel('Состояние', $scope.obj.obj['Состояние'], $scope.filter['Состояние']);
                     $scope.obj.helpers.objToModel('Цвет', $scope.obj.obj['Цвет'], $scope.filter['Цвет']);
                     $scope.obj.helpers.objToModel('Тип двигателя', $scope.obj.obj['Тип двигателя'], $scope.filter['Тип двигателя']);
@@ -169,7 +169,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.obj.helpers.objToModel('Цилиндров', $scope.obj.obj['Цилиндров'], $scope.filter['Цилиндров']);
                     $scope.obj.helpers.objToModel('Тип кузова', $scope.obj.obj['Тип кузова'], $scope.filter['Тип кузова']);
                     $scope.obj.helpers.objToModel('Количество дверей', $scope.obj.obj['Количество дверей'], $scope.filter['Количество дверей']);
-                    $scope.obj.helpers.objToModel('Пробег', $scope.obj.obj['Пробег'], $scope.filter['Пробег']);
+                    $scope.obj.helpers.objToModel('Probeg', $scope.obj.obj['Probeg'], $scope.filter['Probeg']);
 
                     // Убрать?
                     $scope.obj.helpers.objToModel('Единица пробега', $scope.obj.obj['Единица пробега'], $scope.filter['Единица пробега']);

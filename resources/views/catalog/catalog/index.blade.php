@@ -133,10 +133,10 @@
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Price (High to Low)</a></li>
-                            <li><a href="#">Price (Low to High)</a></li>
-                            <li><a href="#">Mileage (Low to High)</a></li>
-                            <li><a href="#">Mileage (High to Low)</a></li>
+                            <li><a ng-click="obj.helpers.changeOrderValue('price')">Цене (от Дешевых к Дорогим)</a></li>
+                            <li><a ng-click="obj.helpers.changeOrderValue('-price')">Цене (от Дорогих к Дешевым)</a></li>
+                            <li><a ng-click="obj.helpers.changeOrderValue('Probeg')">Пробегу (от Меньшего к Большему)</a></li>
+                            <li><a ng-click="obj.helpers.changeOrderValue('-Probeg')">Пробегу (от Большего к Меньшему)</a></li>
                         </ul>
                     </div>
 
@@ -207,6 +207,21 @@
                                     </select>
                                 </div>
 
+                                <div>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <input ng-model="obj.help['price']['min']"
+                                                   ng-change="obj.helpers.makeObj('price', 'value')"
+                                                   type="text" placeholder="Цена от" class="form-control min" style="width: 100%">
+                                        </div>
+                                        <div class="form-group last-child">
+                                            <input ng-model="obj.help['price']['max']"
+                                                   ng-change="obj.helpers.makeObj('price', 'value')"
+                                                   type="text" placeholder="Цена до" class="form-control max" style="width: 100%">
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="accordion-group panel">
                                     <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseTwo">Аудиооборудование<i class="fa fa-angle-down"></i> </a> </div>
                                     <div id="collapseTwo" class="accordion-body collapse">
@@ -222,6 +237,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+
 
                             </div>
                         </div>
@@ -239,12 +256,12 @@
                                     <div class="rect5"></div>
                                 </div>
                             </div>
-                            <div id="results-holder" class="results-list-view" ng-show="cloneItems">
+                            <div id="results-holder" class="results-list-view" ng-show="cloneItems" ng-init="order='-price'">
                                 <!-- Result Item -->
-                                <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:'name'">
+                                <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:order">
                                     <div class="result-item-image">
                                         <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box"><img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt=""></a>
-                                        <span class="label label-default vehicle-age">2014</span>
+                                        <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
                                         <span class="label label-success premium-listing">Premium Listing</span>
                                         <div class="result-item-view-buttons">
                                             <a href="https://www.youtube.com/watch?v=P5mvnA4BV7Y" data-rel="prettyPhoto"><i class="fa fa-play"></i> View video</a>
@@ -259,7 +276,7 @@
                                             </div>
                                             <div class="result-item-block col2">
                                                 <div class="result-item-pricing">
-                                                    <div class="price">$@{{ item.item.price || 23423 }}</div>
+                                                    <div class="price">$@{{ item.item.price || 0 }}</div>
                                                 </div>
                                                 <div class="result-item-action-buttons">
                                                     <a href="#" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Save</a>

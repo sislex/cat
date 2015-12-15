@@ -11,7 +11,7 @@ class ItemsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -37,6 +37,7 @@ class ItemsController extends Controller
             }
             else{$obj = [];}
             $obj['item'] = $value;
+            $obj['price'] = $value['price'];
             $arr[] = $obj;
         }
 

@@ -161,6 +161,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 success(function(data, status, headers, config) {
                     $scope.items = data;
                     $scope.cloneItems = angular.copy($scope.items);
+                    console.log($scope.items);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправки объекта');
@@ -179,25 +180,35 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 jsonToObj : function(){
 
                 },
+                changeOrderValue : function(str){
+                    $scope.order = str;
+                },
                 makeObj : function(parentKey, type){
                     $scope.obj.obj[parentKey] = [];
-                    var children = $scope.obj.obj[parentKey]; //В этот массив будем вставлять объект
 
-                    angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель
-                        var obj = $scope.obj.helpers.pushChildren(val);//Клонируем модель
-                        if(obj){
-                            children.push(obj); //Добавляем модель в массив
-                            if(type == 'sublist'){
-                                children = obj.children; //Меняем ссылку на массив куда будем вставлять данные при следующем проходе
+                    if(type == 'value'){
+                        $scope.obj.obj[parentKey] = $scope.obj.help[parentKey];
+                    }else{
+                        var children = $scope.obj.obj[parentKey]; //В этот массив будем вставлять объект
+
+                        angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель
+                            var obj = $scope.obj.helpers.pushChildren(val);//Клонируем модель
+                            if(obj){
+                                children.push(obj); //Добавляем модель в массив
+                                if(type == 'sublist'){
+                                    children = obj.children; //Меняем ссылку на массив куда будем вставлять данные при следующем проходе
+                                }
                             }
-                        }
-                    });
+                        });
 
-                    if(!$scope.obj.obj[parentKey].length){
-                        delete $scope.obj.obj[parentKey];
+                        if(!$scope.obj.obj[parentKey].length){
+                            delete $scope.obj.obj[parentKey];
+                        }
                     }
 
                     $scope.obj.helpers.makeCloneItems();
+
+
                     //$scope.obj.objJson = angular.toJson($scope.obj.obj); // Серриализуем объект, его будем в базу ложить
                 },
                 pushChildren : function(obj){
@@ -224,17 +235,28 @@ myApp.controller('myCtrl', ['$scope', '$http',
                         var j = 0;
                         var compare = true;
                         angular.forEach(filterObj, function($val, $key){
-                            var item = value[$key];
-                            if(compare){
-                                if(item != undefined){
-                                    var itemFilter = value[$key];
-                                    var filter = $val;
-                                    compare = $scope.obj.helpers.compareFilters(itemFilter, filter); //сравнение фильтров
+                            if(angular.isArray($val)){
+                                var item = value[$key];
+                                if(compare){
+                                    if(item != undefined){
+                                        var itemFilter = value[$key];
+                                        var filter = $val;
+                                        compare = $scope.obj.helpers.compareFilters(itemFilter, filter); //сравнение фильтров
+                                    }
+                                    else{
+                                        compare = false;
+                                    }
                                 }
-                                else{
+
+                            }else{
+                                if($val['min'] > value[$key]){
+                                    compare = false;
+                                }
+                                if($val['max'] < value[$key]){
                                     compare = false;
                                 }
                             }
+
                             j++;
                             if(i == j){
                                 if(compare){

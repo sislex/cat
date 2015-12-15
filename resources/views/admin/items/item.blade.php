@@ -127,9 +127,9 @@
                                 <label class="col-md-3 control-label"> Год выпуска </label>
                                 <div class="col-md-1">
                                     <select
-                                            ng-model="obj.help['Год выпуска'][0]"
-                                            ng-options="item.text for item in filter['Год выпуска'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Год выпуска')"
+                                            ng-model="obj.help['God_vypuska'][0]"
+                                            ng-options="item.text for item in filter['God_vypuska'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('God_vypuska')"
                                             class="form-control input-circle"
                                     >
                                     </select>
@@ -232,8 +232,8 @@
                                 <div class="col-md-2">
                                     <input
                                             type="text"
-                                            ng-model="obj.help['Пробег']"
-                                            ng-change="obj.helpers.makeObj('Пробег')"
+                                            ng-model="obj.help['Probeg']"
+                                            ng-change="obj.helpers.makeObj('Probeg')"
                                             class="form-control input-circle"
                                             placeholder="Введите пробег"
                                     >
