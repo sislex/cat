@@ -58,7 +58,7 @@
                                     <td>
                                         <a href="{{action('Admin\FiltersController@filter', ['name' => $value['name']])}}" class="btn btn-outline btn-circle btn-sm purple">
                                             <i class="fa fa-edit"></i>
-                                            Edit
+                                            Редактировать
                                         </a>
                                         <a class="btn btn-outline btn-circle btn-sm red modal-del-confirm"
                                            data-toggle="modal"
