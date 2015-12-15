@@ -170,7 +170,7 @@
                                             ng-options="item.text for item in filter['type_auto'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             >
-                                        <option value="">Тип: неважно</option>
+                                        <option value="">Тип: любой</option>
                                     </select>
                                 </div>
 
@@ -181,7 +181,7 @@
                                             ng-options="item.text for item in obj.help['type_auto'][0].children | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             >
-                                        <option value="">Марка: неважно</option>
+                                        <option value="">Марка: любая</option>
                                     </select>
                                 </div>
 
@@ -203,7 +203,7 @@
                                             ng-options="item.text for item in filter['Тип кузова'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Тип кузова')"
                                             >
-                                        <option value="">Тип кузова: неважно</option>
+                                        <option value="">Тип кузова: любой</option>
                                     </select>
                                 </div>
 

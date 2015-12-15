@@ -67,12 +67,13 @@
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             class="form-control input-circle"
                                             >
+                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group" ng-show="obj.help.type_auto[0].children">
-                                <label class="col-md-3 control-label"> Марки </label>
+                                <label class="col-md-3 control-label"> Марка </label>
                                 <div class="col-md-4">
                                     <select
                                             ng-model="obj.help.type_auto[1]"
@@ -80,12 +81,13 @@
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             class="form-control input-circle"
                                             >
+                                        <option value=""> любая </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group" ng-show="obj.help.type_auto[1].children">
-                                <label class="col-md-3 control-label"> Модели </label>
+                                <label class="col-md-3 control-label"> Модель </label>
                                 <div class="col-md-4">
                                     <select
                                             ng-model="obj.help.type_auto[2]"
@@ -93,6 +95,7 @@
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             class="form-control input-circle"
                                             >
+                                        <option value=""> любая </option>
                                     </select>
                                 </div>
                             </div>
@@ -101,12 +104,12 @@
                                 <label class="col-md-3 control-label"> Версия/Модификация </label>
                                 <div class="col-md-4">
                                     <input
-                                            type="text"
-                                            ng-model="obj.help['Версия/Модификация']"
-                                            ng-change="obj.helpers.makeObj('Версия/Модификация')"
-                                            class="form-control input-circle"
-                                            placeholder="Введите текст"
-                                    >
+                                        type="text"
+                                        ng-model="obj.help['Версия/Модификация']"
+                                        ng-change="obj.helpers.makeObj('Версия/Модификация')"
+                                        class="form-control input-circle"
+                                        placeholder="Введите текст"
+                                        >
                                 </div>
                             </div>
 
@@ -114,24 +117,25 @@
                                 <label class="col-md-3 control-label"> VIN </label>
                                 <div class="col-md-2">
                                     <input
-                                            type="text"
-                                            ng-model="obj.help['VIN']"
-                                            ng-change="obj.helpers.makeObj('VIN')"
-                                            class="form-control input-circle"
-                                            placeholder="Введите VIN"
-                                    >
+                                        type="text"
+                                        ng-model="obj.help['VIN']"
+                                        ng-change="obj.helpers.makeObj('VIN')"
+                                        class="form-control input-circle"
+                                        placeholder="Введите VIN"
+                                        >
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Год выпуска </label>
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['God_vypuska'][0]"
                                             ng-options="item.text for item in filter['God_vypuska'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('God_vypuska')"
                                             class="form-control input-circle"
-                                    >
+                                            >
+                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
@@ -144,7 +148,8 @@
                                             ng-options="item.text for item in filter['Состояние'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Состояние')"
                                             class="form-control input-circle"
-                                    >
+                                            >
+                                        <option value=""> любое </option>
                                     </select>
                                 </div>
                             </div>
@@ -157,7 +162,8 @@
                                             ng-options="item.text for item in filter['Цвет'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Цвет')"
                                             class="form-control input-circle"
-                                    >
+                                            >
+                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
@@ -170,7 +176,8 @@
                                             ng-options="item.text for item in filter['Тип двигателя'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Тип двигателя')"
                                             class="form-control input-circle"
-                                    >
+                                            >
+                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
@@ -179,12 +186,12 @@
                                 <label class="col-md-3 control-label"> Объем куб. см. </label>
                                 <div class="col-md-2">
                                     <input
-                                            type="text"
-                                            ng-model="obj.help['Объем куб. см.']"
-                                            ng-change="obj.helpers.makeObj('Объем куб. см.')"
-                                            class="form-control input-circle"
-                                            placeholder="Введите объем"
-                                    >
+                                        type="text"
+                                        ng-model="obj.help['Объем куб. см.']"
+                                        ng-change="obj.helpers.makeObj('Объем куб. см.')"
+                                        class="form-control input-circle"
+                                        placeholder="Введите объем"
+                                        >
                                 </div>
                             </div>
 
@@ -192,12 +199,12 @@
                                 <label class="col-md-3 control-label"> Цилиндров </label>
                                 <div class="col-md-2">
                                     <input
-                                            type="text"
-                                            ng-model="obj.help['Цилиндров']"
-                                            ng-change="obj.helpers.makeObj('Цилиндров')"
-                                            class="form-control input-circle"
-                                            placeholder="Введите количество"
-                                    >
+                                        type="text"
+                                        ng-model="obj.help['Цилиндров']"
+                                        ng-change="obj.helpers.makeObj('Цилиндров')"
+                                        class="form-control input-circle"
+                                        placeholder="Введите количество"
+                                        >
                                 </div>
                             </div>
 
@@ -210,19 +217,21 @@
                                             ng-change="obj.helpers.makeObj('Тип кузова')"
                                             class="form-control input-circle"
                                             >
+                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Количество дверей </label>
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Количество дверей'][0]"
                                             ng-options="item.text for item in filter['Количество дверей'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Количество дверей')"
                                             class="form-control input-circle"
-                                    >
+                                            >
+                                        <option value=""> любое </option>
                                     </select>
                                 </div>
                             </div>
@@ -236,7 +245,7 @@
                                             ng-change="obj.helpers.makeObj('Probeg')"
                                             class="form-control input-circle"
                                             placeholder="Введите пробег"
-                                    >
+                                            >
                                 </div>
                                 <div class="col-md-1">
                                     <select name="km-or-miles" class="form-control input-circle">
@@ -255,6 +264,7 @@
                                             ng-change="obj.helpers.makeObj('Трансмиссия')"
                                             class="form-control input-circle"
                                             >
+                                        <option value=""> любая </option>
                                     </select>
                                 </div>
                             </div>
@@ -268,6 +278,7 @@
                                             ng-change="obj.helpers.makeObj('Привод')"
                                             class="form-control input-circle"
                                             >
+                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
@@ -281,6 +292,7 @@
                                             ng-change="obj.helpers.makeObj('Класс автомобиля')"
                                             class="form-control input-circle"
                                             >
+                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
@@ -330,6 +342,7 @@
                                             ng-change="obj.helpers.makeObj('Страна')"
                                             class="form-control input-circle"
                                             >
+                                        <option value=""> любая </option>
                                     </select>
                                 </div>
                             </div>
@@ -342,8 +355,17 @@
                                             ng-options="item.text for item in filter['Обмен'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Обмен')"
                                             class="form-control input-circle"
-                                    >
+                                            >
+                                        <option value=""> любой </option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Доп. информация </label>
+                                <div class="col-md-4">
+                                    {{--<input type="text" class="form-control input-circle" value="{{ $item{'text'} }}" placeholder="Enter text">--}}
+                                    <textarea rows="6" class="form-control input-circle" name="text" placeholder="Введите доп. информацию о товаре">{{ $item['text'] or '' }}</textarea>
                                 </div>
                             </div>
                         </div>
