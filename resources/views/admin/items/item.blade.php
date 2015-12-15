@@ -20,20 +20,20 @@
             <a href="#tab_0" data-toggle="tab"> Основные поля </a>
         </li>
         <li>
-            <a href="#tab_5" data-toggle="tab"> Опции </a>
+            <a href="#tab_4" data-toggle="tab"> Опции </a>
         </li>
         @if(isset($item['id']))
+            {{--<li>--}}
+                {{--<a href="#tab_1" data-toggle="tab"> Данные по авто </a>--}}
+            {{--</li>--}}
             <li>
-                <a href="#tab_1" data-toggle="tab"> Данные по авто </a>
+                <a href="#tab_1" data-toggle="tab"> СЕО данные </a>
             </li>
             <li>
-                <a href="#tab_2" data-toggle="tab"> СЕО данные </a>
+                <a href="#tab_2" data-toggle="tab"> Фото </a>
             </li>
             <li>
-                <a href="#tab_3" data-toggle="tab"> Фото </a>
-            </li>
-            <li>
-                <a href="#tab_4" data-toggle="tab"> Видео </a>
+                <a href="#tab_3" data-toggle="tab"> Видео </a>
             </li>
         @endif
     </ul>
@@ -58,18 +58,9 @@
                         <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 "/>
 
                         <div class="form-body">
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Цена </label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="price" value="{{ $item['price'] or '' }}" placeholder="Введите цену">
-                                    <!-- <span class="help-block"> Title </span> -->
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Тип </label>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <select
                                             ng-model="obj.help.type_auto[0]"
                                             ng-options="item.text for item in filter.type_auto | orderBy:'text':false"
@@ -107,8 +98,112 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Тип кузова </label>
+                                <label class="col-md-3 control-label"> Версия/Модификация </label>
                                 <div class="col-md-4">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['Версия/Модификация']"
+                                            ng-change="obj.helpers.makeObj('Версия/Модификация')"
+                                            class="form-control input-circle"
+                                            placeholder="Введите текст"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> VIN </label>
+                                <div class="col-md-2">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['VIN']"
+                                            ng-change="obj.helpers.makeObj('VIN')"
+                                            class="form-control input-circle"
+                                            placeholder="Введите VIN"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Год выпуска </label>
+                                <div class="col-md-1">
+                                    <select
+                                            ng-model="obj.help['Год выпуска'][0]"
+                                            ng-options="item.text for item in filter['Год выпуска'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Год выпуска')"
+                                            class="form-control input-circle"
+                                    >
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Состояние </label>
+                                <div class="col-md-2">
+                                    <select
+                                            ng-model="obj.help['Состояние'][0]"
+                                            ng-options="item.text for item in filter['Состояние'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Состояние')"
+                                            class="form-control input-circle"
+                                    >
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Цвет </label>
+                                <div class="col-md-2">
+                                    <select
+                                            ng-model="obj.help['Цвет'][0]"
+                                            ng-options="item.text for item in filter['Цвет'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Цвет')"
+                                            class="form-control input-circle"
+                                    >
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Тип двигателя </label>
+                                <div class="col-md-2">
+                                    <select
+                                            ng-model="obj.help['Тип двигателя'][0]"
+                                            ng-options="item.text for item in filter['Тип двигателя'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Тип двигателя')"
+                                            class="form-control input-circle"
+                                    >
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Объем куб. см. </label>
+                                <div class="col-md-2">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['Объем куб. см.']"
+                                            ng-change="obj.helpers.makeObj('Объем куб. см.')"
+                                            class="form-control input-circle"
+                                            placeholder="Введите объем"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Цилиндров </label>
+                                <div class="col-md-2">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['Цилиндров']"
+                                            ng-change="obj.helpers.makeObj('Цилиндров')"
+                                            class="form-control input-circle"
+                                            placeholder="Введите количество"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Тип кузова </label>
+                                <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Тип кузова'][0]"
                                             ng-options="item.text for item in filter['Тип кузова'] | orderBy:'text':false"
@@ -118,9 +213,42 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Количество дверей </label>
+                                <div class="col-md-1">
+                                    <select
+                                            ng-model="obj.help['Количество дверей'][0]"
+                                            ng-options="item.text for item in filter['Количество дверей'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Количество дверей')"
+                                            class="form-control input-circle"
+                                    >
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Пробег </label>
+                                <div class="col-md-2">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['Пробег']"
+                                            ng-change="obj.helpers.makeObj('Пробег')"
+                                            class="form-control input-circle"
+                                            placeholder="Введите пробег"
+                                    >
+                                </div>
+                                <div class="col-md-1">
+                                    <select name="km-or-miles" class="form-control input-circle">
+                                        <option value="км" selected> км </option>
+                                        <option value="мили"> мили </option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Трансмиссия </label>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Трансмиссия'][0]"
                                             ng-options="item.text for item in filter['Трансмиссия'] | orderBy:'text':false"
@@ -130,9 +258,10 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Привод </label>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Привод'][0]"
                                             ng-options="item.text for item in filter['Привод'] | orderBy:'text':false"
@@ -144,32 +273,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Количество дверей </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Количество дверей'][0]"
-                                            ng-options="item.text for item in filter['Количество дверей'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Количество дверей')"
-                                            class="form-control input-circle"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Состояние </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Состояние'][0]"
-                                            ng-options="item.text for item in filter['Состояние'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Состояние')"
-                                            class="form-control input-circle"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="col-md-3 control-label"> Класс автомобиля </label>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Класс автомобиля'][0]"
                                             ng-options="item.text for item in filter['Класс автомобиля'] | orderBy:'text':false"
@@ -179,69 +284,46 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Единица пробега </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Единица пробега'][0]"
-                                            ng-options="item.text for item in filter['Единица пробега'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Единица пробега')"
-                                            class="form-control input-circle"
-                                            >
+                                <label class="col-md-3 control-label"> Цена </label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control input-circle" name="price" value="{{ $item['price'] or '' }}" placeholder="Введите цену">
+                                </div>
+                                <div class="col-md-1">
+                                    <select name="currency" class="form-control input-circle">
+                                        <option value="usd" selected> $ </option>
+                                        <option value="euro"> € </option>
+                                        <option value="byr"> бел. руб. </option>
+                                        <option value="rur"> ₽ </option>
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Год выпуска </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Год выпуска'][0]"
-                                            ng-options="item.text for item in filter['Год выпуска'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Год выпуска')"
+                                <label class="col-md-3 control-label"> Старая цена </label>
+                                <div class="col-md-2">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['Старая цена']"
+                                            ng-change="obj.helpers.makeObj('Старая цена')"
                                             class="form-control input-circle"
-                                            >
+                                            placeholder="Введите старую цену"
+                                    >
+                                </div>
+                                <div class="col-md-1">
+                                    <select name="currency" class="form-control input-circle">
+                                        <option value="usd" selected> $ </option>
+                                        <option value="euro"> € </option>
+                                        <option value="byr"> бел. руб. </option>
+                                        <option value="rur"> ₽ </option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Цвет </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Цвет'][0]"
-                                            ng-options="item.text for item in filter['Цвет'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Цвет')"
-                                            class="form-control input-circle"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Тип двигателя </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Тип двигателя'][0]"
-                                            ng-options="item.text for item in filter['Тип двигателя'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Тип двигателя')"
-                                            class="form-control input-circle"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Обмен </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help['Обмен'][0]"
-                                            ng-options="item.text for item in filter['Обмен'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Обмен')"
-                                            class="form-control input-circle"
-                                            >
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Страна </label>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Страна'][0]"
                                             ng-options="item.text for item in filter['Страна'] | orderBy:'text':false"
@@ -253,14 +335,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> VIN </label>
-                                <div class="col-md-9">
-                                    <input
-                                            type="text"
-                                            ng-model="obj.help['VIN']"
-                                            ng-change="obj.helpers.makeObj('VIN')"
+                                <label class="col-md-3 control-label"> Обмен </label>
+                                <div class="col-md-2">
+                                    <select
+                                            ng-model="obj.help['Обмен'][0]"
+                                            ng-options="item.text for item in filter['Обмен'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Обмен')"
                                             class="form-control input-circle"
-                                            >
+                                    >
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -290,13 +373,13 @@
                     <form id="options" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                         <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
-                        <input type="hidden" name="tab" value="#tab_5" />
+                        <input type="hidden" name="tab" value="#tab_4" />
                         <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 "/>
 
                         <div class="form-body">
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Аудиооборудование </label>
+                                <label class="col-md-3 control-label bold"> Аудиооборудование </label>
                                 <div class="col-md-9">
                                     <label ng-repeat="role in filter['Аудиооборудование'] | orderBy:'-text'" class="col-md-4">
                                         <input type="checkbox" checklist-model="obj.help['Аудиооборудование']" checklist-value="role" checklist-change="obj.helpers.makeObj('Аудиооборудование')"> @{{role.text}}
@@ -304,7 +387,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Интерьер и экстерьер </label>
+                                <label class="col-md-3 control-label bold"> Интерьер и экстерьер </label>
                                 <div class="col-md-9">
                                     <label ng-repeat="role in filter['Интерьер и экстерьер'] | orderBy:'-text'" class="col-md-4">
                                         <input type="checkbox" checklist-model="obj.help['Интерьер и экстерьер']" checklist-value="role" checklist-change="obj.helpers.makeObj('Интерьер и экстерьер')"> @{{role.text}}
@@ -312,7 +395,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Оснащение </label>
+                                <label class="col-md-3 control-label bold"> Оснащение </label>
                                 <div class="col-md-9">
                                     <label ng-repeat="role in filter['Оснащение'] | orderBy:'-text'" class="col-md-4">
                                         <input type="checkbox" checklist-model="obj.help['Оснащение']" checklist-value="role" checklist-change="obj.helpers.makeObj('Оснащение')"> @{{role.text}}
@@ -320,7 +403,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Противоугонная система </label>
+                                <label class="col-md-3 control-label bold"> Противоугонная система </label>
                                 <div class="col-md-9">
                                     <label ng-repeat="role in filter['Противоугонная система'] | orderBy:'-text'" class="col-md-4">
                                         <input type="checkbox" checklist-model="obj.help['Противоугонная система']" checklist-value="role" checklist-change="obj.helpers.makeObj('Противоугонная система')"> @{{role.text}}
@@ -328,7 +411,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Системы безопасности </label>
+                                <label class="col-md-3 control-label bold"> Системы безопасности </label>
                                 <div class="col-md-9">
                                     <label ng-repeat="role in filter['Системы безопасности'] | orderBy:'-text'" class="col-md-4">
                                         <input type="checkbox" checklist-model="obj.help['Системы безопасности']" checklist-value="role" checklist-change="obj.helpers.makeObj('Системы безопасности')"> @{{role.text}}
@@ -336,7 +419,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Электропакет </label>
+                                <label class="col-md-3 control-label bold"> Электропакет </label>
                                 <div class="col-md-9">
                                     <label ng-repeat="role in filter['Электропакет'] | orderBy:'-text'" class="col-md-4">
                                         <input type="checkbox" checklist-model="obj.help['Электропакет']" checklist-value="role" checklist-change="obj.helpers.makeObj('Электропакет')"> @{{role.text}}
@@ -361,59 +444,59 @@
         </div>
         @if(isset($item['id']))
 {{--        @if($item['id'] != '')--}}
-            <div class="tab-pane" id="tab_1">
-                <div class="portlet box green">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-gift"></i> Описание товара
-                        </div>
-                    </div>
-                    <div class="portlet-body form">
-                        <!-- BEGIN FORM-->
-                        <form id="description" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
-                            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                            <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
-                            <input type="hidden" name="tab" value="#tab_1" />
+            {{--<div class="tab-pane" id="tab_1">--}}
+                {{--<div class="portlet box green">--}}
+                    {{--<div class="portlet-title">--}}
+                        {{--<div class="caption">--}}
+                            {{--<i class="fa fa-gift"></i> Описание товара--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="portlet-body form">--}}
+                        {{--<!-- BEGIN FORM-->--}}
+                        {{--<form id="description" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">--}}
+                            {{--<input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />--}}
+                            {{--<input type="hidden" name="id" value="{{ $item['id'] or '' }}" />--}}
+                            {{--<input type="hidden" name="tab" value="#tab_1" />--}}
 
-                            <div class="form-body">
+                            {{--<div class="form-body">--}}
 
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label"> Name </label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control input-circle" name="name" value="{{ $item['name'] or '' }}" placeholder="Enter text">
-                                        <!-- <span class="help-block"> Title </span> -->
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label"> Short_text </label>
-                                    <div class="col-md-4">
+                                {{--<div class="form-group">--}}
+                                    {{--<label class="col-md-3 control-label"> Name </label>--}}
+                                    {{--<div class="col-md-4">--}}
+                                        {{--<input type="text" class="form-control input-circle" name="name" value="{{ $item['name'] or '' }}" placeholder="Enter text">--}}
+                                        {{--<!-- <span class="help-block"> Title </span> -->--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<label class="col-md-3 control-label"> Short_text </label>--}}
+                                    {{--<div class="col-md-4">--}}
                                         {{--<input type="text" class="form-control input-circle" value="{{ $item{'short_text'} }}" placeholder="Enter text">--}}
-                                        <textarea rows="4" class="form-control input-circle" name="short_text" placeholder="Enter text">{{ $item['short_text'] or '' }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label"> Text </label>
-                                    <div class="col-md-4">
+                                        {{--<textarea rows="4" class="form-control input-circle" name="short_text" placeholder="Enter text">{{ $item['short_text'] or '' }}</textarea>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<label class="col-md-3 control-label"> Text </label>--}}
+                                    {{--<div class="col-md-4">--}}
                                         {{--<input type="text" class="form-control input-circle" value="{{ $item{'text'} }}" placeholder="Enter text">--}}
-                                        <textarea rows="6" class="form-control input-circle" name="text" placeholder="Enter text">{{ $item['text'] or '' }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
+                                        {{--<textarea rows="6" class="form-control input-circle" name="text" placeholder="Enter text">{{ $item['text'] or '' }}</textarea>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
-                            <div class="form-actions">
-                                <div class="row">
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button type="submit" class="btn btn-circle green">Сохранить</button>
+                            {{--<div class="form-actions">--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-md-offset-3 col-md-9">--}}
+                                        {{--<button type="submit" class="btn btn-circle green">Сохранить</button>--}}
                                         {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- END FORM-->
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="tab_2">
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</form>--}}
+                        {{--<!-- END FORM-->--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            <div class="tab-pane" id="tab_1">
                 <div class="portlet box green">
                     <div class="portlet-title">
                         <div class="caption">
@@ -474,7 +557,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane" id="tab_3">
+            <div class="tab-pane" id="tab_2">
             <div class="row">
                 <div class="col-md-12">
                     <form id="fileupload" sort="{{ $item->images or ''}}" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?id={{ $item['id'] or '' }}" method="POST" enctype="multipart/form-data">

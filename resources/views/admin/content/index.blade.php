@@ -35,6 +35,7 @@
                     <tr>
                         <th> # </th>
                         <th> Name </th>
+                        <th> Order </th>
                         <th> Created </th>
                         <th> Updated </th>
                         <th>
@@ -52,6 +53,7 @@
                                 <tr>
                                     <td> {{$value['id']}} </td>
                                     <td> {{$value['name']}} </td>
+                                    <td> {{$value['order']}} </td>
                                     <td> {{$value['created_at']}} </td>
                                     <td> {{$value['updated_at']}} </td>
                                     <td>

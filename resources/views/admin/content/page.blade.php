@@ -61,9 +61,9 @@
                                 <div class="col-md-4">
                                     {{--<input type="text" class="form-control input-circle" name="type" value="{{ $page['type'] or '' }}" placeholder="Enter text">--}}
                                     <select name="type" id="" form="content_form" required class="form-control input-circle">
-                                        <option value="menu" {{ $page['type'] == 'menu' ? 'selected' : '' }}>меню</option>
-                                        <option value="news" {{ $page['type'] == 'news' ? 'selected' : '' }}>новости</option>
-                                        <option value="blog" {{ $page['type'] == 'blog' ? 'selected' : '' }}>блог</option>
+                                        <option value="menu" {{ $page['type'] == 'menu' ? 'selected' : '' }}> меню </option>
+                                        <option value="news" {{ $page['type'] == 'news' ? 'selected' : '' }}> новости </option>
+                                        <option value="blog" {{ $page['type'] == 'blog' ? 'selected' : '' }}> блог </option>
                                     </select>
                                 </div>
                             </div>
@@ -82,12 +82,12 @@
                                 </div>
                             </div>
 
-                            {{--<div class="form-group">--}}
-                                {{--<label class="col-md-3 control-label"> Order </label>--}}
-                                {{--<div class="col-md-4">--}}
-                                    {{--<input type="text" class="form-control input-circle" name="order" value="{{ $page['order'] or '' }}" placeholder="Enter text">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Order </label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control input-circle" name="order" value="{{ $page['order'] or '' }}" placeholder="Enter text">
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Short_text </label>

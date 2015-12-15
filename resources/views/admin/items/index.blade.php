@@ -81,17 +81,17 @@
                         <div class="col-md-4">
                             <select
                                     class="form-control input-circle"
-                                    ng-model="obj.help['Привод'][0]"
-                                    ng-options="item.text for item in filter['Привод'] | orderBy:'text':false"
-                                    ng-change="obj.helpers.makeObj('Привод')"
+                                    ng-model="obj.help['Тип двигателя'][0]"
+                                    ng-options="item.text for item in filter['Тип двигателя'] | orderBy:'text':false"
+                                    ng-change="obj.helpers.makeObj('Тип двигателя')"
                                     >
-                                <option value="">Привод</option>
+                                <option value="">Тип двигателя</option>
                             </select>
                         </div>
                     </div>
-                    <div class="row">
-                        <label class="col-md-3 control-label"> Опции </label>
-                        <div class="col-md-9">
+                    {{--<div class="row">--}}
+                        {{--<label class="col-md-3 control-label"> Опции </label>--}}
+                        {{--<div class="col-md-9">--}}
                             {{--<select multiple--}}
                                     {{--ng-model="obj.help['Опции']"--}}
                                     {{--ng-options="item.text for item in filter['Опции'] | orderBy:'text':false"--}}
@@ -99,12 +99,12 @@
                                     {{-->--}}
                             {{--</select>--}}
                             {{--<br>--}}
-                            <label ng-repeat="role in filter['Опции'] | orderBy:'-text'" class="col-md-4">
-                                <input type="checkbox" checklist-model="obj.help['Опции']" checklist-value="role" checklist-change="obj.helpers.makeObj('Опции')"> @{{role.text}}
-                            </label>
-                        </div>
-{{--                        @{{obj.help['Опции']}}--}}
-                    </div>
+                            {{--<label ng-repeat="role in filter['Опции'] | orderBy:'-text'" class="col-md-4">--}}
+                                {{--<input type="checkbox" checklist-model="obj.help['Опции']" checklist-value="role" checklist-change="obj.helpers.makeObj('Опции')"> @{{role.text}}--}}
+                            {{--</label>--}}
+                        {{--</div>--}}
+                        {{--@{{obj.help['Опции']}}--}}
+                    {{--</div>--}}
                 </div>
 
             </div>
