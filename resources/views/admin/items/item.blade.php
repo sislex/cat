@@ -19,10 +19,10 @@
         <li class="active">
             <a href="#tab_0" data-toggle="tab"> Основные поля </a>
         </li>
-        <li>
-            <a href="#tab_4" data-toggle="tab"> Опции </a>
-        </li>
         @if(isset($item['id']))
+            <li>
+                <a href="#tab_4" data-toggle="tab"> Опции </a>
+            </li>
             {{--<li>--}}
                 {{--<a href="#tab_1" data-toggle="tab"> Данные по авто </a>--}}
             {{--</li>--}}
@@ -361,7 +361,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane" id="tab_5">
+        <div class="tab-pane" id="tab_4">
             <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption">
