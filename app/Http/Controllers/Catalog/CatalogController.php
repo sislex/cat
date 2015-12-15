@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Catalog;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Items;
 
 class CatalogController extends Controller
 {
@@ -18,4 +19,20 @@ class CatalogController extends Controller
         return view('catalog/catalog/index');
     }
 
+    public function item($id = 0)
+    {
+        $item = Items::find($id);
+        if ($item['obj']){
+            $obj = json_decode($item['obj'], true);
+            $item['obj'] = $obj;
+
+            if (!isset($obj['images'])){
+                $item->images = [];
+            } else {
+                $item->images = $obj['images'];
+            }
+        }
+
+        return view('catalog/catalog/item', ['item' => $item]);
+    }
 }

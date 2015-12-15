@@ -15,6 +15,7 @@
 
 Route::get('/', 'Catalog\IndexController@index');
 Route::get('catalog/index', 'Catalog\CatalogController@index');
+Route::get('catalog/item/{id?}', 'Catalog\CatalogController@item');
 
 
 //admin module
@@ -74,3 +75,10 @@ Route::get('admin/settings/currencies/show/{id?}', 'Admin\SettingsController@sho
 Route::get('admin/settings/currencies/delete/{id}', 'Admin\SettingsController@deleteCurrency');
 Route::post('admin/settings/currencies/update', 'Admin\SettingsController@updateCurrency');
 Route::post('admin/settings/currencies/default/update', 'Admin\SettingsController@updateDefaultCurrency');
+
+//email
+Route::get('admin/settings/email', 'Admin\SettingsController@email');
+Route::get('admin/settings/email/add', 'Admin\SettingsController@addEmail');
+Route::get('admin/settings/email/show/{id?}', 'Admin\SettingsController@showEmail');
+Route::get('admin/settings/email/delete/{id}', 'Admin\SettingsController@deleteEmail');
+Route::post('admin/settings/email/update', 'Admin\SettingsController@updateEmail');

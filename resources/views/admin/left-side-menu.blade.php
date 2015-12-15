@@ -90,7 +90,7 @@
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="portlet_light.html" class="nav-link ">
+            <a href="{{action('Admin\SettingsController@email')}}" class="nav-link ">
                 <span class="title">
                     Email
                 </span>

@@ -192,7 +192,7 @@
                                             ng-options="item.text for item in obj.help['type_auto'][1].children | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                             >
-                                        <option value="">Модель: неважно</option>
+                                        <option value="">Модель</option>
                                     </select>
                                 </div>
 
@@ -243,16 +243,16 @@
                                 <!-- Result Item -->
                                 <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:'name'">
                                     <div class="result-item-image">
-                                        <a href="vehicle-details.html" class="media-box"><img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt=""></a>
+                                        <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box"><img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt=""></a>
                                         <span class="label label-default vehicle-age">2014</span>
                                         <span class="label label-success premium-listing">Premium Listing</span>
                                         <div class="result-item-view-buttons">
                                             <a href="https://www.youtube.com/watch?v=P5mvnA4BV7Y" data-rel="prettyPhoto"><i class="fa fa-play"></i> View video</a>
-                                            <a href="vehicle-details.html"><i class="fa fa-plus"></i> View details</a>
+                                            <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}"><i class="fa fa-plus"></i> View details</a>
                                         </div>
                                     </div>
                                     <div class="result-item-in">
-                                        <h4 class="result-item-title"><a href="vehicle-details.html">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }}</a></h4>
+                                        <h4 class="result-item-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }}</a></h4>
                                         <div class="result-item-cont">
                                             <div class="result-item-block col1">
                                                 <p>@{{ item.item.short_text }}</p>
@@ -263,7 +263,7 @@
                                                 </div>
                                                 <div class="result-item-action-buttons">
                                                     <a href="#" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Save</a>
-                                                    <a href="vehicle-details.html" class="btn btn-default btn-sm">Enquire</a><br>
+                                                    <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="btn btn-default btn-sm">Enquire</a><br>
                                                 </div>
                                             </div>
                                         </div>

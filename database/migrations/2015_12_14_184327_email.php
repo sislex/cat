@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Currencies extends Migration
+class Email extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class Currencies extends Migration
      */
     public function up()
     {
-        Schema::create('currencies', function(Blueprint $table){
+        Schema::create('email', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
-            $table->float('rate');
-            $table->string('icon');
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class Currencies extends Migration
      */
     public function down()
     {
-        Schema::drop('currencies');
+        Schema::drop('email');
     }
 }
