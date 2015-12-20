@@ -33,7 +33,7 @@
                                     ng-options="item.text for item in filter['type_auto'] | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                     >
-                                <option value="">Тип</option>
+                                <option value="">Тип: любой</option>
                             </select>
                         </div>
                         <div class="col-md-4" ng-show="obj.help.type_auto[0].children">
@@ -43,7 +43,7 @@
                                     ng-options="item.text for item in obj.help['type_auto'][0].children | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                     >
-                                <option value="">Марка</option>
+                                <option value="">Марка: любая</option>
                             </select>
                         </div>
                         <div class="col-md-4" ng-show="obj.help.type_auto[1].children">
@@ -53,7 +53,7 @@
                                     ng-options="item.text for item in obj.help['type_auto'][1].children | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
                                     >
-                                <option value="">Модель</option>
+                                <option value="">Модель: любая</option>
                             </select>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                                     ng-options="item.text for item in filter['Тип кузова'] | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('Тип кузова')"
                                     >
-                                <option value="">Тип кузова</option>
+                                <option value="">Тип кузова: любой</option>
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -75,7 +75,7 @@
                                     ng-options="item.text for item in filter['Трансмиссия'] | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('Трансмиссия')"
                                     >
-                                <option value="">Трансмиссия</option>
+                                <option value="">Трансмиссия: любая</option>
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -85,7 +85,7 @@
                                     ng-options="item.text for item in filter['Тип двигателя'] | orderBy:'text':false"
                                     ng-change="obj.helpers.makeObj('Тип двигателя')"
                                     >
-                                <option value="">Тип двигателя</option>
+                                <option value="">Тип двигателя: любой</option>
                             </select>
                         </div>
                     </div>
