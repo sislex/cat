@@ -260,7 +260,9 @@
                                 <!-- Result Item -->
                                 <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:order">
                                     <div class="result-item-image">
-                                        <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box"><img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt=""></a>
+                                        <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box" ng-show="item.images[0]">
+                                            <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
+                                        </a>
                                         <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
                                         <span class="label label-success premium-listing">Premium Listing</span>
                                         <div class="result-item-view-buttons">
@@ -269,10 +271,10 @@
                                         </div>
                                     </div>
                                     <div class="result-item-in">
-                                        <h4 class="result-item-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }}</a></h4>
+                                        <h4 class="result-item-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h4>
                                         <div class="result-item-cont">
                                             <div class="result-item-block col1">
-                                                <p>@{{ item.item.short_text }}</p>
+                                                <p>@{{ item.item.text }}</p>
                                             </div>
                                             <div class="result-item-block col2">
                                                 <div class="result-item-pricing">
@@ -286,8 +288,13 @@
                                         </div>
                                         <div class="result-item-features">
                                             <ul class="inline">
-                                                <li ng-if="item['Трансмиссия']">@{{ item['Трансмиссия'][0].text}}</li>
+
+                                                <li ng-if="item['Объем куб. см.']">@{{ item['Объем куб. см.']}}</li>
+                                                <li ng-if="item['Probeg']">@{{ item['Probeg']}}</li>
+                                                <li ng-if="item['Тип двигателя']">@{{ item['Тип двигателя'][0].text}}</li>
+                                                <li ng-if="item['Количество дверей']">@{{ item['Количество дверей'][0].text}}</li>
                                                 <li ng-if="item['Тип кузова']">@{{ item['Тип кузова'][0].text}}</li>
+                                                <li ng-if="item['Цвет']">@{{ item['Цвет'][0].text}}</li>
                                             </ul>
                                         </div>
                                     </div>

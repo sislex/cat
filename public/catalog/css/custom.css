@@ -1,0 +1,6 @@
+.result-item-block.col1 p{
+    height: 125px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /*white-space: nowrap;*/
+}
