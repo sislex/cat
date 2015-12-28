@@ -59,7 +59,7 @@
 
                         <div class="form-body">
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Тип </label>
+                                <label class="col-md-3 control-label"> Тип * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help.type_auto[0]"
@@ -73,7 +73,7 @@
                             </div>
 
                             <div class="form-group" ng-show="obj.help.type_auto[0].children">
-                                <label class="col-md-3 control-label"> Марка </label>
+                                <label class="col-md-3 control-label"> Марка * </label>
                                 <div class="col-md-4">
                                     <select
                                             ng-model="obj.help.type_auto[1]"
@@ -87,7 +87,7 @@
                             </div>
 
                             <div class="form-group" ng-show="obj.help.type_auto[1].children">
-                                <label class="col-md-3 control-label"> Модель </label>
+                                <label class="col-md-3 control-label"> Модель * </label>
                                 <div class="col-md-4">
                                     <select
                                             ng-model="obj.help.type_auto[2]"
@@ -127,7 +127,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Год выпуска </label>
+                                <label class="col-md-3 control-label"> Год выпуска * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['God_vypuska'][0]"
@@ -141,7 +141,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Состояние </label>
+                                <label class="col-md-3 control-label"> Состояние * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Состояние'][0]"
@@ -155,7 +155,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Цвет </label>
+                                <label class="col-md-3 control-label"> Цвет * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Цвет'][0]"
@@ -169,7 +169,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Тип двигателя </label>
+                                <label class="col-md-3 control-label"> Тип двигателя * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Тип двигателя'][0]"
@@ -183,7 +183,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Объем куб. см. </label>
+                                <label class="col-md-3 control-label"> Объем куб. см. * </label>
                                 <div class="col-md-2">
                                     <input
                                         type="text"
@@ -196,7 +196,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Цилиндров </label>
+                                <label class="col-md-3 control-label"> Количество цилиндров * </label>
                                 <div class="col-md-2">
                                     <input
                                         type="text"
@@ -209,7 +209,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Тип кузова </label>
+                                <label class="col-md-3 control-label"> Тип кузова * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Тип кузова'][0]"
@@ -237,7 +237,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Пробег </label>
+                                <label class="col-md-3 control-label"> Пробег * </label>
                                 <div class="col-md-2">
                                     <input
                                             type="text"
@@ -256,7 +256,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Трансмиссия </label>
+                                <label class="col-md-3 control-label"> Трансмиссия * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Трансмиссия'][0]"
@@ -270,7 +270,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Привод </label>
+                                <label class="col-md-3 control-label"> Привод * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Привод'][0]"
@@ -284,7 +284,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Класс автомобиля </label>
+                                <label class="col-md-3 control-label"> Класс автомобиля * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Класс автомобиля'][0]"
@@ -298,7 +298,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Цена </label>
+                                <label class="col-md-3 control-label"> Цена * </label>
                                 <div class="col-md-2">
                                     <input type="text" class="form-control input-circle" name="price" value="{{ $item['price'] or '' }}" placeholder="Введите цену">
                                 </div>
@@ -308,6 +308,20 @@
                                         <option value="euro"> € </option>
                                         <option value="byr"> бел. руб. </option>
                                         <option value="rur"> ₽ </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Обмен * </label>
+                                <div class="col-md-2">
+                                    <select
+                                            ng-model="obj.help['Обмен'][0]"
+                                            ng-options="item.text for item in filter['Обмен'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Обмен')"
+                                            class="form-control input-circle"
+                                    >
+                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
@@ -334,29 +348,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Страна </label>
+                                <label class="col-md-3 control-label"> Страна * </label>
                                 <div class="col-md-2">
                                     <select
                                             ng-model="obj.help['Страна'][0]"
                                             ng-options="item.text for item in filter['Страна'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Страна')"
                                             class="form-control input-circle"
-                                            >
+                                    >
                                         <option value=""> любая </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Обмен </label>
-                                <div class="col-md-2">
-                                    <select
-                                            ng-model="obj.help['Обмен'][0]"
-                                            ng-options="item.text for item in filter['Обмен'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Обмен')"
-                                            class="form-control input-circle"
-                                            >
-                                        <option value=""> любой </option>
                                     </select>
                                 </div>
                             </div>
