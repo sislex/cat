@@ -4,7 +4,7 @@
 <!-- Start Page header -->
 <div class="page-header parallax" style="background-image:url(http://placehold.it/1200x250&amp;text=IMAGE+PLACEHOLDER);">
     <div class="container">
-        <h1 class="page-title">Информация о товаре</h1>
+        {{--<h1 class="page-title">Информация о товаре</h1>--}}
     </div>
 </div>
 <!-- Utiity Bar -->
@@ -41,19 +41,19 @@
             <!-- Vehicle Details -->
             <article class="single-vehicle-details">
                 <div class="single-vehicle-title">
-                    <span class="badge-premium-listing">Premium listing</span>
-                    <h2 class="post-title">
+                    <span class="badge-premium-listing">№{{$item['id']}} добавлено: {{$item['created_at']}}</span>
+                    <h1 class="post-title">
                         {{$item['obj']['type_auto'][0]['children'][0]['text']}}
                         {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}}
-                    </h2>
+                    </h1>
                 </div>
                 <div class="single-listing-actions">
                     <div class="btn-group pull-right" role="group">
-                        <a href="#" class="btn btn-default" title="Save this car"><i class="fa fa-star-o"></i> <span>Save this car</span></a>
-                        <a href="#" data-toggle="modal" data-target="#infoModal" class="btn btn-default" title="Request more info"><i class="fa fa-info"></i> <span>Request more info</span></a>
-                        <a href="#" data-toggle="modal" data-target="#testdriveModal" class="btn btn-default" title="Book a test drive"><i class="fa fa-calendar"></i> <span>Book a test drive</span></a>
-                        <a href="#" data-toggle="modal" data-target="#offerModal" class="btn btn-default" title="Make an offer"><i class="fa fa-dollar"></i> <span>Make an offer</span></a>
-                        <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Send to a friend"><i class="fa fa-send"></i> <span>Send to a friend</span></a>
+                        <a href="#" class="btn btn-default" title="Save this car"><i class="fa fa-star-o"></i> <span>Добавить в избранное</span></a>
+                        <a href="#" data-toggle="modal" data-target="#infoModal" class="btn btn-default" title="Request more info"><i class="fa fa-info"></i> <span>Запросить дополнительную информацию</span></a>
+                        <a href="#" data-toggle="modal" data-target="#testdriveModal" class="btn btn-default" title="Book a test drive"><i class="fa fa-calendar"></i> <span>Записаться на тест драйв</span></a>
+                        <a href="#" data-toggle="modal" data-target="#offerModal" class="btn btn-default" title="Make an offer"><i class="fa fa-dollar"></i> <span>Предложить свою цену</span></a>
+                        <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Send to a friend"><i class="fa fa-send"></i> <span>Поделиться</span></a>
                         <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Print"><i class="fa fa-print"></i> <span>Print</span></a>
                     </div>
                     <div class="btn btn-info price">${{$item['price']}}</div>
@@ -80,18 +80,17 @@
                     <div class="col-md-4">
                         <div class="sidebar-widget widget">
                             <ul class="list-group">
-                                <li class="list-group-item"> <span class="badge">Year</span> 2014</li>
-                                <li class="list-group-item"> <span class="badge">Make</span> Nissan</li>
-                                <li class="list-group-item"> <span class="badge">Model</span> Terrano</li>
-                                <li class="list-group-item"> <span class="badge">Body style</span> SUV</li>
-                                <li class="list-group-item"> <span class="badge">Mileage</span> 2000km</li>
-                                <li class="list-group-item"> <span class="badge">Transmission</span> 5 Speed automatic</li>
-                                <li class="list-group-item"> <span class="badge">Condition</span> Slightly used</li>
-                                <li class="list-group-item"> <span class="badge">Fuel Economy</span> 6.8 L/100km</li>
-                                <li class="list-group-item"> <span class="badge">Engine Size</span> 1390 cc</li>
-                                <li class="list-group-item"> <span class="badge">Cylinders</span> 4</li>
-                                <li class="list-group-item"> <span class="badge">Power</span> 168 kW</li>
-                                <li class="list-group-item"> <span class="badge">Fuel type</span> Diesel</li>
+                                <li class="list-group-item"> <span class="badge">Год</span> 2014</li>
+                                <li class="list-group-item"> <span class="badge">Марка</span> Nissan</li>
+                                <li class="list-group-item"> <span class="badge">Модель</span> Terrano</li>
+                                <li class="list-group-item"> <span class="badge">Кузов</span> SUV</li>
+                                <li class="list-group-item"> <span class="badge">Пробег</span> 2000km</li>
+                                <li class="list-group-item"> <span class="badge">Тип трансмиссии</span> 5 Speed automatic</li>
+                                <li class="list-group-item"> <span class="badge">Состояние</span> Slightly used</li>
+                                <li class="list-group-item"> <span class="badge">Расход</span> 6.8 L/100km</li>
+                                <li class="list-group-item"> <span class="badge">Цилиндры</span> 4</li>
+                                <li class="list-group-item"> <span class="badge">Мощность</span> 168 kW</li>
+                                <li class="list-group-item"> <span class="badge">Двигатель</span> Diesel</li>
                             </ul>
                         </div>
                     </div>
@@ -101,10 +100,10 @@
                     <div class="col-md-8">
                         <div class="tabs vehicle-details-tabs">
                             <ul class="nav nav-tabs">
-                                <li class="active"> <a data-toggle="tab" href="#vehicle-overview">Overview</a></li>
-                                <li> <a data-toggle="tab" href="#vehicle-specs">Specifications</a></li>
-                                <li> <a data-toggle="tab" href="#vehicle-add-features">Additional Features</a></li>
-                                <li> <a data-toggle="tab" href="#vehicle-location">Location</a> </li>
+                                <li class="active"> <a data-toggle="tab" href="#vehicle-overview">Описание</a></li>
+                                <li> <a data-toggle="tab" href="#vehicle-specs">Технические характеристики</a></li>
+                                <li> <a data-toggle="tab" href="#vehicle-add-features">Комплектация</a></li>
+                                <li> <a data-toggle="tab" href="#vehicle-location">Местонахождение</a> </li>
                             </ul>
                             <div class="tab-content">
                                 <div id="vehicle-overview" class="tab-pane fade in active">
@@ -272,7 +271,7 @@
                         <!-- Recently Listed Vehicles -->
                         <section class="listing-block recent-vehicles">
                             <div class="listing-header">
-                                <h3>Related Vehicles</h3>
+                                <h3>Новые поступления</h3>
                             </div>
                             <div class="listing-container">
                                 <div class="carousel-wrapper">
@@ -282,7 +281,7 @@
                                                 <div class="vehicle-block format-standard">
                                                     <a href="#" class="media-box"><img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a>
                                                     <span class="label label-default vehicle-age">2014</span>
-                                                    <span class="label label-success premium-listing">Premium Listing</span>
+                                                    <span class="label label-success premium-listing">Premium </span>
                                                     <h5 class="vehicle-title"><a href="#">Mercedes-benz SL 300</a></h5>
                                                     <span class="vehicle-meta">Mercedes, Grey color, by <abbr class="user-type" title="Listed by an individual user">Individual</abbr></span>
                                                     <a href="#" title="View all Sedans" class="vehicle-body-type"><img src="/catalog/images/body-types/sedan.png" width="30" alt=""></a>
@@ -371,7 +370,7 @@
 
                         <!-- Vehicle Enquiry -->
                         <div class="sidebar-widget widget seller-contact-widget">
-                            <h4 class="widgettitle">Send enquiry</h4>
+                            <h4 class="widgettitle">Заказать обратный звонок</h4>
                             <div class="vehicle-enquiry-in">
                                 <form>
                                     <input type="text" placeholder="Name*" class="form-control" required>
@@ -382,10 +381,7 @@
                                     </div>
                                     <textarea name="comments" class="form-control" placeholder="Your comments"></textarea>
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox1" value="option1"> Subscribe To <strong>AutoStars Newsletter</strong>
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox2" value="option2"> Remember my details
+                                        <input type="checkbox" id="inlineCheckbox2" value="option2"> Подписаться на новости
                                     </label>
                                     <input type="submit" class="btn btn-primary" value="Submit">
                                 </form>
@@ -398,7 +394,7 @@
 
                         <!-- Financing Calculator -->
                         <div class="sidebar-widget widget calculator-widget">
-                            <h4>Loan Estimator</h4>
+                            <h4>Расчитать кредит</h4>
                             <form>
                                 <div class="loan-calculations">
                                     <input type="text" class="form-control" placeholder="Loan amount">
