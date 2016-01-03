@@ -51,7 +51,9 @@
                     <div class="btn-group pull-right" role="group">
                         <a href="#" class="btn btn-default" title="Save this car"><i class="fa fa-star-o"></i> <span>Добавить в избранное</span></a>
                         <a href="#" data-toggle="modal" data-target="#infoModal" class="btn btn-default" title="Request more info"><i class="fa fa-info"></i> <span>Запросить дополнительную информацию</span></a>
+                        <br>
                         <a href="#" data-toggle="modal" data-target="#testdriveModal" class="btn btn-default" title="Book a test drive"><i class="fa fa-calendar"></i> <span>Записаться на тест драйв</span></a>
+
                         <a href="#" data-toggle="modal" data-target="#offerModal" class="btn btn-default" title="Make an offer"><i class="fa fa-dollar"></i> <span>Предложить свою цену</span></a>
                         <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Send to a friend"><i class="fa fa-send"></i> <span>Поделиться</span></a>
                         <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Print"><i class="fa fa-print"></i> <span>Print</span></a>

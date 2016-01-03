@@ -253,7 +253,12 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.obj.obj[parentKey] = [];
                     var children = $scope.obj.obj[parentKey]; //В этот массив будем вставлять объект
 
-                    if(angular.isString($scope.obj.help[parentKey])){
+
+                    if(angular.isNumber($scope.obj.help[parentKey])){
+                        $scope.obj.help[parentKey] = parseInt($scope.obj.help[parentKey]);
+                        $scope.obj.obj[parentKey] = $scope.obj.help[parentKey];
+                    }
+                    else if(angular.isNumber($scope.obj.help[parentKey])){
                         $scope.obj.obj[parentKey] = $scope.obj.help[parentKey];
                     }else{
                         angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель

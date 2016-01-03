@@ -241,17 +241,34 @@
                                 <div class="col-md-2">
                                     <input
                                             type="text"
+                                            ng-if="probegType=='км'"
                                             ng-model="obj.help['Probeg']"
-                                            ng-change="obj.helpers.makeObj('Probeg')"
+                                            ng-change="obj.help['Probeg'] = obj.help['Probeg'] * 1;obj.helpers.makeObj('Probeg'); obj.help['Miles'] = obj.help['Probeg']/1.61"
                                             class="form-control input-circle"
                                             placeholder="Введите пробег"
                                             >
+
+                                    <input
+                                            type="text"
+                                            ng-if="probegType=='мили'"
+                                            ng-model="obj.help['Miles']"
+                                            ng-change="obj.help['Probeg'] = obj.help['Miles'] * 1.61; obj.helpers.makeObj('Probeg');"
+                                            class="form-control input-circle"
+                                            placeholder="Введите пробег"
+                                            >
+
                                 </div>
-                                <div class="col-md-1">
-                                    <select name="km-or-miles" class="form-control input-circle">
-                                        <option value="км" selected> км </option>
-                                        <option value="мили"> мили </option>
+                                <div class="col-md-2">
+                                    <select name="km-or-miles" class="form-control input-circle"
+                                            ng-init="probegType = 'км'"
+                                            ng-model="probegType"
+                                            ng-options="item for item in ['км', 'мили']"
+                                            >
                                     </select>
+
+                                </div>
+                                <div class="col-md-1" ng-if="probegType=='мили'">
+                                    @{{ obj.help['Probeg'] | number }}
                                 </div>
                             </div>
 
@@ -303,12 +320,7 @@
                                     <input type="text" class="form-control input-circle" name="price" value="{{ $item['price'] or '' }}" placeholder="Введите цену">
                                 </div>
                                 <div class="col-md-1">
-                                    <select name="currency" class="form-control input-circle">
-                                        <option value="usd" selected> $ </option>
-                                        <option value="euro"> € </option>
-                                        <option value="byr"> бел. руб. </option>
-                                        <option value="rur"> ₽ </option>
-                                    </select>
+                                    <h4>$</h4>
                                 </div>
                             </div>
 
@@ -338,14 +350,10 @@
                                     >
                                 </div>
                                 <div class="col-md-1">
-                                    <select name="currency" class="form-control input-circle">
-                                        <option value="usd" selected> $ </option>
-                                        <option value="euro"> € </option>
-                                        <option value="byr"> бел. руб. </option>
-                                        <option value="rur"> ₽ </option>
-                                    </select>
+                                    <h4>$</h4>
                                 </div>
                             </div>
+
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Страна * </label>
@@ -353,9 +361,37 @@
                                     <select
                                             ng-model="obj.help['Страна'][0]"
                                             ng-options="item.text for item in filter['Страна'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Страна')"
+                                            ng-change="obj.helpers.makeObj('Страна', 'sublist')"
                                             class="form-control input-circle"
                                     >
+                                        <option value=""> любая </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" ng-show="obj.help['Страна'][0].children">
+                                <label class="col-md-3 control-label"> Город * </label>
+                                <div class="col-md-4">
+                                    <select
+                                            ng-model="obj.help['Страна'][1]"
+                                            ng-options="item.text for item in obj.help['Страна'][0].children | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Страна', 'sublist')"
+                                            class="form-control input-circle"
+                                            >
+                                        <option value=""> любая </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" ng-show="obj.help.type_auto[1].children">
+                                <label class="col-md-3 control-label"> Модель * </label>
+                                <div class="col-md-4">
+                                    <select
+                                            ng-model="obj.help.type_auto[2]"
+                                            ng-options="item.text for item in obj.help.type_auto[1].children | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
+                                            class="form-control input-circle"
+                                            >
                                         <option value=""> любая </option>
                                     </select>
                                 </div>
@@ -541,16 +577,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label"> Keywords </label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control input-circle" name="keywords" value="{{ $item['keywords'] or '' }}" placeholder="Enter text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label class="col-md-3 control-label"> Description </label>
                                     <div class="col-md-4">
                                         {{--<input type="text" class="form-control input-circle" value="{{ $item{'description'} }}" placeholder="Enter text">--}}
                                         <textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $item['description'] or '' }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Keywords </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="keywords" value="{{ $item['keywords'] or '' }}" placeholder="Enter text">
                                     </div>
                                 </div>
                                 <div class="form-group">
