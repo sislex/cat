@@ -64,10 +64,13 @@
                     <div class="col-md-8">
                         <div class="single-listing-images">
                             <div class="featured-image format-image">
+                                @if(!file_exists('/images/items/'.$item['id'].'/'.$item['images'][0]))
                                 <a href="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" data-rel="prettyPhoto[gallery]" class="media-box">
                                     <img src="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" alt="">
                                 </a>
+                                @endif
                             </div>
+                            @if(isset($item['images']) && is_array($item['images']) && count($item['images']) > 1)
                             <div class="additional-images">
                                 <ul class="owl-carousel" data-columns="4" data-pagination="no" data-arrows="yes" data-single-item="no" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
                                     @foreach($item['images'] as $key => $img)
@@ -77,16 +80,18 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="sidebar-widget widget">
                             <ul class="list-group">
-                                <li class="list-group-item"> <span class="badge">Год</span> 2014</li>
-                                <li class="list-group-item"> <span class="badge">Марка</span> Nissan</li>
-                                <li class="list-group-item"> <span class="badge">Модель</span> Terrano</li>
-                                <li class="list-group-item"> <span class="badge">Кузов</span> SUV</li>
-                                <li class="list-group-item"> <span class="badge">Пробег</span> 2000km</li>
+                                @if($item['obj']['God_vypuska'][0]['text'])<li class="list-group-item"> <span class="badge">Год</span> {{$item['obj']['God_vypuska'][0]['text']}}</li>@endif
+                                @if($item['obj']['God_vypuska'][0]['text'])<li class="list-group-item"> <span class="badge">Марка</span> {{$item['obj']['God_vypuska'][0]['text']}}</li>@endif
+                                @if($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'])<li class="list-group-item"> <span class="badge">Модель</span> {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}}</li>@endif
+                                @if($item['obj']['Тип кузова'][0]['text'])<li class="list-group-item"> <span class="badge">Кузов</span> {{$item['obj']['Тип кузова'][0]['text']}}</li>@endif
+                                @if($item['obj']['Probeg'])<li class="list-group-item"> <span class="badge">Пробег</span> {{$item['obj']['Probeg']}}km</li>@endif
+
                                 <li class="list-group-item"> <span class="badge">Тип трансмиссии</span> 5 Speed automatic</li>
                                 <li class="list-group-item"> <span class="badge">Состояние</span> Slightly used</li>
                                 <li class="list-group-item"> <span class="badge">Расход</span> 6.8 L/100km</li>

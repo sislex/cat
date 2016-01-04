@@ -226,8 +226,11 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
                 },
                 objToModel : function(key, arr, filter, i){//Разбор объекта из базы
-                    if(angular.isString(arr)){
+                    if(angular.isString(arr) || angular.isNumber(arr)){
                         $scope.obj.help[key] = arr;
+
+                        console.log(key);
+
                         return;
                     }
                     if(!i){i = 0;}
@@ -258,7 +261,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                         $scope.obj.help[parentKey] = parseInt($scope.obj.help[parentKey]);
                         $scope.obj.obj[parentKey] = $scope.obj.help[parentKey];
                     }
-                    else if(angular.isNumber($scope.obj.help[parentKey])){
+                    else if(angular.isString($scope.obj.help[parentKey])){
                         $scope.obj.obj[parentKey] = $scope.obj.help[parentKey];
                     }else{
                         angular.forEach($scope.obj.help[parentKey], function(val, key){//Разворачиваем массив для того чтоб собрать модель
