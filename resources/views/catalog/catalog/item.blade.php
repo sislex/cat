@@ -86,18 +86,18 @@
                     <div class="col-md-4">
                         <div class="sidebar-widget widget">
                             <ul class="list-group">
-                                @if($item['obj']['God_vypuska'][0]['text'])<li class="list-group-item"> <span class="badge">Год</span> {{$item['obj']['God_vypuska'][0]['text']}}</li>@endif
-                                @if($item['obj']['God_vypuska'][0]['text'])<li class="list-group-item"> <span class="badge">Марка</span> {{$item['obj']['God_vypuska'][0]['text']}}</li>@endif
-                                @if($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'])<li class="list-group-item"> <span class="badge">Модель</span> {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}}</li>@endif
-                                @if($item['obj']['Тип кузова'][0]['text'])<li class="list-group-item"> <span class="badge">Кузов</span> {{$item['obj']['Тип кузова'][0]['text']}}</li>@endif
-                                @if($item['obj']['Probeg'])<li class="list-group-item"> <span class="badge">Пробег</span> {{$item['obj']['Probeg']}}km</li>@endif
+                                @if(isset($item['obj']['God_vypuska'][0]['text']))<li class="list-group-item"> <span class="badge">Год</span> {{$item['obj']['God_vypuska'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['type_auto'][0]['children'][0]['text']))<li class="list-group-item"> <span class="badge">Марка</span> {{$item['obj']['type_auto'][0]['children'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text']))<li class="list-group-item"> <span class="badge">Модель</span> {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['Тип кузова'][0]['text']))<li class="list-group-item"> <span class="badge">Кузов</span> {{$item['obj']['Тип кузова'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['Probeg']))<li class="list-group-item"> <span class="badge">Пробег</span> {{$item['obj']['Probeg']}}km</li>@endif
+                                @if(isset($item['obj']['Трансмиссия'][0]['text']))<li class="list-group-item"> <span class="badge">Тип трансмиссии</span> {{$item['obj']['Трансмиссия'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['Состояние'][0]['text']))<li class="list-group-item"> <span class="badge">Состояние</span> {{$item['obj']['Состояние'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['Цилиндров']))<li class="list-group-item"> <span class="badge">Цилиндры</span> {{$item['obj']['Цилиндров']}}</li>@endif
+                                @if(isset($item['obj']['Тип двигателя'][0]['text']))<li class="list-group-item"> <span class="badge">Двигатель</span> {{$item['obj']['Тип двигателя'][0]['text']}}</li>@endif
 
-                                <li class="list-group-item"> <span class="badge">Тип трансмиссии</span> 5 Speed automatic</li>
-                                <li class="list-group-item"> <span class="badge">Состояние</span> Slightly used</li>
-                                <li class="list-group-item"> <span class="badge">Расход</span> 6.8 L/100km</li>
-                                <li class="list-group-item"> <span class="badge">Цилиндры</span> 4</li>
-                                <li class="list-group-item"> <span class="badge">Мощность</span> 168 kW</li>
-                                <li class="list-group-item"> <span class="badge">Двигатель</span> Diesel</li>
+                                {{--<li class="list-group-item"> <span class="badge">Расход</span> 6.8 L/100km</li>--}}
+                                {{--<li class="list-group-item"> <span class="badge">Мощность</span> 168 kW</li>--}}
                             </ul>
                         </div>
                     </div>
