@@ -96,11 +96,6 @@
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
 
-                            <button type="button" id="show-alert" class="btn btn-circle yellow">
-                                Alert test
-                            </button>
-
-
                             <button type="submit" id="save-btn" class="btn btn-circle green">
                                 Сохранить
                             </button>
