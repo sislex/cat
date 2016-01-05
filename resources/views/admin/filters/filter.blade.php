@@ -43,13 +43,13 @@
     <div class="tab-content">
         <div class="tab-pane active" id="tab_0">
             <!-- BEGIN FORM-->
-            <form action="{{action('Admin\FiltersController@update')}}" method="post" class="form-horizontal">
+            <form id="filter-form" action="{{action('Admin\FiltersController@update')}}" method="post" class="form-horizontal">
                 <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
                 @if(isset($filter['id']))
                     <input type="hidden" name="id" id="id" value="{{ $filter['id'] or '' }}" />
                 @endif
-                <input type="hidden" name="name" id="name" value="{{ $filter['name'] or '' }}" />
+                {{--<input type="hidden" name="name" id="name" value="{{ $filter['name'] or '' }}" />--}}
                 <input type="hidden" name="tab" id="tab" value="#tab_0" />
                 {{--<input type="hidden" name="tab" value="#tab_1" />--}}
 
@@ -95,7 +95,13 @@
                 <div class="form-actions">
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
-                            <button type="submit" class="btn btn-circle green">
+
+                            <button type="button" id="show-alert" class="btn btn-circle yellow">
+                                Alert test
+                            </button>
+
+
+                            <button type="submit" id="save-btn" class="btn btn-circle green">
                                 Сохранить
                             </button>
 
@@ -146,12 +152,67 @@
     <script src="/admin/assets/pages/scripts/ui-tree.js" type="text/javascript"></script>
     <script type="text/javascript">
         if (App.isAngularJsApp() === false) {
-            var data = {!! $filter['obj'] or '' !!};
+            var data = {!! $filter['obj'] or '""' !!};
             jQuery(document).ready(function() {
                 UITree.init(data);
             });
         }
     </script>
+
+    <script type="text/javascript">
+//        $('#show-alert').bind('click', function(){
+
+        (function(){
+            var form_not_submitted_flag = true;
+
+            $('#filter-form').submit(function(event){
+                if (form_not_submitted_flag) {
+                    event.preventDefault();
+
+                    var filterAlreadyExists = false;
+                    var inputFilterName = $('[name=name]').val();
+                    $.get('{{action('Admin\FiltersController@getJSONNames')}}', {}, function(data){
+                        $.each(data, function(key, value){
+//                            console.log(inputFilterName +' == ' +value.name);
+                            if(inputFilterName.toLowerCase() == value.name.toLowerCase()) {
+                                filterAlreadyExists = true;
+                                return;
+                            }
+                        });
+
+                        if (!filterAlreadyExists) {
+                            form_not_submitted_flag = false;
+                            $('#filter-form').submit();
+                        } else {
+                            alert_type = 'danger';
+                            alert_message = 'Ошибка! Фильтр с таким именем уже существует!';
+                            alert_icon = 'fa fa-remove';
+
+//                            if (!filterAlreadyExists) {
+//                            var alert_type = 'success';
+//                            var alert_message = 'Фильтр добавлен успешно.';
+//                            var alert_icon = 'fa fa-check';
+//                            }
+
+                            App.alert({ container: $('#alert_container').val(),         // alerts parent container
+                                place: 'append',        // append or prepent in container
+                                //                    type: 'success',        // alert's type ('success', 'danger', 'warning' or 'info')
+                                type: alert_type,        // alert's type ('success', 'danger', 'warning' or 'info')
+                                //                message: 'Test alert 111',      // alert's message
+                                message: alert_message,      // alert's message
+                                close: true,        // make alert closable
+                                reset: false,       // close all previouse alerts first
+                                focus: true,        // auto scroll to the alert after shown
+                                closeInSeconds: 3,      // auto close after defined seconds
+                                icon: alert_icon         // put icon class before the message
+                            });
+                        }
+                    }, 'json');
+                }
+            })
+        })();
+    </script>
+
 @endsection
 
 @section('PAGE-LEVEL-STYLES')

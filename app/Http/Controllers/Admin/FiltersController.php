@@ -43,6 +43,9 @@ class FiltersController extends Controller
     protected function update($name = null)
     {
         $input = \Request::all();
+
+        $input['name'] = trim($input['name']);
+
         if ($name != null){
             $filter = Filters::where('name', '=', $name)->get()->first();
             $filter['obj'] = json_encode($input['json']);
@@ -96,5 +99,12 @@ class FiltersController extends Controller
 
             return $arr;
         }
+    }
+
+    protected function getJSONNames()
+    {
+        $filters = Filters::select('name')->get()->toJSON();
+
+        return $filters;
     }
 }

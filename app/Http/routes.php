@@ -32,6 +32,8 @@ Route::post('admin/filter/{name?}', 'Admin\FiltersController@update');
 Route::get('admin/filters/add', 'Admin\FiltersController@add');
 Route::get('admin/filters/delete/{id}', 'Admin\FiltersController@delete');
 
+Route::get('admin/filters/names', 'Admin\FiltersController@getJSONNames');
+
 // Items routes
 Route::get('admin/items', 'Admin\ItemsController@index');
 Route::get('admin/items/add/{type}', 'Admin\ItemsController@add');
