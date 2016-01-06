@@ -383,20 +383,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" ng-show="obj.help.type_auto[1].children">
-                                <label class="col-md-3 control-label"> Модель * </label>
-                                <div class="col-md-4">
-                                    <select
-                                            ng-model="obj.help.type_auto[2]"
-                                            ng-options="item.text for item in obj.help.type_auto[1].children | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('type_auto', 'sublist')"
-                                            class="form-control input-circle"
-                                            >
-                                        <option value=""> любая </option>
-                                    </select>
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Доп. информация </label>
                                 <div class="col-md-4">
