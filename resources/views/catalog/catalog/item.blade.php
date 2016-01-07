@@ -35,7 +35,12 @@
     </div>
 </div>
 <!-- Start Body Content -->
-<div class="main" role="main">
+
+<div class="main" role="main"
+     ng-app="myApp"
+     ng-controller="myCtrl"
+     ng-init="obj.objJson={{json_encode($item['obj'])}}"
+        >
     <div id="content" class="content full">
         <div class="container">
             <!-- Vehicle Details -->
@@ -51,24 +56,28 @@
                     <div class="btn-group pull-right" role="group">
                         <a href="#" class="btn btn-default" title="Save this car"><i class="fa fa-star-o"></i> <span>Добавить в избранное</span></a>
                         <a href="#" data-toggle="modal" data-target="#infoModal" class="btn btn-default" title="Request more info"><i class="fa fa-info"></i> <span>Запросить дополнительную информацию</span></a>
-                        <br>
                         <a href="#" data-toggle="modal" data-target="#testdriveModal" class="btn btn-default" title="Book a test drive"><i class="fa fa-calendar"></i> <span>Записаться на тест драйв</span></a>
-
                         <a href="#" data-toggle="modal" data-target="#offerModal" class="btn btn-default" title="Make an offer"><i class="fa fa-dollar"></i> <span>Предложить свою цену</span></a>
                         <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Send to a friend"><i class="fa fa-send"></i> <span>Поделиться</span></a>
                         <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Print"><i class="fa fa-print"></i> <span>Print</span></a>
                     </div>
                     <div class="btn btn-info price">${{$item['price']}}</div>
                 </div>
+
+
+
                 <div class="row">
                     <div class="col-md-8">
                         <div class="single-listing-images">
                             <div class="featured-image format-image">
-                                @if(!file_exists('/images/items/'.$item['id'].'/'.$item['images'][0]))
-                                <a href="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" data-rel="prettyPhoto[gallery]" class="media-box">
-                                    <img src="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" alt="">
-                                </a>
+                                @if(isset($item['images'][0]))
+                                    @if(!file_exists('/images/items/'.$item['id'].'/'.$item['images'][0]))
+                                    <a href="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" data-rel="prettyPhoto[gallery]" class="media-box">
+                                        <img src="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" alt="">
+                                    </a>
+                                    @endif
                                 @endif
+{{--                                    {{dd($item)}}--}}
                             </div>
                             @if(isset($item['images']) && is_array($item['images']) && count($item['images']) > 1)
                             <div class="additional-images">
@@ -114,8 +123,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div id="vehicle-overview" class="tab-pane fade in active">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
+                                    {{$item['text']}}
                                 </div>
                                 <div id="vehicle-specs" class="tab-pane fade">
                                     <div class="accordion" id="toggleArea">
@@ -259,15 +267,17 @@
                                     <!-- End Toggle -->
                                 </div>
                                 <div id="vehicle-add-features" class="tab-pane fade">
-                                    <ul class="add-features-list">
-                                        <li>6 Speaker Stereo</li>
-                                        <li>Driver &amp; Passenger Airbags</li>
-                                        <li>Antilock Brakes</li>
-                                        <li>Park Assist</li>
-                                        <li>Cruise Control</li>
-                                        <li>Power Steering</li>
-                                        <li>17" Alloy Wheels</li>
-                                    </ul>
+{{--                                    @{{ obj.help }}--}}
+                                   <div
+                                           ng-repeat="key in ['Аудиооборудование', 'Интерьер и экстерьер', 'Оснащение', 'Противоугонная система', 'Системы безопасности', 'Электропакет']"
+                                           >
+                                       <div ng-if="obj.help[key].length">
+                                           <h4>@{{key}}</h4>
+                                           <ul class="add-features-list">
+                                               <li ng-repeat="role in obj.help[key]">@{{role.text}}</li>
+                                           </ul>
+                                       </div>
+                                   </div>
                                 </div>
                                 <div id="vehicle-location" class="tab-pane fade">
                                     <iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure"></iframe>
@@ -448,5 +458,5 @@
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')
-    <script src="/catalog/js/catalog/index.js" type="text/javascript"></script>
+    <script src="/admin/js/items/item.js" type="text/javascript"></script>
 @endsection

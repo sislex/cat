@@ -229,6 +229,8 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     if(angular.isString(arr) || angular.isNumber(arr)){
                         $scope.obj.help[key] = arr;
 
+                        console.log(key);
+
                         return;
                     }
                     if(!i){i = 0;}
