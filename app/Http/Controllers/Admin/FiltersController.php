@@ -28,7 +28,6 @@ class FiltersController extends Controller
         return view('admin/filters/filter');
     }
 
-
     protected function filter($name)
     {
         $filter = Filters::where('name', '=', $name)->get()->first();
@@ -43,7 +42,6 @@ class FiltersController extends Controller
     protected function update($name = null)
     {
         $input = \Request::all();
-
         $input['name'] = trim($input['name']);
 
         if ($name != null){

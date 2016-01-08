@@ -30,7 +30,7 @@
             </a>
         </li>
 
-        @if (isset($filter['name']) and $filter['name'] != '' and $filter['type'] != 'value')
+        @if (isset($filter['name']) && $filter['name'] != '' && $filter['type'] != 'value')
             <li>
                 <a href="#tab_1" data-toggle="tab">
                     Структура
@@ -100,7 +100,7 @@
                                 Сохранить
                             </button>
 
-                            @if (isset($filter) and $filter['name'] != '')
+                            @if (isset($filter) && $filter['name'] != '')
                                 <a href="{{action('Admin\FiltersController@filter', ['name' => $filter['name']])}}" class="btn btn-circle red btn-outline">
                                     Отменить
                                 </a>
@@ -113,7 +113,7 @@
             <!-- END FORM-->
         </div>
 
-        @if(isset($filter['name']) and $filter['name'] != '' and $filter['type'] != 'value')
+        @if(isset($filter['name']) && $filter['name'] != '' && $filter['type'] != 'value')
             <div class="tab-pane" id="tab_1">
                 <div class="portlet-body form">
                     <div class="portlet green box">

@@ -11,8 +11,14 @@
     </a>
 </li>
 <li class="nav-item  ">
+    <a href="{{action('Admin\SpecificationsController@index')}}" class="nav-link nav-toggle">
+        <i class="icon-puzzle"></i>
+        <span class="title">Спецификации</span>
+    </a>
+</li>
+<li class="nav-item  ">
     <a href="javascript:;" class="nav-link nav-toggle">
-        <i class="icon-settings"></i>
+        <i class="icon-wallet"></i>
         <span class="title">Контентные страницы</span>
         <span class="arrow"></span>
     </a>
@@ -70,7 +76,7 @@
 </li>
 <li class="nav-item  ">
     <a href="?p=" class="nav-link nav-toggle">
-        <i class="icon-wallet"></i>
+        <i class="icon-settings"></i>
         <span class="title">Настройки</span>
         <span class="arrow"></span>
     </a>
