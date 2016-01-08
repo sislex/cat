@@ -75,15 +75,6 @@
                                                 </option>
                                             @endforeach
                                         @endif
-                                        {{--<option value="list" @if (isset($specification) && $specification['parent_id'] == 'list') selected @endif>--}}
-                                            {{--list--}}
-                                        {{--</option>--}}
-                                        {{--<option value="sublist" @if (isset($specification) && $specification['parent_id'] == 'sublist') selected @endif>--}}
-                                            {{--sublist--}}
-                                        {{--</option>--}}
-                                        {{--<option value="value" @if (isset($specification) && $specification['parent_id'] == 'value') selected @endif>--}}
-                                            {{--value--}}
-                                        {{--</option>--}}
                                     </select>
                                 </div>
                             </div>
@@ -132,10 +123,14 @@
 
                     var specificationAlreadyExists = false;
                     var inputSpecificationName = $('[name=name]').val();
-                    $.get('{{action('Admin\SpecificationsController@getJSONNames')}}', {}, function(data){
+                    var inputSpecificationParentID = $('[name=parent_id]').val();
+
+                    $.get('{{action('Admin\SpecificationsController@getJSONspecifications')}}', {}, function(data){
                         $.each(data, function(key, value){
-                            console.log(inputSpecificationName +' == ' +value.name);
-                            if(inputSpecificationName.toLowerCase() == value.name.toLowerCase()) {
+//                            console.log(inputSpecificationName +' == ' +value.name);
+//                            alert(inputSpecificationParentID +' == ' +value.parent_id);
+                            if(inputSpecificationName.toLowerCase() == value.name.toLowerCase()
+                                    && inputSpecificationParentID == value.parent_id) {
                                 specificationAlreadyExists = true;
                                 return;
                             }
@@ -146,7 +141,7 @@
                             $('#specification-form').submit();
                         } else {
                             alert_type = 'danger';
-                            alert_message = 'Ошибка! Спецификация с таким именем уже существует!';
+                            alert_message = 'Ошибка! Спецификация с таким именем и ID родительской группы уже существует!';
                             alert_icon = 'fa fa-remove';
 
 //                            if (!specificationAlreadyExists) {

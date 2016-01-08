@@ -31,9 +31,9 @@
                                     <thead>
                                     <tr>
                                         <th> # </th>
-                                        <th> Название </th>
-                                        <th> ИД группы </th>
-                                        <th> Количество характеристик </th>
+                                        <th> Имя </th>
+                                        <th> Является группой? </th>
+                                        <th> ID родительской группы </th>
                                         <th>
                                             <a href="{{action('Admin\SpecificationsController@add')}}" class="btn btn-outline btn-circle btn-sm green">
                                                 <i class="fa fa-plus"></i>
@@ -52,17 +52,16 @@
                                                 <td> {{$value['name']}} </td>
                                                 <td>
                                                     @if ($value['parent_id'] == 0)
-                                                        ---
+                                                        да
                                                     @else
-                                                        {{$value['parent_id']}}
+                                                        нет
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <?php
-                                                    $value['arr'] = json_decode($value['obj'], true);
-                                                    ?>
-                                                    @if(is_array($value['arr']))
-                                                        {{count($value['arr'])}}
+                                                    @if ($value['parent_id'] == 0)
+                                                        ---
+                                                    @else
+                                                        {{$value['parent_id']}}
                                                     @endif
                                                 </td>
                                                 <td>

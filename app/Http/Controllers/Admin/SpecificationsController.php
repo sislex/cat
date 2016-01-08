@@ -50,29 +50,22 @@ class SpecificationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    protected function update($name = null)
+    protected function update()
     {
         $input = \Request::all();
         $input['name'] = trim($input['name']);
 
-        if ($name != null){
-            $specification = Specifications::where('name', '=', $name)->get()->first();
-//            $specification['obj'] = json_encode($input['json']);
-            $specification->save();
-
-            return $specification;
+       if (!isset($input['id'])){
+            $specification = Specifications::create($input);
         } else {
-            if (!isset($input['id'])){
-                $specification = Specifications::create($input);
-            } else {
-                $specification = Specifications::find($input['id']);
-                $specification->name = $input['name'];
-                $specification->parent_id = $input['parent_id'];
-                $specification->save();
-            }
-
-            return \Redirect::action('Admin\SpecificationsController@specification', ['name' => $specification->name]);
+            $specification = Specifications::find($input['id']);
+            $specification->name = $input['name'];
+            $specification->parent_id = $input['parent_id'];
+            $specification->save();
         }
+
+//        return \Redirect::action('Admin\SpecificationsController@specification', ['name' => $specification->name]);
+        return \Redirect::action('Admin\SpecificationsController@index');
     }
 
     /**
@@ -90,9 +83,9 @@ class SpecificationsController extends Controller
     }
 
 
-    protected function getJSONNames()
+    protected function getJSONspecifications()
     {
-        $specifications = Specifications::select('name')->get()->toJSON();
+        $specifications = Specifications::select('name','parent_id')->get()->toJSON();
 
         return $specifications;
     }

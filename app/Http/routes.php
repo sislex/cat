@@ -52,8 +52,8 @@ Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
 Route::get('admin/specifications', 'Admin\SpecificationsController@index');
 Route::get('admin/specification/{name}', 'Admin\SpecificationsController@specification');
 Route::get('admin/specifications/add', 'Admin\SpecificationsController@add');
-Route::get('admin/specifications/names', 'Admin\SpecificationsController@getJSONNames');
-Route::post('admin/specifications/{name?}', 'Admin\SpecificationsController@update');
+Route::get('admin/specifications/json', 'Admin\SpecificationsController@getJSONspecifications');
+Route::post('admin/specifications/update', 'Admin\SpecificationsController@update');
 Route::get('admin/specifications/delete/{id}', 'Admin\SpecificationsController@delete');
 
 
