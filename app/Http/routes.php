@@ -49,6 +49,8 @@ Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
 
 
 // Specifications routes...
+Route::post('specifications/ajax', 'Admin\SpecificationsController@getJSONByName');
+
 Route::get('admin/specifications', 'Admin\SpecificationsController@index');
 Route::get('admin/specification/{name}', 'Admin\SpecificationsController@specification');
 Route::get('admin/specifications/add', 'Admin\SpecificationsController@add');

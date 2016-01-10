@@ -157,42 +157,20 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.filter = data;
                     if($scope.obj.objJson!=''){$scope.obj.obj = angular.fromJson($scope.obj.objJson);}
 
-                    // Описание товара
-                    $scope.obj.helpers.objToModel('type_auto', $scope.obj.obj['type_auto'], $scope.filter['type_auto']);
-                    $scope.obj.helpers.objToModel('Версия/Модификация', $scope.obj.obj['Версия/Модификация'], $scope.filter['Версия/Модификация']);
-                    $scope.obj.helpers.objToModel('VIN', $scope.obj.obj['VIN'], $scope.filter['VIN']);
-                    $scope.obj.helpers.objToModel('God_vypuska', $scope.obj.obj['God_vypuska'], $scope.filter['God_vypuska']);
-                    $scope.obj.helpers.objToModel('Состояние', $scope.obj.obj['Состояние'], $scope.filter['Состояние']);
-                    $scope.obj.helpers.objToModel('Цвет', $scope.obj.obj['Цвет'], $scope.filter['Цвет']);
-                    $scope.obj.helpers.objToModel('Тип двигателя', $scope.obj.obj['Тип двигателя'], $scope.filter['Тип двигателя']);
-                    $scope.obj.helpers.objToModel('Объем куб. см.', $scope.obj.obj['Объем куб. см.'], $scope.filter['Объем куб. см.']);
-                    $scope.obj.helpers.objToModel('Цилиндров', $scope.obj.obj['Цилиндров'], $scope.filter['Цилиндров']);
-                    $scope.obj.helpers.objToModel('Тип кузова', $scope.obj.obj['Тип кузова'], $scope.filter['Тип кузова']);
-                    $scope.obj.helpers.objToModel('Количество дверей', $scope.obj.obj['Количество дверей'], $scope.filter['Количество дверей']);
-                    $scope.obj.helpers.objToModel('Probeg', $scope.obj.obj['Probeg'], $scope.filter['Probeg']);
+                    angular.forEach($scope.obj.obj, function(value, key){
+                        $scope.obj.helpers.objToModel(key, $scope.obj.obj[key], $scope.filter[key]);
+                    });
+                }).
+                error(function(data, status, headers, config) {
+                    console.log('Ошибка при отправке объекта');
+                });
 
-                    // Убрать?
-                    $scope.obj.helpers.objToModel('Единица пробега', $scope.obj.obj['Единица пробега'], $scope.filter['Единица пробега']);
-                    // --
+            $http.post('/specifications/ajax').
+                success(function(data, status, headers, config) {
+                    $scope.specifications = data;
+                    if($scope.obj.specificationsJson!=''){$scope.obj.specifications = angular.fromJson($scope.obj.specificationsJson);}
 
-                    $scope.obj.helpers.objToModel('Трансмиссия', $scope.obj.obj['Трансмиссия'], $scope.filter['Трансмиссия']);
-                    $scope.obj.helpers.objToModel('Привод', $scope.obj.obj['Привод'], $scope.filter['Привод']);
-                    $scope.obj.helpers.objToModel('Класс автомобиля', $scope.obj.obj['Класс автомобиля'], $scope.filter['Класс автомобиля']);
-                    $scope.obj.helpers.objToModel('Цена', $scope.obj.obj['Цена'], $scope.filter['Цена']);
-                    $scope.obj.helpers.objToModel('Старая цена', $scope.obj.obj['Старая цена'], $scope.filter['Старая цена']);
-                    $scope.obj.helpers.objToModel('Страна', $scope.obj.obj['Страна'], $scope.filter['Страна']);
 
-                    // Убрать?
-                    $scope.obj.helpers.objToModel('Обмен', $scope.obj.obj['Обмен'], $scope.filter['Обмен']);
-                    // --
-
-                    // Опции
-                    $scope.obj.helpers.objToModel('Аудиооборудование', $scope.obj.obj['Аудиооборудование'], $scope.filter['Аудиооборудование']);
-                    $scope.obj.helpers.objToModel('Интерьер и экстерьер', $scope.obj.obj['Интерьер и экстерьер'], $scope.filter['Интерьер и экстерьер']);
-                    $scope.obj.helpers.objToModel('Оснащение', $scope.obj.obj['Оснащение'], $scope.filter['Оснащение']);
-                    $scope.obj.helpers.objToModel('Противоугонная система', $scope.obj.obj['Противоугонная система'], $scope.filter['Противоугонная система']);
-                    $scope.obj.helpers.objToModel('Системы безопасности', $scope.obj.obj['Системы безопасности'], $scope.filter['Системы безопасности']);
-                    $scope.obj.helpers.objToModel('Электропакет', $scope.obj.obj['Электропакет'], $scope.filter['Электропакет']);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправке объекта');
@@ -221,6 +199,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 //type_auto : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}],
                 //img : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}]
             },
+            specifications:{},
             helpers : {
                 jsonToObj : function(){
 
@@ -283,6 +262,9 @@ myApp.controller('myCtrl', ['$scope', '$http',
                         return obj;
                     }
                     return;
+                },
+                makeSpecificationsObj : function(obj){
+                    $scope.obj.specificationsJson = angular.toJson($scope.obj.specifications);
                 }
             }
         };

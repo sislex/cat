@@ -23,9 +23,9 @@
             <li>
                 <a href="#tab_4" data-toggle="tab"> Опции </a>
             </li>
-            {{--<li>--}}
-                {{--<a href="#tab_1" data-toggle="tab"> Данные по авто </a>--}}
-            {{--</li>--}}
+            <li>
+                <a href="#tab_5" data-toggle="tab"> Спецификации </a>
+            </li>
             <li>
                 <a href="#tab_1" data-toggle="tab"> СЕО данные </a>
             </li>
@@ -405,11 +405,59 @@
                 </div>
             </div>
         </div>
+
+        <div class="tab-pane" id="tab_5">
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i> Спецификации
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    <form id="options" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                        <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                        <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
+                        <input type="hidden" name="tab" value="#tab_5" />
+                        <input ng-init="obj.specificationsJson='{{ $item['specifications'] or '' }}'" type="text" name="specifications" ng-model="obj.specificationsJson" class="col-md-12 "/>
+
+                        <div class="form-body">
+
+                            <div class="form-group" ng-repeat="specificationGroup in specifications">
+                                <div class="col-sm-3 control-label bold"> @{{ specificationGroup.name }} </div>
+                                <div class="col-sm-6">
+                                    <div ng-repeat="child in specificationGroup.children" class="row">
+                                        <label class="col-sm-6 control-label"> @{{ child }} </label>
+                                        <input type="text" class="col-sm-6" name="keywords" placeholder="Enter text"
+                                               ng-model="obj.specifications[specificationGroup.name][child]"
+                                               ng-change="obj.helpers.makeSpecificationsObj()"
+                                                >
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        {{--                        @{{obj.help['Опции']}}--}}
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn btn-circle green"> Сохранить </button>
+                                    {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+
         <div class="tab-pane" id="tab_4">
             <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-gift"></i> Комплектация товара
+                        <i class="fa fa-gift"></i> Опции
                     </div>
                 </div>
                 <div class="portlet-body form">

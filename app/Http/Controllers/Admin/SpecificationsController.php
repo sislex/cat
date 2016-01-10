@@ -82,6 +82,39 @@ class SpecificationsController extends Controller
         return \Redirect::action('Admin\SpecificationsController@index');
     }
 
+    protected function getJSONByName()
+    {
+        $input = \Request::all();
+        if(isset($input['name'])){
+            return Specifications::where('name', '=', $input['name'])->get()->first()->obj;
+        }
+        else{
+            $specifications = Specifications::get();
+            $arr = [];
+            $i = 0;
+            foreach($specifications as $key => $value){
+                if($value->parent_id == 0){
+                    $arr[$i]['name'] = $value->name;
+                    $arr[$i]['children'] = $this->getChildrenByParentId($specifications, $value->id);
+
+                    $i++;
+                }
+            }
+
+            return $arr;
+        }
+    }
+
+    protected function getChildrenByParentId($arr, $parent_id){
+        $newArr = [];
+        foreach($arr as $key => $value){
+            if($value->parent_id == $parent_id){
+                $newArr[] = $value->name;
+            }
+        }
+
+        return $newArr;
+    }
 
     protected function getJSONspecifications()
     {

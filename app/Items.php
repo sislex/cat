@@ -15,6 +15,7 @@ class Items extends Model
         'text',
         'published',
         'price',
-        'obj'
+        'obj',
+        'specifications'
     ];
 }
