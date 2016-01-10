@@ -63,11 +63,17 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-3 control-label"> Порядковый номер </label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control input-circle" name="ord" value="{{ $specification['ord'] or '' }}" placeholder="Enter text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-3 control-label"> Группа </label>
                                 <div class="col-md-4">
                                     <select name="parent_id" required class="form-control input-circle">
                                         <option value="0"> --- </option>
-
                                         @if(isset($specification_groups))
                                             @foreach($specification_groups as $spec_group)
                                                 <option value="{{ $spec_group['id'] }}" @if (isset($specification) && $spec_group['id'] == $specification['parent_id']) selected @endif>
@@ -124,13 +130,15 @@
                     var specificationAlreadyExists = false;
                     var inputSpecificationName = $('[name=name]').val();
                     var inputSpecificationParentID = $('[name=parent_id]').val();
+                    var specificationID = $('[name=id]').val();
 
                     $.get('{{action('Admin\SpecificationsController@getJSONspecifications')}}', {}, function(data){
                         $.each(data, function(key, value){
 //                            console.log(inputSpecificationName +' == ' +value.name);
 //                            alert(inputSpecificationParentID +' == ' +value.parent_id);
                             if(inputSpecificationName.toLowerCase() == value.name.toLowerCase()
-                                    && inputSpecificationParentID == value.parent_id) {
+                                    && inputSpecificationParentID == value.parent_id
+                                    && specificationID != value.id) {
                                 specificationAlreadyExists = true;
                                 return;
                             }

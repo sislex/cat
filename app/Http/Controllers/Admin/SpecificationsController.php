@@ -34,9 +34,9 @@ class SpecificationsController extends Controller
     protected function specification($name)
     {
         $specification = Specifications::where('name', '=', $name)->get()->first();
-        if ($specification['obj'] == ''){
-            $specification['obj'] = '[]';
-        }
+//        if ($specification['obj'] == ''){
+//            $specification['obj'] = '[]';
+//        }
 
         $specification_groups = Specifications::where('parent_id', '=', 0)->get();
 
@@ -53,13 +53,18 @@ class SpecificationsController extends Controller
     protected function update()
     {
         $input = \Request::all();
-        $input['name'] = trim($input['name']);
 
-       if (!isset($input['id'])){
-            $specification = Specifications::create($input);
+        if(isset($input['name'])) {
+            $input['name'] = trim($input['name']);
+        }
+
+        if (!isset($input['id'])){
+//            dd($input);
+            Specifications::create($input);
         } else {
             $specification = Specifications::find($input['id']);
             $specification->name = $input['name'];
+            $specification->ord = $input['ord'];
             $specification->parent_id = $input['parent_id'];
             $specification->save();
         }
@@ -85,7 +90,7 @@ class SpecificationsController extends Controller
 
     protected function getJSONspecifications()
     {
-        $specifications = Specifications::select('name','parent_id')->get()->toJSON();
+        $specifications = Specifications::select('id','name','parent_id')->get()->toJSON();
 
         return $specifications;
     }

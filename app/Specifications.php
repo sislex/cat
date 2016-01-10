@@ -8,6 +8,7 @@ class Specifications extends Model
 {
     protected $fillable = [
         'name',
-        'parent_id'
+        'parent_id',
+        'ord'
     ];
 }

@@ -32,6 +32,7 @@
                                     <tr>
                                         <th> # </th>
                                         <th> Имя </th>
+                                        <th> Порядковый номер </th>
                                         <th> Является группой? </th>
                                         <th> ID родительской группы </th>
                                         <th>
@@ -50,6 +51,7 @@
                                             <tr>
                                                 <td> {{$value['id']}} </td>
                                                 <td> {{$value['name']}} </td>
+                                                <td> {{$value['ord']}} </td>
                                                 <td>
                                                     @if ($value['parent_id'] == 0)
                                                         да
