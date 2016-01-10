@@ -53,7 +53,7 @@ Route::post('specifications/ajax', 'Admin\SpecificationsController@getJSONByName
 
 Route::get('admin/specifications', 'Admin\SpecificationsController@index');
 Route::get('admin/specification/{name}', 'Admin\SpecificationsController@specification');
-Route::get('admin/specifications/add', 'Admin\SpecificationsController@add');
+Route::get('admin/specifications/add/{id}', 'Admin\SpecificationsController@add');
 Route::get('admin/specifications/json', 'Admin\SpecificationsController@getJSONspecifications');
 Route::post('admin/specifications/update', 'Admin\SpecificationsController@update');
 Route::get('admin/specifications/delete/{id}', 'Admin\SpecificationsController@delete');

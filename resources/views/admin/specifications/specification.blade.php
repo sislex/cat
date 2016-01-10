@@ -12,11 +12,11 @@
             </li>
         </ul>
     </div>
-@endsection
+    @endsection
 
 
-@section('content')
-    <!-- BEGIN PAGE TITLE-->
+    @section('content')
+            <!-- BEGIN PAGE TITLE-->
     <h3 class="page-title">
         Спецификация: {{ $specification['name'] or '' }}
     </h3>
@@ -73,15 +73,30 @@
                                 <label class="col-md-3 control-label"> Группа </label>
                                 <div class="col-md-4">
                                     <select name="parent_id" required class="form-control input-circle">
-                                        <option value="0"> --- </option>
-                                        @if(isset($specification_groups))
-                                            @foreach($specification_groups as $spec_group)
-                                                <option value="{{ $spec_group['id'] }}" @if (isset($specification) && $spec_group['id'] == $specification['parent_id']) selected @endif>
-                                                    {{ $spec_group['name'] }}
-                                                </option>
-                                            @endforeach
+                                        @if($spec_parent_id == 0)
+                                            <option value="0"> --- </option>
+                                        @else
+                                            @if(isset($specification_groups))
+                                                @foreach($specification_groups as $spec_group)
+                                                    <option value="{{ $spec_group['id'] }}" @if ($spec_group['id'] == $spec_parent_id) selected @endif>
+                                                        {{ $spec_group['name'] }}
+                                                    </option>
+                                                @endforeach
+                                            @endif
+
                                         @endif
                                     </select>
+
+                                    {{--<select name="parent_id" required class="form-control input-circle">--}}
+                                    {{--<option value="0"> --- </option>--}}
+                                    {{--@if(isset($specification_groups))--}}
+                                    {{--@foreach($specification_groups as $spec_group)--}}
+                                    {{--<option value="{{ $spec_group['id'] }}" @if (isset($specification) && $spec_group['id'] == $specification['parent_id']) selected @endif>--}}
+                                    {{--{{ $spec_group['name'] }}--}}
+                                    {{--</option>--}}
+                                    {{--@endforeach--}}
+                                    {{--@endif--}}
+                                    {{--</select>--}}
                                 </div>
                             </div>
 

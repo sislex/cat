@@ -7,49 +7,29 @@ use App\Http\Controllers\Controller;
 
 class SpecificationsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $specifications = Specifications::get();
-        return view('admin/specifications/index', ['specifications' => $specifications]);
+        $specifications = Specifications::orderBy('ord','asc')->get();
+        $specification_groups = Specifications::where('parent_id','=',0)->orderBy('ord','asc')->get();
+
+        return view('admin/specifications/index', ['specifications' => $specifications, 'specification_groups' => $specification_groups]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function add()
+    public function add($id)
     {
         $specification_groups = Specifications::where('parent_id', '=', 0)->get();
 
-        return view('admin/specifications/specification', ['specification_groups' => $specification_groups]);
+        return view('admin/specifications/specification', ['specification_groups' => $specification_groups, 'spec_parent_id' => $id]);
     }
-
 
     protected function specification($name)
     {
         $specification = Specifications::where('name', '=', $name)->get()->first();
-//        if ($specification['obj'] == ''){
-//            $specification['obj'] = '[]';
-//        }
-
         $specification_groups = Specifications::where('parent_id', '=', 0)->get();
 
-        return view('admin/specifications/specification', ['specification' => $specification, 'specification_groups' => $specification_groups]);
+        return view('admin/specifications/specification', ['specification' => $specification, 'specification_groups' => $specification_groups, 'spec_parent_id' => $specification['parent_id']]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     protected function update()
     {
         $input = \Request::all();
@@ -73,15 +53,12 @@ class SpecificationsController extends Controller
         return \Redirect::action('Admin\SpecificationsController@index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function delete($id)
     {
         $specification = Specifications::find($id);
+        if($specification['parent_id'] == 0) {
+            Specifications::where('parent_id', '=', $specification['id'])->delete();
+        }
         $specification->delete();
 
         return \Redirect::action('Admin\SpecificationsController@index');
