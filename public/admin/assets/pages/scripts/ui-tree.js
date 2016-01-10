@@ -35,7 +35,7 @@ var UITree = function () {
         self.buttonObj.bind('click', function(){
             var json = self.modelToJson(self.model.data);
             $.post(window.location.href, {'_token':self.token, 'json': json}, function (data) {
-                console.log(data);
+                console.log('Объект сохранен.');
             });
         });
     };

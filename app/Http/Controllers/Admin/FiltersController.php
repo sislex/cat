@@ -42,7 +42,10 @@ class FiltersController extends Controller
     protected function update($name = null)
     {
         $input = \Request::all();
-        $input['name'] = trim($input['name']);
+
+        if(isset($input['name'])) {
+            $input['name'] = trim($input['name']);
+        }
 
         if ($name != null){
             $filter = Filters::where('name', '=', $name)->get()->first();
