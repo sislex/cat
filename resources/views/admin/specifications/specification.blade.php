@@ -4,21 +4,24 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{action('Admin\SpecificationsController@index')}}">
-                    Спецификации
-                </a>
+                Спецификации
                 <i class="fa fa-circle"></i>
-                {{ $specification['name'] or '' }}
+            </li>
+            <li>
+                {{ $specification['name'] or 'Добавление' }}
             </li>
         </ul>
     </div>
     @endsection
 
-
     @section('content')
-            <!-- BEGIN PAGE TITLE-->
+    <!-- BEGIN PAGE TITLE-->
     <h3 class="page-title">
-        Спецификация: {{ $specification['name'] or '' }}
+        @if(isset($specification['name']))
+            Спецификации: редактирование '{{ $specification['name'] }}'
+        @else
+            Спецификации: добавление нового элемента
+        @endif
     </h3>
     <!-- END PAGE TITLE-->
 
