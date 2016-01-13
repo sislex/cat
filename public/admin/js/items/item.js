@@ -264,7 +264,48 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     return;
                 },
                 makeSpecificationsObj : function(obj){
+                    var newObj = {};
+                    //console.log($scope.obj.specifications);
+                    angular.forEach($scope.specifications, function(value, key){
+                        if($scope.obj.helpers.checkSpecificationGroup($scope.obj.specifications, value.name)){
+                            if(!angular.isUndefined(value.children)){
+                                angular.forEach(value.children, function(v, k){
+                                    if($scope.obj.helpers.checkSpecificationGroup($scope.obj.specifications[value.name], v)){
+                                        //console.log($scope.obj.specifications[value.name][v]);
+                                        if(angular.isUndefined(newObj[value.name])){
+                                            newObj[value.name] = {};
+                                        }
+                                        newObj[value.name][v] = $scope.obj.specifications[value.name][v];
+                                    }
+                                });
+                            }
+
+
+                        }
+                    });
+                    $scope.obj.specifications = newObj;
+
                     $scope.obj.specificationsJson = angular.toJson($scope.obj.specifications);
+                },
+                checkSpecificationGroup : function(arr, name, level){
+                    var rez = false;
+                    if(angular.isUndefined(level)){
+                        level = 0;
+                    }
+
+                    angular.forEach(arr, function(value, key){
+                        if(level == 0){
+                            if(key == name){
+                                if(!angular.isUndefined(value) && value!=''){
+                                    rez = true;
+                                    //console.log(value);
+                                }
+                                return;
+                            }
+                        }
+                    });
+
+                    return rez;
                 }
             }
         };
