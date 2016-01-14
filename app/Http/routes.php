@@ -52,7 +52,7 @@ Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
 Route::post('specifications/ajax', 'Admin\SpecificationsController@getJSONByName');
 
 Route::get('admin/specifications', 'Admin\SpecificationsController@index');
-Route::get('admin/specification/{name}', 'Admin\SpecificationsController@specification');
+Route::get('admin/specification/{id}', 'Admin\SpecificationsController@specification');
 Route::get('admin/specifications/add/{id}', 'Admin\SpecificationsController@add');
 Route::get('admin/specifications/json', 'Admin\SpecificationsController@getJSONspecifications');
 Route::post('admin/specifications/update', 'Admin\SpecificationsController@update');

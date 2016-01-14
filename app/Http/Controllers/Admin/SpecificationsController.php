@@ -22,9 +22,9 @@ class SpecificationsController extends Controller
         return view('admin/specifications/specification', ['specification_groups' => $specification_groups, 'spec_parent_id' => $id]);
     }
 
-    protected function specification($name)
+    protected function specification($id)
     {
-        $specification = Specifications::where('name', '=', $name)->get()->first();
+        $specification = Specifications::where('id', '=', $id)->get()->first();
         $specification_groups = Specifications::where('parent_id', '=', 0)->get();
 
         return view('admin/specifications/specification', ['specification' => $specification, 'specification_groups' => $specification_groups, 'spec_parent_id' => $specification['parent_id']]);

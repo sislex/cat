@@ -6,11 +6,12 @@
             <li>
                 Контентные страницы
                 <i class="fa fa-circle"></i>
-                <a href="{{action('Admin\ContentController@index', ['type' => $type])}}" class="nav-link ">
-                    {{ $type == 'menu' ? 'Меню' :
-                        ($type == 'news' ? 'Новости' :
-                            ($type == 'blog' ? 'Блог' : '')) }}
-                </a>
+            </li>
+
+            <li>
+                {{ $type == 'menu' ? 'Меню' :
+                    ($type == 'news' ? 'Новости' :
+                        ($type == 'blog' ? 'Блог' : '')) }}
             </li>
         </ul>
     </div>
@@ -19,10 +20,9 @@
     @section('content')
             <!-- BEGIN PAGE TITLE-->
     <h3 class="page-title">
-        {{ $type == 'menu' ? 'Меню' :
-            ($type == 'news' ? 'Новости' :
-                ($type == 'blog' ? 'Блог' : '')) }}
-        <small>список страниц</small>
+        {{ $type == 'menu' ? 'Меню: список всех элементов' :
+            ($type == 'news' ? 'Новости: список всех новостей' :
+                ($type == 'blog' ? 'Блог: список всех записей' : '')) }}
     </h3>
     <!-- END PAGE TITLE-->
 

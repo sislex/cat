@@ -4,19 +4,48 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{action('Admin\ContentController@index', ['type' => $page['type']])}}" class="nav-link ">
-                    Контентные страницы - {{ $page['type'] == 'menu' ? 'Меню' :
-                                                ($page['type'] == 'news' ? 'Новости' :
-                                                    ($page['type'] == 'blog' ? 'Блог' : '')) }}
-                </a>
+                Контентные страницы
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                {{ $page['type'] == 'menu' ? 'Меню' :
+                    ($page['type'] == 'news' ? 'Новости' :
+                        ($page['type'] == 'blog' ? 'Блог' : '')) }}
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                {{ $page['name'] or 'Добавление'}}
             </li>
         </ul>
     </div>
 @endsection
 
 @section('content')
-    <!-- BEGIN CONTENT BODY -->
+    <!-- BEGIN PAGE TITLE-->
+    <h3 class="page-title">
+        @if($page['type'] == 'menu')
+            @if(isset($page['name']))
+                Меню: редактирование '{{ $page['name'] }}'
+            @else
+                Меню: добавление нового элемента
+            @endif
+        @elseif($page['type'] == 'news')
+            @if(isset($page['name']))
+                Новости: редактирование '{{ $page['name'] }}'
+            @else
+                Новости: добавление новой новости
+            @endif
+                @elseif($page['type'] == 'blog')
+            @if(isset($page['name']))
+                Блог: редактирование '{{ $page['name'] }}'
+            @else
+                Блог: добавление новой записи
+            @endif
+        @endif
+    </h3>
+    <!-- END PAGE TITLE-->
 
+    <!-- BEGIN CONTENT BODY -->
     <!-- BEGIN NAV TAB -->
     <ul class="nav nav-tabs">
         <li class="active">
