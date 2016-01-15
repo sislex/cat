@@ -21,17 +21,11 @@
     </h3>
     <!-- END PAGE TITLE-->
     <!-- END PAGE HEADER-->
+
+    <!-- BEGIN CONTENT BODY -->
     <div class="blog-page">
         <div class="row">
             <div class="col-md-12">
-                <!-- BEGIN ACCORDION PORTLET-->
-                {{--<div class="portlet box yellow">--}}
-                {{--<div class="portlet-title">--}}
-                {{--<div class="caption">--}}
-                {{--<i class="fa fa-gift"></i>--}}
-                {{--Спецификации--}}
-                {{--</div>--}}
-                {{--</div>--}}
                 <div class="portlet-body">
                     <div class="panel-group accordion" id="specifications-panel">
 

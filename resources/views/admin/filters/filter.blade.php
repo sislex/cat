@@ -101,7 +101,7 @@
                             </button>
 
                             @if (isset($filter) && $filter['name'] != '')
-                                <a href="{{action('Admin\FiltersController@filter', ['name' => $filter['name']])}}" class="btn btn-circle red btn-outline">
+                                <a href="{{action('Admin\FiltersController@filter', ['id' => $filter['id']])}}" class="btn btn-circle red btn-outline">
                                     Отменить
                                 </a>
                             @endif
@@ -135,7 +135,7 @@
         @endif
 
     </div>
-
+{{--{{dd($filter)}}--}}
     <!-- END CONTENT BODY -->
 @endsection
 
@@ -147,6 +147,7 @@
     <script src="/admin/assets/pages/scripts/ui-tree.js" type="text/javascript"></script>
     <script type="text/javascript">
         if (App.isAngularJsApp() === false) {
+
             var data = {!! $filter['obj'] or '""' !!};
             jQuery(document).ready(function() {
                 UITree.init(data);
@@ -168,7 +169,6 @@
                     var inputFilterName = $('[name=name]').val();
                     $.get('{{action('Admin\FiltersController@getJSONNames')}}', {}, function(data){
                         $.each(data, function(key, value){
-//                            console.log(inputFilterName +' == ' +value.name);
                             if(inputFilterName.toLowerCase() == value.name.toLowerCase()) {
                                 filterAlreadyExists = true;
                                 return;
