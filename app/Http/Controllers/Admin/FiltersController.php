@@ -28,10 +28,11 @@ class FiltersController extends Controller
         return view('admin/filters/filter');
     }
 
-    protected function filter($name)
+    protected function filter($id)
     {
-        $filter = Filters::where('name', '=', $name)->get()->first();
-        if ($filter['obj'] == ''){
+        $filter = Filters::where('id', '=', $id)->get()->first();
+
+        if (!isset($filter['obj']) || $filter['obj'] == ''){
             $filter['obj'] = '[]';
         }
 
@@ -39,7 +40,7 @@ class FiltersController extends Controller
     }
 
 
-    protected function update($name = null)
+    protected function update($id = null)
     {
         $input = \Request::all();
 
@@ -47,8 +48,8 @@ class FiltersController extends Controller
             $input['name'] = trim($input['name']);
         }
 
-        if ($name != null){
-            $filter = Filters::where('name', '=', $name)->get()->first();
+        if (isset($id)){
+            $filter = Filters::where('id', '=', $id)->get()->first();
             $filter['obj'] = json_encode($input['json']);
             $filter->save();
 
@@ -63,7 +64,7 @@ class FiltersController extends Controller
                 $filter->save();
             }
 
-            return \Redirect::action('Admin\FiltersController@filter', ['name' => $filter->name]);
+            return \Redirect::action('Admin\FiltersController@filter', ['id' => $filter->id]);
         }
     }
 
