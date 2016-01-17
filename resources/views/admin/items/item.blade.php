@@ -428,7 +428,7 @@
                                 <div class="col-sm-6">
                                     <div ng-repeat="child in specificationGroup.children" class="row">
                                         <label class="col-sm-6 control-label"> @{{ child }} </label>
-                                        <input type="text" class="col-sm-6" name="keywords" placeholder="Enter text"
+                                        <input type="text" class="col-sm-6 input-circle" name="keywords" placeholder="Enter text"
                                                ng-model="obj.specifications[specificationGroup.name][child]"
                                                ng-change="obj.helpers.makeSpecificationsObj()"
                                                 >

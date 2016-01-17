@@ -50,18 +50,21 @@
                     <h1 class="post-title">
                         {{$item['obj']['type_auto'][0]['children'][0]['text']}}
                         {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}}
+                        {{$item['obj']['Версия/Модификация']}}
                     </h1>
                 </div>
                 <div class="single-listing-actions">
                     <div class="btn-group pull-right" role="group">
-                        <a href="#" class="btn btn-default" title="Save this car"><i class="fa fa-star-o"></i> <span>Добавить в избранное</span></a>
-                        <a href="#" data-toggle="modal" data-target="#infoModal" class="btn btn-default" title="Request more info"><i class="fa fa-info"></i> <span>Запросить дополнительную информацию</span></a>
-                        <a href="#" data-toggle="modal" data-target="#testdriveModal" class="btn btn-default" title="Book a test drive"><i class="fa fa-calendar"></i> <span>Записаться на тест драйв</span></a>
+                        <a href="#" class="btn btn-default" title="Save this car"><i class="fa fa-star-o"></i> <span>В избранное</span></a>
+                        <a href="#" data-toggle="modal" data-target="#infoModal" class="btn btn-default" title="Request more info"><i class="fa fa-info"></i> <span>Запрос доп. инфо.</span></a>
+                        <a href="#" data-toggle="modal" data-target="#testdriveModal" class="btn btn-default" title="Book a test drive"><i class="fa fa-calendar"></i> <span>Запись на тест драйв</span></a>
                         <a href="#" data-toggle="modal" data-target="#offerModal" class="btn btn-default" title="Make an offer"><i class="fa fa-dollar"></i> <span>Предложить свою цену</span></a>
                         <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Send to a friend"><i class="fa fa-send"></i> <span>Поделиться</span></a>
                         <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Print"><i class="fa fa-print"></i> <span>Print</span></a>
                     </div>
                     <div class="btn btn-info price">${{$item['price']}}</div>
+                    @if(isset($item['obj']['Старая цена']))<div class="btn btn-warning old-price">${{$item['obj']['Старая цена']}}</div>@endif
+
                 </div>
 
 
@@ -96,14 +99,19 @@
                         <div class="sidebar-widget widget">
                             <ul class="list-group">
                                 @if(isset($item['obj']['God_vypuska'][0]['text']))<li class="list-group-item"> <span class="badge">Год</span> {{$item['obj']['God_vypuska'][0]['text']}}</li>@endif
-                                @if(isset($item['obj']['type_auto'][0]['children'][0]['text']))<li class="list-group-item"> <span class="badge">Марка</span> {{$item['obj']['type_auto'][0]['children'][0]['text']}}</li>@endif
-                                @if(isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text']))<li class="list-group-item"> <span class="badge">Модель</span> {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}}</li>@endif
                                 @if(isset($item['obj']['Тип кузова'][0]['text']))<li class="list-group-item"> <span class="badge">Кузов</span> {{$item['obj']['Тип кузова'][0]['text']}}</li>@endif
-                                @if(isset($item['obj']['Probeg']))<li class="list-group-item"> <span class="badge">Пробег</span> {{$item['obj']['Probeg']}}km</li>@endif
+                                @if(isset($item['obj']['Probeg']))<li class="list-group-item"> <span class="badge">Пробег</span> {{$item['obj']['Probeg']}} km</li>@endif
                                 @if(isset($item['obj']['Трансмиссия'][0]['text']))<li class="list-group-item"> <span class="badge">Тип трансмиссии</span> {{$item['obj']['Трансмиссия'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['Привод'][0]['text']))<li class="list-group-item"> <span class="badge">Привод</span> {{$item['obj']['Привод'][0]['text']}}</li>@endif
                                 @if(isset($item['obj']['Состояние'][0]['text']))<li class="list-group-item"> <span class="badge">Состояние</span> {{$item['obj']['Состояние'][0]['text']}}</li>@endif
                                 @if(isset($item['obj']['Цилиндров']))<li class="list-group-item"> <span class="badge">Цилиндры</span> {{$item['obj']['Цилиндров']}}</li>@endif
                                 @if(isset($item['obj']['Тип двигателя'][0]['text']))<li class="list-group-item"> <span class="badge">Двигатель</span> {{$item['obj']['Тип двигателя'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['Объем куб. см.']))<li class="list-group-item"> <span class="badge">Объем куб. см.</span> {{$item['obj']['Объем куб. см.']}}</li>@endif
+                                @if(isset($item['obj']['Цвет']))<li class="list-group-item"> <span class="badge">Цвет</span> {{$item['obj']['Цвет'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['Количество дверей'][0]['text']))<li class="list-group-item"> <span class="badge">Количество дверей</span> {{$item['obj']['Количество дверей'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['VIN']))<li class="list-group-item"> <span class="badge">VIN</span> {{$item['obj']['VIN']}}</li>@endif
+                                @if(isset($item['obj']['Класс автомобиля'][0]['text']))<li class="list-group-item"> <span class="badge">Класс автомобиля</span> {{$item['obj']['Класс автомобиля'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['Обмен'][0]['text']))<li class="list-group-item"> <span class="badge">Обмен</span> {{$item['obj']['Обмен'][0]['text']}}</li>@endif
 
                                 {{--<li class="list-group-item"> <span class="badge">Расход</span> 6.8 L/100km</li>--}}
                                 {{--<li class="list-group-item"> <span class="badge">Мощность</span> 168 kW</li>--}}
@@ -280,7 +288,9 @@
                                    </div>
                                 </div>
                                 <div id="vehicle-location" class="tab-pane fade">
-                                    <iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure"></iframe>
+                                    @if(isset($item['obj']['Страна'][0]['text']))<li class="list-group-item"> <span class="badge">Страна</span> {{$item['obj']['Страна'][0]['text']}}</li>@endif
+                                    @if(isset($item['obj']['Страна'][0]['children'][0]['text']))<li class="list-group-item"> <span class="badge">Город</span> {{$item['obj']['Страна'][0]['children'][0]['text']}}</li>@endif
+                                    <iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#12/53.9134/27.5716"></iframe>
                                 </div>
                             </div>
                         </div>

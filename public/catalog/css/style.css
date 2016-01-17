@@ -3267,7 +3267,7 @@ h1.page-title{
 	font-family: 'Roboto Condensed', sans-serif;
 	letter-spacing:1px;
 	font-weight:700;
-	font-size:12px;
+	font-size:10px;
 	float:right;
 	position:relative;
 	background-color:#5cb85c;
@@ -5671,3 +5671,5 @@ body{
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
 	
 }
+
+.old-price{text-decoration:line-through; font-weight: normal}

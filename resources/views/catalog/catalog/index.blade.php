@@ -289,10 +289,10 @@
                                         <div class="result-item-features">
                                             <ul class="inline">
 
-                                                <li ng-if="item['Объем куб. см.']">@{{ item['Объем куб. см.']}}</li>
-                                                <li ng-if="item['Probeg']">@{{ item['Probeg']}}</li>
+                                                <li ng-if="item['Объем куб. см.']">@{{ item['Объем куб. см.']}} см<sup style="font-size: 8px">3</sup></li>
+                                                <li ng-if="item['Probeg']">@{{ item['Probeg']}} km</li>
                                                 <li ng-if="item['Тип двигателя']">@{{ item['Тип двигателя'][0].text}}</li>
-                                                <li ng-if="item['Количество дверей']">@{{ item['Количество дверей'][0].text}}</li>
+                                                <li ng-if="item['Трансмиссия']">@{{ item['Трансмиссия'][0].text}}</li>
                                                 <li ng-if="item['Тип кузова']">@{{ item['Тип кузова'][0].text}}</li>
                                                 <li ng-if="item['Цвет']">@{{ item['Цвет'][0].text}}</li>
                                             </ul>
