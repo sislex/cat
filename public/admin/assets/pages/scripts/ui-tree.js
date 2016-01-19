@@ -33,9 +33,11 @@ var UITree = function () {
     };
     this.events = function(){
         self.buttonObj.bind('click', function(){
-            var json = self.modelToJson(self.model.data);
+            var json = JSON.stringify(self.modelToJson(self.model.data));
+
             $.post(window.location.href, {'_token':self.token, 'json': json}, function (data) {
-                console.log('Объект сохранен.');
+                //console.log(JSON.stringify(json));
+                //console.log(data);
             });
         });
     };

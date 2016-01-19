@@ -42,10 +42,19 @@ class FiltersController extends Controller
 
     protected function update($id = null)
     {
+//        dd($_POST['json']);
+
+//        $input = \Request::all();
+//        return $input['json'];
+//        return json_decode($input['json'], 1, 10000);
         $input = \Request::all();
 
         if(isset($input['name'])) {
             $input['name'] = trim($input['name']);
+        }
+
+        if(isset($input['json'])) {
+            $input['json'] = json_decode($input['json'], 1, 10000);
         }
 
         if (isset($id)){
