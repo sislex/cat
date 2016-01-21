@@ -4,11 +4,11 @@
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
-                <a href="{{action('Admin\FiltersController@index')}}">
-                    Фильтры
-                </a>
+                Фильтры
                 <i class="fa fa-circle"></i>
-                {{ $filter['name'] or '' }}
+            </li>
+            <li>
+                {{ $filter['name'] or 'Добавление' }}
             </li>
         </ul>
     </div>

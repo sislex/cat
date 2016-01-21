@@ -1,41 +1,55 @@
 <li class="nav-item  ">
     <a href="{{action('Admin\ItemsController@index')}}" class="nav-link nav-toggle">
         <i class="icon-diamond"></i>
-        <span class="title">Каталог транспорта</span>
+        <span class="title">
+            Каталог транспорта
+        </span>
     </a>
 </li>
 <li class="nav-item  ">
     <a href="{{action('Admin\FiltersController@index')}}" class="nav-link nav-toggle">
         <i class="icon-puzzle"></i>
-        <span class="title">Список фильтров</span>
+        <span class="title">
+            Фильтры
+        </span>
     </a>
 </li>
 <li class="nav-item  ">
     <a href="{{action('Admin\SpecificationsController@index')}}" class="nav-link nav-toggle">
         <i class="icon-puzzle"></i>
-        <span class="title">Спецификации</span>
+        <span class="title">
+            Спецификации
+        </span>
     </a>
 </li>
 <li class="nav-item  ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="icon-wallet"></i>
-        <span class="title">Контентные страницы</span>
+        <span class="title">
+            Контентные страницы
+        </span>
         <span class="arrow"></span>
     </a>
     <ul class="sub-menu">
         <li class="nav-item  ">
             <a href="{{action('Admin\ContentController@index', ['type' => 'menu'])}}" class="nav-link ">
-                <span class="title">Меню</span>
+                <span class="title">
+                    Меню
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="{{action('Admin\ContentController@index', ['type' => 'news'])}}" class="nav-link ">
-                <span class="title">Новости</span>
+                <span class="title">
+                    Новости
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="{{action('Admin\ContentController@index', ['type' => 'blog'])}}" class="nav-link ">
-                <span class="title">Блог</span>
+                <span class="title">
+                    Блог
+                </span>
             </a>
         </li>
     </ul>
@@ -43,33 +57,45 @@
 <li class="nav-item  ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="icon-briefcase"></i>
-        <span class="title">Баннеры и слайдеры</span>
+        <span class="title">
+            Баннеры и слайдеры
+        </span>
         <span class="arrow"></span>
     </a>
     <ul class="sub-menu">
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <span class="title">Большой слайдер</span>
+                <span class="title">
+                    Большой слайдер
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <span class="title">Логотип</span>
+                <span class="title">
+                    Логотип
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <span class="title">Лента брендов</span>
+                <span class="title">
+                    Лента брендов
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <span class="title">HTML блок</span>
+                <span class="title">
+                    HTML блок
+                </span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <span class="title">Favicon</span>
+                <span class="title">
+                    Favicon
+                </span>
             </a>
         </li>
     </ul>
@@ -77,7 +103,9 @@
 <li class="nav-item  ">
     <a href="?p=" class="nav-link nav-toggle">
         <i class="icon-settings"></i>
-        <span class="title">Настройки</span>
+        <span class="title">
+            Настройки
+        </span>
         <span class="arrow"></span>
     </a>
     <ul class="sub-menu">

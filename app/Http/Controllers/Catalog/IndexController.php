@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Catalog;
 
+use App\Content;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -15,6 +16,9 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('catalog/index/index');
+        $Menu = new Content();
+        $menu = $Menu->getMenuElements();
+
+        return view('catalog/index/index', ['menu' => $menu]);
     }
 }

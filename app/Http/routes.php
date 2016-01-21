@@ -20,7 +20,7 @@ Route::get('/', 'Catalog\IndexController@index');
 Route::get('catalog/index', 'Catalog\CatalogController@index');
 Route::get('catalog/item/{id?}', 'Catalog\CatalogController@item');
 
-
+Route::get('catalog/content/{pseudo_url}','Catalog\CatalogController@content');
 
 // Admin module //
 
@@ -47,17 +47,14 @@ Route::post('admin/items/update', 'Admin\ItemsController@update');
 Route::post('admin/get/items', 'Admin\ItemsController@getItemsObj');
 Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
 
-
 // Specifications routes...
 Route::post('specifications/ajax', 'Admin\SpecificationsController@getJSONByName');
-
 Route::get('admin/specifications', 'Admin\SpecificationsController@index');
 Route::get('admin/specification/{id}', 'Admin\SpecificationsController@specification');
 Route::get('admin/specifications/add/{id}', 'Admin\SpecificationsController@add');
 Route::get('admin/specifications/json', 'Admin\SpecificationsController@getJSONspecifications');
 Route::post('admin/specifications/update', 'Admin\SpecificationsController@update');
 Route::get('admin/specifications/delete/{id}', 'Admin\SpecificationsController@delete');
-
 
 // Content routes...
 Route::get('admin/content/{type}', 'Admin\ContentController@index');

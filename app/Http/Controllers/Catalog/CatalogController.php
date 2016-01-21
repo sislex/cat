@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Catalog;
 
+use App\Content;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -34,5 +35,14 @@ class CatalogController extends Controller
         }
 
         return view('catalog/catalog/item', ['item' => $item]);
+    }
+
+    public function content($pseudo_url){
+        $content = Content::where('pseudo_url','=',$pseudo_url);
+
+        $Menu = new Content();
+        $menu = $Menu->getMenuElements();
+
+        return view('catalog/content/content', ['content' => $content, 'menu' => $menu]);
     }
 }

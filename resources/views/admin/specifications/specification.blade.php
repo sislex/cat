@@ -12,9 +12,9 @@
             </li>
         </ul>
     </div>
-    @endsection
+@endsection
 
-    @section('content')
+@section('content')
     <!-- BEGIN PAGE TITLE-->
     <h3 class="page-title">
         @if(isset($specification['name']))
@@ -134,6 +134,7 @@
 @endsection
 
 @section('PAGE-LEVEL-PLUGINS')
+
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')
@@ -194,7 +195,6 @@
             })
         })();
     </script>
-
 @endsection
 
 @section('PAGE-LEVEL-STYLES')
