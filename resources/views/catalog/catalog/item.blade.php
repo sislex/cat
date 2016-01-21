@@ -133,138 +133,21 @@
                                 <div id="vehicle-overview" class="tab-pane fade in active">
                                     {{$item['text']}}
                                 </div>
-                                <div id="vehicle-specs" class="tab-pane fade">
+                                <div id="vehicle-specs" class="tab-pane fade" ng-init="obj.specificationsJson='{{ $item['specifications'] or '' }}'">
                                     <div class="accordion" id="toggleArea">
-                                        <div class="accordion-group panel">
-                                            <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseOne"> Engine <i class="fa fa-plus-circle"></i> <i class="fa fa-minus-circle"></i> </a> </div>
-                                            <div id="collapseOne" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <table class="table-specifications table table-striped table-hover">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>Engine type</td>
-                                                            <td>SKYACTIV-G 2.5 L DOHC 16-valve 4-cylinder engine with VVT</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Displacement</td>
-                                                            <td>2,488 cc</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Compression ratio</td>
-                                                            <td>13.0:1</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Horsepower SAE net</td>
-                                                            <td>184 @ 5,700 rpm</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Torque SAE net lb. ft.</td>
-                                                            <td>185 @ 3,250 rpm</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Fuel system</td>
-                                                            <td>Direct injection</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Recommended fuel</td>
-                                                            <td>Regular</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Fuel economy city/highway (L/100 km)*<br />Manual<br />Automatic</td>
-                                                            <td>8.1/5.3<br />7.6/5.1</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Curb weight (kg)<br /> Manual<br />Automatic</td>
-                                                            <td>1,442<br />1,465</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                        <div class="accordion-group panel" ng-repeat="specificationGroup in specifications">
+                                            <div class="accordion-heading togglize">
+                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#@{{ $index }}">
+                                                    @{{ specificationGroup.name }} <i class="fa fa-plus-circle"></i> <i class="fa fa-minus-circle"></i>
+                                                </a>
                                             </div>
-                                        </div>
-                                        <div class="accordion-group panel">
-                                            <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseTwo"> Exterior <i class="fa fa-plus-circle"></i> <i class="fa fa-minus-circle"></i> </a> </div>
-                                            <div id="collapseTwo" class="accordion-body collapse">
+                                            <div id="@{{ $index }}" class="accordion-body collapse">
                                                 <div class="accordion-inner">
                                                     <table class="table-specifications table table-striped table-hover">
                                                         <tbody>
-                                                        <tr>
-                                                            <td>Wheelbase/overall length (mm)</td>
-                                                            <td>2,830/4,895</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Overall width (mm)</td>
-                                                            <td>1,840</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Overall height (mm)</td>
-                                                            <td>1,450</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Track (fr/rr) (mm)<br />17" wheels<br />19" wheels</td>
-                                                            <td>1,585/1,575<br />1,595/1,585</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Turning circle, curb-to-curb (m)</td>
-                                                            <td>11.2</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-group panel">
-                                            <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseThird"> Interior <i class="fa fa-plus-circle"></i> <i class="fa fa-minus-circle"></i> </a> </div>
-                                            <div id="collapseThird" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <table class="table-specifications table table-striped table-hover">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>Headroom (fr/rr) (mm)</td>
-                                                            <td>975/942</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Headroom (fr/rr) with moonroof (mm)</td>
-                                                            <td>950/942</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Legroom (fr/rr) (mm)</td>
-                                                            <td>1,073/984</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Shoulder room (fr/rr) (mm)</td>
-                                                            <td>1,450/1,410</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-group panel">
-                                            <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseForth"> Capacities <i class="fa fa-plus-circle"></i> <i class="fa fa-minus-circle"></i> </a> </div>
-                                            <div id="collapseForth" class="accordion-body collapse">
-                                                <div class="accordion-inner">
-                                                    <table class="table-specifications table table-striped table-hover">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>Seating</td>
-                                                            <td>5</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Cargo volume (L)</td>
-                                                            <td>419</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Passenger volume (L)</td>
-                                                            <td>2,824</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Total interior volume (L)</td>
-                                                            <td>3,243</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Fuel tank (L)</td>
-                                                            <td>62</td>
+                                                        <tr ng-repeat="child in specificationGroup.children" ng-if="obj.specifications[specificationGroup.name][child]">
+                                                            <td>@{{ child }}</td>
+                                                            <td>@{{ obj.specifications[specificationGroup.name][child] }}</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
