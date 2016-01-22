@@ -17,7 +17,10 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        return view('catalog/catalog/index');
+        $Menu = new Content();
+        $menu = $Menu->getMenuElements();
+
+        return view('catalog/catalog/index', ['menu' => $menu]);
     }
 
     public function item($id = 0)
