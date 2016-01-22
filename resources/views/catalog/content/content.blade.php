@@ -18,7 +18,7 @@
 
                     <article class="post-content">
 
-                        {{ trim($content['text'], '"') }}
+                        {!! $content['text'] !!}
 
                         <!-- Pagination -->
                         <ul class="pager">

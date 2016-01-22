@@ -48,4 +48,11 @@ class Content extends Model
 
         return $menuArr;
     }
+
+    public static function getTopMenu(){
+        $Menu = new Content();
+        $menu = $Menu->getMenuElements();
+
+        return $menu;
+    }
 }

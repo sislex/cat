@@ -16,9 +16,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $Menu = new Content();
-        $menu = $Menu->getMenuElements();
-
-        return view('catalog/index/index', ['menu' => $menu]);
+        return view('catalog/index/index');
     }
 }

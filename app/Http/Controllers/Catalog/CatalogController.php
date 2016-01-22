@@ -17,10 +17,7 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        $Menu = new Content();
-        $menu = $Menu->getMenuElements();
-
-        return view('catalog/catalog/index', ['menu' => $menu]);
+        return view('catalog/catalog/index');
     }
 
     public function item($id = 0)
@@ -37,18 +34,12 @@ class CatalogController extends Controller
             }
         }
 
-        $Menu = new Content();
-        $menu = $Menu->getMenuElements();
-
-        return view('catalog/catalog/item', ['item' => $item, 'menu' => $menu]);
+        return view('catalog/catalog/item', ['item' => $item]);
     }
 
     public function content($pseudo_url){
         $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
 
-        $Menu = new Content();
-        $menu = $Menu->getMenuElements();
-
-        return view('catalog/content/content', ['content' => $content, 'menu' => $menu]);
+        return view('catalog/content/content', ['content' => $content]);
     }
 }
