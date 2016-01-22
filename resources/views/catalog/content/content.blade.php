@@ -2,7 +2,6 @@
 
 @section('content')
     <!-- Start Body Content -->
-    <div class="main" role="main">
     <div id="content" class="content full">
         <div class="container">
             <div class="row">
@@ -10,25 +9,23 @@
                     <header class="single-post-header clearfix">
                         <div class="post-actions">
                             <div class="post-date">November 27, 2014</div>
-                            <div class="comment-count"><a href="single-post.html"><i class="icon-dialogue-text"></i> 20</a></div>
+                            {{--<div class="comment-count"><a href="single-post.html"><i class="icon-dialogue-text"></i> 20</a></div>--}}
                         </div>
-                        <h2 class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+                        <h2 class="post-title">
+                            {{ $content['title'] }}
+                        </h2>
                     </header>
+
                     <article class="post-content">
-                        <div class="featured-image"> <img src="http://placehold.it/800x250&amp;text=IMAGE+PLACEHOLDER" alt=""> </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Aliquam pellentesque pellentesque turpis, ut bibendum sapien sollicitudin nec. Pellentesque posuere ornare placerat. Suspendisse potenti. Quisque massa tortor, tristique non tristique at, luctus sed massa. Donec libero eros, mollis ac fringilla eu, vestibulum sed lorem. Aenean aliquet tempor purus, sit amet ultricies neque bibendum venenatis. Suspendisse pulvinar massa sed odio semper mattis. Pellentesque vel nunc arcu, id rhoncus magna. Maecenas quis tempus ligula. Nunc ac tortor diam. Phasellus tincidunt rutrum diam, eget elementum lorem sagittis eget.</p>
-                        <h3>Vivamus convallis</h3>
-                        <p>Integer faucibus magna vitae augue suscipit a varius sem scelerisque. Nunc scelerisque tempus nunc in euismod. In sagittis congue sodales. Cras sit amet est nibh. Suspendisse eget ligula in nulla iaculis interdum nec a odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras massa odio, facilisis tincidunt blandit semper, lacinia semper dui. Donec viverra eros quis urna congue facilisis. Vivamus convallis imperdiet porta. Aliquam a nisi risus, vitae faucibus sem.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Aliquam pellentesque pellentesque turpis, ut bibendum sapien sollicitudin nec. Pellentesque posuere ornare placerat. Suspendisse potenti. Quisque massa tortor, tristique non tristique at, luctus sed massa. Donec libero eros, mollis ac fringilla eu, vestibulum sed lorem. </p>
-                        </blockquote>
-                        <div class="post-meta"> <i class="fa fa-tags"></i> <a href="#">Financial</a>, <a href="#">Advice</a>, <a href="#">Recommendations</a>, <a href="#">Trials</a>, <a href="#">Car</a>, <a href="#">Autostars</a> </div>
+
+                        {{ trim($content['text'], '"') }}
+
                         <!-- Pagination -->
                         <ul class="pager">
                             <li class="pull-left"><a href="#">&larr; Prev Post</a></li>
                             <li class="pull-right"><a href="#">Next Post &rarr;</a></li>
                         </ul>
+
                         <!-- About Author -->
                         <section class="about-author">
                             <div class="img-thumbnail"> <img src="http://placehold.it/100x100&amp;text=IMAGE+PLACEHOLDER" alt="avatar"> </div>
@@ -37,6 +34,7 @@
                                 <p>Curabitur nec nulla lectus, non hendrerit lorem. Quisque lorem risus, porttitor eget fringilla non, vehicula sed tortor. Proin enim quam, vulputate at lobortis quis, condimentum at justo. Phasellus nec nisi justo. Ut luctus sagittis nulla at dapibus. Aliquam ullamcorper commodo elit, quis ornare eros consectetur a. Phasellus nec nisi justo. Ut luctus sagittis nulla at dapibus. Aliquam ullamcorper commodo elit, quis ornare eros consectetur a.</p>
                             </div>
                         </section>
+
                     </article>
                     <section class="post-comments" id="comments">
                         <h3><i class="fa fa-comment"></i> Comments (4)</h3>
@@ -188,7 +186,6 @@
             </div>
         </div>
     </div>
-</div>
     <!-- End Body Content -->
 @endsection
 

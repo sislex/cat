@@ -37,11 +37,14 @@ class CatalogController extends Controller
             }
         }
 
-        return view('catalog/catalog/item', ['item' => $item]);
+        $Menu = new Content();
+        $menu = $Menu->getMenuElements();
+
+        return view('catalog/catalog/item', ['item' => $item, 'menu' => $menu]);
     }
 
     public function content($pseudo_url){
-        $content = Content::where('pseudo_url','=',$pseudo_url);
+        $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
 
         $Menu = new Content();
         $menu = $Menu->getMenuElements();
