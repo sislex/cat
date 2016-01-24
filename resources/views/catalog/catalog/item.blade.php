@@ -1,10 +1,14 @@
 @extends('catalog.layout')
 
+@section('title', $item['title'])
+
+
+
 @section('content')
 <!-- Start Page header -->
 <div class="page-header parallax" style="background-image:url(http://placehold.it/1200x250&amp;text=IMAGE+PLACEHOLDER);">
     <div class="container">
-        {{--<h1 class="page-title">Информация о товаре</h1>--}}
+        <h1 class="page-title">{{$item['title']}}</h1>
     </div>
 </div>
 <!-- Utiity Bar -->
@@ -48,9 +52,9 @@
                 <div class="single-vehicle-title">
                     <span class="badge-premium-listing">№{{$item['id']}} добавлено: {{$item['created_at']}}</span>
                     <h1 class="post-title">
-                        {{$item['obj']['type_auto'][0]['children'][0]['text']}}
-                        {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}}
-                        {{$item['obj']['Версия/Модификация']}}
+                        {{$item['obj']['type_auto'][0]['children'][0]['text'] or ''}}
+                        {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text'] or ''}}
+                        {{$item['obj']['Версия/Модификация'] or ''}}
                     </h1>
                 </div>
                 <div class="single-listing-actions">
