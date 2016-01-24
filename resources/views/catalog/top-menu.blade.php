@@ -4,9 +4,7 @@
     </a>
 </li>
 
-{{--*/ $menu = \App\Content::getTopMenu() /*--}}
-
-@foreach($menu as $menu_element)
+@foreach(\App\Content::getTopMenu() as $menu_element)
     <li>
         <a href="{{ action('Catalog\CatalogController@content', ['pseudo_url' =>  $menu_element['pseudo_url']]) }}">
             {{ $menu_element['menu'] }}
