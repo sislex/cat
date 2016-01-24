@@ -201,6 +201,10 @@ myApp.controller('myCtrl', ['$scope', '$http',
             },
             specifications:{},
             helpers : {
+                trigger : function(obj, key){
+                    if(obj[key]){obj[key] = false;}
+                    else{obj[key] = true;}
+                },
                 jsonToObj : function(){
 
                 },

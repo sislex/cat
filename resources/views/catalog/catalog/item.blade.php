@@ -1,14 +1,16 @@
 @extends('catalog.layout')
 
 @section('title', $item['title'])
-
+@section('description', $item['description'])
+@section('keywords', $item['keywords'])
+@section('author', 'Alex Babenya, Alex Rozhnov, Vitaly Losev')
 
 
 @section('content')
 <!-- Start Page header -->
 <div class="page-header parallax" style="background-image:url(http://placehold.it/1200x250&amp;text=IMAGE+PLACEHOLDER);">
     <div class="container">
-        <h1 class="page-title">{{$item['title']}}</h1>
+{{--        <h1 class="page-title">{{$item['title']}}</h1>--}}
     </div>
 </div>
 <!-- Utiity Bar -->
@@ -19,8 +21,8 @@
                 <ol class="breadcrumb">
                     <li><a href="/">Home</a></li>
                     <li class="active">
-                        {{$item['obj']['type_auto'][0]['children'][0]['text']}}
-                        {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}}
+                        {{$item['obj']['type_auto'][0]['children'][0]['text'] or ''}}
+                        {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text'] or ''}}
                     </li>
                 </ol>
             </div>
@@ -140,9 +142,13 @@
                                 <div id="vehicle-specs" class="tab-pane fade" ng-init="obj.specificationsJson='{{ $item['specifications'] or '' }}'">
                                     <div class="accordion" id="toggleArea">
                                         <div class="accordion-group panel" ng-repeat="specificationGroup in specifications">
-                                            <div class="accordion-heading togglize">
+                                            <div class="accordion-heading togglize"
+                                                 ng-init="specificationGroup.minus=false"
+                                                 ng-click="obj.helpers.trigger(specificationGroup, 'minus')">
                                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#@{{ $index }}">
-                                                    @{{ specificationGroup.name }} <i class="fa fa-plus-circle"></i> <i class="fa fa-minus-circle"></i>
+                                                    @{{ specificationGroup.name }}
+                                                    <i class="fa fa-plus-circle"></i>
+                                                    <i ng-if="specificationGroup.minus" style="display: block" class="fa fa-minus-circle"></i>
                                                 </a>
                                             </div>
                                             <div id="@{{ $index }}" class="accordion-body collapse">
