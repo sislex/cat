@@ -141,7 +141,10 @@
                                 </div>
                                 <div id="vehicle-specs" class="tab-pane fade" ng-init="obj.specificationsJson='{{ $item['specifications'] or '' }}'">
                                     <div class="accordion" id="toggleArea">
-                                        <div class="accordion-group panel" ng-repeat="specificationGroup in specifications">
+                                        <div class="accordion-group panel"
+                                             ng-repeat="specificationGroup in specifications"
+                                             ng-if="obj.helpers.specificationsCheck(specificationGroup)"
+                                                >
                                             <div class="accordion-heading togglize"
                                                  ng-init="specificationGroup.minus=false"
                                                  ng-click="obj.helpers.trigger(specificationGroup, 'minus')">

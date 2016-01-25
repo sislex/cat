@@ -205,6 +205,19 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     if(obj[key]){obj[key] = false;}
                     else{obj[key] = true;}
                 },
+                specificationsCheck : function(specificationGroup){
+                    var rez = false;
+                    if(!angular.isUndefined(specificationGroup.children) && (angular.isArray(specificationGroup.children) || angular.isObject(specificationGroup.children))){
+                        angular.forEach(specificationGroup.children, function(child){
+                            if(!angular.isUndefined($scope.obj.specifications[specificationGroup.name]) && $scope.obj.specifications[specificationGroup.name][child]){
+                                rez = true;
+                                return;
+                            }
+                        });
+                    }
+
+                    return rez;
+                },
                 jsonToObj : function(){
 
                 },
