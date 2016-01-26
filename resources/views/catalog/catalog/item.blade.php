@@ -148,10 +148,12 @@
                                             <div class="accordion-heading togglize"
                                                  ng-init="specificationGroup.minus=false"
                                                  ng-click="obj.helpers.trigger(specificationGroup, 'minus')">
-                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#@{{ $index }}">
+                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#@{{ $index }}" href="#@{{ $index }}">
                                                     @{{ specificationGroup.name }}
-                                                    <i class="fa fa-plus-circle"></i>
-                                                    <i ng-if="specificationGroup.minus" style="display: block" class="fa fa-minus-circle"></i>
+                                                    <i data-toggle="collapse" data-parent="#@{{ $index }}" href="#@{{ $index }}"
+                                                        ng-if="!specificationGroup.minus" class="fa fa-plus-circle"></i>
+                                                    <i data-toggle="collapse" data-parent="#@{{ $index }}" href="#@{{ $index }}"
+                                                        ng-if="specificationGroup.minus" style="display: block" class="fa fa-minus-circle"></i>
                                                 </a>
                                             </div>
                                             <div id="@{{ $index }}" class="accordion-body collapse">
