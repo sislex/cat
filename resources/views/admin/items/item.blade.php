@@ -301,12 +301,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label"> Класс автомобиля * </label>
+                                <label class="col-md-3 control-label"> Класс транспорта * </label>
                                 <div class="col-md-2">
                                     <select
-                                            ng-model="obj.help['Класс автомобиля'][0]"
-                                            ng-options="item.text for item in filter['Класс автомобиля'] | orderBy:'text':false"
-                                            ng-change="obj.helpers.makeObj('Класс автомобиля')"
+                                            ng-model="obj.help['Класс транспорта'][0]"
+                                            ng-options="item.text for item in filter['Класс транспорта'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Класс транспорта')"
                                             class="form-control input-circle"
                                             >
                                         <option value=""> любой </option>

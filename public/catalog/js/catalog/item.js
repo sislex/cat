@@ -177,7 +177,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
                     $scope.obj.helpers.objToModel('Трансмиссия', $scope.obj.obj['Трансмиссия'], $scope.filter['Трансмиссия']);
                     $scope.obj.helpers.objToModel('Привод', $scope.obj.obj['Привод'], $scope.filter['Привод']);
-                    $scope.obj.helpers.objToModel('Класс автомобиля', $scope.obj.obj['Класс автомобиля'], $scope.filter['Класс автомобиля']);
+                    $scope.obj.helpers.objToModel('Класс транспорта', $scope.obj.obj['Класс транспорта'], $scope.filter['Класс транспорта']);
                     $scope.obj.helpers.objToModel('Цена', $scope.obj.obj['Цена'], $scope.filter['Цена']);
                     $scope.obj.helpers.objToModel('Старая цена', $scope.obj.obj['Старая цена'], $scope.filter['Старая цена']);
                     $scope.obj.helpers.objToModel('Страна', $scope.obj.obj['Страна'], $scope.filter['Страна']);

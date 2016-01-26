@@ -116,7 +116,7 @@
                                 @if(isset($item['obj']['Цвет']))<li class="list-group-item"> <span class="badge">Цвет</span> {{$item['obj']['Цвет'][0]['text']}}</li>@endif
                                 @if(isset($item['obj']['Количество дверей'][0]['text']))<li class="list-group-item"> <span class="badge">Количество дверей</span> {{$item['obj']['Количество дверей'][0]['text']}}</li>@endif
                                 @if(isset($item['obj']['VIN']))<li class="list-group-item"> <span class="badge">VIN</span> {{$item['obj']['VIN']}}</li>@endif
-                                @if(isset($item['obj']['Класс автомобиля'][0]['text']))<li class="list-group-item"> <span class="badge">Класс автомобиля</span> {{$item['obj']['Класс автомобиля'][0]['text']}}</li>@endif
+                                @if(isset($item['obj']['Класс транспорта'][0]['text']))<li class="list-group-item"> <span class="badge">Класс транспорта</span> {{$item['obj']['Класс транспорта'][0]['text']}}</li>@endif
                                 @if(isset($item['obj']['Обмен'][0]['text']))<li class="list-group-item"> <span class="badge">Обмен</span> {{$item['obj']['Обмен'][0]['text']}}</li>@endif
 
                                 {{--<li class="list-group-item"> <span class="badge">Расход</span> 6.8 L/100km</li>--}}
