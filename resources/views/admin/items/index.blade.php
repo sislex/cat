@@ -133,7 +133,7 @@
                     </tr>
                     </thead>
                     <tbody ng-show="cloneItems">
-                        <tr ng-repeat="item in cloneItems | orderBy:'-item.id'">
+                        <tr ng-repeat="item in cloneItems | orderBy: '-item.id'">
                             <td> @{{ item.item['id'] }} </td>
                             <td><img class="img-rounded" ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt=""> </td>
                             <td> @{{ item.type_auto[0].text }} </td>
