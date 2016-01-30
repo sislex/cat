@@ -62,6 +62,8 @@ class Content extends Model
             if($content_pages->count()){
                 $contentPagesArr = $content_pages->toArray();
                 $contentArrWithImages = $this->addPreviewImages($contentPagesArr);
+            } else {
+                $contentArrWithImages = $content_pages->toArray();
             }
         }
 
