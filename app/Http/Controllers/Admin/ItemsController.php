@@ -27,18 +27,25 @@ class ItemsController extends Controller
 
     public function getItemsObj()
     {
+        $input = \Request::all();
+
+        if(isset($input['check'])){$type = $input['check'];}
+        else{$type = '';}
+
         $items = Items::get()->toArray();
         $arr = [];
 
         foreach($items as $value){
-            if($value['obj']!=''){
-                $obj = json_decode($value['obj'], true);
-                unset($value['obj']);
+            if(($type=='published' && $value['published']) || $type!='published'){
+                if($value['obj']!=''){
+                    $obj = json_decode($value['obj'], true);
+                    unset($value['obj']);
+                }
+                else{$obj = [];}
+                $obj['item'] = $value;
+                $obj['price'] = $value['price'];
+                $arr[] = $obj;
             }
-            else{$obj = [];}
-            $obj['item'] = $value;
-            $obj['price'] = $value['price'];
-            $arr[] = $obj;
         }
 
      return $arr;

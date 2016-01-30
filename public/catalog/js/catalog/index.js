@@ -152,16 +152,15 @@ myApp.controller('myCtrl', ['$scope', '$http',
             $http.post('/filter/ajax').
                 success(function(data, status, headers, config) {
                     $scope.filter = data;
-//                                console.log($scope.obj.obj);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправки объекта');
                 });
-            $http.post('/admin/get/items', {name:'type_auto'}).
+            $http.post('/admin/get/items', {name:'type_auto', check:'published'}).
                 success(function(data, status, headers, config) {
                     $scope.items = data;
                     $scope.cloneItems = angular.copy($scope.items);
-                    console.log($scope.items);
+                    //console.log($scope.items);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправки объекта');
@@ -235,6 +234,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                         var j = 0;
                         var compare = true;
                         angular.forEach(filterObj, function($val, $key){
+                            console.log($val)
                             if(angular.isArray($val)){
                                 var item = value[$key];
                                 if(compare){
