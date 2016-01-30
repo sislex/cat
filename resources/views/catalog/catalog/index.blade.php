@@ -196,6 +196,74 @@
                                     </select>
                                 </div>
 
+                                <div>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <select
+                                                    class="form-control input-circle"
+                                                    ng-model="obj.help['God_vypuska']['min']"
+                                                    ng-options="item for item in [2003, 2004, 2005]"
+                                                    ng-change="obj.helpers.makeObj('God_vypuska', 'value')"
+                                                    placeholder="Цена от"
+                                                    >
+                                                <option value="">Год от:</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group last-child">
+                                            <select
+                                                    class="form-control input-circle"
+                                                    ng-model="obj.help['God_vypuska']['max']"
+                                                    ng-options="item for item in [2003, 2004, 2005]"
+                                                    ng-change="obj.helpers.makeObj('God_vypuska', 'value')"
+                                                    placeholder="Цена до"
+                                                    >
+                                                <option value="">Год до</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <select
+                                                    class="form-control input-circle"
+                                                    ng-model="obj.help['price']['min']"
+                                                    ng-options="item for item in [1000,2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 14000, 16000, 18000, 20000, 25000, 30000, 45000, 50000, 100000]"
+                                                    ng-change="obj.helpers.makeObj('price', 'value')"
+                                                    placeholder="Цена от"
+                                                    >
+                                                <option value="">Цена от:</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group last-child">
+                                            <select
+                                                    class="form-control input-circle"
+                                                    ng-model="obj.help['price']['max']"
+                                                    ng-options="item for item in [1000,2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 14000, 16000, 18000, 20000, 25000, 30000, 45000, 50000, 100000]"
+                                                    ng-change="obj.helpers.makeObj('price', 'value')"
+                                                    placeholder="Цена до"
+                                                    >
+                                                <option value="">До: 200000</option>
+                                            </select>
+                                            {{--<input ng-model="obj.help['price']['max']"--}}
+                                            {{--ng-change="obj.helpers.makeObj('price', 'value')"--}}
+                                            {{--type="text" placeholder="Цена до" class="form-control max" style="width: 100%">--}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-group panel">
+                                    <select
+                                            class="form-control input-circle"
+                                            ng-model="obj.help['Тип двигателя'][0]"
+                                            ng-options="item.text for item in filter['Тип двигателя'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Тип двигателя')"
+                                            >
+                                        <option value="">Тип двигателя: любой</option>
+                                    </select>
+                                </div>
+
                                 <div class="accordion-group panel">
                                     <select
                                             class="form-control input-circle"
@@ -207,36 +275,34 @@
                                     </select>
                                 </div>
 
-                                <div>
-                                    <div class="form-inline">
-                                        <div class="form-group">
-                                            <input ng-model="obj.help['price']['min']"
-                                                   ng-change="obj.helpers.makeObj('price', 'value')"
-                                                   type="text" placeholder="Цена от" class="form-control min" style="width: 100%">
-                                        </div>
-                                        <div class="form-group last-child">
-                                            <input ng-model="obj.help['price']['max']"
-                                                   ng-change="obj.helpers.makeObj('price', 'value')"
-                                                   type="text" placeholder="Цена до" class="form-control max" style="width: 100%">
-                                        </div>
-                                    </div>
+                                <div class="accordion-group panel">
+                                    <select
+                                            class="form-control input-circle"
+                                            ng-model="obj.help['Трансмиссия'][0]"
+                                            ng-options="item.text for item in filter['Трансмиссия'] | orderBy:'text':false"
+                                            ng-change="obj.helpers.makeObj('Трансмиссия')"
+                                            >
+                                        <option value="">Трансмиссия: любой</option>
+                                    </select>
                                 </div>
 
-                                <div class="accordion-group panel">
-                                    <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseTwo">Аудиооборудование<i class="fa fa-angle-down"></i> </a> </div>
-                                    <div id="collapseTwo" class="accordion-body collapse">
-                                        <div class="accordion-inner">
-                                            <ul class="filter-options-list list-group">
-                                                <li ng-repeat="role in filter['Аудиооборудование'] | orderBy:'-text'">
-                                                    <label>
-                                                        <input type="checkbox" checklist-model="obj.help['Аудиооборудование']" checklist-value="role" checklist-change="obj.helpers.makeObj('Аудиооборудование')">
-                                                        @{{role.text}}
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+
+
+                                {{--<div class="accordion-group panel">--}}
+                                    {{--<div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseTwo">Аудиооборудование<i class="fa fa-angle-down"></i> </a> </div>--}}
+                                    {{--<div id="collapseTwo" class="accordion-body collapse">--}}
+                                        {{--<div class="accordion-inner">--}}
+                                            {{--<ul class="filter-options-list list-group">--}}
+                                                {{--<li ng-repeat="role in filter['Аудиооборудование'] | orderBy:'-text'">--}}
+                                                    {{--<label>--}}
+                                                        {{--<input type="checkbox" checklist-model="obj.help['Аудиооборудование']" checklist-value="role" checklist-change="obj.helpers.makeObj('Аудиооборудование')">--}}
+                                                        {{--@{{role.text}}--}}
+                                                    {{--</label>--}}
+                                                {{--</li>--}}
+                                            {{--</ul>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
 
 

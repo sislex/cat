@@ -234,7 +234,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
                         var j = 0;
                         var compare = true;
                         angular.forEach(filterObj, function($val, $key){
-                            console.log($val)
                             if(angular.isArray($val)){
                                 var item = value[$key];
                                 if(compare){
@@ -249,10 +248,17 @@ myApp.controller('myCtrl', ['$scope', '$http',
                                 }
 
                             }else{
-                                if($val['min'] > value[$key]){
+                                var newValue = 0;
+                                if(angular.isObject(value[$key])){
+                                    newValue = value[$key][0]['text'];
+                                }
+                                else{
+                                    newValue = value[$key];
+                                }
+                                if($val['min'] > newValue){
                                     compare = false;
                                 }
-                                if($val['max'] < value[$key]){
+                                if($val['max'] < newValue){
                                     compare = false;
                                 }
                             }
