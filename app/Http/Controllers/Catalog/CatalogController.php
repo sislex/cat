@@ -62,7 +62,7 @@ class CatalogController extends Controller
     }
 
     public function blog_index($id){
-        $blog_pages = Content::where('type','=','blog')->where('parent_id','=',$id)->orderBy('order','asc')->get();
+        $blog_pages = Content::getContent('blog',$id);
 
         return view('catalog/content/blog/index', ['blog_pages' => $blog_pages]);
     }

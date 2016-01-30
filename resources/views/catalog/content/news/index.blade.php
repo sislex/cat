@@ -1,7 +1,8 @@
 @extends('catalog.layout')
 
 @section('content')
-        <!-- Start Body Content -->
+
+<!-- Start Body Content -->
 <div id="content" class="content full">
     <div class="container">
         <ul class="grid-holder col-3 posts-grid">
@@ -28,7 +29,11 @@
                             </h3>
                             <p>
                                 {{ $page['short_text'] }}
-                                <a href="{{ action('Catalog\CatalogController@news', ['pseudo_url' => $page['pseudo_url']]) }}" class="continue-reading">Продолжить <i class="fa fa-long-arrow-right"></i></a></p>
+                                <a href="{{ action('Catalog\CatalogController@news', ['pseudo_url' => $page['pseudo_url']]) }}" class="continue-reading">
+                                    Продолжить
+                                    <i class="fa fa-long-arrow-right"></i>
+                                </a>
+                            </p>
                             <div class="post-meta">Раздел: <a href="#">Financial</a></div>
                         </div>
                     </div>
@@ -50,6 +55,7 @@
     </div>
 </div>
 <!-- End Body Content -->
+
 @endsection
 
 @section('PAGE-LEVEL-PLUGINS')
