@@ -12,7 +12,7 @@
                             {{--<div class="comment-count"><a href="single-post.html"><i class="icon-dialogue-text"></i> 20</a></div>--}}
                         </div>
                         <h2 class="post-title">
-                            {{ $content['title'] }}
+                            {{ $content['name'] }}
                         </h2>
                     </header>
 

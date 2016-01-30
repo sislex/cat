@@ -37,9 +37,33 @@ class CatalogController extends Controller
         return view('catalog/catalog/item', ['item' => $item]);
     }
 
-    public function content($pseudo_url){
+    public function menu($pseudo_url){
         $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
 
-        return view('catalog/content/content', ['content' => $content]);
+        return view('catalog/content/menu', ['content' => $content]);
+    }
+
+    public function news($pseudo_url){
+        $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+
+        return view('catalog/content/news/news', ['content' => $content]);
+    }
+
+    public function blog($pseudo_url){
+        $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+
+        return view('catalog/content/blog/blog', ['content' => $content]);
+    }
+
+    public function news_index($id){
+        $news_pages = Content::getContent('news',$id);
+
+        return view('catalog/content/news/index', ['news_pages' => $news_pages]);
+    }
+
+    public function blog_index($id){
+        $blog_pages = Content::where('type','=','blog')->where('parent_id','=',$id)->orderBy('order','asc')->get();
+
+        return view('catalog/content/blog/index', ['blog_pages' => $blog_pages]);
     }
 }
