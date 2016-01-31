@@ -19,10 +19,13 @@ Route::get('/', 'Catalog\IndexController@index');
 Route::get('catalog/index', 'Catalog\CatalogController@index');
 Route::get('catalog/item/{id?}', 'Catalog\CatalogController@item');
 
-Route::get('content/{pseudo_url}','Catalog\CatalogController@content');
+Route::get('menu/{pseudo_url}','Catalog\CatalogController@menu');
+Route::get('news/post/{pseudo_url}','Catalog\CatalogController@news');
+Route::get('blog/post/{pseudo_url}','Catalog\CatalogController@blog');
 Route::get('catalog/top-menu','Catalog\CatalogController@getTopMenu');
 
-
+Route::get('news/{id}','Catalog\CatalogController@news_index');
+Route::get('blog/{id}','Catalog\CatalogController@blog_index');
 
 // Admin module //
 

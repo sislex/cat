@@ -58,7 +58,7 @@ class ContentController extends Controller
             $page['id'] = '';
         }
 
-        return view('admin/content/page', ['page' => $page]);
+        return view('admin/content/page', ['page' => $page, 'type' => $page['type']]);
     }
 
 
@@ -89,7 +89,18 @@ class ContentController extends Controller
         if ($input['id']) {
             Content::find($input['id'])->update($input);
         }else{
-            $input['id'] = Content::create($input);
+            $input = Content::create($input);
+        }
+
+        if (\Input::file() && isset($input['id'])) {
+            if (\Input::file('image') && \Input::file('image')->isValid()) {
+                if (in_array(\Input::file('image')->getClientOriginalExtension(),['jpg','jpeg','png'])) {
+                    $destinationPath = 'images/content/'.$input['id'];
+                    $extension = \Input::file('image')->getClientOriginalExtension();
+                    $fileName = 'preview'.'.'.$extension;
+                    \Input::file('image')->move($destinationPath, $fileName);
+                }
+            }
         }
 
         return \Redirect::action('Admin\ContentController@show', ['id' => $input['id'], $input['tab']]);

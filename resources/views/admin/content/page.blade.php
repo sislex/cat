@@ -61,7 +61,7 @@
     <!-- END NAV TAB -->
 
     <!-- BEGIN FORM-->
-    <form id="content_form" action="{{action('Admin\ContentController@update')}}" method="post" class="form-horizontal">
+    <form id="content_form" action="{{action('Admin\ContentController@update')}}" method="post" files="true" enctype="multipart/form-data" class="form-horizontal">
         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
         <input type="hidden" name="id" id="id" value="{{ $page['id'] or '' }}" />
         <input type="hidden" name="tab" id="tab" value="#tab_0" />
@@ -119,6 +119,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-3 control-label"> Preview Image </label>
+                                <div class="col-md-4">
+                                    <input type="file" accept="image/jpeg" class="form-control input-circle" name="image" value="" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-3 control-label"> Short_text </label>
                                 <div class="col-md-4">
                                     <textarea rows="4" class="form-control input-circle" name="short_text" placeholder="Enter text">{{ $page['short_text'] or '' }}</textarea>
@@ -141,7 +148,8 @@
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
                                     <button type="submit" class="btn btn-circle green">Сохранить</button>
-                                    <a href="{{action('Admin\ContentController@show', ['id' => $page['id']])}}" class="btn btn-circle red btn-outline">Отменить</a>
+                                    <a href="{{action('Admin\ContentController@index', ['type' => $page['type']])}}" class="btn btn-circle red btn-outline">Отменить</a>
+{{--                                    <a href="{{action('Admin\ContentController@show', ['id' => $page['id']])}}" class="btn btn-circle red btn-outline">Отменить</a>--}}
                                 </div>
                             </div>
                         </div>
@@ -205,7 +213,8 @@
                                 <div class="row">
                                     <div class="col-md-offset-3 col-md-9">
                                         <button type="submit" class="btn btn-circle green">Сохранить</button>
-                                        <a href="{{action('Admin\ContentController@show', ['id' => $page['id']])}}" class="btn btn-circle red btn-outline">Отменить</a>
+{{--                                        <a href="{{action('Admin\ContentController@show', ['id' => $page['id']])}}" class="btn btn-circle red btn-outline">Отменить</a>--}}
+                                        <a href="{{action('Admin\ContentController@index', ['type' => $page['type']])}}" class="btn btn-circle red btn-outline">Отменить</a>
                                         {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
                                     </div>
                                 </div>

@@ -23,7 +23,7 @@ class Content extends Model
     ];
 
     public function getMenuElements(){
-        $menuElements = $this->where('type','=','menu')->get()->toArray();
+        $menuElements = $this->orderBy('order', 'asc')->get()->toArray();
         $menu = [];
         if(isset($menuElements) && is_array($menuElements) && count($menuElements)){
             $menu = $this->buildMenuArr($menuElements, 0);
@@ -54,5 +54,40 @@ class Content extends Model
         $menu = $Menu->getMenuElements();
 
         return $menu;
+    }
+
+    public function getContentElements($type,$parent_id){
+        $content_pages = $this->where('type','=',$type)->where('parent_id','=',$parent_id)->orderBy('order','asc')->get();
+        if(isset($content_pages)){
+            if($content_pages->count()){
+                $contentPagesArr = $content_pages->toArray();
+                $contentArrWithImages = $this->addPreviewImages($contentPagesArr);
+            } else {
+                $contentArrWithImages = $content_pages->toArray();
+            }
+        }
+
+        return $contentArrWithImages;
+    }
+
+    private function addPreviewImages($contentArr){
+        foreach($contentArr as $key => $page){
+            if(isset($contentArr[$key]['id'])){
+                foreach(['.jpg','jpeg','.png'] as $file_ext){
+                    if(file_exists(public_path().'/images/content/'.$contentArr[$key]['id'].'/'.'preview'.$file_ext)){
+                        $contentArr[$key]['previewImageURL'] = '/images/content/'.$contentArr[$key]['id'].'/'.'preview'.$file_ext;
+                    }
+                    break;
+                }
+            }
+        }
+        return $contentArr;
+    }
+
+    public static function getContent($type,$parent_id){
+        $contentPages = new Content();
+        $content_pages = $contentPages->getContentElements($type,$parent_id);
+
+        return $content_pages;
     }
 }
