@@ -255,10 +255,10 @@ myApp.controller('myCtrl', ['$scope', '$http',
                                 else{
                                     newValue = value[$key];
                                 }
-                                if($val['min'] > newValue){
+                                if($val['min']!=null && $val['min'] > newValue){
                                     compare = false;
                                 }
-                                if($val['max'] < newValue){
+                                if($val['max']!=null && $val['max'] < newValue){
                                     compare = false;
                                 }
                             }
