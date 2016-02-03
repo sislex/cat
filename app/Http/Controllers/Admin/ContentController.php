@@ -71,19 +71,21 @@ class ContentController extends Controller
      */
     public function update()
     {
+        include(app_path().'/includes/url-slug/url_slug.php');
+
         $input = \Request::all();
 
-        if (isset($input['pseudo_url'])) {
-            $input['pseudo_url'] = $input['name'];
+        if (isset($input['pseudo_url']) && trim($input['pseudo_url']) == '') {
+            $input['pseudo_url'] = url_slug(trim($input['name']), array('transliterate' => true));
         }
         if (isset($input['title'])) {
-            $input['title'] = $input['name'];
+            $input['title'] = trim($input['name']);
         }
         if (isset($input['keywords'])) {
-            $input['keywords'] = $input['name'];
+            $input['keywords'] = trim($input['name']);
         }
         if (isset($input['description'])) {
-            $input['description'] = $input['short_text'];
+            $input['description'] = trim($input['short_text']);
         }
 
         if ($input['id']) {
