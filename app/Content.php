@@ -90,4 +90,34 @@ class Content extends Model
 
         return $content_pages;
     }
+
+    private function deleteContentImagesFolder($id){
+        $contentFolder = public_path().'/images/content/'.$id;
+        $content_to_del_arr = [];
+        if(isset($id) && file_exists($contentFolder)){
+            if($handle = opendir($contentFolder)){
+                while(($entry = readdir($handle)) !== false){
+                    if($entry != '.' && $entry != '..'){
+                        if(file_exists($contentFolder.'/'.$entry)){
+                            unlink($contentFolder.'/'.$entry);
+                        }
+                    }
+                }
+                closedir($handle);
+                if(file_exists($contentFolder) && is_dir($contentFolder)){
+                    rmdir($contentFolder);
+                }
+            }
+        }
+        return $content_to_del_arr;
+    }
+
+    public function deleteContentAndAllAssosiatedFiles($id){
+        $content_childs = $this->where('parent_id','=',$id)->get();
+        foreach($content_childs as $child){
+            $this->deleteContentAndAllAssosiatedFiles($child->id);
+        }
+        $this->deleteContentImagesFolder($id);
+        $this->destroy($id);
+    }
 }

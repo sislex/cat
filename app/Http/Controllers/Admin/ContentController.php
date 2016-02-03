@@ -116,9 +116,10 @@ class ContentController extends Controller
     {
         $page = Content::find($id);
         $type = $page['type'];
-        $page->delete();
+
+        $content = new Content();
+        $content->deleteContentAndAllAssosiatedFiles($id);
 
         return \Redirect::action('Admin\ContentController@index', ['type' => $type]);
     }
-
 }
