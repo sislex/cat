@@ -37,21 +37,15 @@
                                 </div>
                                 <div class="tool-box-in">
                                     <ul class="listing tool-car-listing">
-                                        <li>
-                                            <div class="checkb"><input type="checkbox"></div>
-                                            <div class="imageb"><a href="vehicle-details.html"><img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a></div>
-                                            <div class="textb">
-                                                <a href="vehicle-details.html">Nissan Terrano first hand</a>
-                                                <span class="price">$28000</span>
+                                        <li ng-repeat="item in wishList">
+                                            <div class="imageb">
+                                                <a href="http://cat/catalog/item/@{{ item.id }}">
+                                                    <img src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
+                                                </a>
                                             </div>
-                                            <div class="delete"><a href="#"><i class="icon-delete"></i></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="checkb"><input type="checkbox"></div>
-                                            <div class="imageb"><a href="vehicle-details.html"><img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""></a></div>
                                             <div class="textb">
-                                                <a href="vehicle-details.html">Mercedes Benz E class</a>
-                                                <span class="price">$76000</span>
+                                                <a href="vehicle-details.html">@{{item.name}}</a>
+                                                <span class="price">$ @{{item.price}}</span>
                                             </div>
                                             <div class="delete"><a href="#"><i class="icon-delete"></i></a></div>
                                         </li>
@@ -347,8 +341,8 @@
                                                     <div class="price">$@{{ item.item.price || 0 }}</div>
                                                 </div>
                                                 <div class="result-item-action-buttons">
-                                                    <a href="#" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Save</a>
-                                                    <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="btn btn-default btn-sm">Enquire</a><br>
+                                                    <a ng-click="obj.helpers.addToWishList(item)" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Wish List</a>
+{{--                                                    <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="btn btn-default btn-sm">Enquire</a><br>--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -378,6 +372,7 @@
 
 @section('PAGE-LEVEL-PLUGINS')
     <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
+    <script src="/admin/assets/global/plugins/angularjs/angular-cookies.min.js"></script>
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')

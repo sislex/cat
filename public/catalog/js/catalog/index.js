@@ -143,10 +143,10 @@ angular.module('checklist-model', [])
         };
     }]);
 
-var myApp = angular.module('myApp', ["checklist-model"]);
+var myApp = angular.module('myApp', ["checklist-model", 'ngCookies']);
 
-myApp.controller('myCtrl', ['$scope', '$http',
-    function($scope, $http, Company) {
+myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
+    function($scope, $http, $cookies) {
         $scope.filter = {};
         $scope.init = (function(){
             $http.post('/filter/ajax').
@@ -160,11 +160,13 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 success(function(data, status, headers, config) {
                     $scope.items = data;
                     $scope.cloneItems = angular.copy($scope.items);
-                    //console.log($scope.items);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправки объекта');
                 });
+
+            if($cookies.get('wishList')){$scope.wishList = angular.fromJson($cookies.get('wishList'));}
+
         })();
 
         $scope.obj = {
@@ -255,10 +257,10 @@ myApp.controller('myCtrl', ['$scope', '$http',
                                 else{
                                     newValue = value[$key];
                                 }
-                                if($val['min'] > newValue){
+                                if($val['min']!=null && $val['min'] > newValue){
                                     compare = false;
                                 }
-                                if($val['max'] < newValue){
+                                if($val['max']!=null && $val['max'] < newValue){
                                     compare = false;
                                 }
                             }
@@ -296,6 +298,34 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     });
 
                     return rez;
+                },
+                addToWishList : function(obj){
+                    var arr = $scope.wishList;
+                    console.log(arr);
+                    if(!angular.isArray(arr)){arr = [];}
+                    var name = '';
+                    if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
+                        name += obj.type_auto[0].text;
+                        if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
+                            name += ' ' + obj.type_auto[0].children[0].text;
+                            if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
+                                name += ' ' + obj.type_auto[0].children[0].children[0].text;
+                            }
+                        }
+                    }
+                    var row = {
+                        id: obj.item.id,
+                        name: name,
+                        price: obj.price,
+                        image: obj.images[0]
+                    };
+                    arr.unshift(row);
+                    console.log(arr);
+                    $cookies.put('wishList', angular.toJson(arr));
+                    $scope.wishList = arr;
+                },
+                checkId : function(){
+
                 }
             }
         };
