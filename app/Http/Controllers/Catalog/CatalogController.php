@@ -45,8 +45,10 @@ class CatalogController extends Controller
 
     public function news($pseudo_url){
         $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+        $categories = Content::getCategories('news');
+//        dd($categories);
 
-        return view('catalog/content/news/news', ['content' => $content]);
+        return view('catalog/content/news/news', ['content' => $content, 'categories' => $categories]);
     }
 
     public function blog($pseudo_url){
@@ -56,14 +58,24 @@ class CatalogController extends Controller
     }
 
     public function news_index($id){
+        $news_pages = Content::getCategoriesContent('news',$id);
+
+        return view('catalog/content/news/index', ['news_pages' => $news_pages, 'is_category' => false]);
+    }
+
+    public function news_category($id){
         $news_pages = Content::getContent('news',$id);
 
-        return view('catalog/content/news/index', ['news_pages' => $news_pages]);
+        return view('catalog/content/news/index', ['news_pages' => $news_pages, 'is_category' => true]);
     }
 
     public function blog_index($id){
         $blog_pages = Content::getContent('blog',$id);
 
         return view('catalog/content/blog/index', ['blog_pages' => $blog_pages]);
+    }
+
+    public function blog_category($id){
+
     }
 }

@@ -172,16 +172,22 @@
                             <h3 class="post-title"><a href="single-post-review.html">2014 Proin enim quam, vulputate at lobortis quis, condimentum at justo</a></h3>
                         </div>
                     </div>
-                    <div class="widget sidebar-widget widget_categories">
-                        <h3 class="widgettitle">Post Categories</h3>
-                        <ul>
-                            <li><a href="#">Financial</a> (10)</li>
-                            <li><a href="#">Trial run</a> (12)</li>
-                            <li><a href="#">New Launch</a> (34)</li>
-                            <li><a href="#">Advice</a> (14)</li>
-                            <li><a href="#">Uncategorized</a> (114)</li>
-                        </ul>
-                    </div>
+
+                    @if(isset($categories))
+                        <div class="widget sidebar-widget widget_categories">
+                            <h3 class="widgettitle">Категории</h3>
+                            <ul>
+                                @foreach($categories as $category)
+                                    @if($category['published'])
+                                        <li>
+                                            <a href="{{ action('Catalog\CatalogController@news_category', ['id' => $category['id']]) }}">{{ $category['menu'] }}</a> (10)
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>

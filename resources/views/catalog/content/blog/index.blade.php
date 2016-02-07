@@ -10,38 +10,40 @@
 
                 @if(isset($blog_pages))
                     @foreach($blog_pages as $page)
+                        @if($page['published'])
 
-                        <article class="post format-standard">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-4">
-                                    @if(isset($page['previewImageURL']))
-                                        <a href="{{ action('Catalog\CatalogController@blog', ['pseudo_url' => $page['pseudo_url']]) }}" class="img-thumbnail">
-                                            <img src="{{ $page['previewImageURL'] }}" alt="preview-image">
-                                        </a>
-                                    @endif
-                                </div>
-                                <div class="col-md-8 col-sm-8">
-                                    <div class="post-actions">
-                                        <div class="post-date">November 27, 2014</div>
-                                        {{--<div class="comment-count"><a href="single-post.html"><i class="icon-dialogue-text"></i> 20</a></div>--}}
+                            <article class="post format-standard">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4">
+                                        @if(isset($page['previewImageURL']))
+                                            <a href="{{ action('Catalog\CatalogController@blog', ['pseudo_url' => $page['pseudo_url']]) }}" class="img-thumbnail">
+                                                <img src="{{ $page['previewImageURL'] }}" alt="preview-image">
+                                            </a>
+                                        @endif
                                     </div>
-                                    <h3 class="post-title">
-                                        <a href="{{ action('Catalog\CatalogController@blog', ['pseudo_url' => $page['pseudo_url']]) }}">
-                                            {{ $page['name'] }}
-                                        </a>
-                                    </h3>
-                                    <p>
-                                        {{ $page['short_text'] }}
-                                        <a href="{{ action('Catalog\CatalogController@blog', ['pseudo_url' => $page['pseudo_url']]) }}" class="continue-reading">
-                                            Продолжить
-                                            <i class="fa fa-long-arrow-right"></i>
-                                        </a>
-                                    </p>
-                                    <div class="post-meta">Раздел: <a href="#">Financial</a></div>
+                                    <div class="col-md-8 col-sm-8">
+                                        <div class="post-actions">
+                                            <div class="post-date">November 27, 2014</div>
+                                            {{--<div class="comment-count"><a href="single-post.html"><i class="icon-dialogue-text"></i> 20</a></div>--}}
+                                        </div>
+                                        <h3 class="post-title">
+                                            <a href="{{ action('Catalog\CatalogController@blog', ['pseudo_url' => $page['pseudo_url']]) }}">
+                                                {{ $page['name'] }}
+                                            </a>
+                                        </h3>
+                                        <p>
+                                            {{ $page['short_text'] }}
+                                            <a href="{{ action('Catalog\CatalogController@blog', ['pseudo_url' => $page['pseudo_url']]) }}" class="continue-reading">
+                                                Продолжить
+                                                <i class="fa fa-long-arrow-right"></i>
+                                            </a>
+                                        </p>
+                                        <div class="post-meta">Раздел: <a href="#">Financial</a></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
 
+                        @endif
                     @endforeach
                 @endif
 
