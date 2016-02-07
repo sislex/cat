@@ -77,6 +77,8 @@ class ContentController extends Controller
 
         if (isset($input['pseudo_url']) && trim($input['pseudo_url']) == '') {
             $input['pseudo_url'] = url_slug(trim($input['name']), array('transliterate' => true));
+        } elseif (isset($input['pseudo_url']) && trim($input['pseudo_url']) != '') {
+            $input['pseudo_url'] = url_slug(trim($input['pseudo_url']), array('transliterate' => true));
         }
         if (isset($input['title']) && trim($input['title']) == '') {
             $input['title'] = trim($input['name']);
