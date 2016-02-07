@@ -5,6 +5,27 @@
 <!-- Start Body Content -->
 <div id="content" class="content full">
     <div class="container">
+
+        @if(isset($categories))
+            <div class="gallery-filter">
+                <ul class="nav nav-pills sort-source">
+                    <li class="{{ isset($active_category_id) ? '' : 'active' }}">
+                            <a href="{{ action('Catalog\CatalogController@news_index',['id' => $categories[0]['parent_id']]) }}">
+                                <i class="fa fa-th"></i> <span>Показать все</span></a>
+                    </li>
+
+                    @foreach($categories as $category)
+                        @if($category['published'])
+                            <li class="{{ (isset($active_category_id) && $active_category_id == $category['id']) ? 'active' : '' }}">
+                                <a href="{{ action('Catalog\CatalogController@news_category', ['id' => $category['id']]) }}">{{ $category['menu'] }}</a>
+                            </li>
+                        @endif
+                    @endforeach
+
+                </ul>
+            </div>
+        @endif
+
         <ul class="grid-holder col-3 posts-grid">
 
             @if(isset($news_pages))
@@ -31,11 +52,11 @@
                                     <p>
                                         {{ $page['short_text'] }}
                                         <a href="{{ action('Catalog\CatalogController@news', ['pseudo_url' => $page['pseudo_url']]) }}" class="continue-reading">
-                                            Продолжить
+                                            Далее
                                             <i class="fa fa-long-arrow-right"></i>
                                         </a>
                                     </p>
-                                    <div class="post-meta">Раздел: <a href="#">Financial</a></div>
+                                    {{--<div class="post-meta">Раздел: <a href="#">Financial</a></div>--}}
                                 </div>
                             </div>
                         </li>
@@ -45,15 +66,15 @@
             @endif
 
         </ul>
-        <ul class="pagination">
-            <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-        </ul>
+        {{--<ul class="pagination">--}}
+            {{--<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>--}}
+            {{--<li class="active"><a href="#">1</a></li>--}}
+            {{--<li><a href="#">2</a></li>--}}
+            {{--<li><a href="#">3</a></li>--}}
+            {{--<li><a href="#">4</a></li>--}}
+            {{--<li><a href="#">5</a></li>--}}
+            {{--<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>--}}
+        {{--</ul>--}}
     </div>
 </div>
 <!-- End Body Content -->

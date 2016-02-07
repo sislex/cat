@@ -38,7 +38,7 @@
                                                 <i class="fa fa-long-arrow-right"></i>
                                             </a>
                                         </p>
-                                        <div class="post-meta">Раздел: <a href="#">Financial</a></div>
+                                        {{--<div class="post-meta">Раздел: <a href="#">Financial</a></div>--}}
                                     </div>
                                 </div>
                             </article>
@@ -47,15 +47,15 @@
                     @endforeach
                 @endif
 
-                <ul class="pagination">
-                    <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                </ul>
+                {{--<ul class="pagination">--}}
+                    {{--<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>--}}
+                    {{--<li class="active"><a href="#">1</a></li>--}}
+                    {{--<li><a href="#">2</a></li>--}}
+                    {{--<li><a href="#">3</a></li>--}}
+                    {{--<li><a href="#">4</a></li>--}}
+                    {{--<li><a href="#">5</a></li>--}}
+                    {{--<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>--}}
+                {{--</ul>--}}
             </div>
             <!-- Start Sidebar -->
             <div class="col-md-3 sidebar">

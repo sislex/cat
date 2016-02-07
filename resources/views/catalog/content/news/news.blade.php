@@ -21,10 +21,10 @@
                         {!! $content['text'] !!}
 
                         <!-- Pagination -->
-                        <ul class="pager">
-                            <li class="pull-left"><a href="#">&larr; Prev Post</a></li>
-                            <li class="pull-right"><a href="#">Next Post &rarr;</a></li>
-                        </ul>
+                        {{--<ul class="pager">--}}
+                            {{--<li class="pull-left"><a href="#">&larr; Prev Post</a></li>--}}
+                            {{--<li class="pull-right"><a href="#">Next Post &rarr;</a></li>--}}
+                        {{--</ul>--}}
 
                         <!-- About Author -->
                         <section class="about-author">
@@ -36,6 +36,7 @@
                         </section>
 
                     </article>
+
                     <section class="post-comments" id="comments">
                         <h3><i class="fa fa-comment"></i> Comments (4)</h3>
                         <ol class="comments">
@@ -180,7 +181,7 @@
                                 @foreach($categories as $category)
                                     @if($category['published'])
                                         <li>
-                                            <a href="{{ action('Catalog\CatalogController@news_category', ['id' => $category['id']]) }}">{{ $category['menu'] }}</a> (10)
+                                            <a href="{{ action('Catalog\CatalogController@news_category', ['id' => $category['id']]) }}">{{ $category['menu'] }}</a> &nbsp;
                                         </li>
                                     @endif
                                 @endforeach
