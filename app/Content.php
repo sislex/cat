@@ -179,4 +179,13 @@ class Content extends Model
 
         return $categories_content;
     }
+
+    static function checkURL($url){
+        if(self::where('pseudo_url','=',$url)->count()){
+            $new_url = $url . '1';
+            return self::checkURL($new_url);
+        }else{
+            return $url;
+        }
+    }
 }
