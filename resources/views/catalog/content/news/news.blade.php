@@ -21,10 +21,10 @@
                         {!! $content['text'] !!}
 
                         <!-- Pagination -->
-                        <ul class="pager">
-                            <li class="pull-left"><a href="#">&larr; Prev Post</a></li>
-                            <li class="pull-right"><a href="#">Next Post &rarr;</a></li>
-                        </ul>
+                        {{--<ul class="pager">--}}
+                            {{--<li class="pull-left"><a href="#">&larr; Prev Post</a></li>--}}
+                            {{--<li class="pull-right"><a href="#">Next Post &rarr;</a></li>--}}
+                        {{--</ul>--}}
 
                         <!-- About Author -->
                         <section class="about-author">
@@ -36,6 +36,7 @@
                         </section>
 
                     </article>
+
                     <section class="post-comments" id="comments">
                         <h3><i class="fa fa-comment"></i> Comments (4)</h3>
                         <ol class="comments">
@@ -172,16 +173,22 @@
                             <h3 class="post-title"><a href="single-post-review.html">2014 Proin enim quam, vulputate at lobortis quis, condimentum at justo</a></h3>
                         </div>
                     </div>
-                    <div class="widget sidebar-widget widget_categories">
-                        <h3 class="widgettitle">Post Categories</h3>
-                        <ul>
-                            <li><a href="#">Financial</a> (10)</li>
-                            <li><a href="#">Trial run</a> (12)</li>
-                            <li><a href="#">New Launch</a> (34)</li>
-                            <li><a href="#">Advice</a> (14)</li>
-                            <li><a href="#">Uncategorized</a> (114)</li>
-                        </ul>
-                    </div>
+
+                    @if(isset($categories))
+                        <div class="widget sidebar-widget widget_categories">
+                            <h3 class="widgettitle">Категории</h3>
+                            <ul>
+                                @foreach($categories as $category)
+                                    @if($category['published'])
+                                        <li>
+                                            <a href="{{ action('Catalog\CatalogController@news_category', ['id' => $category['id']]) }}">{{ $category['menu'] }}</a> &nbsp;
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>

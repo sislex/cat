@@ -71,19 +71,23 @@ class ContentController extends Controller
      */
     public function update()
     {
+        require_once(app_path().'/includes/url-slug/url_slug.php');
+
         $input = \Request::all();
 
-        if (isset($input['pseudo_url'])) {
-            $input['pseudo_url'] = $input['name'];
+        if (isset($input['pseudo_url']) && trim($input['pseudo_url']) == '') {
+            $input['pseudo_url'] = url_slug(trim($input['name']), array('transliterate' => true));
+        } elseif (isset($input['pseudo_url']) && trim($input['pseudo_url']) != '') {
+            $input['pseudo_url'] = url_slug(trim($input['pseudo_url']), array('transliterate' => true));
         }
-        if (isset($input['title'])) {
-            $input['title'] = $input['name'];
+        if (isset($input['title']) && trim($input['title']) == '') {
+            $input['title'] = trim($input['name']);
         }
-        if (isset($input['keywords'])) {
-            $input['keywords'] = $input['name'];
+        if (isset($input['keywords']) && trim($input['keywords']) == '') {
+            $input['keywords'] = trim($input['name']);
         }
-        if (isset($input['description'])) {
-            $input['description'] = $input['short_text'];
+        if (isset($input['description']) && trim($input['description']) == '') {
+            $input['description'] = trim($input['short_text']);
         }
 
         if ($input['id']) {
@@ -116,9 +120,10 @@ class ContentController extends Controller
     {
         $page = Content::find($id);
         $type = $page['type'];
-        $page->delete();
+
+        $content = new Content();
+        $content->deleteContentAndAllAssosiatedFiles($id);
 
         return \Redirect::action('Admin\ContentController@index', ['type' => $type]);
     }
-
 }

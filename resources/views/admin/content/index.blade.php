@@ -65,7 +65,7 @@
                                         </a>
                                         <a class="btn btn-outline btn-circle btn-sm red modal-del-confirm"
                                            data-toggle="modal"
-                                           del-obj="Вы действительно хотите удалить страницу '{{ $value['name'] }}' ?"
+                                           del-obj="Вы действительно хотите удалить запись '{{ $value['name'] }}' и все связанные с ней записи ?"
                                            del-url="{{action('Admin\ContentController@delete', ['id' => $value['id']])}}" >
                                             <i class="fa fa-remove"></i>
                                             Удалить
