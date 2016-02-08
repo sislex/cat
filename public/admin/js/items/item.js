@@ -145,10 +145,10 @@ angular.module('checklist-model', [])
         };
     }]);
 
-var myApp = angular.module('myApp', ["checklist-model"]);
+var myApp = angular.module('myApp', ["checklist-model", 'ngCookies']);
 
-myApp.controller('myCtrl', ['$scope', '$http',
-    function($scope, $http, Company) {
+myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
+    function($scope, $http, $cookies) {
         $scope.filter = {};
         $scope.func = (function(){
             //$http.post('/filter/ajax', {name:'type_auto'}).
@@ -156,6 +156,10 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 success(function(data, status, headers, config) {
                     $scope.filter = data;
                     if($scope.obj.objJson!=''){$scope.obj.obj = angular.fromJson($scope.obj.objJson);}
+
+                    if($cookies.get('viewedList')){$scope.viewedList = angular.fromJson($cookies.get('viewedList'));}
+                    $scope.obj.helpers.addToViewedList($scope.obj.obj, $scope.obj.id);
+                    console.log($cookies.get('viewedList'));
 
                     angular.forEach($scope.obj.obj, function(value, key){
                         $scope.obj.helpers.objToModel(key, $scope.obj.obj[key], $scope.filter[key]);
@@ -201,6 +205,52 @@ myApp.controller('myCtrl', ['$scope', '$http',
             },
             specifications:{},
             helpers : {
+                addToViewedList : function(obj, id){
+                    if(!$scope.obj.helpers.checkId($scope.viewedList, id)){
+                        var arr = $scope.viewedList;
+                        if(!angular.isArray(arr)){arr = [];}
+                        var name = '';
+                        if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
+                            name += obj.type_auto[0].text;
+                            if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
+                                name += ' ' + obj.type_auto[0].children[0].text;
+                                if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
+                                    name += ' ' + obj.type_auto[0].children[0].children[0].text;
+                                }
+                            }
+                        }
+                        var row = {
+                            id: id,
+                            name: name,
+                            price: obj.price,
+                            image: obj.images[0]
+                        };
+                        arr.unshift(row);
+                        var i = 0;
+                        var newArr = [];
+                        angular.forEach(arr, function(val, key){
+                            i++;
+                            if(i<=5){
+                                newArr.push(val);
+                            }
+                        });
+
+                        obj['viewedList'] = true;
+                        $cookies.put('viewedList', angular.toJson(newArr));
+                        $scope.viewedList = newArr;
+                    }
+                },
+                checkId : function(arr, id){
+                    var result = false;
+                    angular.forEach(arr, function(val, key){
+                        if(id == val.id){
+                            result = true;
+                        }
+                    });
+
+
+                    return result;
+                },
                 trigger : function(obj, key){
                     if(obj[key]){obj[key] = false;}
                     else{obj[key] = true;}

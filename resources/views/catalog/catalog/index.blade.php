@@ -29,11 +29,12 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3 search-actions">
                     <ul class="utility-icons tools-bar">
-                        <li><a href="#"><i class="fa fa-star-o"></i></a>
+                        <li ng-if="(wishList && wishList.length)">
+                            <a href="#"><i class="fa fa-star-o"></i></a>
                             <div class="tool-box">
                                 <div class="tool-box-head">
-                                    <a href="user-dashboard-saved-cars.html" class="basic-link pull-right">View all</a>
-                                    <h5>Saved cars</h5>
+                                    {{--<a href="user-dashboard-saved-cars.html" class="basic-link pull-right">View all</a>--}}
+                                    <h5>Избранное</h5>
                                 </div>
                                 <div class="tool-box-in">
                                     <ul class="listing tool-car-listing">
@@ -47,49 +48,18 @@
                                                 <a href="vehicle-details.html">@{{item.name}}</a>
                                                 <span class="price">$ @{{item.price}}</span>
                                             </div>
-                                            <div class="delete"><a href="#"><i class="icon-delete"></i></a></div>
+                                            <div class="delete"><a href="#" ng-click="obj.helpers.deleteFromWishList(item.id)"><i class="icon-delete"></i></a></div>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="tool-box-foot">
-                                    <a href="#" class="btn btn-xs btn-primary pull-right">Join</a>
-                                    <a href="#" class="pull-right tool-signin" data-toggle="modal" data-target="#loginModal">Sign in</a>
-                                    <a href="#" class="btn btn-xs btn-info">Compare(2)</a>
-                                </div>
+
                             </div>
                         </li>
-                        <li><a href="#"><i class="fa fa-folder-o"></i></a>
+                        <li>
+                            <a href="#"><i class="fa fa-clock-o"></i></a>
                             <div class="tool-box">
                                 <div class="tool-box-head">
-                                    <a href="user-dashboard-saved-searches.html" class="basic-link pull-right">View all</a>
-                                    <h5>Saved searches</h5>
-                                </div>
-                                <div class="tool-box-in">
-                                    <ul class="listing tool-search-listing">
-                                        <li>
-                                            <div class="link"><a href="#">Search name</a></div>
-                                            <div class="delete"><a href="#"><i class="icon-delete"></i></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="link"><a href="#">Search name</a></div>
-                                            <div class="delete"><a href="#"><i class="icon-delete"></i></a></div>
-                                        </li>
-                                        <li>
-                                            <div class="link"><a href="#">Search name</a></div>
-                                            <div class="delete"><a href="#"><i class="icon-delete"></i></a></div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tool-box-foot">
-                                    <a href="#" class="btn btn-xs btn-primary pull-right">Join</a>
-                                    <a href="#" class="pull-right tool-signin" data-toggle="modal" data-target="#loginModal">Sign in</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li><a href="#"><i class="fa fa-clock-o"></i></a>
-                            <div class="tool-box">
-                                <div class="tool-box-head">
-                                    <h5>Recently viewed cars</h5>
+                                    <h5>Просмотренное</h5>
                                 </div>
                                 <div class="tool-box-in">
                                     <ul class="listing tool-view-listing">
@@ -111,10 +81,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="tool-box-foot">
-                                    <a href="#" class="btn btn-xs btn-primary pull-right">Join</a>
-                                    <a href="#" class="pull-right tool-signin" data-toggle="modal" data-target="#loginModal">Sign in</a>
-                                </div>
+
                             </div>
                         </li>
                     </ul>
@@ -341,7 +308,11 @@
                                                     <div class="price">$@{{ item.item.price || 0 }}</div>
                                                 </div>
                                                 <div class="result-item-action-buttons">
-                                                    <a ng-click="obj.helpers.addToWishList(item)" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Wish List</a>
+                                                    <a ng-click="obj.helpers.addToWishList(item)" class="btn btn-default btn-sm">
+                                                        <i class="fa fa-star-o" ng-if="!obj.helpers.checkId(wishList, item.item['id'])"></i>
+                                                        <i class="fa fa-star"  ng-if="obj.helpers.checkId(wishList, item.item['id'])" style="color: #F5CF44"></i>
+                                                        Избранное
+                                                    </a>
 {{--                                                    <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="btn btn-default btn-sm">Enquire</a><br>--}}
                                                 </div>
                                             </div>

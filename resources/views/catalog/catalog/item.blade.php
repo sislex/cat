@@ -45,7 +45,7 @@
 <div class="main" role="main"
      ng-app="myApp"
      ng-controller="myCtrl"
-     ng-init="obj.objJson={{json_encode($item['obj'])}}"
+     ng-init="obj.objJson={{json_encode($item['obj'])}}; obj.id={{$item['id']}}"
         >
     <div id="content" class="content full">
         <div class="container">
@@ -292,6 +292,8 @@
 
 @section('PAGE-LEVEL-PLUGINS')
     <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
+    <script src="/admin/assets/global/plugins/angularjs/angular-cookies.min.js"></script>
+
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')

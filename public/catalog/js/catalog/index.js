@@ -166,6 +166,8 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                 });
 
             if($cookies.get('wishList')){$scope.wishList = angular.fromJson($cookies.get('wishList'));}
+            console.log($cookies.get('viewedList'));
+            if($cookies.get('viewedList')){$scope.viewedList = angular.fromJson($cookies.get('viewedList'));}
 
         })();
 
@@ -299,33 +301,64 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
 
                     return rez;
                 },
+
                 addToWishList : function(obj){
-                    var arr = $scope.wishList;
-                    console.log(arr);
-                    if(!angular.isArray(arr)){arr = [];}
-                    var name = '';
-                    if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
-                        name += obj.type_auto[0].text;
-                        if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
-                            name += ' ' + obj.type_auto[0].children[0].text;
-                            if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
-                                name += ' ' + obj.type_auto[0].children[0].children[0].text;
+                    if(!$scope.obj.helpers.checkId($scope.wishList, obj.item.id)){
+                        var arr = $scope.wishList;
+                        if(!angular.isArray(arr)){arr = [];}
+                        var name = '';
+                        if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
+                            name += obj.type_auto[0].text;
+                            if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
+                                name += ' ' + obj.type_auto[0].children[0].text;
+                                if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
+                                    name += ' ' + obj.type_auto[0].children[0].children[0].text;
+                                }
                             }
                         }
-                    }
-                    var row = {
-                        id: obj.item.id,
-                        name: name,
-                        price: obj.price,
-                        image: obj.images[0]
-                    };
-                    arr.unshift(row);
-                    console.log(arr);
-                    $cookies.put('wishList', angular.toJson(arr));
-                    $scope.wishList = arr;
-                },
-                checkId : function(){
+                        var row = {
+                            id: obj.item.id,
+                            name: name,
+                            price: obj.price,
+                            image: obj.images[0]
+                        };
+                        arr.unshift(row);
+                        var i = 0;
+                        var newArr = [];
+                        angular.forEach(arr, function(val, key){
+                            i++;
+                            if(i<=5){
+                                newArr.push(val);
+                            }
+                        });
 
+                        obj['wishList'] = true;
+                        $cookies.put('wishList', angular.toJson(newArr));
+                        $scope.wishList = newArr;
+                    }else{
+                        $scope.obj.helpers.deleteFromWishList(obj.item.id);
+                    }
+                },
+                deleteFromWishList:function(id){
+                    var newArr = [];
+                    angular.forEach($scope.wishList, function(val, key){
+                        if(id != val.id){
+                            newArr.push(val);
+                        }
+                    });
+                    $cookies.put('wishList', angular.toJson(newArr));
+                    $scope.wishList = newArr;
+                },
+                checkId : function(arr, id){
+                    var result = false;
+                    angular.forEach(arr, function(val, key){
+                        if(id == val.id){
+                            result = true;
+                        }
+                    });
+
+
+                    return result;
                 }
             }
         };
