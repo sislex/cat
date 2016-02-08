@@ -41,8 +41,10 @@
                                 @endif
                                 <div class="grid-content">
                                     <div class="post-actions">
-                                        <div class="post-date">December 27, 2014</div>
-                                        {{--<div class="comment-count"><a href="single-post.html"><i class="icon-dialogue-text"></i> 20</a></div>--}}
+                                        <div class="post-date">
+                                            {{--December 27, 2014--}}
+                                            {{ date('d-m-Y', strtotime($page['created_at'])) }}
+                                        </div>
                                     </div>
                                     <h3 class="post-title">
                                         <a href="{{ action('Catalog\CatalogController@news', ['pseudo_url' => $page['pseudo_url']]) }}">
@@ -66,15 +68,6 @@
             @endif
 
         </ul>
-        {{--<ul class="pagination">--}}
-            {{--<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>--}}
-            {{--<li class="active"><a href="#">1</a></li>--}}
-            {{--<li><a href="#">2</a></li>--}}
-            {{--<li><a href="#">3</a></li>--}}
-            {{--<li><a href="#">4</a></li>--}}
-            {{--<li><a href="#">5</a></li>--}}
-            {{--<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>--}}
-        {{--</ul>--}}
     </div>
 </div>
 <!-- End Body Content -->

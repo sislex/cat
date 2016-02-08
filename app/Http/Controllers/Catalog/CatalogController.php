@@ -66,17 +66,24 @@ class CatalogController extends Controller
 
     public function blog($pseudo_url){
         $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
+        $categories = Content::getCategories('blog');
 
-        return view('catalog/content/blog/blog', ['content' => $content]);
+        return view('catalog/content/blog/blog', ['content' => $content, 'categories' => $categories]);
     }
 
     public function blog_index($id){
-        $blog_pages = Content::getContent('blog',$id);
+        $blog_pages = Content::getCategoriesContent('blog',$id);
+        $categories = Content::getCategories('blog');
 
-        return view('catalog/content/blog/index', ['blog_pages' => $blog_pages]);
+//        dd($blog_pages);
+
+        return view('catalog/content/blog/index', ['blog_pages' => $blog_pages, 'categories' => $categories]);
     }
 
     public function blog_category($id){
+        $blog_pages = Content::getContent('blog',$id);
+        $categories = Content::getCategories('blog');
 
+        return view('catalog/content/blog/index', ['blog_pages' => $blog_pages, 'categories' => $categories, 'active_category_id' => $id]);
     }
 }

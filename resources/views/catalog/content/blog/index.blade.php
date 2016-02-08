@@ -23,8 +23,10 @@
                                     </div>
                                     <div class="col-md-8 col-sm-8">
                                         <div class="post-actions">
-                                            <div class="post-date">November 27, 2014</div>
-                                            {{--<div class="comment-count"><a href="single-post.html"><i class="icon-dialogue-text"></i> 20</a></div>--}}
+                                            <div class="post-date">
+                                                {{--November 27, 2014--}}
+                                                {{ date('d-m-Y', strtotime($page['created_at'])) }}
+                                            </div>
                                         </div>
                                         <h3 class="post-title">
                                             <a href="{{ action('Catalog\CatalogController@blog', ['pseudo_url' => $page['pseudo_url']]) }}">
@@ -47,60 +49,26 @@
                     @endforeach
                 @endif
 
-                {{--<ul class="pagination">--}}
-                    {{--<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>--}}
-                    {{--<li class="active"><a href="#">1</a></li>--}}
-                    {{--<li><a href="#">2</a></li>--}}
-                    {{--<li><a href="#">3</a></li>--}}
-                    {{--<li><a href="#">4</a></li>--}}
-                    {{--<li><a href="#">5</a></li>--}}
-                    {{--<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>--}}
-                {{--</ul>--}}
             </div>
+
             <!-- Start Sidebar -->
             <div class="col-md-3 sidebar">
-                <div class="widget sidebar-widget search-form-widget">
-                    <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" placeholder="Search Posts...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button"><i class="fa fa-search fa-lg"></i></button>
-                            </span>
+                @if(isset($categories))
+                    <div class="widget sidebar-widget widget_categories">
+                        <h3 class="widgettitle">
+                            Категории
+                        </h3>
+                        <ul>
+                            @foreach($categories as $category)
+                                @if($category['published'])
+                                    <li>
+                                        <a href="{{ action('Catalog\CatalogController@blog_category', ['id' => $category['id']]) }}">{{ $category['menu'] }}</a> &nbsp;
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
                     </div>
-                </div>
-                <div class="widget sidebar-widget widget_categories">
-                    <h3 class="widgettitle">Post Categories</h3>
-                    <ul>
-                        <li><a href="#">Financial</a> (10)</li>
-                        <li><a href="#">Trial run</a> (12)</li>
-                        <li><a href="#">New Launch</a> (34)</li>
-                        <li><a href="#">Advice</a> (14)</li>
-                        <li><a href="#">Uncategorized</a> (114)</li>
-                    </ul>
-                </div>
-                <div class="widget sidebar-widget widget_recent_reviews">
-                    <h3 class="widgettitle">Latest Reviews</h3>
-                    <div class="post-block post-review-block">
-                        <div class="review-status">
-                            <strong>3.6</strong>
-                            <span>Out of 5</span>
-                        </div>
-                        <h3 class="post-title"><a href="single-review-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-                    </div>
-                    <div class="post-block post-review-block">
-                        <div class="review-status">
-                            <strong>4.1</strong>
-                            <span>Out of 5</span>
-                        </div>
-                        <h3 class="post-title"><a href="single-review-post.html">Curabitur nec nulla lectus, non hendrerit lorem porttitor eget</a></h3>
-                    </div>
-                    <div class="post-block post-review-block">
-                        <div class="review-status">
-                            <strong>5.0</strong>
-                            <span>Out of 5</span>
-                        </div>
-                        <h3 class="post-title"><a href="single-review-post.html">2014 Proin enim quam, vulputate at lobortis quis, condimentum at justo</a></h3>
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>
