@@ -25,14 +25,14 @@ class ItemsController extends Controller
         return view('admin/items/index', ['items' => $items]);
     }
 
-    public function getItemsObj()
+    public function getItemsObj($limit = 9999999)
     {
         $input = \Request::all();
 
         if(isset($input['check'])){$type = $input['check'];}
         else{$type = '';}
 
-        $items = Items::get()->toArray();
+        $items = Items::get()->take($limit)->toArray();
         $arr = [];
 
         foreach($items as $value){

@@ -175,6 +175,22 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправке объекта');
                 });
+
+            $http.post('/admin/get/items/8', {name:'type_auto', check:'published'}).
+                success(function(data, status, headers, config) {
+                    $scope.items = data;
+                    console.log($scope.items);
+
+                    //$scope.cloneItems = angular.copy($scope.items);
+
+                    setTimeout(function(){
+                        window.AUTOSTARS.OwlCarousel();
+                    }, 500);
+
+                }).
+                error(function(data, status, headers, config) {
+                    console.log('Ошибка при отправки объекта');
+                });
         })();
         $scope.roles = [
             'guest',

@@ -51,7 +51,7 @@ Route::get('admin/items/add/{type}', 'Admin\ItemsController@add');
 Route::get('admin/items/show/{id?}', 'Admin\ItemsController@show');
 Route::get('admin/items/delete/{id?}', 'Admin\ItemsController@delete');
 Route::post('admin/items/update', 'Admin\ItemsController@update');
-Route::post('admin/get/items', 'Admin\ItemsController@getItemsObj');
+Route::post('admin/get/items/{limit?}', 'Admin\ItemsController@getItemsObj');
 Route::post('admin/items/update/images', 'Admin\ItemsController@updateImages');
 
 // Specifications routes...
