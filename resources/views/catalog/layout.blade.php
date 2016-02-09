@@ -47,8 +47,8 @@
         <div class="navbar">
             <div class="container sp-cont">
                 <div class="search-function">
-                    <a href="#" class="search-trigger"><i class="fa fa-search"></i></a>
-                    <span><i class="fa fa-phone"></i> Позвони нам <strong>+ 375 (29) 5761520</strong> <em>или</em> воспользуйся поиском</span>
+                    {{--<a href="#" class="search-trigger"><i class="fa fa-search"></i></a>--}}
+                    <span><i class="fa fa-phone"></i> Позвони нам <strong>+ 375 (29) 5761520</strong></span>
                 </div>
                 <a href="#" class="visible-sm visible-xs" id="menu-toggle"><i class="fa fa-bars"></i></a>
                 <!-- Main Navigation -->
