@@ -42,11 +42,27 @@ class UploadHandler
     protected $image_objects = array();
 
     function __construct($options = null, $initialize = true, $error_messages = null) {
+
+        if(isset($_GET['name'])){
+//            if(isset($_GET['name'])){
+            $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/images/ui-components/'.$_GET['name'].'/';
+            $upload_url = '/images/ui-components/'.$_GET['name'].'/';
+        } elseif(isset($_GET['id'])) {
+//        } elseif(isset($_GET['id'])) {
+            $upload_dir = $_SERVER['DOCUMENT_ROOT'].'/images/items/'.$_GET['id'].'/';
+            $upload_url = '/images/items/'.$_GET['id'].'/';
+        }
+
+
         $this->response = array();
         $this->options = array(
             'script_url' => $this->get_full_url().'/'.basename($this->get_server_var('SCRIPT_NAME')),
-            'upload_dir' => $_SERVER['DOCUMENT_ROOT'].'/images/items/'.$_GET['id'].'/',
-            'upload_url' => '/images/items/'.$_GET['id'].'/',
+//            'upload_dir' => $_SERVER['DOCUMENT_ROOT'].'/images/items/'.$_GET['id'].'/',
+//            'upload_url' => '/images/items/'.$_GET['id'].'/',
+//            'upload_dir' => $_SERVER['DOCUMENT_ROOT'].'/images/ui-components/'.$_GET['name'].'/',
+//            'upload_url' => '/images/ui-components/'.$_GET['name'].'/',
+            'upload_dir' => $upload_dir,
+            'upload_url' => $upload_url,
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
@@ -264,11 +280,19 @@ class UploadHandler
     }
 
     protected function set_additional_file_properties($file) {
+
+        if(isset($_GET['id'])){
+            $folder_name = '&id='.$_GET['id'];
+        } elseif(isset($_GET['name'])){
+            $folder_name = '&name='.$_GET['name'];
+        }
+
         $file->deleteUrl = $this->options['script_url']
             .$this->get_query_separator($this->options['script_url'])
             .$this->get_singular_param_name()
             .'='.rawurlencode($file->name)
-            .'&id='.$_GET['id'];
+            .$folder_name;
+//            .'&id='.$_GET['id'];
         $file->deleteType = $this->options['delete_type'];
         if ($file->deleteType !== 'DELETE') {
             $file->deleteUrl .= '&_method=DELETE';

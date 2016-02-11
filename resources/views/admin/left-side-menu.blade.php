@@ -64,37 +64,23 @@
     </a>
     <ul class="sub-menu">
         <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
+            <a href="{{action('Admin\UIComponentsController@show',['name' => 'main-slider'])}}" class="nav-link nav-toggle">
                 <span class="title">
-                    Большой слайдер
+                    Основной слайдер
                 </span>
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
+            <a href="{{action('Admin\UIComponentsController@show',['name' => 'logo'])}}" class="nav-link nav-toggle">
                 <span class="title">
                     Логотип
                 </span>
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
+            <a href="{{action('Admin\UIComponentsController@show',['name' => 'favicon'])}}" class="nav-link nav-toggle">
                 <span class="title">
-                    Лента брендов
-                </span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <span class="title">
-                    HTML блок
-                </span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <span class="title">
-                    Favicon
+                    Иконка сайта
                 </span>
             </a>
         </li>
