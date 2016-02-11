@@ -296,6 +296,8 @@
 
 @section('PAGE-LEVEL-PLUGINS')
     <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
+    <script src="/admin/js/checklist-model.js" type="text/javascript"></script>
+
     <script src="/admin/assets/global/plugins/angularjs/angular-cookies.min.js"></script>
 
 @endsection
