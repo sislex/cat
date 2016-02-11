@@ -184,7 +184,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     //$scope.cloneItems = angular.copy($scope.items);
 
                     setTimeout(function(){
-                        window.AUTOSTARS.OwlCarousel();
+                        if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel();}
                     }, 500);
 
                 }).
