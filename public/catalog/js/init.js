@@ -2,6 +2,7 @@ jQuery(function($){
 	"use strict";
 
 var AUTOSTARS = window.AUTOSTARS || {};
+	window.AUTOSTARS = AUTOSTARS;
 
 	/* ==================================================
         Contact Form Validations
