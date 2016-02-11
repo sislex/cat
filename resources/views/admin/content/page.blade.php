@@ -8,13 +8,16 @@
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                {{ $page['type'] == 'menu' ? 'Меню' :
-                    ($page['type'] == 'news' ? 'Новости' :
-                        ($page['type'] == 'blog' ? 'Блог' : '')) }}
-                <i class="fa fa-circle"></i>
+                {{ $page['type'] == 'mainpage' ? 'Главная страница' :
+                    ($page['type'] == 'menu' ? 'Меню' :
+                        ($page['type'] == 'news' ? 'Новости' :
+                            ($page['type'] == 'blog' ? 'Блог' : ''))) }}
             </li>
             <li>
-                {{ $page['name'] or 'Добавление'}}
+                @if($page['type'] != 'mainpage')
+                    <i class="fa fa-circle"></i>
+                    {{ $page['name'] or 'Добавление' }}
+                @endif
             </li>
         </ul>
     </div>
@@ -23,7 +26,9 @@
 @section('content')
     <!-- BEGIN PAGE TITLE-->
     <h3 class="page-title">
-        @if($page['type'] == 'menu')
+        @if($page['type'] == 'mainpage')
+            Главная страница: редактирование
+        @elseif($page['type'] == 'menu')
             @if(isset($page['name']))
                 Меню: редактирование '{{ $page['name'] }}'
             @else
@@ -35,7 +40,7 @@
             @else
                 Новости: добавление новой новости
             @endif
-                @elseif($page['type'] == 'blog')
+        @elseif($page['type'] == 'blog')
             @if(isset($page['name']))
                 Блог: редактирование '{{ $page['name'] }}'
             @else
@@ -78,31 +83,37 @@
                     <div class="portlet-body form">
                         <div class="form-body">
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Parent_ID </label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="parent_id" value="{{ $page['parent_id'] or '' }}" placeholder="Enter text">
-                                </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Type </label>
-                                <div class="col-md-4">
-                                    {{--<input type="text" class="form-control input-circle" name="type" value="{{ $page['type'] or '' }}" placeholder="Enter text">--}}
-                                    <select name="type" id="" form="content_form" required class="form-control input-circle">
-                                        <option value="menu" {{ $page['type'] == 'menu' ? 'selected' : '' }}> меню </option>
-                                        <option value="news" {{ $page['type'] == 'news' ? 'selected' : '' }}> новости </option>
-                                        <option value="blog" {{ $page['type'] == 'blog' ? 'selected' : '' }}> блог </option>
-                                    </select>
-                                </div>
-                            </div>
+                            @if($page['type'] != 'mainpage')
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Menu </label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="menu" value="{{ $page['menu'] or '' }}" placeholder="Enter text">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Parent_ID </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="parent_id" value="{{ $page['parent_id'] or '' }}" placeholder="Enter text">
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Type </label>
+                                    <div class="col-md-4">
+                                        {{--<input type="text" class="form-control input-circle" name="type" value="{{ $page['type'] or '' }}" placeholder="Enter text">--}}
+                                        <select name="type" id="" form="content_form" required class="form-control input-circle">
+                                            <option value="menu" {{ $page['type'] == 'menu' ? 'selected' : '' }}> меню </option>
+                                            <option value="news" {{ $page['type'] == 'news' ? 'selected' : '' }}> новости </option>
+                                            <option value="blog" {{ $page['type'] == 'blog' ? 'selected' : '' }}> блог </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Menu </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="menu" value="{{ $page['menu'] or '' }}" placeholder="Enter text">
+                                    </div>
+                                </div>
+
+                            @endif
+
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Name </label>
@@ -111,19 +122,25 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Order </label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="order" value="{{ $page['order'] or '' }}" placeholder="Enter text">
-                                </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Preview Image </label>
-                                <div class="col-md-4">
-                                    <input type="file" accept="image/jpeg" class="form-control input-circle" name="image" value="" placeholder="">
+                            @if($page['type'] != 'mainpage')
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Order </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="order" value="{{ $page['order'] or '' }}" placeholder="Enter text">
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Preview Image </label>
+                                    <div class="col-md-4">
+                                        <input type="file" accept="image/jpeg" class="form-control input-circle" name="image" value="" placeholder="">
+                                    </div>
+                                </div>
+
+                            @endif
+
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label"> Short_text </label>
@@ -190,12 +207,18 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label"> Pseudo_URL </label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control input-circle" name="pseudo_url" value="{{ $page['pseudo_url'] or '' }}" placeholder="Enter text">
+
+                                @if($page['type'] != 'mainpage')
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label"> Pseudo_URL </label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control input-circle" name="pseudo_url" value="{{ $page['pseudo_url'] or '' }}" placeholder="Enter text">
+                                        </div>
                                     </div>
-                                </div>
+
+                                @endif
+
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Published </label>

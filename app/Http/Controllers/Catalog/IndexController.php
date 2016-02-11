@@ -18,6 +18,10 @@ class IndexController extends Controller
      */
     public function index()
     {
+        $main_page = Content::where('type','=','mainpage')->get()->first();
+
+        $main_page_text = $main_page->text;
+
         $main_slider = UIComponents::where('name','=','main-slider')->get()->first();
         $main_slider_arr = [];
 
@@ -33,6 +37,6 @@ class IndexController extends Controller
 
 //        dd($main_slider_arr);
 
-        return view('catalog/index/index', ['main_slider' => $main_slider_arr]);
+        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr]);
     }
 }

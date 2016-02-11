@@ -66,6 +66,7 @@ Route::get('admin/specifications/delete/{id}', 'Admin\SpecificationsController@d
 // Content routes...
 Route::get('admin/content/{type}', 'Admin\ContentController@index');
 Route::get('admin/content/add/{type}', 'Admin\ContentController@add');
+Route::get('admin/content/show/main', 'Admin\ContentController@showMainPage');
 Route::get('admin/content/show/{id?}', 'Admin\ContentController@show');
 Route::get('admin/content/delete/{id}', 'Admin\ContentController@delete');
 Route::post('admin/content/update', 'Admin\ContentController@update');

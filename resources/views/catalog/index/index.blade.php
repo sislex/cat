@@ -58,18 +58,31 @@
     <div class="main" role="main">
         <div id="content" class="content full padding-b0">
             <div class="container">
+
                 <!-- Welcome Content and Services overview -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1 class="uppercase strong">Welcome to AutoStars<br>Listing portal</h1>
-                        <p class="lead">AutoStars is the world's leading portal for<br>easy and quick <span class="accent-color">car buying and selling</span></p>
+                @if(isset($main_page_text))
+                    <div class="row">
+
+                        {!! $main_page_text !!}
+
                     </div>
-                    <div class="col-md-6">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, <span class="accent-color">consectetur adipiscing</span> elit. Nulla convallis egestas rhoncus.</p>
+                    <div class="spacer-75"></div>
+                @else
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="uppercase strong">Welcome to AutoStars<br>Listing portal</h1>
+                            <p class="lead">AutoStars is the world's leading portal for<br>easy and quick <span class="accent-color">car buying and selling</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, <span class="accent-color">consectetur adipiscing</span> elit. Nulla convallis egestas rhoncus.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="spacer-75"></div>
+                    <div class="spacer-75"></div>
+
+                @endif
+
                 <!-- Recently Listed Vehicles -->
                 <section class="listing-block recent-vehicles">
                     <div class="listing-header">

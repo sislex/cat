@@ -32,6 +32,13 @@
     </a>
     <ul class="sub-menu">
         <li class="nav-item  ">
+            <a href="{{action('Admin\ContentController@showMainPage')}}" class="nav-link ">
+                <span class="title">
+                    Главная страница
+                </span>
+            </a>
+        </li>
+        <li class="nav-item  ">
             <a href="{{action('Admin\ContentController@index', ['type' => 'menu'])}}" class="nav-link ">
                 <span class="title">
                     Меню
