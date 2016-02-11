@@ -813,6 +813,7 @@
     <script src="/admin/assets/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" type="text/javascript"></script>
 
     <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
+    <script src="/admin/js/checklist-model.js" type="text/javascript"></script>
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')
