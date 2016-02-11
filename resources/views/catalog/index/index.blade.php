@@ -5,8 +5,14 @@
         <!-- Start Hero Slider -->
         <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
             <ul class="slides">
-                <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
-                <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
+                @if(isset($main_slider) && is_array($main_slider) && isset($main_slider['images']) && count($main_slider['images']))
+                    @foreach($main_slider['images'] as $image)
+                        <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $image }}');"></li>
+                    @endforeach
+                @else
+                    <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
+                    <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
+                @endif
             </ul>
         </div>
         <!-- End Hero Slider -->
