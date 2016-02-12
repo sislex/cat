@@ -6,6 +6,7 @@
 
 var myApp = angular.module('myApp', ["checklist-model"]);
 
+
 myApp.controller('widgets', ['$scope', '$http',
     function($scope, $http) {
         $scope.filter = {};
