@@ -15,10 +15,10 @@
             </li>
         </ul>
     </div>
-    @endsection
+@endsection
 
-    @section('content')
-            <!-- BEGIN PAGE TITLE-->
+@section('content')
+    <!-- BEGIN PAGE TITLE-->
     <h3 class="page-title">
         {{ $type == 'menu' ? 'Меню: список всех элементов' :
             ($type == 'news' ? 'Новости: список всех новостей' :

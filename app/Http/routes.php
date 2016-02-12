@@ -66,9 +66,17 @@ Route::get('admin/specifications/delete/{id}', 'Admin\SpecificationsController@d
 // Content routes...
 Route::get('admin/content/{type}', 'Admin\ContentController@index');
 Route::get('admin/content/add/{type}', 'Admin\ContentController@add');
+Route::get('admin/content/show/main', 'Admin\ContentController@showMainPage');
 Route::get('admin/content/show/{id?}', 'Admin\ContentController@show');
 Route::get('admin/content/delete/{id}', 'Admin\ContentController@delete');
 Route::post('admin/content/update', 'Admin\ContentController@update');
+
+
+
+// Banners and Sliders routes...
+Route::get('admin/ui-components/show/{name}', 'Admin\UIComponentsController@show');
+Route::post('admin/ui-components/update', 'Admin\UIComponentsController@update');
+
 
 // Authentication routes...
 Route::get('admin/login', 'Auth\AuthController@getLogin');

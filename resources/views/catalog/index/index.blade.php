@@ -5,8 +5,14 @@
         <!-- Start Hero Slider -->
         <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
             <ul class="slides">
-                <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
-                <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
+                @if(isset($main_slider) && is_array($main_slider) && isset($main_slider['images']) && count($main_slider['images']))
+                    @foreach($main_slider['images'] as $image)
+                        <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $image }}');"></li>
+                    @endforeach
+                @else
+                    <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
+                    <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
+                @endif
             </ul>
         </div>
         <!-- End Hero Slider -->
@@ -52,18 +58,31 @@
     <div class="main" role="main">
         <div id="content" class="content full padding-b0">
             <div class="container">
+
                 <!-- Welcome Content and Services overview -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1 class="uppercase strong">Welcome to AutoStars<br>Listing portal</h1>
-                        <p class="lead">AutoStars is the world's leading portal for<br>easy and quick <span class="accent-color">car buying and selling</span></p>
+                @if(isset($main_page_text))
+                    <div class="row">
+
+                        {!! $main_page_text !!}
+
                     </div>
-                    <div class="col-md-6">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, <span class="accent-color">consectetur adipiscing</span> elit. Nulla convallis egestas rhoncus.</p>
+                    <div class="spacer-75"></div>
+                @else
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="uppercase strong">Welcome to AutoStars<br>Listing portal</h1>
+                            <p class="lead">AutoStars is the world's leading portal for<br>easy and quick <span class="accent-color">car buying and selling</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, <span class="accent-color">consectetur adipiscing</span> elit. Nulla convallis egestas rhoncus.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="spacer-75"></div>
+                    <div class="spacer-75"></div>
+
+                @endif
+
                 <!-- Recently Listed Vehicles -->
                 <section class="listing-block recent-vehicles">
                     <div class="listing-header">

@@ -51,7 +51,6 @@ class ContentController extends Controller
     public function show($id = '')
     {
         if ($id != '') {
-//            $page = Content::where('id', '=', $id)->get()->first();
             $page = Content::find($id);
         } else {
             $page = [];
@@ -61,6 +60,22 @@ class ContentController extends Controller
         return view('admin/content/page', ['page' => $page, 'type' => $page['type']]);
     }
 
+    public function showMainPage()
+    {
+        $page = Content::firstOrCreate(['type' => 'mainpage']);
+
+        if(isset($page)){
+            if($page->name == ''){
+                $page->name = 'Mainpage';
+            }
+            $page->parent_id = 0;
+            $page->pseudo_url = 'mainpage';
+            $page->published = 1;
+            $page->update();
+        }
+
+        return view('admin/content/page', ['page' => $page, 'type' => $page['type']]);
+    }
 
     /**
      * Update the specified resource in storage.
