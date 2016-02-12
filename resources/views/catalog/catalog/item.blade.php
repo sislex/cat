@@ -194,7 +194,7 @@
                         </div>
                         <div class="spacer-50"></div>
                         <!-- Recently Listed Vehicles -->
-                        <section class="" ng-controller="widgets">
+                        <section class="" ng-controller="lastCarsWidget">
                             <div class="">
                                 <h3>Новые поступления</h3>
                             </div>
@@ -304,4 +304,5 @@
 
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/admin/js/items/item.js" type="text/javascript"></script>
+    <script src="/catalog/js/index/widgets.js" type="text/javascript"></script>
 @endsection
