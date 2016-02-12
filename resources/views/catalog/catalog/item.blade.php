@@ -194,7 +194,7 @@
                         </div>
                         <div class="spacer-50"></div>
                         <!-- Recently Listed Vehicles -->
-                        <section class="">
+                        <section class="" ng-controller="widgets">
                             <div class="">
                                 <h3>Новые поступления</h3>
                             </div>
