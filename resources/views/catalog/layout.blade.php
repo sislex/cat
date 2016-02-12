@@ -38,7 +38,15 @@
         <header class="site-header">
             <div class="container sp-cont">
                 <div class="site-logo">
-                    <h1><a href="/"><img src="/images/ui-components/logo/{{ $logo or 'logo.png' }}" alt="Logo"></a></h1>
+                    <h1>
+                        <a href="/">
+                            @if(isset($logo))
+                                <img src="/images/ui-components/logo/{{ $logo }}" alt="Logo">
+                            @else
+                                <img src="/catalog/images/logo.png" alt="Logo">
+                            @endif
+                        </a>
+                    </h1>
                     <span class="site-tagline">Продавай и покупай,<br>на GOLDENMOTORS.BY!</span>
                 </div>
             </div>
