@@ -6,6 +6,7 @@
 
 var myApp = angular.module('myApp', ["checklist-model"]);
 
+
 myApp.controller('myCtrl', ['$scope', '$http',
     function($scope, $http, Company) {
         $scope.filter = {};
