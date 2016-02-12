@@ -11,4 +11,18 @@ class UIComponents extends Model
         'name',
         'obj'
     ];
+
+    static function getLogo()
+    {
+        $logo = UIComponents::where('name','=','logo')->get()->first();
+        $logo_img = '';
+        if(isset($logo) && isset($logo->obj)){
+            $obj = json_decode($logo->obj);
+            if(isset($obj->images) && count($obj->images)){
+                $logo_img = $obj->images[0];
+            }
+        }
+
+        return $logo_img;
+    }
 }

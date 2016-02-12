@@ -15,6 +15,10 @@
 // Index routes...
 Route::get('/', 'Catalog\IndexController@index');
 
+
+// UI routes (Sliders, Banners, Widgets, etc.)
+
+
 // Catalog routes...
 Route::get('catalog/index', 'Catalog\CatalogController@index');
 Route::get('catalog/item/{id?}', 'Catalog\CatalogController@item');

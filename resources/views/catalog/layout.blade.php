@@ -40,14 +40,17 @@
                 <div class="site-logo">
                     <h1>
                         <a href="/">
-                            @if(isset($logo) && $logo != '')
-                                <img src="/images/ui-components/logo/{{ $logo }}" alt="Logo">
+
+                            @if(\App\UIComponents::getLogo() != '')
+                                <img src="/images/ui-components/logo/{{ \App\UIComponents::getLogo() }}" alt="Logo">
                             @else
                                 <img src="/catalog/images/logo.png" alt="Logo">
                             @endif
                         </a>
                     </h1>
-                    <span class="site-tagline">Продавай и покупай,<br>на GOLDENMOTORS.BY!</span>
+                    <span class="site-tagline">
+                        Продавай и покупай,<br>на GOLDENMOTORS.BY!
+                    </span>
                 </div>
             </div>
         </header>
@@ -389,6 +392,7 @@
 <script src="/catalog/js/init.js"></script> <!-- All Scripts -->
 <script src="/catalog/vendor/flexslider/js/jquery.flexslider.js"></script> <!-- FlexSlider -->
 <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+
 @yield('PAGE-LEVEL-PLUGINS')
 
 @yield('PAGE-LEVEL-SCRIPTS')

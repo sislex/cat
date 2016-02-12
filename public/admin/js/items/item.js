@@ -1,11 +1,8 @@
 /**
  * Created by Рожнов on 15.11.2015.
  */
-
-
-
+    
 var myApp = angular.module('myApp', ["checklist-model"]);
-
 
 myApp.controller('widgets', ['$scope', '$http',
     function($scope, $http) {

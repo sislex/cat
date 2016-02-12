@@ -25,14 +25,7 @@ class IndexController extends Controller
             $main_page_text = '<h1>Приносим свои извинения, страница находится в разработке.</h1>';
         }
 
-        $logo = UIComponents::where('name','=','logo')->get()->first();
-        $logo_img = '';
-        if(isset($logo) && isset($logo->obj)){
-            $obj = json_decode($logo->obj);
-            if(isset($obj->images) && count($obj->images)){
-                $logo_img = $obj->images[0];
-            }
-        }
+
 
         $main_slider = UIComponents::where('name','=','main-slider')->get()->first();
         $main_slider_arr = [];
@@ -47,6 +40,6 @@ class IndexController extends Controller
             }
         }
 
-        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr, 'logo' => $logo_img]);
+        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr]);
     }
 }
