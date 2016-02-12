@@ -502,6 +502,11 @@ $(document).ready(function(){
 	AUTOSTARS.TwitterWidget();
 	AUTOSTARS.galleryflex();
 
+	setTimeout(function(){
+		AUTOSTARS.OwlCarousel();
+	}, 1000);
+
+
 	AUTOSTARS.PrettyPhoto();
 	AUTOSTARS.SuperFish();
 	AUTOSTARS.Counters();
