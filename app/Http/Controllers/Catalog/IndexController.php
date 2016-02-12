@@ -26,14 +26,13 @@ class IndexController extends Controller
         }
 
         $logo = UIComponents::where('name','=','logo')->get()->first();
+        $logo_img = '';
         if(isset($logo) && isset($logo->obj)){
             $obj = json_decode($logo->obj);
-            if(isset($obj->images)){
+            if(isset($obj->images) && count($obj->images)){
                 $logo_img = $obj->images[0];
             }
         }
-
-//        dd($logo);
 
         $main_slider = UIComponents::where('name','=','main-slider')->get()->first();
         $main_slider_arr = [];

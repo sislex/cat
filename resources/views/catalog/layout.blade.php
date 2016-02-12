@@ -40,7 +40,7 @@
                 <div class="site-logo">
                     <h1>
                         <a href="/">
-                            @if(isset($logo))
+                            @if(isset($logo) && $logo != '')
                                 <img src="/images/ui-components/logo/{{ $logo }}" alt="Logo">
                             @else
                                 <img src="/catalog/images/logo.png" alt="Logo">
