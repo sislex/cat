@@ -38,7 +38,7 @@
         <header class="site-header">
             <div class="container sp-cont">
                 <div class="site-logo">
-                    <h1><a href="/"><img src="/catalog/images/logo.png" alt="Logo"></a></h1>
+                    <h1><a href="/"><img src="/images/ui-components/logo/{{ $logo or 'logo.png' }}" alt="Logo"></a></h1>
                     <span class="site-tagline">Продавай и покупай,<br>на GOLDENMOTORS.BY!</span>
                 </div>
             </div>
@@ -48,7 +48,9 @@
             <div class="container sp-cont">
                 <div class="search-function">
                     {{--<a href="#" class="search-trigger"><i class="fa fa-search"></i></a>--}}
-                    <span><i class="fa fa-phone"></i> Позвони нам <strong>+ 375 (29) 5761520</strong></span>
+                    <span><i class="fa fa-phone"></i>
+                        Позвони нам <strong>+ 375 (29) 5761520</strong>
+                    </span>
                 </div>
                 <a href="#" class="visible-sm visible-xs" id="menu-toggle"><i class="fa fa-bars"></i></a>
                 <!-- Main Navigation -->

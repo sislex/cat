@@ -19,8 +19,21 @@ class IndexController extends Controller
     public function index()
     {
         $main_page = Content::where('type','=','mainpage')->get()->first();
+        if(isset($main_page) && isset($main_page->text)){
+            $main_page_text = $main_page->text;
+        }else{
+            $main_page_text = '<h1>Приносим свои извинения, страница находится в разработке.</h1>';
+        }
 
-        $main_page_text = $main_page->text;
+        $logo = UIComponents::where('name','=','logo')->get()->first();
+        if(isset($logo) && isset($logo->obj)){
+            $obj = json_decode($logo->obj);
+            if(isset($obj->images)){
+                $logo_img = $obj->images[0];
+            }
+        }
+
+//        dd($logo);
 
         $main_slider = UIComponents::where('name','=','main-slider')->get()->first();
         $main_slider_arr = [];
@@ -35,8 +48,6 @@ class IndexController extends Controller
             }
         }
 
-//        dd($main_slider_arr);
-
-        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr]);
+        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr, 'logo' => $logo_img]);
     }
 }
