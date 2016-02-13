@@ -8,6 +8,13 @@
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="author" content="@yield('author')">
+
+    <!-- Favicon
+    ================================================== -->
+    @if(\App\UIComponents::getFavicon() != '')
+        <link rel="icon" href="/images/ui-components/favicon/{{ \App\UIComponents::getFavicon() }}" type="image/ico">
+    @endif
+
     <!-- Mobile Specific Metas
       ================================================== -->
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
