@@ -9,7 +9,7 @@ myApp.controller('lastCarsWidget', ['$scope', '$http',
     function($scope, $http) {
         $scope.filter = {};
         $scope.func = (function(){
-            $http.post('/admin/get/items/9', {name:'type_auto', check:'published'}).
+            $http.post('/admin/get/items/8', {name:'type_auto', check:'published'}).
                 success(function(data, status, headers, config) {
                     $scope.items = data;
                     console.log($scope.items);
