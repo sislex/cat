@@ -25,4 +25,18 @@ class UIComponents extends Model
 
         return $logo_img;
     }
+
+    static function getFavicon()
+    {
+        $favicon = UIComponents::where('name','=','favicon')->get()->first();
+        $favicon_img = '';
+        if(isset($favicon) && isset($favicon->obj)){
+            $obj = json_decode($favicon->obj);
+            if(isset($obj->images) && count($obj->images)){
+                $favicon_img = $obj->images[0];
+            }
+        }
+
+        return $favicon_img;
+    }
 }
