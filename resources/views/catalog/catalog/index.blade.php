@@ -4,7 +4,7 @@
 <div ng-app="myApp" ng-controller="myCtrl">
     <!-- Start Page header -->
 
-    @if(isset($catalog_banner))
+    @if(isset($catalog_banner['images'][0]))
         <div class="page-header parallax" style="background-image:url('/images/ui-components/catalog-banner/{{ $catalog_banner['images'][0] }}');">
             <div class="container">
                 <h1 class="page-title">Listing results</h1>
@@ -12,21 +12,6 @@
         </div>
     @endif
 
-    <!-- Utiity Bar -->
-    {{--<div class="utility-bar">--}}
-        {{--<div class="container">--}}
-            {{--<div class="row">--}}
-                {{--<div class="col-md-8 col-sm-6 col-xs-8">--}}
-                    {{--<ol class="breadcrumb">--}}
-                        {{--<li><a href="index.html">Home</a></li>--}}
-                        {{--<li class="active">Search results</li>--}}
-                    {{--</ol>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-4 col-sm-6 col-xs-4">--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
     <!-- Actions bar -->
     <div class="actions-bar tsticky">
         <div class="container">
