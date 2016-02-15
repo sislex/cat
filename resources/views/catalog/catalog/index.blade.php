@@ -22,7 +22,6 @@
                             <a href="#"><i class="fa fa-star-o"></i></a>
                             <div class="tool-box">
                                 <div class="tool-box-head">
-                                    {{--<a href="user-dashboard-saved-cars.html" class="basic-link pull-right">View all</a>--}}
                                     <h5>Избранное</h5>
                                 </div>
                                 <div class="tool-box-in">
@@ -230,27 +229,6 @@
                                         <option value="">Трансмиссия: любой</option>
                                     </select>
                                 </div>
-
-
-
-                                {{--<div class="accordion-group panel">--}}
-                                    {{--<div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseTwo">Аудиооборудование<i class="fa fa-angle-down"></i> </a> </div>--}}
-                                    {{--<div id="collapseTwo" class="accordion-body collapse">--}}
-                                        {{--<div class="accordion-inner">--}}
-                                            {{--<ul class="filter-options-list list-group">--}}
-                                                {{--<li ng-repeat="role in filter['Аудиооборудование'] | orderBy:'-text'">--}}
-                                                    {{--<label>--}}
-                                                        {{--<input type="checkbox" checklist-model="obj.help['Аудиооборудование']" checklist-value="role" checklist-change="obj.helpers.makeObj('Аудиооборудование')">--}}
-                                                        {{--@{{role.text}}--}}
-                                                    {{--</label>--}}
-                                                {{--</li>--}}
-                                            {{--</ul>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-
-
-
                             </div>
                         </div>
                     </div>
