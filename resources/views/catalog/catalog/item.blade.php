@@ -66,7 +66,7 @@
                         <a href="#" data-toggle="modal" data-target="#testdriveModal" class="btn btn-default" title="Book a test drive"><i class="fa fa-calendar"></i> <span>Запись на тест драйв</span></a>
                         <a href="#" data-toggle="modal" data-target="#offerModal" class="btn btn-default" title="Make an offer"><i class="fa fa-dollar"></i> <span>Предложить свою цену</span></a>
                         <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Send to a friend"><i class="fa fa-send"></i> <span>Поделиться</span></a>
-                        <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Print"><i class="fa fa-print"></i> <span>Print</span></a>
+                        <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Print"><i class="fa fa-print"></i> <span>Распечатать</span></a>
                     </div>
                     <div class="btn btn-info price">${{$item['price']}}</div>
                     @if(isset($item['obj']['Старая цена']))<div class="btn btn-warning old-price">${{$item['obj']['Старая цена']}}</div>@endif
@@ -194,7 +194,7 @@
                         </div>
                         <div class="spacer-50"></div>
                         <!-- Recently Listed Vehicles -->
-                        <section class="" ng-controller="lastCarsWidget">
+                        <section class="hidden-print" ng-controller="lastCarsWidget">
                             <div class="">
                                 <h3>Новые поступления</h3>
                             </div>
@@ -292,6 +292,129 @@
     </div>
 </div>
 <!-- End Body Content -->
+@endsection
+
+@section('MODAL-PAGES')
+<!-- REQUEST MORE INFO POPUP -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Запросить дополнительную информацию</h4>
+            </div>
+            <div class="modal-body">
+                <p>Запросить дополнительную информацию у специалиста компании.</p>
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Имя">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <input type="text" class="form-control" placeholder="Телефон">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary pull-right" value="Запросить информацию">
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MAKE AN OFFER POPUP -->
+<div class="modal fade" id="offerModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Сделать предложение</h4>
+            </div>
+            <div class="modal-body">
+                <p>Предложить свою цену, другие условия по преобретению или обмену.</p>
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Имя">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <input type="text" class="form-control" placeholder="Телефон">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                                <input type="text" class="form-control" placeholder="Своя цена">
+                            </div>
+                        </div>
+                    </div>
+                    <textarea class="form-control" placeholder="Комментарий"></textarea>
+                    <input type="submit" class="btn btn-primary pull-right" value="Предложить">
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SEND TO A FRIEND POPUP -->
+<div class="modal fade" id="sendModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Поделиться ссылкой</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Имя">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control" placeholder="Ваш Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control" placeholder="Email друга">
+                            </div>
+                        </div>
+                    </div>
+                    <textarea class="form-control" placeholder="Сообщение"></textarea>
+                    <input type="submit" class="btn btn-primary pull-right" value="Послать">
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('PAGE-LEVEL-PLUGINS')
