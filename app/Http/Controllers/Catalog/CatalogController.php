@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Catalog;
 
 use App\Content;
+use App\UIComponents;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,22 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        return view('catalog/catalog/index');
+        $catalog_banner = UIComponents::where('name','=','catalog-banner')->get()->first();
+        $catalog_banner_arr = [];
+
+        if(isset($catalog_banner) && isset($catalog_banner->obj)){
+            $obj = json_decode($catalog_banner->obj);
+            if(isset($obj->images)){
+                $catalog_banner_arr['images'] = $obj->images;
+            }
+            if(isset($obj->html)){
+                $catalog_banner_arr['html'] = $obj->html;
+            }
+        }
+
+//        dd($catalog_banner_arr);
+
+        return view('catalog/catalog/index', ['catalog_banner' => $catalog_banner_arr]);
     }
 
     public function item($id = 0)

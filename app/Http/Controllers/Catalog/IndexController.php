@@ -25,8 +25,6 @@ class IndexController extends Controller
             $main_page_text = '<h1>Приносим свои извинения, страница находится в разработке.</h1>';
         }
 
-
-
         $main_slider = UIComponents::where('name','=','main-slider')->get()->first();
         $main_slider_arr = [];
 

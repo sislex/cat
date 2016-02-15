@@ -59,6 +59,13 @@
                 </span>
             </a>
         </li>
+        <li class="nav-item  ">
+            <a href="{{action('Admin\ContentController@index', ['type' => 'feedback'])}}" class="nav-link ">
+                <span class="title">
+                    Отзывы
+                </span>
+            </a>
+        </li>
     </ul>
 </li>
 <li class="nav-item  ">
@@ -88,6 +95,13 @@
             <a href="{{action('Admin\UIComponentsController@show',['name' => 'favicon'])}}" class="nav-link nav-toggle">
                 <span class="title">
                     Иконка сайта
+                </span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="{{action('Admin\UIComponentsController@show',['name' => 'catalog-banner'])}}" class="nav-link nav-toggle">
+                <span class="title">
+                    Баннер каталога
                 </span>
             </a>
         </li>

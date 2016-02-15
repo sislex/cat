@@ -3,26 +3,30 @@
 @section('content')
 <div ng-app="myApp" ng-controller="myCtrl">
     <!-- Start Page header -->
-    <div class="page-header parallax" style="background-image:url(http://placehold.it/1200x300&amp;text=IMAGE+PLACEHOLDER);">
-        <div class="container">
-            <h1 class="page-title">Listing results</h1>
-        </div>
-    </div>
-    <!-- Utiity Bar -->
-    <div class="utility-bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-sm-6 col-xs-8">
-                    <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active">Search results</li>
-                    </ol>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-4">
-                </div>
+
+    @if(isset($catalog_banner))
+        <div class="page-header parallax" style="background-image:url('/images/ui-components/catalog-banner/{{ $catalog_banner['images'][0] }}');">
+            <div class="container">
+                <h1 class="page-title">Listing results</h1>
             </div>
         </div>
-    </div>
+    @endif
+
+    <!-- Utiity Bar -->
+    {{--<div class="utility-bar">--}}
+        {{--<div class="container">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-md-8 col-sm-6 col-xs-8">--}}
+                    {{--<ol class="breadcrumb">--}}
+                        {{--<li><a href="index.html">Home</a></li>--}}
+                        {{--<li class="active">Search results</li>--}}
+                    {{--</ol>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-4 col-sm-6 col-xs-4">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     <!-- Actions bar -->
     <div class="actions-bar tsticky">
         <div class="container">
