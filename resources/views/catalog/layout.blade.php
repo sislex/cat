@@ -302,42 +302,7 @@
 
     <!-- Start site footer -->
     <footer class="site-footer">
-        <div class="site-footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 footer_widget widget widget_newsletter">
-                        <h4 class="widgettitle">Подписка</h4>
-                        <form>
-                            <input type="text" class="form-control" placeholder="Name">
-                            <input type="email" class="form-control" placeholder="Email">
-                            <input type="submit" class="btn btn-primary btn-lg" value="Подписаться">
-                        </form>
-                    </div>
-                    <div class="col-md-2 col-sm-6 footer_widget widget widget_custom_menu widget_links">
-                        <h4 class="widgettitle">Новости</h4>
-                        <ul>
-                            <li><a href="blog.html">Car News</a></li>
-                            <li><a href="blog-masonry.html">Car Reviews</a></li>
-                            <li><a href="about.html">Car Insurance</a></li>
-                            <li><a href="about-html">Bodyshop</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 col-sm-6 footer_widget widget widget_custom_menu widget_links">
-                        <h4 class="widgettitle">Поддержка</h4>
-                        <ul>
-                            <li><a href="results-list.html">Buying a car</a></li>
-                            <li><a href="joinus.html">Selling a car</a></li>
-                            <li><a href="about.html">Online safety</a></li>
-                            <li><a href="contact.html">Contact us</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-5 col-sm-6 footer_widget widget text_widget">
-                        <h4 class="widgettitle">Наше кредо</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="site-footer-bottom">
             <div class="container">
                 <div class="row">
@@ -362,29 +327,42 @@
     <!-- End site footer -->
     <a id="back-to-top"><i class="fa fa-angle-double-up"></i></a>
 </div>
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+
+@yield('MODAL-PAGES')
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Login to your account</h4>
+                <h4>Request more info</h4>
             </div>
             <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
                 <form>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input type="text" class="form-control" placeholder="Full Name">
                     </div>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                        <input type="password" class="form-control" placeholder="Password">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <input type="text" class="form-control" placeholder="Phone">
+                            </div>
+                        </div>
                     </div>
-                    <input type="submit" class="btn btn-primary" value="Login">
+                    <input type="submit" class="btn btn-primary pull-right" value="Request Info">
+                    <label class="btn-block">Preferred Contact</label>
+                    <label class="checkbox-inline"><input type="checkbox"> Email</label>
+                    <label class="checkbox-inline"><input type="checkbox"> Phone</label>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-block btn-facebook btn-social"><i class="fa fa-facebook"></i> Login with Facebook</button>
-                <button type="button" class="btn btn-block btn-twitter btn-social"><i class="fa fa-twitter"></i> Login with Twitter</button>
             </div>
         </div>
     </div>
