@@ -28,7 +28,7 @@ class MailController extends Controller
         $transport->setHost('smtp.yandex.ru');
         $transport->setPort('465');
 
-
+return;
         \Mail::send('catalog.mail.index', $mailData, function($message)
         {
             $message->from('sislex@ya.ru', 'ГрузовичкоФ');
