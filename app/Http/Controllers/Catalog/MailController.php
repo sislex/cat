@@ -22,6 +22,12 @@ class MailController extends Controller
 
         $mailData['type'] = 'mail';
 
+        $transport = \Mail::getSwiftMailer()->getTransport();
+        $transport->setUsername('sislex@ya.ru');
+        $transport->setPassword('Yerkjy44');
+        $transport->setHost('smtp.yandex.ru');
+        $transport->setPort('465');
+
 
         \Mail::send('catalog.mail.index', $mailData, function($message)
         {
@@ -29,7 +35,7 @@ class MailController extends Controller
             $message->to('lexa-mail@tut.by', 'Компания ГрузовичкоФ')->subject("Предложение по переезду");
         });
 
-        return 'sent';
+        return 'sen';
     }
 
 }
