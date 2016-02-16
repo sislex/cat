@@ -33,8 +33,8 @@ Route::get('news/category/{id}','Catalog\CatalogController@news_category');
 Route::get('blog/{id}','Catalog\CatalogController@blog_index');
 Route::get('blog/category/{id}','Catalog\CatalogController@blog_category');
 
-Route::post('news/last','Catalog\CatalogController@getLastContentJSON');
-Route::post('blog/last','Catalog\CatalogController@getLastContentJSON');
+Route::post('news/last','Catalog\CatalogController@getLastContent');
+Route::post('blog/last','Catalog\CatalogController@getLastContent');
 
 // Admin module //
 

@@ -53,7 +53,7 @@
                                 Последние посты
                             </h3>
                             <ul>
-                                <li class="" ng-repeat="blog_post in blog">
+                                <li class="" ng-repeat="blog_post in blog | orderBy: id">
                                     <a href="{{ action('Catalog\CatalogController@blog')}}/@{{ blog_post['pseudo_url'] }}">
                                         <img src="@{{ blog_post['previewImageURL'] }}" alt="" class="img-thumbnail">
                                     </a>

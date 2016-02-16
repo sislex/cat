@@ -107,26 +107,28 @@ class Content extends Model
                 }
 
                 if(isset($content_arr) && is_array($content_arr) && count($content_arr)){
-//                    usort($content_arr, '$root->sortArrayByDate');
-
-//                    dd($content_arr);
 
                     //TODO: sort $content_arr by created_at or updated_at in DESC order!
 
-                    $count = 0;
-                    $c_arr = [];
-                    foreach($content_arr as $content_element){
-                        if($count < $limit && $content_element['published'] == 1){
-                            $c_arr[] = $content_element;
-                            $count++;
-                        }
+                    $content_pages_arr = [];
+                    foreach($content_arr as $element){
+                        $content_pages_arr[$element['id']] = $element;
                     }
 
-//                    dd($arr);
+                    krsort($content_pages_arr);
+
+//                    dd($content_pages_arr);
+
+                    $i = 0;
+                    $c_arr = [];
+                    foreach($content_pages_arr as $content_page){
+                        if($i < $limit && $content_page['published'] == 1){
+                            $c_arr[] = $content_page;
+                            $i++;
+                        }
+                    }
                 }
             }
-
-
 
             if(isset($c_arr) && is_array($c_arr)){
                 $content_obj = new Content();
@@ -134,17 +136,9 @@ class Content extends Model
             }
         }
 
+
         return $content_arr_with_images;
     }
-
-
-    private function sortArrayByDate($a, $b){
-        $t1 = strtotime($a['updated_at']);
-        $t2 = strtotime($b['updated_at']);
-
-        return $t1 - $t2;
-    }
-
 
     private function deleteContentImagesFolder($id){
         $contentFolder = public_path().'/images/content/'.$id;

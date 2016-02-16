@@ -101,7 +101,7 @@ class CatalogController extends Controller
         return view('catalog/content/blog/index', ['blog_pages' => $blog_pages, 'categories' => $categories, 'active_category_id' => $id]);
     }
 
-    public function getLastContentJSON()
+    public function getLastContent()
     {
         $input = \Request::all();
 
@@ -111,14 +111,8 @@ class CatalogController extends Controller
             $limit = $input['limit'];
 //            $content = Content::where('type','=',$type)->where('published','=','1')->take($limit)->get();
             $content_arr = Content::getLastContent($type, $limit);
-
-            if(isset($content_arr) && is_array($content_arr))
-            {
-                $content_json = json_encode($content_arr);
-            }
         }
 
-//        return $content_json;
-        return $content_json;
+        return $content_arr;
     }
 }
