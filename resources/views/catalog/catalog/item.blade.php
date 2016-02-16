@@ -19,24 +19,24 @@
         <div class="row">
             <div class="col-md-8 col-sm-6 col-xs-8">
                 <ol class="breadcrumb">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/catalog/index">Каталог</a></li>
                     <li class="active">
                         {{$item['obj']['type_auto'][0]['children'][0]['text'] or ''}}
                         {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text'] or ''}}
                     </li>
                 </ol>
             </div>
-            {{--<div class="col-md-4 col-sm-6 col-xs-4">--}}
-                {{--<span class="share-text"><i class="icon-share"></i> Share this</span>--}}
-                {{--<ul class="utility-icons social-icons social-icons-colored">--}}
-                    {{--<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
-                    {{--<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
-                    {{--<li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
-                    {{--<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>--}}
-                    {{--<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>--}}
-                    {{--<li class="delicious"><a href="#"><i class="fa fa-delicious"></i></a></li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
+            <div class="col-md-4 col-sm-6 col-xs-4">
+                <span class="share-text"><i class="icon-share"></i> Share this</span>
+                <ul class="utility-icons social-icons social-icons-colored">
+                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    <li class="delicious"><a href="#"><i class="fa fa-delicious"></i></a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -231,17 +231,16 @@
                             <h4 class="widgettitle">Заказать обратный звонок</h4>
                             <div class="vehicle-enquiry-in">
                                 <form>
-                                    <input type="text" placeholder="Name*" class="form-control" required>
-                                    <input type="email" placeholder="Email address*" class="form-control" required>
+                                    <input type="text" placeholder="Имя*" class="form-control" required>
+                                    <input type="email" placeholder="Email*" class="form-control" required>
                                     <div class="row">
-                                        <div class="col-md-7"><input type="text" placeholder="Phone no.*" class="form-control" required></div>
-                                        <div class="col-md-5"><input type="text" placeholder="Zip*" class="form-control" required></div>
+                                        <div class="col-md-7"><input type="text" placeholder="Телефон №*" class="form-control" required></div>
                                     </div>
-                                    <textarea name="comments" class="form-control" placeholder="Your comments"></textarea>
+                                    <textarea name="comments" class="form-control" placeholder="Комментарий"></textarea>
                                     <label class="checkbox-inline">
                                         <input type="checkbox" id="inlineCheckbox2" value="option2"> Подписаться на новости
                                     </label>
-                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                    <input type="submit" class="btn btn-primary" value="Послать">
                                 </form>
                             </div>
                             <div class="vehicle-enquiry-foot">
@@ -255,9 +254,9 @@
                             <h4>Расчитать кредит</h4>
                             <form>
                                 <div class="loan-calculations">
-                                    <input type="text" class="form-control" placeholder="Loan amount">
+                                    <input type="text" class="form-control" placeholder="Сумма займа">
                                     <div class="form-group">
-                                        <label>Loan term in months</label>
+                                        <label>Количество месяцев</label>
                                         <div class="btn-group" data-toggle="buttons">
                                             <label class="btn btn-info active">
                                                 <input type="radio" name="Loan Tenure" id="option1" autocomplete="off" checked> 24
@@ -274,13 +273,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Down payment">
-                                        <input type="text" class="form-control" placeholder="Rate of Interest eg.10%">
+                                        <input type="text" class="form-control" placeholder="Первоночальный взнос">
+                                        <input type="text" class="form-control" placeholder="Процентная ставка">
                                     </div>
                                 </div>
                                 <div class="calculations-result">
-                                    <span class="meta-data">This is the payment you need to make per month</span>
-                                    <span class="loan-amount">$300<small>/month</small></span>
+                                    <span class="meta-data">Средняя плата в месяц</span>
+                                    <span class="loan-amount">$300<small>/месяц</small></span>
                                 </div>
                             </form>
                         </div>
@@ -371,6 +370,57 @@
                     </div>
                     <textarea class="form-control" placeholder="Комментарий"></textarea>
                     <input type="submit" class="btn btn-primary pull-right" value="Предложить">
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BOOK TEST DRIVE POPUP -->
+<div class="modal fade" id="testdriveModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Записаться на тестдрайв</h4>
+            </div>
+            <div class="modal-body">
+                <p>Запишитесь на тестдрайв</p>
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Имя">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <input type="text" class="form-control" placeholder="Телефон">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" id="datepicker" class="form-control" placeholder="Желаемая дата">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group input-append bootstrap-timepicker">
+                                <span class="input-group-addon add-on"><i class="fa fa-clock-o"></i></span>
+                                <input type="text" id="timepicker" class="form-control" placeholder="Желаемое время">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary pull-right" value="Записаться">
                     <div class="clearfix"></div>
                 </form>
             </div>
