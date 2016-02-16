@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Start Body Content -->
-    <div id="content" class="content full">
+    <div id="content" class="content full" ng-app="myApp">
         <div class="container">
             <div class="row">
                 <div class="col-md-9 single-post">
@@ -45,6 +45,31 @@
                         </div>
                     @endif
 
+                    <div class="widget sidebar-widget widget_recent_posts" ng-controller="lastNewsWidget">
+
+                        <div ng-if="news.length > 0">
+                            <h3 class="widgettitle">
+                                Последние новости
+                            </h3>
+                            <ul>
+                                <li class="" ng-repeat="single_news in news">
+                                    <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                                        <img src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
+                                    </a>
+                                    <h5>
+                                        <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                                            @{{ single_news['name'] }}
+                                        </a>
+                                    </h5>
+                                    <div class="post-actions">
+                                        <div class="post-date">
+                                            @{{ single_news['updated_at'] }}
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,9 +78,12 @@
 @endsection
 
 @section('PAGE-LEVEL-PLUGINS')
-    <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
+    <script src="/admin/assets/global/plugins/angularjs/angular.min.js" type="text/javascript"></script>
+    <script src="/admin/js/checklist-model.js" type="text/javascript"></script>
+    <script src="/admin/assets/global/plugins/angularjs/angular-cookies.min.js" type="text/javascript"></script>
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/catalog/js/catalog/index.js" type="text/javascript"></script>
+    <script src="/catalog/js/index/widgets.js" type="text/javascript"></script>
 @endsection

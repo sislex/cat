@@ -91,8 +91,6 @@ class CatalogController extends Controller
         $blog_pages = Content::getCategoriesContent('blog',$id);
         $categories = Content::getCategories('blog');
 
-//        dd($blog_pages);
-
         return view('catalog/content/blog/index', ['blog_pages' => $blog_pages, 'categories' => $categories]);
     }
 
@@ -101,5 +99,20 @@ class CatalogController extends Controller
         $categories = Content::getCategories('blog');
 
         return view('catalog/content/blog/index', ['blog_pages' => $blog_pages, 'categories' => $categories, 'active_category_id' => $id]);
+    }
+
+    public function getLastContent()
+    {
+        $input = \Request::all();
+
+        if(isset($input['type']) && isset($input['limit']))
+        {
+            $type = $input['type'];
+            $limit = $input['limit'];
+//            $content = Content::where('type','=',$type)->where('published','=','1')->take($limit)->get();
+            $content_arr = Content::getLastContent($type, $limit);
+        }
+
+        return $content_arr;
     }
 }

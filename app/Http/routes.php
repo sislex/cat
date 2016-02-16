@@ -24,14 +24,17 @@ Route::get('catalog/index', 'Catalog\CatalogController@index');
 Route::get('catalog/item/{id?}', 'Catalog\CatalogController@item');
 
 Route::get('menu/{pseudo_url}','Catalog\CatalogController@menu');
-Route::get('news/post/{pseudo_url}','Catalog\CatalogController@news');
-Route::get('blog/post/{pseudo_url}','Catalog\CatalogController@blog');
+Route::get('news/post/{pseudo_url?}','Catalog\CatalogController@news');
+Route::get('blog/post/{pseudo_url?}','Catalog\CatalogController@blog');
 Route::get('catalog/top-menu','Catalog\CatalogController@getTopMenu');
 
 Route::get('news/{id}','Catalog\CatalogController@news_index');
 Route::get('news/category/{id}','Catalog\CatalogController@news_category');
 Route::get('blog/{id}','Catalog\CatalogController@blog_index');
 Route::get('blog/category/{id}','Catalog\CatalogController@blog_category');
+
+Route::post('news/last','Catalog\CatalogController@getLastContent');
+Route::post('blog/last','Catalog\CatalogController@getLastContent');
 
 // Admin module //
 
