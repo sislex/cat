@@ -77,28 +77,35 @@
         <span class="arrow"></span>
     </a>
     <ul class="sub-menu">
-        <li class="nav-item  ">
-            <a href="{{action('Admin\UIComponentsController@show',['name' => 'main-slider'])}}" class="nav-link nav-toggle">
+        <li class="nav-item">
+            <a href="{{action('Admin\UIComponentsController@show',['name' => 'main-slider'])}}" class="nav-link">
                 <span class="title">
                     Основной слайдер
                 </span>
             </a>
         </li>
-        <li class="nav-item  ">
+        <li class="nav-item">
+            <a href="{{action('Admin\UIComponentsController@show',['name' => 'partners-slider'])}}" class="nav-link">
+                <span class="title">
+                    Лента партнеров
+                </span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{action('Admin\UIComponentsController@show',['name' => 'logo'])}}" class="nav-link nav-toggle">
                 <span class="title">
                     Логотип
                 </span>
             </a>
         </li>
-        <li class="nav-item  ">
+        <li class="nav-item">
             <a href="{{action('Admin\UIComponentsController@show',['name' => 'favicon'])}}" class="nav-link nav-toggle">
                 <span class="title">
                     Иконка сайта
                 </span>
             </a>
         </li>
-        <li class="nav-item  ">
+        <li class="nav-item">
             <a href="{{action('Admin\UIComponentsController@show',['name' => 'catalog-banner'])}}" class="nav-link nav-toggle">
                 <span class="title">
                     Баннер каталога

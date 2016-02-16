@@ -38,6 +38,19 @@ class IndexController extends Controller
             }
         }
 
-        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr]);
+        $partners_slider = UIComponents::where('name','=','partners-slider')->get()->first();
+        $partners_slider_arr = [];
+
+        if(isset($partners_slider) && isset($partners_slider->obj)){
+            $obj = json_decode($partners_slider->obj);
+            if(isset($obj->images)){
+                $partners_slider_arr['images'] = $obj->images;
+            }
+            if(isset($obj->html)){
+                $partners_slider_arr['html'] = $obj->html;
+            }
+        }
+
+        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr, 'partners_slider' => $partners_slider_arr]);
     }
 }

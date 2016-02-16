@@ -7,8 +7,8 @@
             <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
                 <ul class="slides">
                     @if(isset($main_slider) && is_array($main_slider) && isset($main_slider['images']) && count($main_slider['images']))
-                        @foreach($main_slider['images'] as $image)
-                            <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $image }}');"></li>
+                        @foreach($main_slider['images'] as $main_slider_image)
+                            <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $main_slider_image }}');"></li>
                         @endforeach
                     @else
                         <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
@@ -144,6 +144,36 @@
                     </div>
                 </div>
                 <div class="spacer-50"></div>
+                <div class="lgray-bg make-slider">
+                    <div class="container">
+
+                        <!-- Partners slider -->
+                        @if(isset($partners_slider) && is_array($partners_slider) && isset($partners_slider['images']) && count($partners_slider['images']))
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4">
+                                    <h3>Наши партнеры </h3>
+                                    {{--<a href="#" class="btn btn-default btn-lg">All make &amp; models</a>--}}
+                                </div>
+                                <div class="col-md-9 col-sm-8">
+                                    <div class="row">
+                                        <ul class="owl-carousel" id="make-carousel" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
+
+                                            @foreach($partners_slider['images'] as $partners_slider_image)
+                                                <li class="item">
+                                                    {{--<a href="">--}}
+                                                        <img src="/images/ui-components/partners-slider/{{ $partners_slider_image }}" alt="Partner Image">
+                                                    {{--</a>--}}
+                                                </li>
+                                            @endforeach
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                    </div>
+                </div>
 
             </div>
         </div>
