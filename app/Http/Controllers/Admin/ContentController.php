@@ -77,6 +77,8 @@ class ContentController extends Controller
         return view('admin/content/page', ['page' => $page, 'type' => $page['type']]);
     }
 
+
+
     /**
      * Update the specified resource in storage.
      *

@@ -49,7 +49,7 @@ class Content extends Model
         return $menuArr;
     }
 
-    public static function getTopMenu(){
+    static function getTopMenu(){
         $Menu = new Content();
         $menu = $Menu->getMenuElements();
 
@@ -84,12 +84,67 @@ class Content extends Model
         return $contentArr;
     }
 
-    public static function getContent($type,$parent_id){
+    static function getContent($type,$parent_id){
         $contentPages = new Content();
         $content_pages = $contentPages->getContentElements($type,$parent_id);
 
         return $content_pages;
     }
+
+    static function getLastContent($type, $limit){
+//        $content = Content::where('type','=',$type)->where('published','=','1')->take($limit)->get();
+        $content_roots = Content::where('type','=',$type)->where('parent_id','=',0)->where('published','=',1)->get();
+
+        $content_arr_with_images = [];
+        if(isset($content_roots) && $content_roots->count()){
+            $content_roots_arr = $content_roots->toArray();
+
+            if(isset($content_roots_arr) && is_array($content_roots_arr) && count($content_roots_arr)){
+                $content_arr = [];
+                $root = new Content();
+                foreach($content_roots_arr as $root_arr){
+                    $content_arr = array_merge($content_arr, $root->buildCategoriesContent($type,$root_arr['id']));
+                }
+
+                if(isset($content_arr) && is_array($content_arr) && count($content_arr)){
+//                    usort($content_arr, '$root->sortArrayByDate');
+
+//                    dd($content_arr);
+
+                    //TODO: sort $content_arr by created_at or updated_at in DESC order!
+
+                    $count = 0;
+                    $c_arr = [];
+                    foreach($content_arr as $content_element){
+                        if($count < $limit && $content_element['published'] == 1){
+                            $c_arr[] = $content_element;
+                            $count++;
+                        }
+                    }
+
+//                    dd($arr);
+                }
+            }
+
+
+
+            if(isset($c_arr) && is_array($c_arr)){
+                $content_obj = new Content();
+                $content_arr_with_images = $content_obj->addPreviewImages($c_arr);
+            }
+        }
+
+        return $content_arr_with_images;
+    }
+
+
+    private function sortArrayByDate($a, $b){
+        $t1 = strtotime($a['updated_at']);
+        $t2 = strtotime($b['updated_at']);
+
+        return $t1 - $t2;
+    }
+
 
     private function deleteContentImagesFolder($id){
         $contentFolder = public_path().'/images/content/'.$id;
@@ -148,7 +203,7 @@ class Content extends Model
         return $categories_arr;
     }
 
-    public static function getCategories($type){
+    static function getCategories($type){
         $content = new Content();
         $categories = $content->buildCategories($type);
 
