@@ -22,11 +22,11 @@ class MailController extends Controller
 
         $mailData['type'] = 'mail';
 
-        $transport = \Mail::getSwiftMailer()->getTransport();
-        $transport->setUsername('sislex@ya.ru');
-        $transport->setPassword('Yerkjy44');
-        $transport->setHost('smtp.yandex.ru');
-        $transport->setPort('465');
+//        $transport = \Mail::getSwiftMailer()->getTransport();
+//        $transport->setUsername('sislex@ya.ru');
+//        $transport->setPassword('Yerkjy44');
+//        $transport->setHost('smtp.yandex.ru');
+//        $transport->setPort('465');
 
 //return;
         \Mail::send('catalog.mail.index', $mailData, function($message)
