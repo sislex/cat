@@ -11,7 +11,8 @@
                 {{ $page['type'] == 'mainpage' ? 'Главная страница' :
                     ($page['type'] == 'menu' ? 'Меню' :
                         ($page['type'] == 'news' ? 'Новости' :
-                            ($page['type'] == 'blog' ? 'Блог' : ''))) }}
+                            ($page['type'] == 'blog' ? 'Блог' :
+                                ($page['type'] == 'feedback' ? 'Отзывы' : '')))) }}
             </li>
             <li>
                 @if($page['type'] != 'mainpage')
@@ -28,6 +29,12 @@
     <h3 class="page-title">
         @if($page['type'] == 'mainpage')
             Главная страница: редактирование
+        @elseif($page['type'] == 'feedback')
+            @if(isset($page['name']))
+                Отзывы: редактирование отзыва от '{{ $page['name'] }}'
+            @else
+                Отзывы: добавление нового отзыва
+            @endif
         @elseif($page['type'] == 'menu')
             @if(isset($page['name']))
                 Меню: редактирование '{{ $page['name'] }}'
@@ -70,6 +77,11 @@
         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
         <input type="hidden" name="id" id="id" value="{{ $page['id'] or '' }}" />
         <input type="hidden" name="tab" id="tab" value="#tab_0" />
+
+        @if($page['type'] == 'feedback')
+            <input type="hidden" name="type" value="feedback" />
+        @endif
+
         {{--<input type="hidden" name="tab" value="#tab_1" />--}}
 
         <div class="tab-content">
@@ -84,7 +96,7 @@
                         <div class="form-body">
 
 
-                            @if($page['type'] != 'mainpage')
+                            @if($page['type'] != 'mainpage' && $page['type'] != 'feedback')
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Parent_ID </label>
@@ -149,7 +161,7 @@
                                 </div>
                             </div>
 
-                            @if($page['id'] != '')
+                            @if($page['id'] != '' && $page['type'] != 'feedback')
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Text </label>
                                     <div class="col-md-7">
@@ -208,7 +220,7 @@
                                 </div>
 
 
-                                @if($page['type'] != 'mainpage')
+                                @if($page['type'] != 'mainpage' || $page['type'] != 'feedback')
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label"> Pseudo_URL </label>

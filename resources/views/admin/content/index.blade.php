@@ -11,7 +11,8 @@
             <li>
                 {{ $type == 'menu' ? 'Меню' :
                     ($type == 'news' ? 'Новости' :
-                        ($type == 'blog' ? 'Блог' : '')) }}
+                        ($type == 'blog' ? 'Блог' :
+                            ($type == 'feedback' ? 'Отзывы' : ''))) }}
             </li>
         </ul>
     </div>

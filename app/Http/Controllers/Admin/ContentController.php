@@ -124,7 +124,7 @@ class ContentController extends Controller
             }
         }
 
-        return \Redirect::action('Admin\ContentController@show', ['id' => $input['id'], $input['tab']]);
+        return \Redirect::action('Admin\ContentController@show', ['id' => $input['id'], $input['tab'], 'type' => $input['type']]);
     }
 
     /**

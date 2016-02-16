@@ -85,61 +85,51 @@
                         <!-- Latest News -->
                         <div class="col-md-12 col-sm-12">
                             {{--<div class="spacer-40"></div>--}}
-                            <!-- Latest Testimonials -->
-                            <section class="listing-block latest-testimonials">
+
+                            <!-- Feedbacks -->
+                            @if(isset($feedbacks) && is_array($feedbacks) && count($feedbacks))
+                                <section class="listing-block latest-testimonials">
                                 <div class="listing-header">
-                                    <h3>Отзывы</h3>
+                                    <h3> Отзывы клиентов </h3>
                                 </div>
                                 <div class="listing-container">
                                     <div class="carousel-wrapper">
                                         <div class="row">
                                             <ul class="owl-carousel carousel-fw" id="testimonials-slider" data-columns="2" data-autoplay="5000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="2" data-items-desktop-small="1" data-items-tablet="1" data-items-mobile="1">
-                                                <li class="item">
-                                                    <div class="testimonial-block">
-                                                        <blockquote>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
-                                                        </blockquote>
-                                                        <div class="testimonial-avatar"><img src="http://placehold.it/100x100&amp;text=IMAGE+PLACEHOLDER" alt="" width="60" height="60"></div>
-                                                        <div class="testimonial-info">
-                                                            <div class="testimonial-info-in">
-                                                                <strong>Arthur Henry</strong><span>Carsales Inc</span>
+
+                                                @foreach($feedbacks as $feedback)
+                                                    @if(isset($feedback['name']) && $feedback['name'] != '' && isset($feedback['short_text']) && $feedback['short_text'] != '')
+                                                        <li class="item">
+                                                            <div class="testimonial-block">
+                                                                <blockquote>
+                                                                    <p> {{ $feedback['short_text'] }} </p>
+                                                                </blockquote>
+
+                                                                @if(isset($feedback['previewImageURL']))
+                                                                    <div class="testimonial-avatar">
+                                                                        <img src="{{ $feedback['previewImageURL'] }}" alt="Feedback Owner Photo" width="60" height="60">
+                                                                    </div>
+                                                                @endif
+
+                                                                <div class="testimonial-info">
+                                                                    <div class="testimonial-info-in">
+                                                                        {{--<strong>Arthur Henry</strong><span>Carsales Inc</span>--}}
+                                                                        <strong>{{ $feedback['name'] }}</strong>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="testimonial-block">
-                                                        <blockquote>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
-                                                        </blockquote>
-                                                        <div class="testimonial-avatar"><img src="http://placehold.it/100x100&amp;text=IMAGE+PLACEHOLDER" alt="" width="60" height="60"></div>
-                                                        <div class="testimonial-info">
-                                                            <div class="testimonial-info-in">
-                                                                <strong>Lori Bailey</strong><span>My car Experts</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="testimonial-block">
-                                                        <blockquote>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
-                                                        </blockquote>
-                                                        <div class="testimonial-avatar"><img src="http://placehold.it/100x100&amp;text=IMAGE+PLACEHOLDER" alt="" width="60" height="60"></div>
-                                                        <div class="testimonial-info">
-                                                            <div class="testimonial-info-in">
-                                                                <strong>Willie &amp; Heather Obrien</strong>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </section>
+                            @endif
+
                         </div>
-                        <!-- Latest Reviews -->
 
                     </div>
                 </div>
