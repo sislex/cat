@@ -12,7 +12,6 @@ myApp.controller('lastCarsWidget', ['$scope', '$http',
             $http.post('/admin/get/items/8', {name:'type_auto', check:'published'}).
                 success(function(data, status, headers, config) {
                     $scope.items = data;
-                    console.log($scope.items);
 
                     //$scope.cloneItems = angular.copy($scope.items);
 

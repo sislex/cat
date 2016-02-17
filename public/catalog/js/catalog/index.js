@@ -1,8 +1,9 @@
 /**
  * Created by Рожнов on 15.11.2015.
  */
-
-var myApp = angular.module('myApp', ["checklist-model", 'ngCookies']);
+if(!myApp){
+    var myApp = angular.module('myApp', ["checklist-model", 'ngCookies']);
+}
 
 myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
     function($scope, $http, $cookies) {
@@ -23,6 +24,8 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправки объекта');
                 });
+
+            console.log($cookies.getAll());
 
             if($cookies.get('wishList')){$scope.wishList = angular.fromJson($cookies.get('wishList'));}
 
@@ -197,41 +200,6 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                         $scope.wishList = newArr;
                     }else{
                         $scope.obj.helpers.deleteFromWishList(obj.item.id);
-                    }
-                },
-                addToViewedList : function(obj){
-                    if(!$scope.obj.helpers.checkId($scope.viewedList, obj.item.id)){
-                        var arr = $scope.viewedList;
-                        if(!angular.isArray(arr)){arr = [];}
-                        var name = '';
-                        if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
-                            name += obj.type_auto[0].text;
-                            if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
-                                name += ' ' + obj.type_auto[0].children[0].text;
-                                if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
-                                    name += ' ' + obj.type_auto[0].children[0].children[0].text;
-                                }
-                            }
-                        }
-                        var row = {
-                            id: obj.item.id,
-                            name: name,
-                            price: obj.price,
-                            image: obj.images[0]
-                        };
-                        arr.unshift(row);
-                        var i = 0;
-                        var newArr = [];
-                        angular.forEach(arr, function(val, key){
-                            i++;
-                            if(i<=5){
-                                newArr.push(val);
-                            }
-                        });
-
-                        obj['viewedList'] = true;
-                        $cookies.put('viewedList', angular.toJson(newArr));
-                        $scope.viewedList = newArr;
                     }
                 },
                 deleteFromWishList:function(id){

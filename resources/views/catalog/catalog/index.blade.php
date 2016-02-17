@@ -249,18 +249,18 @@
                                 <!-- Result Item -->
                                 <div class="result-item format-standard" ng-repeat="item in cloneItems | orderBy:order">
                                     <div class="result-item-image">
-                                        <a ng-click="obj.helpers.addToViewedList(item)" href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box" ng-show="item.images[0]">
+                                        <a  href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box" ng-show="item.images[0]">
                                             <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
                                         </a>
                                         <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
                                         <span class="label label-success premium-listing">Premium Listing</span>
                                         <div class="result-item-view-buttons">
                                             <a href="https://www.youtube.com/watch?v=P5mvnA4BV7Y" data-rel="prettyPhoto"><i class="fa fa-play"></i> View video</a>
-                                            <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}"  ng-click="obj.helpers.addToViewedList(item)"><i class="fa fa-plus"></i> View details</a>
+                                            <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}"  ><i class="fa fa-plus"></i> View details</a>
                                         </div>
                                     </div>
                                     <div class="result-item-in">
-                                        <h4 class="result-item-title"><a ng-click="obj.helpers.addToViewedList(item)" href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h4>
+                                        <h4 class="result-item-title"><a  href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h4>
                                         <div class="result-item-cont">
                                             <div class="result-item-block col1">
                                                 <p>@{{ item.item.text }}</p>

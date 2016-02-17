@@ -3,11 +3,11 @@
  */
 
 if(!myApp){
-    var myApp = angular.module('myApp', ["checklist-model"]);
+    var myApp = angular.module('myApp', ["checklist-model", 'ngCookies']);
 }
 
-myApp.controller('myCtrl', ['$scope', '$http',
-    function($scope, $http) {
+myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
+    function($scope, $http, $cookies) {
         $scope.filter = {};
         $scope.func = (function(){
             $http.post('/filter/ajax').
@@ -33,6 +33,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправке объекта');
                 });
+            //$scope.obj.helpers.addToViewedList(123);
         })();
         $scope.roles = [
             'guest',
@@ -181,6 +182,53 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     });
 
                     return rez;
+                },
+                addToViewedList : function(obj){
+                    console.log($cookies.getAll());
+                    //if(!$scope.obj.helpers.checkId($scope.viewedList, obj.item.id)){
+                    //    var arr = $scope.viewedList;
+                    //    if(!angular.isArray(arr)){arr = [];}
+                    //    var name = '';
+                    //    if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
+                    //        name += obj.type_auto[0].text;
+                    //        if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
+                    //            name += ' ' + obj.type_auto[0].children[0].text;
+                    //            if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
+                    //                name += ' ' + obj.type_auto[0].children[0].children[0].text;
+                    //            }
+                    //        }
+                    //    }
+                    //    var row = {
+                    //        id: obj.item.id,
+                    //        name: name,
+                    //        price: obj.price,
+                    //        image: obj.images[0]
+                    //    };
+                    //    arr.unshift(row);
+                    //    var i = 0;
+                    //    var newArr = [];
+                    //    angular.forEach(arr, function(val, key){
+                    //        i++;
+                    //        if(i<=5){
+                    //            newArr.push(val);
+                    //        }
+                    //    });
+                    //
+                    //    obj['viewedList'] = true;
+                    //    $cookies.put('viewedList', angular.toJson(newArr));
+                    //    $scope.viewedList = newArr;
+                    //}
+                },
+                checkId : function(arr, id){
+                    var result = false;
+                    angular.forEach(arr, function(val, key){
+                        if(id == val.id){
+                            result = true;
+                        }
+                    });
+
+
+                    return result;
                 }
             }
         };
