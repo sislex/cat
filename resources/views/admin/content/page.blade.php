@@ -80,6 +80,8 @@
 
         @if($page['type'] == 'feedback')
             <input type="hidden" name="type" value="feedback" />
+        @elseif($page['type'] == 'mainpage')
+            <input type="hidden" name="type" value="mainpage" />
         @endif
 
         {{--<input type="hidden" name="tab" value="#tab_1" />--}}
