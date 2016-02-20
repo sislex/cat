@@ -10,8 +10,9 @@
         <div class="container">
     {{--        <h1 class="page-title">{{$item['title']}}</h1>--}}
         </div>
+">{{$item['title']}}</h1>--}}
     </div>
-    <!-- Utiity Bar -->
+</div>    <!-- Utiity Bar -->
     <div class="utility-bar">
         <div class="container">
             <div class="row">
@@ -251,33 +252,49 @@
                             <div class="sidebar-widget widget calculator-widget">
                                 <h4>Расчитать кредит</h4>
                                 <form>
-                                    <div class="loan-calculations">
-                                        <input type="text" class="form-control" placeholder="Сумма займа">
+                                    <div class="loan-calculations"  ng-init="
+                                    price = {{$item['price']}};
+                                    downPayment = 0;
+                                    month = 24;
+                                    year = month / 12;
+                                    percent = 12
+                                    ">
+                                        <input type="text" class="form-control" placeholder="Сумма займа" ng-value="price - downPayment">
                                         <div class="form-group">
                                             <label>Количество месяцев</label>
                                             <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-info active">
+                                                <label class="btn btn-info active" ng-click="month=24">
                                                     <input type="radio" name="Loan Tenure" id="option1" autocomplete="off" checked> 24
+                                                    <input type="radio" ng-model="color.name" value="red">
                                                 </label>
-                                                <label class="btn btn-info">
-                                                    <input type="radio" name="Loan Tenure" id="option2" autocomplete="off"> 36
+                                                <label class="btn btn-info" ng-click="month=36">
+                                                    <input type="radio" name="Loan Tenure" ng-model="color.name" value="red" id="option2" autocomplete="off"> 36
+                                                    <input type="radio" ng-model="color.name" value="blue">
                                                 </label>
-                                                <label class="btn btn-info">
+                                                <label class="btn btn-info" ng-click="month=48">
                                                     <input type="radio" name="Loan Tenure" id="option3" autocomplete="off"> 48
                                                 </label>
-                                                <label class="btn btn-info">
+                                                <label class="btn btn-info" ng-click="month=60">
                                                     <input type="radio" name="Loan Tenure" id="option3" autocomplete="off"> 60
                                                 </label>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Первоночальный взнос">
-                                            <input type="text" class="form-control" placeholder="Процентная ставка">
+                                            <input type="text" class="form-control"  ng-model="downPayment" placeholder="Первоночальный взнос">
+                                            <input type="text" class="form-control" ng-model="percent" placeholder="Процентная ставка">
                                         </div>
                                     </div>
                                     <div class="calculations-result">
                                         <span class="meta-data">Средняя плата в месяц</span>
-                                        <span class="loan-amount">$300<small>/месяц</small></span>
+                                    <span class="loan-amount">
+                                        <span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)>0">
+                                            $@{{ ((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month) | number:0 }}
+                                        </span>
+                                        <span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)<=0">$0</span>
+
+                                        <small>/месяц</small>
+                                    </span>
                                     </div>
                                 </form>
                             </div>
