@@ -1,5 +1,7 @@
 @extends('catalog.layout')
 
+@section('title', $mainpage['title'])
+
 @section('content')
     <div id="divMyApp">
         <div class="hero-area">
@@ -25,10 +27,10 @@
                 <div class="container">
 
                     <!-- Welcome Content and Services overview -->
-                    @if(isset($main_page_text))
+                    @if(isset($mainpage['text']))
                         <div class="row">
 
-                            {!! $main_page_text !!}
+                            {!! $mainpage['text'] !!}
 
                         </div>
                         <div class="spacer-75"></div>
@@ -79,10 +81,9 @@
                     </section>
 
                     <div class="spacer-60"></div>
-                    {{--<div class="row">--}}
 
                     <!-- Latest News -->
-                        <section class="listing-block latest-news" ng-controller="lastNewsWidget">
+                    <section class="listing-block latest-news" ng-controller="lastNewsWidget">
                             <div ng-if="news.length > 0">
                                 <div class="listing-header">
                                     <h3>
@@ -96,8 +97,9 @@
 
                                                     <li class="item" ng-repeat="single_news in news">
                                                         <div class="post-block format-standard">
-                                                            <a ng-if="single_news['previewImageURL'] && single['previewImageURL'] != ''" href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
-                                                                <img src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
+{{--                                                            @{{ single_news['previewImageURL'] }}--}}
+                                                            <a ng-if="single_news['previewImageURL']" href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                                                                <img ng-src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
                                                             </a>
                                                             <div class="post-actions">
                                                                 <div class="post-date">

@@ -1,15 +1,19 @@
 @extends('catalog.layout')
 
+@section('title', $content['title'])
+@section('keywords', $content['keywords'])
+@section('description', $content['description'])
+
 @section('content')
-        <!-- Start Body Content -->
+
+<!-- Start Body Content -->
 <div id="content" class="content full" ng-app="myApp">
     <div class="container">
         <div class="row">
-            <div class="col-md-9 single-post">
+            <div class="col-md-12 single-post">
                 <header class="single-post-header clearfix">
                     <div class="post-actions">
                         <div class="post-date">
-                            {{--November 27, 2014--}}
                             {{ date('d-m-Y', strtotime($content['created_at'])) }}
                         </div>
                     </div>
@@ -17,42 +21,11 @@
                         {{ $content['name'] }}
                     </h2>
                 </header>
-
                 <article class="post-content">
 
                     {!! $content['text'] !!}
 
                 </article>
-
-            </div>
-
-            <!-- Start Sidebar -->
-            <div class="col-md-3 sidebar">
-                <div class="widget sidebar-widget widget_recent_posts" ng-controller="lastBlogPostsWidget">
-
-                    <div ng-if="blog.length > 0">
-                        <h3 class="widgettitle">
-                            Последние посты
-                        </h3>
-                        <ul>
-                            <li class="" ng-repeat="blog_post in blog | orderBy: id">
-                                <a href="{{ action('Catalog\CatalogController@blog')}}/@{{ blog_post['pseudo_url'] }}">
-                                    <img src="@{{ blog_post['previewImageURL'] }}" alt="" class="img-thumbnail">
-                                </a>
-                                <h5>
-                                    <a href="{{ action('Catalog\CatalogController@blog')}}/@{{ blog_post['pseudo_url'] }}">
-                                        @{{ blog_post['name'] }}
-                                    </a>
-                                </h5>
-                                <div class="post-actions">
-                                    <div class="post-date">
-                                        @{{ blog_post['updated_at'] }}
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,9 @@
 @extends('catalog.layout')
 
+@section('title', $content['title'])
+@section('keywords', $content['keywords'])
+@section('description', $content['description'])
+
 @section('content')
     <!-- Start Body Content -->
     <div id="content" class="content full" ng-app="myApp">
@@ -46,23 +50,24 @@
                     @endif
 
                     <div class="widget sidebar-widget widget_recent_posts" ng-controller="lastNewsWidget">
+
                         <div ng-if="news.length > 0">
                             <h3 class="widgettitle">
                                 Последние новости
                             </h3>
                             <ul>
-                                <li ng-repeat="single_news in news">
+                                <li class="" ng-repeat="single_news in news">
                                     <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
                                         <img src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
                                     </a>
                                     <h5>
-                                        <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                                        <a ng-if="single_news['previewImageURL'] && single['previewImageURL'] != ''" href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
                                             @{{ single_news['name'] }}
                                         </a>
                                     </h5>
                                     <div class="post-actions">
                                         <div class="post-date">
-                                            @{{ single_news['created_at'] }}
+                                            @{{ single_news['updated_at'] }}
                                         </div>
                                     </div>
                                 </li>

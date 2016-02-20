@@ -1,17 +1,8 @@
 @extends('catalog.layout')
 
 @section('title', $item['title'])
-@endsection
-
 @section('description', $item['description'])
-@endsection
-
 @section('keywords', $item['keywords'])
-@endsection
-
-@section('author', 'Alex Babenya, Alex Rozhnov, Vitali Loseu')
-@endsection
-
 
 @section('content')
     <!-- Start Page header -->

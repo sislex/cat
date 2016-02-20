@@ -1,5 +1,9 @@
 @extends('catalog.layout')
 
+@section('title', $content['title'])
+@section('keywords', $content['keywords'])
+@section('description', $content['description'])
+
 @section('content')
 
 <!-- Start Body Content -->

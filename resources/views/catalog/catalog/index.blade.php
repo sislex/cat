@@ -1,5 +1,9 @@
 @extends('catalog.layout')
 
+@section('title', 'Каталог Goldenmotors.by')
+@section('keywords', 'Каталог Goldenmotors.by')
+@section('description', 'Каталог Goldenmotors.by')
+
 @section('content')
 <div ng-app="myApp" ng-controller="myCtrl">
     <!-- Start Page header -->

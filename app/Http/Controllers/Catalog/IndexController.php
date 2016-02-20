@@ -19,10 +19,17 @@ class IndexController extends Controller
     public function index()
     {
         $main_page = Content::where('type','=','mainpage')->get()->first();
+        $mainpage = [];
         if(isset($main_page) && isset($main_page->text)){
-            $main_page_text = $main_page->text;
+            $mainpage['text'] = $main_page->text;
         }else{
-            $main_page_text = '<h1>Приносим свои извинения, страница находится в разработке.</h1>';
+            $mainpage['text'] = '<h1>Приносим свои извинения, страница находится в разработке.</h1>';
+        }
+
+        if(isset($main_page) && isset($main_page->title)){
+            $mainpage['title'] = $main_page->title;
+        }else{
+            $mainpage['title'] = 'Сайт компании Goldenmotors';
         }
 
         $main_slider = UIComponents::where('name','=','main-slider')->get()->first();
@@ -53,7 +60,7 @@ class IndexController extends Controller
 
         $feedbacks_arr = Content::getContent('feedback',0);
 
-        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr,
+        return view('catalog/index/index', ['mainpage' => $mainpage, 'main_slider' => $main_slider_arr,
                 'partners_slider' => $partners_slider_arr, 'feedbacks' => $feedbacks_arr]);
     }
 }
