@@ -50,7 +50,20 @@ class CatalogController extends Controller
             }
         }
 
-        return view('catalog/catalog/item', ['item' => $item]);
+        $catalog_banner = UIComponents::where('name','=','catalog-banner')->get()->first();
+        $catalog_banner_arr = [];
+
+        if(isset($catalog_banner) && isset($catalog_banner->obj)){
+            $obj = json_decode($catalog_banner->obj);
+            if(isset($obj->images)){
+                $catalog_banner_arr['images'] = $obj->images;
+            }
+            if(isset($obj->html)){
+                $catalog_banner_arr['html'] = $obj->html;
+            }
+        }
+
+        return view('catalog/catalog/item', ['item' => $item, 'catalog_banner' => $catalog_banner_arr]);
     }
 
     public function menu($pseudo_url){
