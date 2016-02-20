@@ -25,13 +25,10 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                     console.log('Ошибка при отправки объекта');
                 });
 
-            console.log($cookies.getAll());
+            if($cookies.get('wishList')){$scope.wishList = angular.fromJson(window.Cookie.get('wishList'));}
 
-            if($cookies.get('wishList')){$scope.wishList = angular.fromJson($cookies.get('wishList'));}
-
-            if($cookies.get('viewedList')){$scope.viewedList = angular.fromJson($cookies.get('viewedList'));}
-            console.log($cookies.get('viewedList'));
-
+            if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
+            console.log(window.Cookie.get('wishList'));
         })();
 
         $scope.obj = {
@@ -196,7 +193,8 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                         });
 
                         obj['wishList'] = true;
-                        $cookies.put('wishList', angular.toJson(newArr));
+                        window.Cookie.set('wishList', angular.toJson(newArr));
+                        //$cookies.put('wishList', angular.toJson(newArr));
                         $scope.wishList = newArr;
                     }else{
                         $scope.obj.helpers.deleteFromWishList(obj.item.id);
@@ -209,7 +207,8 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                             newArr.push(val);
                         }
                     });
-                    $cookies.put('wishList', angular.toJson(newArr));
+                    window.Cookie.set('wishList', angular.toJson(newArr));
+                    //$cookies.put('wishList', angular.toJson(newArr));
                     $scope.wishList = newArr;
                 },
                 checkId : function(arr, id){

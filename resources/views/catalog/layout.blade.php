@@ -154,6 +154,7 @@
         </div>
     </div>
 </div>
+<script src="/catalog/js/utils.js"></script> <!-- Jquery Library Call -->
 <script src="/catalog/js/jquery-2.0.0.min.js"></script> <!-- Jquery Library Call -->
 <script src="/catalog/vendor/prettyphoto/js/prettyphoto.js"></script> <!-- PrettyPhoto Plugin -->
 <script src="/catalog/js/ui-plugins.js"></script> <!-- UI Plugins -->

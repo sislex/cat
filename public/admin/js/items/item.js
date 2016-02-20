@@ -14,6 +14,19 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                 success(function(data, status, headers, config) {
                     $scope.filter = data;
                     if($scope.obj.objJson!=''){$scope.obj.obj = angular.fromJson($scope.obj.objJson);}
+                    $scope.obj.obj.id = $scope.obj.id;
+
+                    //if($cookies.get('viewedList')){$scope.viewedList = angular.fromJson($cookies.get('viewedList'));}
+                    //console.log($cookies.getAll({path:'catalog'}));
+                    //console.log($cookies.remove('viewedList'));
+                    //console.log($cookies.put('viewedList', 1, {path:'/catalog'}));
+                    //console.log($cookies.getAll());
+
+                    //console.log($cookies.get('viewedList'));
+
+
+                    if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
+                    $scope.obj.helpers.addToViewedList($scope.obj.obj);
 
                     angular.forEach($scope.obj.obj, function(value, key){
                         $scope.obj.helpers.objToModel(key, $scope.obj.obj[key], $scope.filter[key]);
@@ -23,16 +36,16 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                     console.log('Ошибка при отправке объекта');
                 });
 
+
             $http.post('/specifications/ajax').
                 success(function(data, status, headers, config) {
                     $scope.specifications = data;
                     if($scope.obj.specificationsJson!=''){$scope.obj.specifications = angular.fromJson($scope.obj.specificationsJson);}
-
-
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправке объекта');
                 });
+            //console.log($scope.obj.helpers.addToViewedList);
             //$scope.obj.helpers.addToViewedList(123);
         })();
         $scope.roles = [
@@ -184,40 +197,49 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                     return rez;
                 },
                 addToViewedList : function(obj){
-                    console.log($cookies.getAll());
-                    //if(!$scope.obj.helpers.checkId($scope.viewedList, obj.item.id)){
-                    //    var arr = $scope.viewedList;
-                    //    if(!angular.isArray(arr)){arr = [];}
-                    //    var name = '';
-                    //    if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
-                    //        name += obj.type_auto[0].text;
-                    //        if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
-                    //            name += ' ' + obj.type_auto[0].children[0].text;
-                    //            if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
-                    //                name += ' ' + obj.type_auto[0].children[0].children[0].text;
-                    //            }
-                    //        }
-                    //    }
-                    //    var row = {
-                    //        id: obj.item.id,
-                    //        name: name,
-                    //        price: obj.price,
-                    //        image: obj.images[0]
-                    //    };
-                    //    arr.unshift(row);
-                    //    var i = 0;
-                    //    var newArr = [];
-                    //    angular.forEach(arr, function(val, key){
-                    //        i++;
-                    //        if(i<=5){
-                    //            newArr.push(val);
-                    //        }
-                    //    });
-                    //
-                    //    obj['viewedList'] = true;
-                    //    $cookies.put('viewedList', angular.toJson(newArr));
-                    //    $scope.viewedList = newArr;
-                    //}
+                    $scope.viewedList = $scope.obj.helpers.removeRowById($scope.viewedList, obj.id);
+                    var arr = $scope.viewedList;
+                    if(!angular.isArray(arr)){arr = [];}
+                    var name = '';
+                    if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
+                        name += obj.type_auto[0].text;
+                        if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
+                            name += ' ' + obj.type_auto[0].children[0].text;
+                            if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
+                                name += ' ' + obj.type_auto[0].children[0].children[0].text;
+                            }
+                        }
+                    }
+                    var row = {
+                        id: obj.id,
+                        name: name,
+                        price: obj.price,
+                        image: obj.images[0]
+                    };
+                    arr.unshift(row);
+                    var i = 0;
+                    var newArr = [];
+                    angular.forEach(arr, function(val, key){
+                        i++;
+                        if(i<=5){
+                            newArr.push(val);
+                        }
+                    });
+
+                    obj['viewedList'] = true;
+                    window.Cookie.set('viewedList', angular.toJson(newArr));
+
+                    $scope.viewedList = newArr;
+                },
+                removeRowById : function(arr, id){
+                    var newArr = [];
+                    angular.forEach(arr, function(val, key){
+                        if(id != val.id){
+                            newArr.push(val);
+                        }
+                    });
+
+                    return newArr;
                 },
                 checkId : function(arr, id){
                     var result = false;
@@ -226,7 +248,6 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                             result = true;
                         }
                     });
-
 
                     return result;
                 }
