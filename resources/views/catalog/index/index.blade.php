@@ -1,7 +1,7 @@
 @extends('catalog.layout')
 
 @section('content')
-    <div ng-app="myApp">
+    <div id="divMyApp">
         <div class="hero-area">
             <!-- Start Hero Slider -->
             <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
@@ -33,7 +33,6 @@
                         </div>
                         <div class="spacer-75"></div>
                     @else
-
                         <div class="row">
                             <div class="col-md-6">
                                 <h1 class="uppercase strong">Welcome to AutoStars<br>Listing portal</h1>
@@ -45,10 +44,9 @@
                             </div>
                         </div>
                         <div class="spacer-75"></div>
-
                     @endif
 
-                            <!-- Recently Listed Vehicles -->
+                    <!-- Recently Listed Vehicles -->
                     <section class="listing-block recent-vehicles" ng-controller="lastCarsWidget" >
                         <div ng-if="(items.length>0)">
                             <div class="listing-header" >
@@ -81,57 +79,93 @@
                     </section>
 
                     <div class="spacer-60"></div>
-                    <div class="row">
-                        <!-- Latest News -->
-                        <div class="col-md-12 col-sm-12">
-                            {{--<div class="spacer-40"></div>--}}
+                    {{--<div class="row">--}}
 
-                            <!-- Feedbacks -->
-                            @if(isset($feedbacks) && is_array($feedbacks) && count($feedbacks))
-                                <section class="listing-block latest-testimonials">
+                    <!-- Latest News -->
+                        <section class="listing-block latest-news" ng-controller="lastNewsWidget">
+                            <div ng-if="news.length > 0">
                                 <div class="listing-header">
-                                    <h3> Отзывы клиентов </h3>
+                                    <h3>
+                                        Последние новости
+                                    </h3>
                                 </div>
                                 <div class="listing-container">
                                     <div class="carousel-wrapper">
                                         <div class="row">
-                                            <ul class="owl-carousel carousel-fw" id="testimonials-slider" data-columns="2" data-autoplay="5000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="2" data-items-desktop-small="1" data-items-tablet="1" data-items-mobile="1">
+                                            <ul class="owl-carousel" id="news-slider" data-columns="3" data-autoplay="5000" data-pagination="yes" data-arrows="yes" data-single-item="no" data-items-desktop="3" data-items-desktop-small="1" data-items-tablet="3" data-items-mobile="1">
 
-                                                @foreach($feedbacks as $feedback)
-                                                    @if(isset($feedback['name']) && $feedback['name'] != '' && isset($feedback['short_text']) && $feedback['short_text'] != '')
-                                                        <li class="item">
-                                                            <div class="testimonial-block">
-                                                                <blockquote>
-                                                                    <p> {{ $feedback['short_text'] }} </p>
-                                                                </blockquote>
-
-                                                                @if(isset($feedback['previewImageURL']))
-                                                                    <div class="testimonial-avatar">
-                                                                        <img src="{{ $feedback['previewImageURL'] }}" alt="Feedback Owner Photo" width="60" height="60">
-                                                                    </div>
-                                                                @endif
-
-                                                                <div class="testimonial-info">
-                                                                    <div class="testimonial-info-in">
-                                                                        {{--<strong>Arthur Henry</strong><span>Carsales Inc</span>--}}
-                                                                        <strong>{{ $feedback['name'] }}</strong>
-                                                                    </div>
+                                                    <li class="item" ng-repeat="single_news in news">
+                                                        <div class="post-block format-standard">
+                                                            <a ng-if="single_news['previewImageURL'] && single['previewImageURL'] != ''" href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                                                                <img src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
+                                                            </a>
+                                                            <div class="post-actions">
+                                                                <div class="post-date">
+                                                                    @{{ single_news['updated_at'] }}
                                                                 </div>
                                                             </div>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
+                                                            <h3 class="post-title">
+                                                                <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                                                                    @{{ single_news['name'] }}
+                                                                </a>
+                                                            </h3>
+                                                        </div>
+                                                    </li>
 
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
-                            @endif
+                            </div>
+                        </section>
 
-                        </div>
+                    <div class="spacer-40"></div>
 
-                    </div>
+                    <!-- Feedbacks -->
+                    @if(isset($feedbacks) && is_array($feedbacks) && count($feedbacks))
+                        {{--<div class="col-md-12 col-sm-12">--}}
+                            <section class="listing-block latest-testimonials">
+                            <div class="listing-header">
+                                <h3> Отзывы клиентов </h3>
+                            </div>
+                            <div class="listing-container">
+                                <div class="carousel-wrapper">
+                                    <div class="row">
+                                        <ul class="owl-carousel carousel-fw" id="testimonials-slider" data-columns="2" data-autoplay="5000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="2" data-items-desktop-small="1" data-items-tablet="1" data-items-mobile="1">
+
+                                            @foreach($feedbacks as $feedback)
+                                                @if(isset($feedback['name']) && $feedback['name'] != '' && isset($feedback['short_text']) && $feedback['short_text'] != '')
+                                                    <li class="item">
+                                                        <div class="testimonial-block">
+                                                            <blockquote>
+                                                                <p> {{ $feedback['short_text'] }} </p>
+                                                            </blockquote>
+
+                                                            @if(isset($feedback['previewImageURL']))
+                                                                <div class="testimonial-avatar">
+                                                                    <img src="{{ $feedback['previewImageURL'] }}" alt="Feedback Owner Photo" width="60" height="60">
+                                                                </div>
+                                                            @endif
+
+                                                            <div class="testimonial-info">
+                                                                <div class="testimonial-info-in">
+                                                                    {{--<strong>Arthur Henry</strong><span>Carsales Inc</span>--}}
+                                                                    <strong>{{ $feedback['name'] }}</strong>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        {{--</div>--}}
+                    @endif
+
                 </div>
                 <div class="spacer-50"></div>
                 <div class="lgray-bg make-slider">
@@ -164,7 +198,6 @@
 
                     </div>
                 </div>
-
             </div>
         </div>
         <!-- End Body Content -->
@@ -174,9 +207,7 @@
 @section('PAGE-LEVEL-PLUGINS')
     <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
     <script src="/admin/js/checklist-model.js" type="text/javascript"></script>
-
     <script src="/admin/assets/global/plugins/angularjs/angular-cookies.min.js"></script>
-
 @endsection
 
 @section('PAGE-LEVEL-SCRIPTS')

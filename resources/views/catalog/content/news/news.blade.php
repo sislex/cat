@@ -46,13 +46,12 @@
                     @endif
 
                     <div class="widget sidebar-widget widget_recent_posts" ng-controller="lastNewsWidget">
-
                         <div ng-if="news.length > 0">
                             <h3 class="widgettitle">
                                 Последние новости
                             </h3>
                             <ul>
-                                <li class="" ng-repeat="single_news in news">
+                                <li ng-repeat="single_news in news">
                                     <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
                                         <img src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
                                     </a>
@@ -63,7 +62,7 @@
                                     </h5>
                                     <div class="post-actions">
                                         <div class="post-date">
-                                            @{{ single_news['updated_at'] }}
+                                            @{{ single_news['created_at'] }}
                                         </div>
                                     </div>
                                 </li>

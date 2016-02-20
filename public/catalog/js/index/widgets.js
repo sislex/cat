@@ -1,9 +1,10 @@
 /**
  * Created by sislex on 13.02.16.
  */
-    if(!myApp){
-        var myApp = angular.module('myApp', ["checklist-model"]);
-    }
+
+if(!myApp){
+    var myApp = angular.module('myApp', ["checklist-model"]);
+}
 
 myApp.controller('lastCarsWidget', ['$scope', '$http',
     function($scope, $http) {
@@ -30,13 +31,13 @@ myApp.controller('lastCarsWidget', ['$scope', '$http',
 myApp.controller('lastNewsWidget', ['$scope', '$http',
     function($scope, $http) {
         $scope.func = (function(){
-            $http.post('/news/last', {type:'news', limit:3}).
+            $http.post('/news/last', {type:'news', limit:6}).
                 success(function(data, status, headers, config) {
                     $scope.news = data;
                     console.log($scope.news);
                 }).
                 error(function(data, status, headers, config) {
-                    console.log('Ошибка при отправке объекта');
+                    console.log('ошибка при отправке объекта');
                 });
         })();
     }
@@ -51,8 +52,39 @@ myApp.controller('lastBlogPostsWidget', ['$scope', '$http',
                 console.log($scope.blog);
             }).
             error(function(data, status, headers, config) {
-                console.log('Ошибка при отправке объекта');
+                console.log('ошибка при отправке объекта');
             });
         })();
     }
 ]);
+
+
+
+if(!mailApp){
+    var mailApp = angular.module('mailApp', []);
+}
+
+mailApp.controller('MailWidget', ['$scope', '$http',
+    function($scope, $http) {
+        $scope.func = (function(){
+            $http.post('/mail/index', {}).
+            success(function(data, status, headers, config) {
+                $scope.result = data;
+                console.log($scope.result);
+            }).
+            error(function(data, status, headers, config) {
+                console.log('ошибка при отправке объекта.');
+            });
+        })();
+
+        $scope.qwe = 123;
+    }
+]);
+
+var divMyApp = document.getElementById('divMyApp');
+var divMailApp = document.getElementById('divMailApp');
+
+angular.element(document).ready(function(){
+    angular.bootstrap(divMyApp, ['myApp']);
+    angular.bootstrap(divMailApp, ['mailApp']);
+});

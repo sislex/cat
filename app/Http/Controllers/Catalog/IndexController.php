@@ -53,8 +53,7 @@ class IndexController extends Controller
 
         $feedbacks_arr = Content::getContent('feedback',0);
 
-//        dd($feedbacks_arr);
-
-        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr, 'partners_slider' => $partners_slider_arr, 'feedbacks' => $feedbacks_arr]);
+        return view('catalog/index/index', ['main_page_text' => $main_page_text, 'main_slider' => $main_slider_arr,
+                'partners_slider' => $partners_slider_arr, 'feedbacks' => $feedbacks_arr]);
     }
 }
