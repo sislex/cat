@@ -19,17 +19,17 @@ class IndexController extends Controller
     public function index()
     {
         $main_page = Content::where('type','=','mainpage')->get()->first();
-        $mainpage = [];
-        if(isset($main_page) && isset($main_page->text)){
-            $mainpage['text'] = $main_page->text;
-        }else{
-            $mainpage['text'] = '<h1>Приносим свои извинения, страница находится в разработке.</h1>';
+        $main_page_arr = [];
+        if(isset($main_page) && $main_page->count())
+        {
+            $main_page_arr = $main_page->toArray();
+        }
+        if(is_array($main_page_arr) && isset($main_page_arr['text']) && trim($main_page_arr['text']) == '' ){
+            $main_page_arr['text'] = '<h1>Приносим свои извинения, страница находится в разработке.</h1>';
         }
 
-        if(isset($main_page) && isset($main_page->title)){
-            $mainpage['title'] = $main_page->title;
-        }else{
-            $mainpage['title'] = 'Сайт компании Goldenmotors';
+        if(is_array($main_page_arr) && isset($main_page_arr['title']) && trim($main_page_arr['title']) == '' ){
+            $main_page_arr['title'] = 'Сайт компании Golden Motors';
         }
 
         $main_slider = UIComponents::where('name','=','main-slider')->get()->first();
@@ -60,7 +60,7 @@ class IndexController extends Controller
 
         $feedbacks_arr = Content::getContent('feedback',0);
 
-        return view('catalog/index/index', ['mainpage' => $mainpage, 'main_slider' => $main_slider_arr,
+        return view('catalog/index/index', ['mainpage' => $main_page_arr, 'main_slider' => $main_slider_arr,
                 'partners_slider' => $partners_slider_arr, 'feedbacks' => $feedbacks_arr]);
     }
 }
