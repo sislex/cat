@@ -44,7 +44,7 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                 keyToNumber : function(arr, key){
                     angular.forEach(arr, function(val, k){
                         if(!angular.isUndefined(val[key])){
-                            parseFloat(val[key]);
+                            val[key] = parseFloat(val[key]);
                         }
                     });
                 },
