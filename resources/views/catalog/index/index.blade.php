@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="col-md-9 col-sm-8">
                                     <div class="row">
-                                        <ul class="owl-carousel" id="make-carousel" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
+                                        <ul class="owl-carousel" id="partners-slider" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
 
                                             @foreach($partners_slider['images'] as $partners_slider_image)
                                                 <li class="item">
@@ -220,8 +220,7 @@
     <script>
         setTimeout(function() {
             if (window.AUTOSTARS) {
-                alert();
-                window.AUTOSTARS.OwlCarousel($('#feedbacks-slider'));
+                window.AUTOSTARS.OwlCarousel($('#feedbacks-slider, #partners-slider, #weghgfd'));
             }
         }, 500);
     </script>
