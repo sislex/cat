@@ -103,16 +103,21 @@
                                                             <a ng-if="single_news['previewImageURL']" href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
                                                                 <img ng-src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
                                                             </a>
-                                                            <div class="post-actions">
-                                                                <div class="post-date">
-                                                                    @{{ single_news['updated_at'] }}
-                                                                </div>
-                                                            </div>
+                                                            {{--<div class="post-actions">--}}
+                                                                {{--<div class="post-date">--}}
+                                                                    {{--@{{ single_news['date'] }}--}}
+                                                                {{--</div>--}}
+                                                            {{--</div>--}}
                                                             <h3 class="post-title">
                                                                 <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
                                                                     @{{ single_news['name'] }}
                                                                 </a>
                                                             </h3>
+                                                            <div class="post-content">
+                                                                <p>
+                                                                    @{{ single_news['short_text'] }}
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     </li>
 
