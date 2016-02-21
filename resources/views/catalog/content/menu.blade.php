@@ -11,16 +11,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 single-post">
-                <header class="single-post-header clearfix">
-                    <div class="post-actions">
-                        <div class="post-date">
-                            {{ date('d-m-Y', strtotime($content['created_at'])) }}
-                        </div>
-                    </div>
-                    <h2 class="post-title">
-                        {{ $content['name'] }}
-                    </h2>
-                </header>
                 <article class="post-content">
 
                     {!! $content['text'] !!}
