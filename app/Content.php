@@ -216,7 +216,7 @@ class Content extends Model
                 $category_elements_arr = $this->getContentElements($type,$specific_category['id']);
                 if(isset($category_elements_arr) && is_array($category_elements_arr) && count($category_elements_arr)){
                     foreach($category_elements_arr as $category_el){
-                        $content_arr[] = $category_el;
+                        $content_arr[$category_el['id']] = $category_el;
                     }
                 }
             }
