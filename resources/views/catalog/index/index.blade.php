@@ -95,7 +95,7 @@
                                 <div class="listing-container">
                                     <div class="carousel-wrapper">
                                         <div class="row">
-                                            <ul class="owl-carousel" id="news-slider" data-columns="3" data-autoplay="5000" data-pagination="yes" data-arrows="yes" data-single-item="no" data-items-desktop="3" data-items-desktop-small="1" data-items-tablet="3" data-items-mobile="1">
+                                            <ul class="owl-carousel" id="news-slider" data-columns="3" data-autoplay="5000" data-pagination="yes" data-arrows="no" data-single-item="no" data-items-desktop="3" data-items-desktop-small="1" data-items-tablet="3" data-items-mobile="1">
 
                                                     <li class="item" ng-repeat="single_news in news">
                                                         <div class="post-block format-standard">
