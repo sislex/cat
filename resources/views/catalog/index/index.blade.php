@@ -135,7 +135,7 @@
                             <div class="listing-container">
                                 <div class="carousel-wrapper">
                                     <div class="row">
-                                        <ul class="owl-carousel carousel-fw" id="testimonials-slider" data-columns="2" data-autoplay="5000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="2" data-items-desktop-small="1" data-items-tablet="1" data-items-mobile="1">
+                                        <ul class="owl-carousel carousel-fw" id="feedbacks-slider" data-columns="2" data-autoplay="5000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="2" data-items-desktop-small="1" data-items-tablet="1" data-items-mobile="1">
 
                                             @foreach($feedbacks as $feedback)
                                                 @if(isset($feedback['name']) && $feedback['name'] != '' && isset($feedback['short_text']) && $feedback['short_text'] != '')
@@ -217,4 +217,7 @@
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/admin/js/items/item.js" type="text/javascript"></script>
     <script src="/catalog/js/index/widgets.js" type="text/javascript"></script>
+    <script>
+            if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel($('#feedbacks-slider'));}
+    </script>
 @endsection
