@@ -415,26 +415,26 @@ var AUTOSTARS = window.AUTOSTARS || {};
 			}
 
 		});
-		$(window).load(function() {
-			var IsoTopeCont = $(".isotope-grid");
-			IsoTopeCont.isotope({
-				itemSelector: ".grid-item",
-				layoutMode: 'sloppyMasonry'
-			});
-			if ($(".grid-holder").length > 0){
-				var $container_blog = $('.grid-holder');
-				$container_blog.isotope({
-				itemSelector : '.grid-item'
-				});
-
-				$(window).resize(function() {
-				var $container_blog = $('.grid-holder');
-				$container_blog.isotope({
-					itemSelector : '.grid-item'
-				});
-				});
-			}
-		});
+		//$(window).load(function() {
+		//	var IsoTopeCont = $(".isotope-grid");
+		//	IsoTopeCont.isotope({
+		//		itemSelector: ".grid-item",
+		//		layoutMode: 'sloppyMasonry'
+		//	});
+		//	if ($(".grid-holder").length > 0){
+		//		var $container_blog = $('.grid-holder');
+		//		$container_blog.isotope({
+		//		itemSelector : '.grid-item'
+		//		});
+        //
+		//		$(window).resize(function() {
+		//		var $container_blog = $('.grid-holder');
+		//		$container_blog.isotope({
+		//			itemSelector : '.grid-item'
+		//		});
+		//		});
+		//	}
+		//});
 	}
 /* ==================================================
    IsoTope Portfolio
@@ -533,11 +533,11 @@ $(document).ready(function(){
 	var soffset = $(".site-header-wrapper").height() + 89;
 	var goffset = $(".site-header-wrapper").height() + 19;
 	var boffset = $(".site-footer").height() + 90;
-	if($(window).width() > 767 ){
-		$(".tsticky").sticky({topSpacing:toffset});
-		$(".tbsticky").sticky({topSpacing:soffset, bottomSpacing: boffset});
-		$(".tbssticky").sticky({topSpacing:goffset, bottomSpacing: boffset});
-	}
+	//if($(window).width() > 767 ){
+	//	$(".tsticky").sticky({topSpacing:toffset});
+	//	$(".tbsticky").sticky({topSpacing:soffset, bottomSpacing: boffset});
+	//	$(".tbssticky").sticky({topSpacing:goffset, bottomSpacing: boffset});
+	//}
 
 	$('.dropdown-toggle.selectpicker').on("click",function(e){
 		$('.bootstrap-select .dropdown-menu').css("visibility", "visible");
@@ -746,22 +746,22 @@ $("[data-appear-progress-animation]").each(function() {
 });
 
 // Parallax Jquery Callings
-if(!Modernizr.touch) {
-	$(window).on('load', function () {
-		parallaxInit();
-	});
-}
-function parallaxInit() {
-	$('.parallax1').parallax("50%", 0.1);
-	$('.parallax2').parallax("50%", 0.1);
-	$('.parallax3').parallax("50%", 0.1);
-	$('.parallax4').parallax("50%", 0.1);
-	$('.parallax5').parallax("50%", 0.1);
-	$('.parallax6').parallax("50%", 0.1);
-	$('.parallax7').parallax("50%", 0.1);
-	$('.parallax8').parallax("50%", 0.1);
-	/*add as necessary*/
-}
+//if(!Modernizr.touch) {
+//	$(window).on('load', function () {
+//		parallaxInit();
+//	});
+//}
+//function parallaxInit() {
+//	$('.parallax1').parallax("50%", 0.1);
+//	$('.parallax2').parallax("50%", 0.1);
+//	$('.parallax3').parallax("50%", 0.1);
+//	$('.parallax4').parallax("50%", 0.1);
+//	$('.parallax5').parallax("50%", 0.1);
+//	$('.parallax6').parallax("50%", 0.1);
+//	$('.parallax7').parallax("50%", 0.1);
+//	$('.parallax8').parallax("50%", 0.1);
+//	/*add as necessary*/
+//}
 
 // Window height/Width Getter Classes
 var wheighter = $(window).height();
