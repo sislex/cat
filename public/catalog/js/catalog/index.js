@@ -28,7 +28,6 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
             if($cookies.get('wishList')){$scope.wishList = angular.fromJson(window.Cookie.get('wishList'));}
 
             if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
-            console.log(window.Cookie.get('wishList'));
         })();
 
         $scope.obj = {

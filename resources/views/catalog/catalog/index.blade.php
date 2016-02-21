@@ -257,7 +257,7 @@
                                             <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
                                         </a>
                                         <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
-                                        <span class="label label-success premium-listing">Premium Listing</span>
+                                        {{--<span class="label label-success premium-listing">Premium Listing</span>--}}
                                         <div class="result-item-view-buttons">
                                             <a href="https://www.youtube.com/watch?v=P5mvnA4BV7Y" data-rel="prettyPhoto"><i class="fa fa-play"></i> View video</a>
                                             <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}"  ><i class="fa fa-plus"></i> View details</a>
