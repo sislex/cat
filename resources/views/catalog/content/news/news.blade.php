@@ -61,13 +61,13 @@
                                         <img src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
                                     </a>
                                     <h5>
-                                        <a ng-if="single_news['previewImageURL'] && single['previewImageURL'] != ''" href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                                        <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
                                             @{{ single_news['name'] }}
                                         </a>
                                     </h5>
                                     <div class="post-actions">
                                         <div class="post-date">
-                                            @{{ single_news['updated_at'] }}
+                                            @{{ single_news['date'] }}
                                         </div>
                                     </div>
                                 </li>

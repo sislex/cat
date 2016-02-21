@@ -126,11 +126,11 @@ class CatalogController extends Controller
     {
         $input = \Request::all();
 
+        $content_arr = [];
         if(isset($input['type']) && isset($input['limit']))
         {
             $type = $input['type'];
             $limit = $input['limit'];
-//            $content = Content::where('type','=',$type)->where('published','=','1')->take($limit)->get();
             $content_arr = Content::getLastContent($type, $limit);
         }
 

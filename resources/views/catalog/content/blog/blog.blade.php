@@ -68,7 +68,7 @@
                                     </h5>
                                     <div class="post-actions">
                                         <div class="post-date">
-                                            @{{ blog_post['updated_at'] }}
+                                            @{{ blog_post['date'] }}
                                         </div>
                                     </div>
                                 </li>

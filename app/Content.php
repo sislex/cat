@@ -70,6 +70,16 @@ class Content extends Model
         return $contentArrWithImages;
     }
 
+    private function convertDate($contentArr){
+        foreach($contentArr as $key => $page){
+            if(isset($contentArr[$key]['created_at'])){
+                $contentArr[$key]['date'] = date('d-m-Y', strtotime($page['created_at']));
+            }
+        }
+
+        return $contentArr;
+    }
+
     private function addPreviewImages($contentArr){
         foreach($contentArr as $key => $page){
             if(isset($contentArr[$key]['id'])){
@@ -92,7 +102,6 @@ class Content extends Model
     }
 
     static function getLastContent($type, $limit){
-//        $content = Content::where('type','=',$type)->where('published','=','1')->take($limit)->get();
         $content_roots = Content::where('type','=',$type)->where('parent_id','=',0)->where('published','=',1)->get();
 
         $content_arr_with_images = [];
@@ -107,18 +116,12 @@ class Content extends Model
                 }
 
                 if(isset($content_arr) && is_array($content_arr) && count($content_arr)){
-
-                    //TODO: sort $content_arr by created_at or updated_at in DESC order!
-
                     $content_pages_arr = [];
                     foreach($content_arr as $element){
                         $content_pages_arr[$element['id']] = $element;
                     }
 
                     krsort($content_pages_arr);
-
-//                    dd($content_pages_arr);
-
                     $i = 0;
                     $c_arr = [];
                     foreach($content_pages_arr as $content_page){
@@ -132,10 +135,10 @@ class Content extends Model
 
             if(isset($c_arr) && is_array($c_arr)){
                 $content_obj = new Content();
-                $content_arr_with_images = $content_obj->addPreviewImages($c_arr);
+                $content_arr_with_date = $content_obj->convertDate($c_arr);
+                $content_arr_with_images = $content_obj->addPreviewImages($content_arr_with_date);
             }
         }
-
 
         return $content_arr_with_images;
     }
