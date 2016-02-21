@@ -218,6 +218,11 @@
     <script src="/admin/js/items/item.js" type="text/javascript"></script>
     <script src="/catalog/js/index/widgets.js" type="text/javascript"></script>
     <script>
-            if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel($('#feedbacks-slider'));}
+        setTimeout(function() {
+            if (window.AUTOSTARS) {
+                alert();
+                window.AUTOSTARS.OwlCarousel($('#feedbacks-slider'));
+            }
+        }, 500);
     </script>
 @endsection
