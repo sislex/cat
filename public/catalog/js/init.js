@@ -201,8 +201,9 @@ var AUTOSTARS = window.AUTOSTARS || {};
 /* ==================================================
    Owl Carousel
 ================================================== */
-	AUTOSTARS.OwlCarousel = function() {
-		$('.owl-carousel').each(function(){
+	AUTOSTARS.OwlCarousel = function(obj) {
+		if(!obj){obj = $('.owl-carousel');}
+		obj.each(function(){
 				var carouselInstance = $(this);
 				var carouselColumns = carouselInstance.attr("data-columns") ? carouselInstance.attr("data-columns") : "1"
 				var carouselitemsDesktop = carouselInstance.attr("data-items-desktop") ? carouselInstance.attr("data-items-desktop") : "4"
@@ -502,9 +503,9 @@ $(document).ready(function(){
 	AUTOSTARS.TwitterWidget();
 	AUTOSTARS.galleryflex();
 
-	setTimeout(function(){
-		AUTOSTARS.OwlCarousel();
-	}, 1000);
+	//setTimeout(function(){
+	//	AUTOSTARS.OwlCarousel();
+	//}, 1000);
 
 
 	AUTOSTARS.PrettyPhoto();

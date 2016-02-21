@@ -1,8 +1,8 @@
 @extends('catalog.layout')
 
-@section('title', $mainpage['title'])
-@section('keywords', $mainpage['keywords'])
-@section('description', $mainpage['description'])
+@section('title', isset($mainpage['title'])?$mainpage['title']:'')
+@section('keywords', isset($mainpage['keywords'])?$mainpage['keywords']:'')
+@section('description', isset($mainpage['description'])?$mainpage['description']:'')
 
 @section('content')
     <div id="divMyApp">

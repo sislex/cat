@@ -9,16 +9,16 @@ if(!myApp){
 myApp.controller('lastCarsWidget', ['$scope', '$http',
     function($scope, $http) {
         $scope.filter = {};
-        $scope.func = (function(){
+        (function(){
             $http.post('/admin/get/items/8', {name:'type_auto', check:'published'}).
                 success(function(data, status, headers, config) {
                     $scope.items = data;
 
                     //$scope.cloneItems = angular.copy($scope.items);
 
-                    //setTimeout(function(){
-                    //    if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel();}
-                    //}, 500);
+                    setTimeout(function(){
+                        if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel($('#vehicle-slider'));}
+                    }, 500);
 
                 }).
                 error(function(data, status, headers, config) {
@@ -30,11 +30,13 @@ myApp.controller('lastCarsWidget', ['$scope', '$http',
 
 myApp.controller('lastNewsWidget', ['$scope', '$http',
     function($scope, $http) {
-        $scope.func = (function(){
+        (function(){
             $http.post('/news/last', {type:'news', limit:6}).
                 success(function(data, status, headers, config) {
                     $scope.news = data;
-                    console.log($scope.news);
+                    setTimeout(function(){
+                        if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel($('#news-slider'));}
+                    }, 500);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('ошибка при отправке объекта');
