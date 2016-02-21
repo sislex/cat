@@ -229,12 +229,21 @@ class Content extends Model
         return $categories_content;
     }
 
-    static function checkURL($url){
-        if(self::where('pseudo_url','=',$url)->count()){
-            $new_url = $url . '1';
-            return self::checkURL($new_url);
+    static function checkURL($url, $id){
+        if(is_null($id)){
+            if(self::where('pseudo_url','=',$url)->count()){
+                $new_url = $url . '1';
+                return self::checkURL($new_url,$id);
+            }else{
+                return $url;
+            }
         }else{
-            return $url;
+            if(self::where('pseudo_url','=',$url)->where('id','!=',$id)->count()){
+                $new_url = $url . '1';
+                return self::checkURL($new_url,$id);
+            }else{
+                return $url;
+            }
         }
     }
 }
