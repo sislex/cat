@@ -15,6 +15,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.filter = data;
                     if($scope.obj.objJson!=''){$scope.obj.obj = angular.fromJson($scope.obj.objJson);}
                     $scope.obj.obj.id = $scope.obj.id;
+                    $scope.obj.obj.price = $scope.obj.price;
 
                     if(window.Cookie){
                         if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
@@ -195,7 +196,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     if(!angular.isArray(arr)){arr = [];}
                     var name = '';
                     if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
-                        name += obj.type_auto[0].text;
                         if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
                             name += ' ' + obj.type_auto[0].children[0].text;
                             if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
@@ -203,6 +203,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                             }
                         }
                     }
+                    console.log(obj);
                     var row = {
                         id: obj.id,
                         name: name,
