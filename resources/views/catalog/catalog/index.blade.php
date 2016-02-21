@@ -33,7 +33,7 @@
                                         <li ng-repeat="item in wishList">
                                             <div class="imageb">
                                                 <a href="http://cat/catalog/item/@{{ item.id }}">
-                                                    <img src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
+                                                    <img ng-src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
                                                 </a>
                                             </div>
                                             <div class="textb">
@@ -58,7 +58,7 @@
                                         <li ng-repeat="item in viewedList">
                                             <div class="imageb">
                                                 <a href="http://cat/catalog/item/@{{ item.id }}">
-                                                    <img src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
+                                                    <img ng-src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
                                                 </a>
                                             </div>
                                             <div class="textb">

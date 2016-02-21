@@ -18,6 +18,8 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                 });
             $http.post('/admin/get/items', {name:'type_auto', check:'published'}).
                 success(function(data, status, headers, config) {
+                    $scope.obj.helpers.keyToNumber(data, 'price');
+                    $scope.obj.helpers.keyToNumber(data, 'Probeg');
                     $scope.items = data;
                     $scope.cloneItems = angular.copy($scope.items);
                 }).
@@ -39,8 +41,12 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
 //                        img : [{"text":"Авто транспорт","children":[{"text":"Bmw","children":[{"text":"1","children":[]}]}]}]
             },
             helpers : {
-                jsonToObj : function(){
-
+                keyToNumber : function(arr, key){
+                    angular.forEach(arr, function(val, k){
+                        if(!angular.isUndefined(val[key])){
+                            parseFloat(val[key]);
+                        }
+                    });
                 },
                 changeOrderValue : function(str){
                     $scope.order = str;
