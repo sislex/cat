@@ -88,14 +88,17 @@
                                         </a>
                                         @endif
                                     @endif
-    {{--                                    {{dd($item)}}--}}
                                 </div>
                                 @if(isset($item['images']) && is_array($item['images']) && count($item['images']) > 1)
                                 <div class="additional-images">
-                                    <ul class="owl-carousel" data-columns="4" data-pagination="no" data-arrows="yes" data-single-item="no" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
+                                    <ul class="owl-carousel" id="images-slider" data-columns="4" data-pagination="no" data-arrows="yes" data-single-item="no" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
                                         @foreach($item['images'] as $key => $img)
                                             @if($key)
-                                                <li class="item format-image"> <a href="/images/items/{{ $item['id'] }}/{{ $img }}" data-rel="prettyPhoto[gallery]" class="media-box"><img src="/images/items/{{ $item['id'] }}/thumbnail/{{ $img }}" alt=""></a></li>
+                                                <li class="item format-image">
+                                                    <a href="/images/items/{{ $item['id'] }}/{{ $img }}" data-rel="prettyPhoto[gallery]" class="media-box">
+                                                        <img src="/images/items/{{ $item['id'] }}/thumbnail/{{ $img }}" alt="">
+                                                    </a>
+                                                </li>
                                             @endif
                                         @endforeach
                                     </ul>
@@ -203,7 +206,7 @@
                                 <div class="">
                                     <div class="">
                                         <div class="row">
-                                            <ul class="owl-carousel " id="" data-columns="3" data-autoplay="" data-pagination="yes" data-arrows="no" data-single-item="no" data-items-desktop="3" data-items-desktop-small="3" data-items-tablet="2" data-items-mobile="1">
+                                            <ul class="owl-carousel" id="vehicle-slider" data-columns="3" data-autoplay="" data-pagination="yes" data-arrows="no" data-single-item="no" data-items-desktop="3" data-items-desktop-small="3" data-items-tablet="2" data-items-mobile="1">
                                                 <li class="item" ng-repeat="item in items">
                                                     <div class="vehicle-block format-standard">
                                                         <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box">
@@ -497,4 +500,11 @@
 @section('PAGE-LEVEL-SCRIPTS')
     <script src="/admin/js/items/item.js" type="text/javascript"></script>
     <script src="/catalog/js/index/widgets.js" type="text/javascript"></script>
+    <script>
+        setTimeout(function() {
+            if (window.AUTOSTARS) {
+                window.AUTOSTARS.OwlCarousel($('#images-slider'));
+            }
+        }, 500);
+    </script>
 @endsection
