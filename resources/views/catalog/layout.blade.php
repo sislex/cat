@@ -7,7 +7,6 @@
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
-    <meta name="author" content="Alex Babenya, Alex Rozhnov, Vitali Loseu">
 
     <!-- Favicon
     ================================================== -->
@@ -45,16 +44,17 @@
         <header class="site-header">
             <div class="container sp-cont">
                 <div class="site-logo">
-                    <h1>
-                        <a href="/">
 
-                            @if(\App\UIComponents::getLogo() != '')
-                                <img src="/images/ui-components/logo/{{ \App\UIComponents::getLogo() }}" alt="Logo">
-                            @else
-                                <img src="/catalog/images/logo.png" alt="Logo">
-                            @endif
+                    @if(\App\UIComponents::getLogo() != '')
+                        <a href="/">
+                            <img src="/images/ui-components/logo/{{ \App\UIComponents::getLogo() }}" alt="Logo">
                         </a>
-                    </h1>
+                    @else
+                        <a href="/">
+                            <img src="/catalog/images/logo.png" alt="Logo">
+                        </a>
+                    @endif
+
                     <span class="site-tagline">
                         Продавай и покупай,<br>на GOLDENMOTORS.BY!
                     </span>
