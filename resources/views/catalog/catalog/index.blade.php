@@ -10,9 +10,9 @@
 
     @if(isset($catalog_banner['images'][0]))
         <div class="page-header parallax" style="background-image:url('/images/ui-components/catalog-banner/{{ $catalog_banner['images'][0] }}');">
-            <div class="container">
-                <h1 class="page-title">Listing results</h1>
-            </div>
+            {{--<div class="container">--}}
+                {{--<h1 class="page-title">Listing results</h1>--}}
+            {{--</div>--}}
         </div>
     @endif
 

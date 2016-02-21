@@ -84,8 +84,6 @@
             <input type="hidden" name="type" value="mainpage" />
         @endif
 
-        {{--<input type="hidden" name="tab" value="#tab_1" />--}}
-
         <div class="tab-content">
             <div class="tab-pane active" id="tab_0">
                 <div class="portlet box green">
@@ -128,13 +126,16 @@
 
                             @endif
 
+                            @if($page['type'] != 'menu')
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Name </label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-circle" name="name" value="{{ $page['name'] or '' }}" placeholder="Enter text">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Name </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="name" value="{{ $page['name'] or '' }}" placeholder="Enter text">
+                                    </div>
                                 </div>
-                            </div>
+
+                            @endif
 
 
                             @if($page['type'] != 'mainpage')
@@ -146,7 +147,11 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                            @endif
+
+                            @if($page['type'] != 'mainpage' && $page['type'] != 'menu')
+
+                                    <div class="form-group">
                                     <label class="col-md-3 control-label"> Preview Image </label>
                                     <div class="col-md-4">
                                         <input type="file" accept="image/jpeg" class="form-control input-circle" name="image" value="" placeholder="">
@@ -156,12 +161,16 @@
                             @endif
 
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"> Short_text </label>
-                                <div class="col-md-4">
-                                    <textarea rows="4" class="form-control input-circle" name="short_text" placeholder="Enter text">{{ $page['short_text'] or '' }}</textarea>
+                            @if($page['type'] != 'menu')
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Short_text </label>
+                                    <div class="col-md-4">
+                                        <textarea rows="4" class="form-control input-circle" name="short_text" placeholder="Enter text">{{ $page['short_text'] or '' }}</textarea>
+                                    </div>
                                 </div>
-                            </div>
+
+                            @endif
 
                             @if($page['id'] != '' && $page['type'] != 'feedback')
                                 <div class="form-group">
