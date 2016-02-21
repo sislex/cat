@@ -88,13 +88,13 @@ class CatalogController extends Controller
         return view('catalog/content/news/index', ['content' => $content, 'news_pages' => $news_pages, 'categories' => $categories]);
     }
 
-    public function news_category($id){
-        $content = Content::where('id','=',$id)->get()->first();
+    public function news_category($pseudo_url){
+        $content = Content::where('pseudo_url','=',$pseudo_url)->get()->first();
 
-        $news_pages = Content::getContent('news',$id);
+        $news_pages = Content::getContent('news',$content->id);
         $categories = Content::getCategories('news');
 
-        return view('catalog/content/news/index', ['content' => $content, 'news_pages' => $news_pages, 'categories' => $categories, 'active_category_id' => $id]);
+        return view('catalog/content/news/index', ['content' => $content, 'news_pages' => $news_pages, 'categories' => $categories, 'active_category_id' => $content->id]);
     }
 
     public function blog($pseudo_url){

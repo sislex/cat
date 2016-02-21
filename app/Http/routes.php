@@ -29,7 +29,7 @@ Route::get('blog/post/{pseudo_url?}','Catalog\CatalogController@blog');
 Route::get('catalog/top-menu','Catalog\CatalogController@getTopMenu');
 
 Route::get('news/','Catalog\CatalogController@news_index');
-Route::get('news/category/{id}','Catalog\CatalogController@news_category');
+Route::get('news/{pseudo_url}','Catalog\CatalogController@news_category');
 Route::get('blog/','Catalog\CatalogController@blog_index');
 Route::get('blog/category/{id}','Catalog\CatalogController@blog_category');
 

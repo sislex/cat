@@ -14,14 +14,14 @@
             <div class="gallery-filter">
                 <ul class="nav nav-pills sort-source">
                     <li class="{{ isset($active_category_id) ? '' : 'active' }}">
-                            <a href="{{ action('Catalog\CatalogController@news_index',['id' => $categories[0]['parent_id']]) }}">
+                            <a href="{{ action('Catalog\CatalogController@news_index') }}">
                                 <i class="fa fa-th"></i> <span>Показать все</span></a>
                     </li>
 
                     @foreach($categories as $category)
                         @if($category['published'])
                             <li class="{{ (isset($active_category_id) && $active_category_id == $category['id']) ? 'active' : '' }}">
-                                <a href="{{ action('Catalog\CatalogController@news_category', ['id' => $category['id']]) }}">{{ $category['menu'] }}</a>
+                                <a href="{{ action('Catalog\CatalogController@news_category', ['pseudo_url' => $category['pseudo_url']]) }}">{{ $category['menu'] }}</a>
                             </li>
                         @endif
                     @endforeach
