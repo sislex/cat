@@ -53,7 +53,7 @@
                 <!-- Vehicle Details -->
                 <article class="single-vehicle-details">
                     <div class="single-vehicle-title">
-                        <span class="badge-premium-listing">№{{$item['id']}} добавлено: {{$item['created_at']}}</span>
+                        <span class="badge-premium-listing">№{{$item['id']}} добавлено: {{date('d-m-Y', strtotime($item['created_at']))}}</span>
                         <h1 class="post-title">
                             {{$item['obj']['type_auto'][0]['children'][0]['text'] or ''}}
                             {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text'] or ''}}
