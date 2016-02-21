@@ -33,7 +33,7 @@
                                         <li ng-repeat="item in wishList">
                                             <div class="imageb">
                                                 <a href="http://cat/catalog/item/@{{ item.id }}">
-                                                    <img src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
+                                                    <img ng-src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
                                                 </a>
                                             </div>
                                             <div class="textb">
@@ -58,7 +58,7 @@
                                         <li ng-repeat="item in viewedList">
                                             <div class="imageb">
                                                 <a href="http://cat/catalog/item/@{{ item.id }}">
-                                                    <img src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
+                                                    <img ng-src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
                                                 </a>
                                             </div>
                                             <div class="textb">
@@ -257,7 +257,7 @@
                                             <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
                                         </a>
                                         <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
-                                        <span class="label label-success premium-listing">Premium Listing</span>
+                                        {{--<span class="label label-success premium-listing">Premium Listing</span>--}}
                                         <div class="result-item-view-buttons">
                                             <a href="https://www.youtube.com/watch?v=P5mvnA4BV7Y" data-rel="prettyPhoto"><i class="fa fa-play"></i> View video</a>
                                             <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}"  ><i class="fa fa-plus"></i> View details</a>

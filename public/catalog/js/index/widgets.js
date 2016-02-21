@@ -68,18 +68,18 @@ if(!mailApp){
 
 mailApp.controller('MailWidget', ['$scope', '$http',
     function($scope, $http) {
-        $scope.func = (function(){
-            $http.post('/mail/index', {}).
-            success(function(data, status, headers, config) {
-                $scope.result = data;
-                console.log($scope.result);
-            }).
-            error(function(data, status, headers, config) {
-                console.log('ошибка при отправке объекта.');
-            });
-        })();
-
-        $scope.qwe = 123;
+        //$scope.func = (function(){
+        //    $http.post('/mail/index', {}).
+        //    success(function(data, status, headers, config) {
+        //        $scope.result = data;
+        //        console.log($scope.result);
+        //    }).
+        //    error(function(data, status, headers, config) {
+        //        console.log('ошибка при отправке объекта.');
+        //    });
+        //})();
+        //
+        //$scope.qwe = 123;
     }
 ]);
 
