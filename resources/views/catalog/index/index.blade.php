@@ -220,7 +220,7 @@
     <script>
         setTimeout(function() {
             if (window.AUTOSTARS) {
-                window.AUTOSTARS.OwlCarousel($('#feedbacks-slider, #partners-slider, #weghgfd'));
+                window.AUTOSTARS.OwlCarousel($('#feedbacks-slider, #partners-slider'));
             }
         }, 500);
     </script>
