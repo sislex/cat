@@ -222,6 +222,8 @@ class Content extends Model
             }
         }
 
+        krsort($content_arr);
+
         return $content_arr;
     }
 

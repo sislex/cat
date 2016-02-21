@@ -126,7 +126,7 @@
 
                             @endif
 
-                            @if($page['type'] != 'menu')
+                            @if($page['type'] != 'menu' && $page['type'] != 'mainpage')
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Name </label>
@@ -161,7 +161,7 @@
                             @endif
 
 
-                            @if($page['type'] != 'menu')
+                            @if($page['type'] != 'menu' && $page['type'] != 'mainpage')
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> Short_text </label>
@@ -217,21 +217,20 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label"> Keywords </label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control input-circle" name="keywords" value="{{ $page['keywords'] or '' }}" placeholder="Enter text">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
                                     <label class="col-md-3 control-label"> Description </label>
                                     <div class="col-md-4">
                                         <textarea rows="4" class="form-control input-circle" name="description" placeholder="Enter text">{{ $page['description'] or '' }}</textarea>
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Keywords </label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control input-circle" name="keywords" value="{{ $page['keywords'] or '' }}" placeholder="Enter text">
+                                    </div>
+                                </div>
 
-                                @if($page['type'] != 'mainpage' || $page['type'] != 'feedback')
+                                @if($page['type'] != 'mainpage' && $page['type'] != 'feedback')
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label"> Pseudo_URL </label>
@@ -242,17 +241,21 @@
 
                                 @endif
 
+                                @if($page['type'] != 'mainpage')
 
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label"> Published </label>
-                                    <div class="col-md-4">
-                                        {{--<input type="text" class="form-control input-circle" name="pseudo_url" value="{{ $page['published'] or 0 }}" placeholder="Enter text">--}}
-                                        <select form="content_form" name="published" class="form-control input-circle">
-                                            <option value="0" {{ $page['published'] == false ? 'selected' : '' }}>нет</option>
-                                            <option value="1" {{ $page['published'] == true ? 'selected' : '' }}>да</option>
-                                        </select>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label"> Published </label>
+                                        <div class="col-md-4">
+                                            {{--<input type="text" class="form-control input-circle" name="pseudo_url" value="{{ $page['published'] or 0 }}" placeholder="Enter text">--}}
+                                            <select form="content_form" name="published" class="form-control input-circle">
+                                                <option value="0" {{ $page['published'] == false ? 'selected' : '' }}>нет</option>
+                                                <option value="1" {{ $page['published'] == true ? 'selected' : '' }}>да</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
+
+                                @endif
+
                             </div>
 
                             <div class="form-actions">

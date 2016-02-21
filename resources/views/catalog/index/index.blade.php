@@ -132,8 +132,7 @@
 
                     <!-- Feedbacks -->
                     @if(isset($feedbacks) && is_array($feedbacks) && count($feedbacks))
-                        {{--<div class="col-md-12 col-sm-12">--}}
-                            <section class="listing-block latest-testimonials">
+                        <section class="listing-block latest-testimonials">
                             <div class="listing-header">
                                 <h3> Отзывы клиентов </h3>
                             </div>
@@ -158,7 +157,6 @@
 
                                                             <div class="testimonial-info">
                                                                 <div class="testimonial-info-in">
-                                                                    {{--<strong>Arthur Henry</strong><span>Carsales Inc</span>--}}
                                                                     <strong>{{ $feedback['name'] }}</strong>
                                                                 </div>
                                                             </div>
@@ -172,7 +170,6 @@
                                 </div>
                             </div>
                         </section>
-                        {{--</div>--}}
                     @endif
 
                 </div>
@@ -185,7 +182,6 @@
                             <div class="row">
                                 <div class="col-md-3 col-sm-4">
                                     <h3>Наши партнеры </h3>
-                                    {{--<a href="#" class="btn btn-default btn-lg">All make &amp; models</a>--}}
                                 </div>
                                 <div class="col-md-9 col-sm-8">
                                     <div class="row">
@@ -193,9 +189,7 @@
 
                                             @foreach($partners_slider['images'] as $partners_slider_image)
                                                 <li class="item">
-                                                    {{--<a href="">--}}
-                                                        <img src="/images/ui-components/partners-slider/{{ $partners_slider_image }}" alt="Partner Image">
-                                                    {{--</a>--}}
+                                                    <img src="/images/ui-components/partners-slider/{{ $partners_slider_image }}" alt="Partner Image">
                                                 </li>
                                             @endforeach
 

@@ -17,9 +17,9 @@
                                 {{ date('d-m-Y', strtotime($content['created_at'])) }}
                             </div>
                         </div>
-                        <h2 class="post-title">
+                        <h1 class="post-title">
                             {{ $content['name'] }}
-                        </h2>
+                        </h1>
                     </header>
 
                     <article class="post-content">
