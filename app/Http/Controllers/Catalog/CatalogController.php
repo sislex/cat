@@ -89,10 +89,12 @@ class CatalogController extends Controller
     }
 
     public function news_category($id){
+        $content = Content::where('id','=',$id)->get()->first();
+
         $news_pages = Content::getContent('news',$id);
         $categories = Content::getCategories('news');
 
-        return view('catalog/content/news/index', ['news_pages' => $news_pages, 'categories' => $categories, 'active_category_id' => $id]);
+        return view('catalog/content/news/index', ['content' => $content, 'news_pages' => $news_pages, 'categories' => $categories, 'active_category_id' => $id]);
     }
 
     public function blog($pseudo_url){
@@ -112,10 +114,12 @@ class CatalogController extends Controller
     }
 
     public function blog_category($id){
+        $content = Content::where('id','=',$id)->get()->first();
+
         $blog_pages = Content::getContent('blog',$id);
         $categories = Content::getCategories('blog');
 
-        return view('catalog/content/blog/index', ['blog_pages' => $blog_pages, 'categories' => $categories, 'active_category_id' => $id]);
+        return view('catalog/content/blog/index', ['content' => $content, 'blog_pages' => $blog_pages, 'categories' => $categories, 'active_category_id' => $id]);
     }
 
     public function getLastContent()

@@ -92,11 +92,6 @@ class ContentController extends Controller
 
         $input = \Request::all();
 
-        if (isset($input['pseudo_url']) && trim($input['pseudo_url']) == '') {
-            $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['name']), array('transliterate' => true)));
-        }elseif(isset($input['pseudo_url']) && trim($input['pseudo_url']) != '') {
-            $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['pseudo_url']), array('transliterate' => true)));
-        }
         if (isset($input['title']) && trim($input['title']) == '') {
             $input['title'] = trim($input['name']);
         }
@@ -108,8 +103,18 @@ class ContentController extends Controller
         }
 
         if ($input['id']) {
+            if (isset($input['pseudo_url']) && trim($input['pseudo_url']) == '') {
+                $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['name']), array('transliterate' => true)),$input['id']);
+            }elseif(isset($input['pseudo_url']) && trim($input['pseudo_url']) != '') {
+                $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['pseudo_url']), array('transliterate' => true)),$input['id']);
+            }
             Content::find($input['id'])->update($input);
         }else{
+            if (isset($input['pseudo_url']) && trim($input['pseudo_url']) == '') {
+                $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['name']), array('transliterate' => true)),null);
+            }elseif(isset($input['pseudo_url']) && trim($input['pseudo_url']) != '') {
+                $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['pseudo_url']), array('transliterate' => true)),null);
+            }
             $input = Content::create($input);
         }
 
