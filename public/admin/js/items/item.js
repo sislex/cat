@@ -3,11 +3,11 @@
  */
 
 if(!myApp){
-    var myApp = angular.module('myApp', ["checklist-model", 'ngCookies']);
+    var myApp = angular.module('myApp', ["checklist-model"]);
 }
 
-myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
-    function($scope, $http, $cookies) {
+myApp.controller('myCtrl', ['$scope', '$http',
+    function($scope, $http) {
         $scope.filter = {};
         $scope.func = (function(){
             $http.post('/filter/ajax').
@@ -16,17 +16,10 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                     if($scope.obj.objJson!=''){$scope.obj.obj = angular.fromJson($scope.obj.objJson);}
                     $scope.obj.obj.id = $scope.obj.id;
 
-                    //if($cookies.get('viewedList')){$scope.viewedList = angular.fromJson($cookies.get('viewedList'));}
-                    //console.log($cookies.getAll({path:'catalog'}));
-                    //console.log($cookies.remove('viewedList'));
-                    //console.log($cookies.put('viewedList', 1, {path:'/catalog'}));
-                    //console.log($cookies.getAll());
-
-                    //console.log($cookies.get('viewedList'));
-
-
-                    if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
-                    $scope.obj.helpers.addToViewedList($scope.obj.obj);
+                    if(window.Cookie){
+                        if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
+                        $scope.obj.helpers.addToViewedList($scope.obj.obj);
+                    }
 
                     angular.forEach($scope.obj.obj, function(value, key){
                         $scope.obj.helpers.objToModel(key, $scope.obj.obj[key], $scope.filter[key]);
