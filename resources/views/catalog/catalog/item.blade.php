@@ -46,7 +46,7 @@
 
     <div id="divMyApp" class="main" role="main"
          ng-controller="myCtrl"
-         ng-init="obj.objJson={{json_encode($item['obj'])}}; obj.id={{$item['id']}}"
+         ng-init="obj.objJson={{json_encode($item['obj'])}}; obj.id={{$item['id']}}; obj.price={{$item['price']}}"
             >
         <div id="content" class="content full">
             <div class="container">

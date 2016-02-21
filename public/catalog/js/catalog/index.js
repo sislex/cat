@@ -173,7 +173,6 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                         if(!angular.isArray(arr)){arr = [];}
                         var name = '';
                         if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
-                            name += obj.type_auto[0].text;
                             if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
                                 name += ' ' + obj.type_auto[0].children[0].text;
                                 if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
