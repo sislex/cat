@@ -79,10 +79,10 @@ class CatalogController extends Controller
         return view('catalog/content/news/news', ['content' => $content, 'categories' => $categories]);
     }
 
-    public function news_index($id){
-        $content = Content::where('id','=',$id)->get()->first();
+    public function news_index(){
+        $content = Content::where('type','=','news')->where('parent_id','=',0)->get()->first();
 
-        $news_pages = Content::getCategoriesContent('news',$id);
+        $news_pages = Content::getCategoriesContent('news',$content->id);
         $categories = Content::getCategories('news');
 
         return view('catalog/content/news/index', ['content' => $content, 'news_pages' => $news_pages, 'categories' => $categories]);
@@ -104,10 +104,10 @@ class CatalogController extends Controller
         return view('catalog/content/blog/blog', ['content' => $content, 'categories' => $categories]);
     }
 
-    public function blog_index($id){
-        $content = Content::where('id','=',$id)->get()->first();
+    public function blog_index(){
+        $content = Content::where('parent_id','=',0)->where('type','=','blog')->get()->first();
 
-        $blog_pages = Content::getCategoriesContent('blog',$id);
+        $blog_pages = Content::getCategoriesContent('blog',$content->id);
         $categories = Content::getCategories('blog');
 
         return view('catalog/content/blog/index', ['content' => $content, 'blog_pages' => $blog_pages, 'categories' => $categories]);

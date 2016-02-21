@@ -40,13 +40,13 @@
             </li>
         @elseif($menu_element['type'] == 'news')
             <li>
-                <a href="{{ action('Catalog\CatalogController@news_index',['id' => $menu_element['id']]) }}">
+                <a href="{{ action('Catalog\CatalogController@news_index') }}">
                     {{ $menu_element['menu'] }}
                 </a>
             </li>
         @elseif($menu_element['type'] == 'blog')
             <li>
-                <a href="{{ action('Catalog\CatalogController@blog_index',['id' => $menu_element['id']]) }}">
+                <a href="{{ action('Catalog\CatalogController@blog_index') }}">
                     {{ $menu_element['menu'] }}
                 </a>
             </li>
