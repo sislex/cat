@@ -32,12 +32,12 @@
                                     <ul class="listing tool-car-listing">
                                         <li ng-repeat="item in wishList">
                                             <div class="imageb">
-                                                <a href="http://cat/catalog/item/@{{ item.id }}">
+                                                <a href="/catalog/item/@{{ item.id }}">
                                                     <img ng-src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
                                                 </a>
                                             </div>
                                             <div class="textb">
-                                                <a href="vehicle-details.html">@{{item.name}}</a>
+                                                <a href="/catalog/item/@{{ item.id }}">@{{item.name}}</a>
                                                 <span class="price">$ @{{item.price}}</span>
                                             </div>
                                             <div class="delete"><a ng-click="obj.helpers.deleteFromWishList(item.id)"><i class="icon-delete"></i></a></div>
@@ -57,12 +57,12 @@
                                     <ul class="listing tool-view-listing">
                                         <li ng-repeat="item in viewedList">
                                             <div class="imageb">
-                                                <a href="http://cat/catalog/item/@{{ item.id }}">
+                                                <a href="/catalog/item/@{{ item.id }}">
                                                     <img ng-src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
                                                 </a>
                                             </div>
                                             <div class="textb">
-                                                <a href="vehicle-details.html">@{{item.name}}</a>
+                                                <a href="/catalog/item/@{{ item.id }}">@{{item.name}}</a>
                                                 <span class="price">$ @{{item.price}}</span>
                                             </div>
                                         </li>
