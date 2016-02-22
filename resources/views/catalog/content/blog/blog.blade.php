@@ -42,7 +42,7 @@
                                 @foreach($categories as $category)
                                     @if($category['published'])
                                         <li>
-                                            <a href="{{ action('Catalog\CatalogController@blog_category', ['id' => $category['id']]) }}">{{ $category['menu'] }}</a> &nbsp;
+                                            <a href="{{ action('Catalog\CatalogController@blog_category', ['pseudo_url' => $category['pseudo_url']]) }}">{{ $category['menu'] }}</a> &nbsp;
                                         </li>
                                     @endif
                                 @endforeach
