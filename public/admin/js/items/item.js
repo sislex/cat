@@ -203,7 +203,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
                             }
                         }
                     }
-                    console.log(obj);
                     var row = {
                         id: obj.id,
                         name: name,

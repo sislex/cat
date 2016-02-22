@@ -1,10 +1,24 @@
 @extends('catalog.layout')
 
-@section('title', $item['title'])
-@section('description', $item['description'])
-@section('keywords', $item['keywords'])
+<?php
+
+$mark = isset($item['obj']['type_auto'][0]['children'][0]['text'])?$item['obj']['type_auto'][0]['children'][0]['text']:''.' ';
+$model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'])?$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']:''.' ';
+        $god = isset($item['obj']['God_vypuska'][0]['text'])?$item['obj']['God_vypuska'][0]['text']:''. 'г.';
+        $toplivo = isset($item['obj']['Тип двигателя'][0]['text'])?$item['obj']['Тип двигателя'][0]['text']:'';
+        $price = isset($item['price'])?"Цена {$item['price']}$":'';
+        $title = "Купить {$mark} {$model} {$god} {$toplivo} {$price} в Минске Голденмоторс";
+        $keywords = "{$mark} {$model}";
+        $description = "Продажа в РБ {$mark} {$model} {$item['short_text']}";
+?>
+
+@section('title', $title)
+@section('description', $description)
+@section('keywords', $keywords)
 
 @section('content')
+
+
     <!-- Start Page header -->
 
     @if(isset($catalog_banner['images'][0]))
@@ -43,7 +57,6 @@
         </div>
     </div>
     <!-- Start Body Content -->
-
     <div id="divMyApp" class="main" role="main"
          ng-controller="myCtrl"
          ng-init="obj.objJson={{json_encode($item['obj'])}}; obj.id={{$item['id']}}; obj.price={{$item['price']}}"
