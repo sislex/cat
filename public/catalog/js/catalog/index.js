@@ -124,11 +124,31 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                                 else{
                                     newValue = value[$key];
                                 }
-                                if($val['min']!=null && $val['min'] > newValue){
-                                    compare = false;
+
+                                if($val['min']!=null){
+                                    var min;
+                                    if(angular.isObject($val['min'])){
+                                        min = $val['min']['text']
+                                    }else{
+                                        min = $val['min'];
+                                    }
+                                    min = parseFloat(min);
+                                    if(min > newValue){
+                                        compare = false;
+                                    }
                                 }
-                                if($val['max']!=null && $val['max'] < newValue){
-                                    compare = false;
+
+                                if($val['max']!=null){
+                                    var max;
+                                    if(angular.isObject($val['max'])){
+                                        max = $val['max']['text']
+                                    }else{
+                                        max = $val['max'];
+                                    }
+                                    max = parseFloat(max);
+                                    if(max < newValue){
+                                        compare = false;
+                                    }
                                 }
                             }
 
