@@ -143,14 +143,13 @@
                                         <option value="">Модель</option>
                                     </select>
                                 </div>
-
                                 <div>
                                     <div class="form-inline">
                                         <div class="form-group">
                                             <select
                                                     class="form-control input-circle"
                                                     ng-model="obj.help['God_vypuska']['min']"
-                                                    ng-options="item for item in [2003, 2004, 2005]"
+                                                    ng-options="item.text for item in filter['God_vypuska'] | orderBy:'text':true"
                                                     ng-change="obj.helpers.makeObj('God_vypuska', 'value')"
                                                     placeholder="Цена от"
                                                     >
@@ -161,7 +160,7 @@
                                             <select
                                                     class="form-control input-circle"
                                                     ng-model="obj.help['God_vypuska']['max']"
-                                                    ng-options="item for item in [2003, 2004, 2005]"
+                                                    ng-options="item.text for item in filter['God_vypuska'] | orderBy:'text':true"
                                                     ng-change="obj.helpers.makeObj('God_vypuska', 'value')"
                                                     placeholder="Цена до"
                                                     >
