@@ -17,8 +17,6 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
 @section('keywords', $keywords)
 
 @section('content')
-
-
     <!-- Start Page header -->
 
     @if(isset($catalog_banner['images'][0]))

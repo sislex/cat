@@ -600,6 +600,9 @@
                         <form id="seo" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
                             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                             <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
+                            <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 hidden"/>
+                            <input type="text" name="price" value="{{ $item['price'] or '' }}" class="col-md-12 hidden">
+                            <input type="text" name="short_text" value="{{ $item['short_text'] or '' }}" class="col-md-12 hidden">
                             <input type="hidden" name="tab" value="#tab_2" />
 
                             <div class="form-body">

@@ -99,6 +99,7 @@ class ItemsController extends Controller
     public function update()
     {
         $input = \Request::all();
+        $input = Items::modifiedData($input);
 
         if ($input['id']) {
             Items::find($input['id'])->update($input);
