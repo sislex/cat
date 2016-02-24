@@ -149,7 +149,8 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                     <li class="active"> <a data-toggle="tab" href="#vehicle-overview">Описание</a></li>
                                     <li> <a data-toggle="tab" href="#vehicle-specs">Технические характеристики</a></li>
                                     <li> <a data-toggle="tab" href="#vehicle-add-features">Комплектация</a></li>
-                                    <li> <a data-toggle="tab" href="#vehicle-location">Местонахождение</a> </li>
+                                    {{--<li> <a data-toggle="tab" href="#vehicle-location">Местонахождение</a> </li>--}}
+                                    <li> <a data-toggle="tab" href="#vehicle-video">Видео</a> </li>
                                 </ul>
                                 <div class="tab-content">
                                     <div id="vehicle-overview" class="tab-pane fade in active">
@@ -205,6 +206,9 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                         @if(isset($item['obj']['Страна'][0]['text']))<li class="list-group-item"> <span class="badge">Страна</span> {{$item['obj']['Страна'][0]['text']}}</li>@endif
                                         @if(isset($item['obj']['Страна'][0]['children'][0]['text']))<li class="list-group-item"> <span class="badge">Город</span> {{$item['obj']['Страна'][0]['children'][0]['text']}}</li>@endif
                                         <iframe width="100%" height="300px" frameBorder="0" src="http://a.tiles.mapbox.com/v3/imicreation.map-zkcdvthf.html?secure#12/53.9134/27.5716"></iframe>
+                                    </div>
+                                    <div id="vehicle-video" class="tab-pane fade">
+                                        <iframe style="width: 100%; min-height: 350px" src="https://www.youtube.com/embed/{{$item['obj']['video']}}" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div>
