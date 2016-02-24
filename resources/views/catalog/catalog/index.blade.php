@@ -258,12 +258,13 @@
                                         <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
                                         {{--<span class="label label-success premium-listing">Premium Listing</span>--}}
                                         <div class="result-item-view-buttons">
-                                            <a ng-if="item['video']" href="https://www.youtube.com/watch?v=@{{ item['video'] }}" data-rel="prettyPhoto"><i class="fa fa-play"></i> View video</a>
-                                            <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}"  ><i class="fa fa-plus"></i> View details</a>
+                                            <a ng-if="item['video']" href="https://www.youtube.com/watch?v=@{{ item['video'] }}" data-rel="prettyPhoto"><i class="fa fa-play"></i> Открыть видео</a>
+                                            <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}"  ><i class="fa fa-plus"></i> Подробнее</a>
                                         </div>
                                     </div>
                                     <div class="result-item-in">
-                                        <h4 class="result-item-title"><a  href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h4>
+                                        <h4 class="result-item-title"><a  href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">
+                                                @{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h4>
                                         <div class="result-item-cont">
                                             <div class="result-item-block col1">
                                                 <p>@{{ item.item.text }}</p>
