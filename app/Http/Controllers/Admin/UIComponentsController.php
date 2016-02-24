@@ -32,11 +32,23 @@ class UIComponentsController extends Controller
                 }else{
                     $uicomponent_arr['images'] = json_encode($obj['images']);
                 }
+                if(!isset($obj['html'])){
+                    $uicomponent_arr['html'] = '';
+                }else{
+                    $uicomponent_arr['html'] = $obj['html'];
+                }
+                if(!isset($obj['configuration'])){
+                    $uicomponent_arr['configuration'] = '';
+                }else{
+                    $uicomponent_arr['configuration'] = $obj['configuration'];
+                }
+                unset($uicomponent_arr['obj']);
             }
         }else{
             $uicomponent_arr['name'] = $name;
-            $uicomponent_arr['obj'] = json_encode([]);
             $uicomponent_arr['images'] = json_encode([]);
+            $uicomponent_arr['html'] = '';
+            $uicomponent_arr['configuration'] = '';
         }
 
         return view('admin/ui-components/ui-component', ['uicomponent' => $uicomponent_arr]);
@@ -46,24 +58,44 @@ class UIComponentsController extends Controller
     {
         $input = \Request::all();
 
-        if(!isset($input['images'])){
-            $input['images'] = [];
-        }
-        if ($input['name'] && is_array($input['images'])) {
+        if(isset($input['name']) && $input['name'] != '') {
             $uicomponent = UIComponents::firstOrCreate(['name' => $input['name']]);
             if (isset($uicomponent)) {
-                if(isset($uicomponent->obj)){
+                if (isset($uicomponent['obj'])) {
                     $arr = json_decode($uicomponent->obj, true);
-                }else{
+                } else {
                     $arr = [];
                 }
-                $arr['images'] = $input['images'];
-                $uicomponent->obj = json_encode($arr);
-                $uicomponent->update();
+                if (isset($input['images'])) {
+                    $arr['images'] = $input['images'];
+                    $uicomponent->obj = json_encode($arr);
+                    $uicomponent->update();
+
+                    return \Redirect::action('Admin\UIComponentsController@show',['name' => $uicomponent->name]);
+
+                } elseif (isset($input['html'])) {
+                    $arr['html'] = $input['html'];
+                    $uicomponent->obj = json_encode($arr);
+                    $uicomponent->update();
+
+                    return \Redirect::action('Admin\UIComponentsController@show',['name' => $uicomponent->name]);
+
+                } elseif (isset($input['configuration'])) {
+                    $arr['configuration'] = $input['configuration'];
+                    $uicomponent->obj = json_encode($arr);
+                    $uicomponent->update();
+
+                    return \Redirect::action('Admin\UIComponentsController@show',['name' => $uicomponent->name]);
+
+                } else {
+                    return 'error: invalid data received';
+                }
             } else {
-                dd('error occured while creating new model');
+                return 'error: ui-component with the name ' . $input['name'] . ' either does not exist or cannot be created';
             }
+        } else {
+            return 'error: ui-component name is not received';
         }
-        return 'ui-component is updated';
+
     }
 }

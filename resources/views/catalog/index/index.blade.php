@@ -178,25 +178,38 @@
                     <div class="container">
 
                         <!-- Partners slider -->
-                        @if(isset($partners_slider) && is_array($partners_slider) && isset($partners_slider['images']) && count($partners_slider['images']))
-                            <div class="row">
-                                <div class="col-md-3 col-sm-4">
-                                    <h3>Наши партнеры </h3>
-                                </div>
-                                <div class="col-md-9 col-sm-8">
-                                    <div class="row">
-                                        <ul class="owl-carousel" id="partners-slider" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
+                        @if(isset($partners_slider) && is_array($partners_slider))
+                            @if(isset($partners_slider['configuration']) && $partners_slider['configuration'] == 'images' && isset($partners_slider['images']) && count($partners_slider['images']))
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-4">
+                                        <h3> Наши партнеры </h3>
+                                    </div>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="row">
+                                            <ul class="owl-carousel" id="partners-slider" data-columns="5" data-autoplay="6000" data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="5" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
 
-                                            @foreach($partners_slider['images'] as $partners_slider_image)
-                                                <li class="item">
-                                                    <img src="/images/ui-components/partners-slider/{{ $partners_slider_image }}" alt="Partner Image">
-                                                </li>
-                                            @endforeach
+                                                @foreach($partners_slider['images'] as $partners_slider_image)
+                                                    <li class="item">
+                                                        <img src="/images/ui-components/partners-slider/{{ $partners_slider_image }}" alt="Partner Image">
+                                                    </li>
+                                                @endforeach
 
-                                        </ul>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @elseif(isset($partners_slider['configuration']) && $partners_slider['configuration'] == 'html' && isset($partners_slider['html']) && trim($partners_slider['html']) != '')
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-4">
+                                        <h3> Наши партнеры </h3>
+                                    </div>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="row">
+                                            {!! $partners_slider['html'] !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         @endif
 
                     </div>

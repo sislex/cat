@@ -29,13 +29,13 @@
     <!-- BEGIN NAV TAB -->
     <ul class="nav nav-tabs">
         <li class="active">
-            <a href="#tab_0" data-toggle="tab"> Картинка </a>
+            <a href="#tab_0" data-toggle="tab"> Картинки </a>
         </li>
         <li>
             <a href="#tab_1" data-toggle="tab"> HTML </a>
         </li>
         <li>
-            <a href="#tab_2" data-toggle="tab"> Настройки </a>
+            <a href="#tab_2" data-toggle="tab"> Настройка </a>
         </li>
     </ul>
     <!-- END NAV TAB -->
@@ -91,22 +91,52 @@
         </div>
 
         <div class="tab-pane" id="tab_1">
-
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="html" enctype="application/x-www-form-urlencoded" action="{{ action('Admin\UIComponentsController@update') }}" method="POST">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                            <input type="hidden" name="name" value="{{ $uicomponent['name'] or '' }}" />
+                            <textarea rows="10" class="form-control" name="html" placeholder="Введите HTML код">{!! $uicomponent['html'] or '' !!}</textarea>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn btn-circle green"> Сохранить </button>
+                                    <a href="{{ action('Admin\UIComponentsController@show',['name' => $uicomponent['name']]) }}" class="btn btn-circle red btn-outline"> Отменить </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div class="tab-pane" id="tab_2">
-
+            {{--<div class="form-group">--}}
+            <div class="row">
+                <label class="col-md-2 control-label"> Использовать </label>
+                <form class="col-md-10" id="configuration" enctype="application/x-www-form-urlencoded" action="{{ action('Admin\UIComponentsController@update') }}" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                        <input type="hidden" name="name" value="{{ $uicomponent['name'] or '' }}" />
+                        <select form="configuration" name="configuration" class="form-control input-circle">
+                            <option value="images" {{ isset($uicomponent['configuration']) && $uicomponent['configuration'] == 'images' ? 'selected' : '' }}> Картинки </option>
+                            <option value="html" {{ isset($uicomponent['configuration']) && $uicomponent['configuration'] == 'html' ? 'selected' : '' }}> HTML </option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <button type="submit" class="btn btn-circle green"> Сохранить </button>
+                                <a href="{{ action('Admin\UIComponentsController@show',['name' => $uicomponent['name']]) }}" class="btn btn-circle red btn-outline"> Отменить </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                {{--<div class="col-md-7"></div>--}}
+            </div>
         </div>
-        <!-- The blueimp Gallery widget -->
-        {{--<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">--}}
-            {{--<div class="slides"> </div>--}}
-            {{--<h3 class="title"></h3>--}}
-            {{--<a class="prev"> ‹ </a>--}}
-            {{--<a class="next"> › </a>--}}
-            {{--<a class="close white"> </a>--}}
-            {{--<a class="play-pause"> </a>--}}
-            {{--<ol class="indicator"> </ol>--}}
-        {{--</div>--}}
         <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
         <script id="template-upload" type="text/x-tmpl"> {% for (var i=0, file; file=o.files[i]; i++) { %}
                         <tr class="template-upload fade">

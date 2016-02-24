@@ -43,6 +43,9 @@ class IndexController extends Controller
             if(isset($obj->html)){
                 $main_slider_arr['html'] = $obj->html;
             }
+            if(isset($obj->html)){
+                $main_slider_arr['configuration'] = $obj->html;
+            }
         }
 
         $partners_slider = UIComponents::where('name','=','partners-slider')->get()->first();
@@ -50,11 +53,15 @@ class IndexController extends Controller
 
         if(isset($partners_slider) && isset($partners_slider->obj)){
             $obj = json_decode($partners_slider->obj);
+
             if(isset($obj->images)){
                 $partners_slider_arr['images'] = $obj->images;
             }
             if(isset($obj->html)){
                 $partners_slider_arr['html'] = $obj->html;
+            }
+            if(isset($obj->configuration)){
+                $partners_slider_arr['configuration'] = $obj->configuration;
             }
         }
 

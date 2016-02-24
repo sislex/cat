@@ -31,8 +31,6 @@ class CatalogController extends Controller
             }
         }
 
-//        dd($catalog_banner_arr);
-
         return view('catalog/catalog/index', ['catalog_banner' => $catalog_banner_arr]);
     }
 
