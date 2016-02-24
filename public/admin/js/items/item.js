@@ -19,7 +19,6 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
                     if(window.Cookie){
                         if(window.Cookie.get('wishList')){$scope.wishList = angular.fromJson(window.Cookie.get('wishList'));}
-                        console.log($scope.wishList);
                         if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
                         $scope.obj.helpers.addToViewedList($scope.obj.obj);
                     }
@@ -206,6 +205,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                                 }
                             }
                         }
+                        if(obj['God_vypuska'][0]['text']){name += ' ' + obj['God_vypuska'][0]['text'];}
                         var row = {
                             id: obj.id,
                             name: name,
@@ -254,6 +254,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                             }
                         }
                     }
+                    if(obj['God_vypuska'][0]['text']){name += ' ' + obj['God_vypuska'][0]['text'];}
                     var row = {
                         id: obj.id,
                         name: name,

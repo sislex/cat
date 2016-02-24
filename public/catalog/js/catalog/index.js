@@ -204,6 +204,8 @@ myApp.controller('myCtrl', ['$scope', '$http',
                                 }
                             }
                         }
+
+                        if(obj['God_vypuska'][0]['text']){name += ' ' + obj['God_vypuska'][0]['text'];}
                         var row = {
                             id: obj.item.id,
                             name: name,
