@@ -271,7 +271,7 @@
                                             </div>
                                             <div class="result-item-block col2">
                                                 <div class="result-item-pricing">
-{{--                                                    <div class="price">$@{{ item.item.price || 0 }}</div>--}}
+                                                    <div class="price">$@{{ item.item.price || 0 }}</div>
                                                 </div>
                                                 <div class="result-item-action-buttons">
                                                     <a ng-click="obj.helpers.addToWishList(item)" class="btn btn-default btn-sm">
