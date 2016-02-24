@@ -267,7 +267,7 @@
                                                 @{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h4>
                                         <div class="result-item-cont">
                                             <div class="result-item-block col1">
-                                                <p>@{{ item.item.text }}</p>
+                                                <p>@{{ (item.item.text).substr(0, 180) }}<span ng-if="(item.item.text).length>180">...</span></p>
                                             </div>
                                             <div class="result-item-block col2">
                                                 <div class="result-item-pricing">
