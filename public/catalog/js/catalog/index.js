@@ -2,11 +2,11 @@
  * Created by Рожнов on 15.11.2015.
  */
 if(!myApp){
-    var myApp = angular.module('myApp', ["checklist-model", 'ngCookies']);
+    var myApp = angular.module('myApp', ["checklist-model"]);
 }
 
-myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
-    function($scope, $http, $cookies) {
+myApp.controller('myCtrl', ['$scope', '$http',
+    function($scope, $http) {
         $scope.filter = {};
         $scope.init = (function(){
             $http.post('/filter/ajax').
@@ -31,7 +31,7 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                     console.log('Ошибка при отправки объекта');
                 });
 
-            if($cookies.get('wishList')){$scope.wishList = angular.fromJson(window.Cookie.get('wishList'));}
+            if(window.Cookie.get('wishList')){$scope.wishList = angular.fromJson(window.Cookie.get('wishList'));}
 
             if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
         })();
