@@ -21,9 +21,9 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
 
     @if(isset($catalog_banner['images'][0]))
         <div class="page-header parallax" style="background-image:url('/images/ui-components/catalog-banner/{{ $catalog_banner['images'][0] }}');">
-            <div class="container">
-                <h1 class="page-title">Listing results</h1>
-            </div>
+            {{--<div class="container">--}}
+                {{--<h1 class="page-title">Listing results</h1>--}}
+            {{--</div>--}}
         </div>
     @endif
 
@@ -40,17 +40,17 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                         </li>
                     </ol>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-4">
-                    <span class="share-text"><i class="icon-share"></i> Share this</span>
-                    <ul class="utility-icons social-icons social-icons-colored">
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li class="delicious"><a href="#"><i class="fa fa-delicious"></i></a></li>
-                    </ul>
-                </div>
+                {{--<div class="col-md-4 col-sm-6 col-xs-4">--}}
+                    {{--<span class="share-text"><i class="icon-share"></i> Share this</span>--}}
+                    {{--<ul class="utility-icons social-icons social-icons-colored">--}}
+                        {{--<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+                        {{--<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+                        {{--<li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+                        {{--<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>--}}
+                        {{--<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>--}}
+                        {{--<li class="delicious"><a href="#"><i class="fa fa-delicious"></i></a></li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
             </div>
         </div>
     </div>
@@ -256,7 +256,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                         <label class="checkbox-inline">
                                             <input type="checkbox" id="inlineCheckbox2" value="option2"> Подписаться на новости
                                         </label>
-                                        <input type="submit" class="btn btn-primary" value="Послать">
+                                        <input type="submit" class="btn btn-primary" value="Перезвоните мне">
                                     </form>
                                 </div>
                                 <div class="vehicle-enquiry-foot">
@@ -326,37 +326,37 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
 @endsection
 
 @section('MODAL-PAGES')
-    <div id="divMailApp" ng-controller="MailWidget">
+    <div id="divMailApp" ng-controller="mailWidget">
         <!-- REQUEST MORE INFO POPUP -->
         <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4>Запросить дополнительную информацию @{{ qwe }}</h4>
+                        <h4>Запросить дополнительную информацию</h4>
                     </div>
                     <div class="modal-body">
                         <p>Запросить дополнительную информацию у специалиста компании.</p>
                         <form>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="name" placeholder="Имя">
+                                <input ng-model="infoModal.name" type="text" class="form-control" name="name" placeholder="Имя">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                        <input type="email" class="form-control" name="email" placeholder="Email">
+                                        <input ng-model="infoModal.email" type="email" class="form-control" name="email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                        <input type="text" class="form-control" name="phone" placeholder="Телефон">
+                                        <input  ng-model="infoModal.phone" type="text" class="form-control" name="phone" placeholder="Телефон">
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" class="btn btn-primary pull-right" name="action" value="Запросить информацию">
+                            <input ng-click="infoModal.send()" type="button" data-dismiss="modal" class="btn btn-primary pull-right" name="action" value="Запросить информацию">
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -377,19 +377,19 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                         <form>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="name" placeholder="Имя">
+                                <input ng-model="offerModal.name" type="text" class="form-control" name="name" placeholder="Имя">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                        <input type="email" class="form-control" name="email" placeholder="Email">
+                                        <input ng-model="offerModal.email" type="email" class="form-control" name="email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                        <input type="text" class="form-control" name="phone" placeholder="Телефон">
+                                        <input ng-model="offerModal.phone" type="text" class="form-control" name="phone" placeholder="Телефон">
                                     </div>
                                 </div>
                             </div>
@@ -397,12 +397,12 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                                        <input type="text" class="form-control" name="my-price" placeholder="Своя цена">
+                                        <input ng-model="offerModal.price" type="text" class="form-control" name="price" placeholder="Своя цена">
                                     </div>
                                 </div>
                             </div>
-                            <textarea class="form-control" placeholder="Комментарий"></textarea>
-                            <input type="submit" class="btn btn-primary pull-right" name="action" value="Предложить">
+                            <textarea ng-model="offerModal.comment" class="form-control" placeholder="Комментарий"></textarea>
+                            <input ng-click="offerModal.send()" type="button" data-dismiss="modal" class="btn btn-primary pull-right" name="action" value="Предложить">
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -423,19 +423,19 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                         <form>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="name" placeholder="Имя">
+                                <input ng-model="testdriveModal.name" type="text" class="form-control" name="name" placeholder="Имя">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                        <input type="email" class="form-control" name="email" placeholder="Email">
+                                        <input ng-model="testdriveModal.email" type="email" class="form-control" name="email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                        <input type="text" class="form-control" name="phone" placeholder="Телефон">
+                                        <input ng-model="testdriveModal.phone" type="text" class="form-control" name="phone" placeholder="Телефон">
                                     </div>
                                 </div>
                             </div>
@@ -443,17 +443,17 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input type="text" id="datepicker" class="form-control" name="date" placeholder="Желаемая дата">
+                                        <input ng-model="testdriveModal.date" type="text" id="datepicker" class="form-control" name="date" placeholder="Желаемая дата">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group input-append bootstrap-timepicker">
                                         <span class="input-group-addon add-on"><i class="fa fa-clock-o"></i></span>
-                                        <input type="text" id="timepicker" class="form-control" name="time" placeholder="Желаемое время">
+                                        <input ng-model="testdriveModal.time" type="text" id="timepicker" class="form-control" name="time" placeholder="Желаемое время">
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" class="btn btn-primary pull-right" name="action" value="Записаться">
+                            <input ng-click="testdriveModal.send()" type="button" data-dismiss="modal" class="btn btn-primary pull-right" name="action" value="Записаться">
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -473,24 +473,24 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                         <form>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="name" placeholder="Имя">
+                                <input ng-model="sendModal.name" type="text" class="form-control" name="name" placeholder="Имя">
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                        <input type="email" class="form-control" name="email" placeholder="Ваш Email">
+                                        <input ng-model="sendModal.email" type="email" class="form-control" name="email" placeholder="Ваш Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                        <input type="email" class="form-control" name="friends-email" placeholder="Email друга">
+                                        <input ng-model="sendModal.friend" type="email" class="form-control" name="friend" placeholder="Email друга">
                                     </div>
                                 </div>
                             </div>
-                            <textarea class="form-control" name="message" placeholder="Сообщение"></textarea>
-                            <input type="submit" class="btn btn-primary pull-right" name="action" value="Послать">
+                            <textarea ng-model="sendModal.message" class="form-control" name="message" placeholder="Сообщение"></textarea>
+                            <input ng-click="sendModal.send()" type="button" data-dismiss="modal" class="btn btn-primary pull-right" name="action" value="Отправить">
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -503,7 +503,6 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
 @section('PAGE-LEVEL-PLUGINS')
     <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
     <script src="/admin/js/checklist-model.js" type="text/javascript"></script>
-
     <script src="/admin/assets/global/plugins/angularjs/angular-cookies.min.js"></script>
 
 @endsection

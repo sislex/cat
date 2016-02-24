@@ -46,7 +46,11 @@
     </tr>
     <tr>
         <td align="center" bgcolor="#ffffff">
-            Тело письма
+            @if(isset($mail_data))
+                @foreach($mail_data as $mail_item)
+                    <p> {{ $mail_item }} </p>
+                @endforeach
+            @endif
         </td>
     </tr>
 </table>

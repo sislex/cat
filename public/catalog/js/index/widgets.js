@@ -22,7 +22,7 @@ myApp.controller('lastCarsWidget', ['$scope', '$http',
 
                 }).
                 error(function(data, status, headers, config) {
-                    console.log('Ошибка при отправке объекта');
+                    console.log('ошибка при отправке объекта');
                 });
         })();
     }
@@ -66,20 +66,110 @@ if(!mailApp){
     var mailApp = angular.module('mailApp', []);
 }
 
-mailApp.controller('MailWidget', ['$scope', '$http',
+mailApp.controller('mailWidget', ['$scope', '$http',
     function($scope, $http) {
-        //$scope.func = (function(){
-        //    $http.post('/mail/index', {}).
-        //    success(function(data, status, headers, config) {
-        //        $scope.result = data;
-        //        console.log($scope.result);
-        //    }).
-        //    error(function(data, status, headers, config) {
-        //        console.log('ошибка при отправке объекта.');
-        //    });
-        //})();
-        //
-        //$scope.qwe = 123;
+        $scope.infoModal = {
+            type : 'Запрос дополнительной информации',
+            name : '',
+            email : '',
+            phone : '',
+            url : window.location.href,
+            send : function(){
+                $http.post('/mail/index',{modal : $scope.infoModal})
+                    .success(function(data, status, headers, config){
+                        console.log('запрос отправлен успешно');
+                        $scope.infoModal.clear();
+                    })
+                    .error(function(data, status, headers, config){
+                        console.log('ошибка при отправке запроса');
+                        $scope.infoModal.clear();
+                    });
+            },
+            clear : function(){
+                $scope.infoModal.name = '';
+                $scope.infoModal.email = '';
+                $scope.infoModal.phone = '';
+            }
+        };
+        $scope.offerModal = {
+            type : 'Предложение своей цены',
+            name : '',
+            email : '',
+            phone : '',
+            price : '',
+            comment : '',
+            url : window.location.href,
+            send : function(){
+                $http.post('/mail/index',{modal : $scope.offerModal})
+                    .success(function(data, status, headers, config){
+                        console.log('запрос отправлен успешно');
+                        $scope.offerModal.clear();
+                    })
+                    .error(function(data, status, headers, config){
+                        console.log('ошибка при отправке запроса');
+                        $scope.offerModal.clear();
+                    });
+            },
+            clear : function(){
+                $scope.offerModal.name = '';
+                $scope.offerModal.email = '';
+                $scope.offerModal.phone = '';
+                $scope.offerModal.price = '';
+                $scope.offerModal.comment = '';
+            }
+        };
+        $scope.testdriveModal = {
+            type : 'Запись на тест-драйв',
+            name : '',
+            email : '',
+            phone : '',
+            date : '',
+            time : '',
+            url : window.location.href,
+            send : function(){
+                $http.post('/mail/index',{modal : $scope.testdriveModal})
+                    .success(function(data, status, headers, config){
+                        console.log('запрос отправлен успешно');
+                        $scope.testdriveModal.clear();
+                    })
+                    .error(function(data, status, headers, config){
+                        console.log('ошибка при отправке запроса');
+                        $scope.testdriveModal.clear();
+                    });
+            },
+            clear : function(){
+                $scope.testdriveModal.name = '';
+                $scope.testdriveModal.email = '';
+                $scope.testdriveModal.phone = '';
+                $scope.testdriveModal.date = '';
+                $scope.testdriveModal.time = '';
+            }
+        };
+        $scope.sendModal = {
+            type : 'Поделиться ссылкой',
+            name : '',
+            email : '',
+            friend : '',
+            message : '',
+            url : window.location.href,
+            send : function(){
+                $http.post('/mail/index',{modal : $scope.sendModal})
+                    .success(function(data, status, headers, config){
+                        console.log('запрос отправлен успешно');
+                        $scope.sendModal.clear();
+                    })
+                    .error(function(data, status, headers, config){
+                        console.log('ошибка при отправке запроса');
+                        $scope.sendModal.clear();
+                    });
+            },
+            clear : function(){
+                $scope.sendModal.name = '';
+                $scope.sendModal.email = '';
+                $scope.sendModal.friend = '';
+                $scope.sendModal.message = '';
+            }
+        };
     }
 ]);
 
