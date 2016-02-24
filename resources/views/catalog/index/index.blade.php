@@ -6,22 +6,27 @@
 
 @section('content')
     <div id="divMyApp">
+
+        <!-- Start Main Slider -->
         <div class="hero-area">
-            <!-- Start Hero Slider -->
-            <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
-                <ul class="slides">
-                    @if(isset($main_slider) && is_array($main_slider) && isset($main_slider['images']) && count($main_slider['images']))
-                        @foreach($main_slider['images'] as $main_slider_image)
-                            <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $main_slider_image }}');"></li>
-                        @endforeach
-                    @else
-                        <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
-                        <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
-                    @endif
-                </ul>
-            </div>
-            <!-- End Hero Slider -->
+
+            @if(isset($main_slider) && is_array($main_slider))
+                @if((isset($main_slider['configuration']) && $main_slider['configuration'] == 'images' && isset($main_slider['images']) && count($main_slider['images']))
+                || (!isset($main_slider['configuration']) && isset($main_slider['images']) && count($main_slider['images'])))
+                    <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
+                        <ul class="slides">
+                            @foreach($main_slider['images'] as $main_slider_image)
+                                <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $main_slider_image }}');"></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @elseif(isset($main_slider['configuration']) && $main_slider['configuration'] == 'html' && isset($main_slider['html']) && trim($main_slider['html']) != '')
+                    {!! $main_slider['html'] !!}
+                @endif
+            @endif
+
         </div>
+        <!-- End Main Slider -->
 
         <!-- Start Body Content -->
         <div class="main" role="main">

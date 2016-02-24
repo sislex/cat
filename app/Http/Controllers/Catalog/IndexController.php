@@ -44,7 +44,7 @@ class IndexController extends Controller
                 $main_slider_arr['html'] = $obj->html;
             }
             if(isset($obj->html)){
-                $main_slider_arr['configuration'] = $obj->html;
+                $main_slider_arr['configuration'] = $obj->configuration;
             }
         }
 
