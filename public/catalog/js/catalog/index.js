@@ -22,6 +22,10 @@ myApp.controller('myCtrl', ['$scope', '$http', '$cookies',
                     $scope.obj.helpers.keyToNumber(data, 'Probeg');
                     $scope.items = data;
                     $scope.cloneItems = angular.copy($scope.items);
+
+                    setTimeout(function(){
+                        if(window.AUTOSTARS){window.AUTOSTARS.PrettyPhoto();}
+                    }, 500);
                 }).
                 error(function(data, status, headers, config) {
                     console.log('Ошибка при отправки объекта');

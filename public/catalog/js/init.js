@@ -504,11 +504,15 @@ $(document).ready(function(){
 	AUTOSTARS.galleryflex();
 
 	//setTimeout(function(){
-	//	AUTOSTARS.OwlCarousel();
+		AUTOSTARS.OwlCarousel();
 	//}, 1000);
 
 
-	AUTOSTARS.PrettyPhoto();
+	//setTimeout(function(){
+	//	AUTOSTARS.PrettyPhoto();
+	//}, 1000);
+
+	//AUTOSTARS.PrettyPhoto();
 	AUTOSTARS.SuperFish();
 	AUTOSTARS.Counters();
 	AUTOSTARS.IsoTope();
