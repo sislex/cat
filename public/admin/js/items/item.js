@@ -18,6 +18,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     $scope.obj.obj.price = $scope.obj.price;
 
                     if(window.Cookie){
+                        if(window.Cookie.get('wishList')){$scope.wishList = angular.fromJson(window.Cookie.get('wishList'));}
                         if(window.Cookie.get('viewedList')){$scope.viewedList = angular.fromJson(window.Cookie.get('viewedList'));}
                         $scope.obj.helpers.addToViewedList($scope.obj.obj);
                     }
@@ -190,6 +191,56 @@ myApp.controller('myCtrl', ['$scope', '$http',
 
                     return rez;
                 },
+
+                addToWishList : function(obj){
+                    if(!$scope.obj.helpers.checkId($scope.wishList, obj.id)){
+                        var arr = $scope.wishList;
+                        if(!angular.isArray(arr)){arr = [];}
+                        var name = '';
+                        if(obj.type_auto && obj.type_auto[0] && obj.type_auto[0].text){
+                            if(obj.type_auto[0].children && obj.type_auto[0].children[0] && obj.type_auto[0].children[0].text){
+                                name += ' ' + obj.type_auto[0].children[0].text;
+                                if(obj.type_auto[0].children[0].children && obj.type_auto[0].children[0].children[0] && obj.type_auto[0].children[0].children[0].text){
+                                    name += ' ' + obj.type_auto[0].children[0].children[0].text;
+                                }
+                            }
+                        }
+                        if(obj['God_vypuska'][0]['text']){name += ' ' + obj['God_vypuska'][0]['text'];}
+                        var row = {
+                            id: obj.id,
+                            name: name,
+                            price: obj.price,
+                            image: obj.images[0]
+                        };
+                        arr.unshift(row);
+                        var i = 0;
+                        var newArr = [];
+                        angular.forEach(arr, function(val, key){
+                            i++;
+                            if(i<=5){
+                                newArr.push(val);
+                            }
+                        });
+
+                        obj['wishList'] = true;
+                        window.Cookie.set('wishList', angular.toJson(newArr));
+                        //$cookies.put('wishList', angular.toJson(newArr));
+                        $scope.wishList = newArr;
+                    }else{
+                        $scope.obj.helpers.deleteFromWishList(obj.id);
+                    }
+                },
+                deleteFromWishList:function(id){
+                    var newArr = [];
+                    angular.forEach($scope.wishList, function(val, key){
+                        if(id != val.id){
+                            newArr.push(val);
+                        }
+                    });
+                    window.Cookie.set('wishList', angular.toJson(newArr));
+                    //$cookies.put('wishList', angular.toJson(newArr));
+                    $scope.wishList = newArr;
+                },
                 addToViewedList : function(obj){
                     $scope.viewedList = $scope.obj.helpers.removeRowById($scope.viewedList, obj.id);
                     var arr = $scope.viewedList;
@@ -203,6 +254,7 @@ myApp.controller('myCtrl', ['$scope', '$http',
                             }
                         }
                     }
+                    if(obj['God_vypuska'][0]['text']){name += ' ' + obj['God_vypuska'][0]['text'];}
                     var row = {
                         id: obj.id,
                         name: name,

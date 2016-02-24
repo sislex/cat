@@ -653,67 +653,109 @@
                 </div>
             </div>
             <div class="tab-pane" id="tab_2">
-            <div class="row">
-                <div class="col-md-12">
-                    <form id="fileupload" data-type="item" sort="{{ $item->images or ''}}" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?id={{ $item['id'] or '' }}" method="POST" enctype="multipart/form-data">
-                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-                        <div class="row fileupload-buttonbar">
-                            <div class="col-lg-7">
-                                <!-- The fileinput-button span is used to style the file input field as button -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="fileupload" data-type="item" sort="{{ $item->images or ''}}" action="/admin/assets/global/plugins/jquery-file-upload/server/php/index.php?id={{ $item['id'] or '' }}" method="POST" enctype="multipart/form-data">
+                            <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                            <div class="row fileupload-buttonbar">
+                                <div class="col-lg-7">
+                                    <!-- The fileinput-button span is used to style the file input field as button -->
                                 <span class="btn green btn-circle fileinput-button">
                                     <i class="fa fa-plus"></i>
                                     <span> Добавить... </span>
                                     <input type="file" name="files[]" multiple="">
                                 </span>
-                                {{--<button type="submit" class="btn btn-circle blue start">--}}
+                                    {{--<button type="submit" class="btn btn-circle blue start">--}}
                                     {{--<i class="fa fa-upload"></i>--}}
                                     {{--<span> Start upload </span>--}}
-                                {{--</button>--}}
-                                {{--<button type="reset" class="btn btn-circle warning cancel">--}}
+                                    {{--</button>--}}
+                                    {{--<button type="reset" class="btn btn-circle warning cancel">--}}
                                     {{--<i class="fa fa-ban-circle"></i>--}}
                                     {{--<span> Cancel upload </span>--}}
-                                {{--</button>--}}
-                                {{--<button type="button" class="btn btn-circle red delete">--}}
+                                    {{--</button>--}}
+                                    {{--<button type="button" class="btn btn-circle red delete">--}}
                                     {{--<i class="fa fa-trash"></i>--}}
                                     {{--<span> Delete </span>--}}
-                                {{--</button>--}}
-                                {{--<input type="checkbox" class="toggle">--}}
-                                <!-- The global file processing state -->
-                                <span class="fileupload-process"> </span>
-                            </div>
-                            <!-- The global progress information -->
-                            <div class="col-lg-5 fileupload-progress fade">
-                                <!-- The global progress bar -->
-                                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar progress-bar-success" style="width:0%;"> </div>
+                                    {{--</button>--}}
+                                    {{--<input type="checkbox" class="toggle">--}}
+                                    <!-- The global file processing state -->
+                                    <span class="fileupload-process"> </span>
                                 </div>
-                                <!-- The extended global progress information -->
-                                <div class="progress-extended"> &nbsp; </div>
+                                <!-- The global progress information -->
+                                <div class="col-lg-5 fileupload-progress fade">
+                                    <!-- The global progress bar -->
+                                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar progress-bar-success" style="width:0%;"> </div>
+                                    </div>
+                                    <!-- The extended global progress information -->
+                                    <div class="progress-extended"> &nbsp; </div>
+                                </div>
+                            </div>
+                            <!-- The table listing the files available for upload/download -->
+                            <table role="presentation" class="table table-striped clearfix">
+                                <tbody class="files sortable"> </tbody>
+                            </table>
+                        </form>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Demo Notes</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li> The maximum file size for uploads in this demo is
+                                        <strong>5 MB</strong> (default file size is unlimited). </li>
+                                    <li> Only image files (
+                                        <strong>JPG, GIF, PNG</strong>) are allowed in this demo (by default there is no file type restriction). </li>
+                                    <li> Uploaded files will be deleted automatically after
+                                        <strong>5 minutes</strong> (demo setting). </li>
+                                </ul>
                             </div>
                         </div>
-                    <!-- The table listing the files available for upload/download -->
-                    <table role="presentation" class="table table-striped clearfix">
-                        <tbody class="files sortable"> </tbody>
-                    </table>
-                </form>
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Demo Notes</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul>
-                            <li> The maximum file size for uploads in this demo is
-                                <strong>5 MB</strong> (default file size is unlimited). </li>
-                            <li> Only image files (
-                                <strong>JPG, GIF, PNG</strong>) are allowed in this demo (by default there is no file type restriction). </li>
-                            <li> Uploaded files will be deleted automatically after
-                                <strong>5 minutes</strong> (demo setting). </li>
-                        </ul>
                     </div>
                 </div>
             </div>
+            <div class="tab-pane" id="tab_3">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-gift"></i> Ссылка на видео
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <!-- BEGIN FORM-->
+                        <form id="seo" action="{{action('Admin\ItemsController@update')}}" method="post" class="form-horizontal">
+                            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                            <input type="hidden" name="id" value="{{ $item['id'] or '' }}" />
+                            <input type="hidden" name="tab" value="#tab_3" />
+                            <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 "/>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"> Видео </label>
+                                <div class="col-md-2">
+                                    <input
+                                            type="text"
+                                            ng-model="obj.help['video']"
+                                            ng-change="obj.helpers.makeObj('video')"
+                                            class="form-control input-circle"
+                                            placeholder="Введите id видеоролика"
+                                            >
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button type="submit" class="btn btn-circle green"> Сохранить </button>
+                                        {{--<button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>--}}
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- END FORM-->
+                    </div>
+                </div>
             </div>
-        </div>
         <!-- The blueimp Gallery widget -->
         <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
             <div class="slides"> </div>

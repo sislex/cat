@@ -21,9 +21,9 @@ Route::get('/', 'Catalog\IndexController@index');
 
 // Catalog routes...
 Route::get('catalog/index', 'Catalog\CatalogController@index');
-Route::get('catalog/item/{id?}', 'Catalog\CatalogController@item');
+Route::get('catalog/auto/{id?}', 'Catalog\CatalogController@item');
 
-Route::get('page/{pseudo_url}','Catalog\CatalogController@menu');
+Route::get('menu/{pseudo_url}','Catalog\CatalogController@menu');
 Route::get('news/post/{pseudo_url?}','Catalog\CatalogController@news');
 Route::get('blog/post/{pseudo_url?}','Catalog\CatalogController@blog');
 Route::get('catalog/top-menu','Catalog\CatalogController@getTopMenu');
@@ -92,6 +92,7 @@ Route::post('admin/login', 'Auth\AuthController@postLogin');
 Route::get('admin/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
+Route::get('auth/login', function(){return \Redirect::action('Auth\AuthController@getLogin');});
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 

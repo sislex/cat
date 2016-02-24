@@ -32,12 +32,12 @@
                                     <ul class="listing tool-car-listing">
                                         <li ng-repeat="item in wishList">
                                             <div class="imageb">
-                                                <a href="/catalog/item/@{{ item.id }}">
+                                                <a href="/catalog/auto/@{{ item.id }}">
                                                     <img ng-src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
                                                 </a>
                                             </div>
                                             <div class="textb">
-                                                <a href="/catalog/item/@{{ item.id }}">@{{item.name}}</a>
+                                                <a href="/catalog/auto/@{{ item.id }}">@{{item.name}}</a>
                                                 <span class="price">$ @{{item.price}}</span>
                                             </div>
                                             <div class="delete"><a ng-click="obj.helpers.deleteFromWishList(item.id)"><i class="icon-delete"></i></a></div>
@@ -57,12 +57,12 @@
                                     <ul class="listing tool-view-listing">
                                         <li ng-repeat="item in viewedList">
                                             <div class="imageb">
-                                                <a href="/catalog/item/@{{ item.id }}">
+                                                <a href="/catalog/auto/@{{ item.id }}">
                                                     <img ng-src="/images/items/@{{ item.id }}/thumbnail/@{{ item.image }}" alt="">
                                                 </a>
                                             </div>
                                             <div class="textb">
-                                                <a href="/catalog/item/@{{ item.id }}">@{{item.name}}</a>
+                                                <a href="/catalog/auto/@{{ item.id }}">@{{item.name}}</a>
                                                 <span class="price">$ @{{item.price}}</span>
                                             </div>
                                         </li>
@@ -258,7 +258,7 @@
                                         <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
                                         {{--<span class="label label-success premium-listing">Premium Listing</span>--}}
                                         <div class="result-item-view-buttons">
-                                            <a href="https://www.youtube.com/watch?v=P5mvnA4BV7Y" data-rel="prettyPhoto"><i class="fa fa-play"></i> View video</a>
+                                            <a ng-if="item['video']" href="https://www.youtube.com/watch?v=@{{ item['video'] }}" data-rel="prettyPhoto"><i class="fa fa-play"></i> View video</a>
                                             <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}"  ><i class="fa fa-plus"></i> View details</a>
                                         </div>
                                     </div>

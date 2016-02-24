@@ -285,6 +285,17 @@ myApp.controller('myCtrl', ['$scope', '$http',
                         return obj;
                     }
                     return;
+                },
+                checkId : function(arr, id){
+                    var result = false;
+                    angular.forEach(arr, function(val, key){
+                        if(id == val.id){
+                            result = true;
+                        }
+                    });
+
+
+                    return result;
                 }
             }
         };
