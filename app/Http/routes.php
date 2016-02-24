@@ -79,7 +79,7 @@ Route::get('admin/content/delete/{id}', 'Admin\ContentController@delete');
 Route::post('admin/content/update', 'Admin\ContentController@update');
 
 //Mail rotes
-Route::get('mail/index', 'Catalog\MailController@index');
+Route::post('mail/index', 'Catalog\MailController@index');
 
 // Banners and Sliders routes...
 Route::get('admin/ui-components/show/{name}', 'Admin\UIComponentsController@show');
