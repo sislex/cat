@@ -179,7 +179,8 @@
 
                         <!-- Partners slider -->
                         @if(isset($partners_slider) && is_array($partners_slider))
-                            @if(isset($partners_slider['configuration']) && $partners_slider['configuration'] == 'images' && isset($partners_slider['images']) && count($partners_slider['images']))
+                            @if((isset($partners_slider['configuration']) && $partners_slider['configuration'] == 'images' && isset($partners_slider['images']) && count($partners_slider['images']))
+                            || (!isset($partners_slider['configuration']) && isset($partners_slider['images']) && count($partners_slider['images'])))
                                 <div class="row">
                                     <div class="col-md-3 col-sm-4">
                                         <h3> Наши партнеры </h3>
