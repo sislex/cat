@@ -92,6 +92,7 @@ Route::post('admin/login', 'Auth\AuthController@postLogin');
 Route::get('admin/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
+Route::get('auth/login', function(){return \Redirect::action('Auth\AuthController@getLogin');});
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
