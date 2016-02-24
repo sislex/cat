@@ -37,6 +37,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                         <li class="active">
                             {{$item['obj']['type_auto'][0]['children'][0]['text'] or ''}}
                             {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text'] or ''}}
+                            {{$item['obj']['God_vypuska'][0]['text'] or ''}}
                         </li>
                     </ol>
                 </div>
@@ -69,6 +70,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                             {{$item['obj']['type_auto'][0]['children'][0]['text'] or ''}}
                             {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text'] or ''}}
                             {{$item['obj']['Версия/Модификация'] or ''}}
+                            {{$item['obj']['God_vypuska'][0]['text'] or ''}}
                         </h1>
                     </div>
                     <div class="single-listing-actions">
