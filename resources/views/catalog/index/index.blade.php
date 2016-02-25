@@ -6,22 +6,27 @@
 
 @section('content')
     <div id="divMyApp">
+
+        <!-- Start Main Slider -->
         <div class="hero-area">
-            <!-- Start Hero Slider -->
-            <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
-                <ul class="slides">
-                    @if(isset($main_slider) && is_array($main_slider) && isset($main_slider['images']) && count($main_slider['images']))
-                        @foreach($main_slider['images'] as $main_slider_image)
-                            <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $main_slider_image }}');"></li>
-                        @endforeach
-                    @else
-                        <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
-                        <li class="parallax" style="background-image:url(http://placehold.it/1400x500&amp;text=IMAGE+PLACEHOLDER);"></li>
-                    @endif
-                </ul>
-            </div>
-            <!-- End Hero Slider -->
+
+            @if(isset($main_slider) && is_array($main_slider))
+                @if((isset($main_slider['configuration']) && $main_slider['configuration'] == 'images' && isset($main_slider['images']) && count($main_slider['images']))
+                || (!isset($main_slider['configuration']) && isset($main_slider['images']) && count($main_slider['images'])))
+                    <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
+                        <ul class="slides">
+                            @foreach($main_slider['images'] as $main_slider_image)
+                                <li class="parallax" style="background-image:url('/images/ui-components/main-slider/{{ $main_slider_image }}');"></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @elseif(isset($main_slider['configuration']) && $main_slider['configuration'] == 'html' && isset($main_slider['html']) && trim($main_slider['html']) != '')
+                    {!! $main_slider['html'] !!}
+                @endif
+            @endif
+
         </div>
+        <!-- End Main Slider -->
 
         <!-- Start Body Content -->
         <div class="main" role="main">
@@ -237,4 +242,83 @@
             }
         }, 500);
     </script>
+
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" src="/catalog/vendor/revslider/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="/catalog/vendor/revslider/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('.tp-banner').show().revolution(
+                    {
+                        dottedOverlay:"none",
+                        delay:9000,
+                        startwidth:1170,
+                        startheight:550,
+                        hideThumbs:200,
+
+                        thumbWidth:100,
+                        thumbHeight:50,
+                        thumbAmount:5,
+
+                        navigationType:"none",
+                        navigationArrows:"solo",
+                        navigationStyle:"preview2",
+
+                        touchenabled:"on",
+                        onHoverStop:"on",
+
+                        swipe_velocity: 0.7,
+                        swipe_min_touches: 1,
+                        swipe_max_touches: 1,
+                        drag_block_vertical: false,
+
+
+                        keyboardNavigation:"on",
+
+                        navigationHAlign:"center",
+                        navigationVAlign:"bottom",
+                        navigationHOffset:0,
+                        navigationVOffset:20,
+
+                        soloArrowLeftHalign:"left",
+                        soloArrowLeftValign:"center",
+                        soloArrowLeftHOffset:20,
+                        soloArrowLeftVOffset:0,
+
+                        soloArrowRightHalign:"right",
+                        soloArrowRightValign:"center",
+                        soloArrowRightHOffset:20,
+                        soloArrowRightVOffset:0,
+
+                        shadow:0,
+                        fullWidth:"on",
+                        fullScreen:"off",
+
+                        spinner:"spinner0",
+
+                        stopLoop:"off",
+                        stopAfterLoops:-1,
+                        stopAtSlide:-1,
+
+                        shuffle:"off",
+
+                        autoHeight:"off",
+                        forceFullWidth:"off",
+
+
+
+                        hideThumbsOnMobile:"off",
+                        hideNavDelayOnMobile:1500,
+                        hideBulletsOnMobile:"off",
+                        hideArrowsOnMobile:"off",
+                        hideThumbsUnderResolution:0,
+
+                        hideSliderAtLimit:0,
+                        hideCaptionAtLimit:0,
+                        hideAllCaptionAtLilmit:0,
+                        startWithSlide:0
+                    });
+        });	//ready
+    </script>
+
 @endsection

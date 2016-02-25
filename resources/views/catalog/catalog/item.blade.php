@@ -271,10 +271,10 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                         <input type="submit" class="btn btn-primary" value="Перезвоните мне">
                                     </form>
                                 </div>
-                                <div class="vehicle-enquiry-foot">
-                                    <span class="vehicle-enquiry-foot-ico"><i class="fa fa-phone"></i></span>
-                                    <strong>1800 011 2211</strong>Seller: <a href="#">Carcheck Sellers</a>
-                                </div>
+                                {{--<div class="vehicle-enquiry-foot">--}}
+                                    {{--<span class="vehicle-enquiry-foot-ico"><i class="fa fa-phone"></i></span>--}}
+                                    {{--<strong>1800 011 2211</strong>Seller: <a href="#">Carcheck Sellers</a>--}}
+                                {{--</div>--}}
                             </div>
 
                             <!-- Financing Calculator -->
