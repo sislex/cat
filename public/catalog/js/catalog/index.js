@@ -5,6 +5,12 @@ if(!myApp){
     var myApp = angular.module('myApp', ["checklist-model"]);
 }
 
+myApp.filter('ceil', function() {
+    return function(input) {
+        return Math.ceil(input);
+    };
+});
+
 myApp.controller('myCtrl', ['$scope', '$http',
     function($scope, $http) {
         $scope.filter = {};
