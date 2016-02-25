@@ -8,7 +8,7 @@
     <div id="divMyApp">
 
         <!-- Start Main Slider -->
-        <div class="hero-area">
+        <div class="hero-area" ng-controller="lastCarsWidget">
 
             @if(isset($main_slider) && is_array($main_slider))
                 @if((isset($main_slider['configuration']) && $main_slider['configuration'] == 'images' && isset($main_slider['images']) && count($main_slider['images']))
@@ -71,7 +71,7 @@
                                                         <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
                                                     </a>
                                                     <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
-                                                    <span class="label label-success premium-listing">Premium </span>
+                                                    {{--<span class="label label-success premium-listing">Premium </span>--}}
                                                     <h5 class="vehicle-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h5>
                                                 <span class="vehicle-meta">
                                                     @{{ item.type_auto[0].children[0].text }}, @{{ item['Цвет'][0]['text'] }}
