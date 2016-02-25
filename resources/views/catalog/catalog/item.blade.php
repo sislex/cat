@@ -318,7 +318,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                         <span class="meta-data">Средняя плата в месяц</span>
                                     <span class="loan-amount">
                                         <span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)>0">
-                                            $@{{ ((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month) | number:0 }}
+                                            $@{{ ((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month) | ceil }}
                                         </span>
                                         <span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)<=0">$0</span>
 
