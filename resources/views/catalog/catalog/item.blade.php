@@ -86,7 +86,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                             <a href="#" data-toggle="modal" data-target="#sendModal" class="btn btn-default" title="Send to a friend"><i class="fa fa-send"></i> <span>Поделиться</span></a>
                             <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Print"><i class="fa fa-print"></i> <span>Распечатать</span></a>
                         </div>
-                        <div class="btn btn-info price">${{$item['price']}}</div>
+                        <div class="btn btn-info price">${{ intval($item['price']) }}</div>
 
                         @if(isset($item['obj']['Старая цена']))
                             <div class="btn btn-warning old-price">${{$item['obj']['Старая цена']}}</div>
