@@ -221,35 +221,42 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                 </div>
                             </div>
                             <div class="spacer-50"></div>
-                            <!-- Recently Listed Vehicles -->
-                            <section class="hidden-print" ng-controller="lastCarsWidget">
-                                <div class="">
-                                    <h3>Новые поступления</h3>
-                                </div>
-                                <div class="">
-                                    <div class="">
-                                        <div class="row">
-                                            <ul class="owl-carousel" id="vehicle-slider" data-columns="3" data-autoplay="" data-pagination="yes" data-arrows="no" data-single-item="no" data-items-desktop="3" data-items-desktop-small="3" data-items-tablet="2" data-items-mobile="1">
-                                                <li class="item" ng-repeat="item in items">
-                                                    <div class="vehicle-block format-standard">
-                                                        <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box">
-                                                            <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
-                                                        </a>
-                                                        <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
-                                                        <span class="label label-success premium-listing">Premium </span>
-                                                        <h5 class="vehicle-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h5>
-                                                        <span class="vehicle-meta">
-                                                            @{{ item.type_auto[0].children[0].text }}, @{{ item['Цвет'][0]['text'] }}
-                                                        </span>
-                                                        <span class="vehicle-cost">$@{{ item.item.price || 0 }}</span>
-                                                    </div>
-                                                </li>
 
-                                            </ul>
+
+                            <!-- Recently Listed Vehicles -->
+                            <section class="listing-block recent-vehicles" ng-controller="lastCarsWidget" >
+                                <div ng-if="(items.length>0)">
+                                    <div class="listing-header" >
+                                        <h3>Новые поступления</h3>
+                                    </div>
+                                    <div class="listing-container">
+                                        <div class="carousel-wrapper">
+                                            <div class="row">
+                                                <ul class="owl-carousel carousel-fw" id="vehicle-slider" data-columns="3" data-autoplay="" data-pagination="yes" data-arrows="no" data-single-item="no" data-items-desktop="3" data-items-desktop-small="3" data-items-tablet="2" data-items-mobile="1">
+                                                    <li class="item" ng-repeat="item in items">
+                                                        <div class="vehicle-block format-standard">
+                                                            <a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}" class="media-box">
+                                                                <img ng-src="/images/items/@{{ item.item['id'] }}/thumbnail/@{{ item.images[0] }}" alt="">
+                                                            </a>
+                                                            <span class="label label-default vehicle-age">@{{ item['God_vypuska'][0]['text'] }}</span>
+                                                            <span class="label label-success premium-listing">Premium </span>
+                                                            <h5 class="vehicle-title"><a href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h5>
+                                                <span class="vehicle-meta">
+                                                    @{{ item.type_auto[0].children[0].text }}, @{{ item['Цвет'][0]['text'] }}
+                                                </span>
+                                                            <span class="vehicle-cost">$@{{ item.item.price | ceil }}</span>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </section>
+
+
+
                         </div>
                         <!-- Vehicle Details Sidebar -->
                         <div class="col-md-4 vehicle-details-sidebar sidebar">

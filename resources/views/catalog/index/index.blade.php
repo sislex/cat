@@ -76,7 +76,7 @@
                                                 <span class="vehicle-meta">
                                                     @{{ item.type_auto[0].children[0].text }}, @{{ item['Цвет'][0]['text'] }}
                                                 </span>
-                                                    <span class="vehicle-cost">$@{{ item.item.price || 0 }}</span>
+                                                    <span class="vehicle-cost">$@{{ item.item.price | ceil }}</span>
                                                 </div>
                                             </li>
 

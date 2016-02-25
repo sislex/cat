@@ -4,7 +4,15 @@
 
 if(!myApp){
     var myApp = angular.module('myApp', ["checklist-model"]);
+
+    myApp.filter('ceil', function() {
+        return function(input) {
+            return Math.ceil(input);
+        };
+    });
 }
+
+
 
 myApp.controller('lastCarsWidget', ['$scope', '$http',
     function($scope, $http) {
@@ -17,7 +25,9 @@ myApp.controller('lastCarsWidget', ['$scope', '$http',
                     //$scope.cloneItems = angular.copy($scope.items);
 
                     setTimeout(function(){
-                        if(window.AUTOSTARS){window.AUTOSTARS.OwlCarousel($('#vehicle-slider'));}
+                        if(window.AUTOSTARS){
+                            window.AUTOSTARS.OwlCarousel($('#vehicle-slider'));
+                        }
                     }, 500);
 
                 }).
