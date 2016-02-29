@@ -282,6 +282,25 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                     {{--<span class="vehicle-enquiry-foot-ico"><i class="fa fa-phone"></i></span>--}}
                                     {{--<strong>1800 011 2211</strong>Seller: <a href="#">Carcheck Sellers</a>--}}
                                 {{--</div>--}}
+
+                                @if(\App\Phones::where('type','=','мобильный телефон')->first())
+                                    <div class="vehicle-enquiry-foot">
+                                    <span><i class="fa fa-phone"></i>
+                                        <strong>
+                                        {{--<a href="tel://{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}">--}}
+                                            {{--{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}--}}
+                                        {{--</a>--}}
+
+                                            <a href="tel://+375 29 7 832 832"> +375-(29)-7-832-832 </a>
+                                        </strong>
+                                        <strong>
+                                            <a href="tel://+375 44 7 832 832"> +375-(44)-7-832-832 </a>
+                                        </strong>
+                                        Продавец: Голденмоторс
+                                    </span>
+                                    </div>
+                                @endif
+
                             </div>
 
                             <!-- Financing Calculator -->
