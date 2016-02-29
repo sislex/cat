@@ -10,14 +10,24 @@ class MailController extends Controller
     public function index()
     {
         $input = \Request::all();
-        if(isset($input['modal'])){
+
+        if(isset($input['modal']) || isset($input['callMeBackWidget'])){
             $transport = \Swift_SmtpTransport::newInstance('smtp.yandex.ru', 465, 'ssl');
             $transport->setUsername('new.goldenmotors@tut.by');
             $transport->setPassword('Gold3nMotors_2016');
             $yandex = new \Swift_Mailer($transport);
 
             \Mail::setSwiftMailer($yandex);
-            $mail_data = $input['modal'];
+
+            if(isset($input['modal'])){
+                $mail_data = $input['modal'];
+//                return 'modal';
+            }
+
+            if(isset($input['callMeBackWidget'])){
+                $mail_data = $input['callMeBackWidget'];
+//                return 'callMeBackWidget';
+            }
 
             if((isset($mail_data['phone']) && trim($mail_data['phone']) != '') || (isset($mail_data['email']) && trim($mail_data['email']) != '')){
                 if(isset($mail_data['friend']) && trim($mail_data['friend'] != '')){

@@ -71,6 +71,38 @@ myApp.controller('lastBlogPostsWidget', ['$scope', '$http',
 ]);
 
 
+myApp.controller('callMeBackWidget', ['$scope', '$http',
+    function($scope, $http) {
+        $scope.callMeBack = {
+            type : 'Заказ обратного звонка',
+            name : '',
+            email : '',
+            phone : '',
+            comment : '',
+            subscribe : false,
+            url : window.location.href,
+            send : function(){
+                $http.post('/mail/index',{callMeBackWidget : $scope.callMeBack})
+                    .success(function(data, status, headers, config){
+                        console.log('запрос отправлен успешно');
+                        $scope.callMeBack.clear();
+                    })
+                    .error(function(data, status, headers, config){
+                        console.log('ошибка при отправке запроса');
+                        $scope.callMeBack.clear();
+                    });
+            },
+            clear : function(){
+                $scope.callMeBack.name = '';
+                $scope.callMeBack.email = '';
+                $scope.callMeBack.phone = '';
+                $scope.callMeBack.comment = '';
+                $scope.callMeBack.subscribe = false;
+            }
+        };
+    }
+]);
+
 
 if(!mailApp){
     var mailApp = angular.module('mailApp', []);

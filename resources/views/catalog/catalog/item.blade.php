@@ -222,7 +222,6 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                             </div>
                             <div class="spacer-50"></div>
 
-
                             <!-- Recently Listed Vehicles -->
                             <section class="listing-block recent-vehicles" ng-controller="lastCarsWidget" >
                                 <div ng-if="(items.length>0)">
@@ -255,27 +254,27 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                 </div>
                             </section>
 
-
-
                         </div>
                         <!-- Vehicle Details Sidebar -->
                         <div class="col-md-4 vehicle-details-sidebar sidebar">
 
                             <!-- Vehicle Enquiry -->
                             <div class="sidebar-widget widget seller-contact-widget">
-                                <h4 class="widgettitle">Заказать обратный звонок</h4>
-                                <div class="vehicle-enquiry-in">
+                                <h4 class="widgettitle"> Заказать обратный звонок </h4>
+                                <div ng-controller="callMeBackWidget" id="callMeBackWidget" class="vehicle-enquiry-in">
                                     <form>
-                                        <input type="text" placeholder="Имя*" class="form-control" required>
-                                        <input type="email" placeholder="Email*" class="form-control" required>
+                                        <input ng-model="callMeBack.name" name="name" type="text" placeholder="Имя*" class="form-control" required>
+                                        <input ng-model="callMeBack.email" name="email" type="email" placeholder="Email*" class="form-control" required>
                                         <div class="row">
-                                            <div class="col-md-7"><input type="text" placeholder="Телефон №*" class="form-control" required></div>
+                                            <div class="col-md-7">
+                                                <input ng-model="callMeBack.phone" name="phone" type="text" placeholder="Телефон №*" class="form-control" required>
+                                            </div>
                                         </div>
-                                        <textarea name="comments" class="form-control" placeholder="Комментарий"></textarea>
+                                        <textarea ng-model="callMeBack.comment" name="comment" class="form-control" placeholder="Комментарий"></textarea>
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" id="inlineCheckbox2" value="option2"> Подписаться на новости
+                                            <input ng-model="callMeBack.subscribe" name="subscribe" type="checkbox" id="inlineCheckbox2" value="false"> Подписаться на новости
                                         </label>
-                                        <input type="submit" class="btn btn-primary" value="Перезвоните мне">
+                                        <input ng-click="callMeBack.send()" name="send" type="button" class="btn btn-primary" value="Перезвоните мне">
                                     </form>
                                 </div>
                                 {{--<div class="vehicle-enquiry-foot">--}}
