@@ -162,9 +162,9 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                             <div class="tabs vehicle-details-tabs">
                                 <ul class="nav nav-tabs">
                                     <li class="active"> <a data-toggle="tab" href="#vehicle-overview">Описание</a></li>
-                                    <li> <a data-toggle="tab" href="#vehicle-specs">Технические характеристики</a></li>
+                                    <li> <a data-toggle="tab" href="#vehicle-specs">Тех. характеристики</a></li>
                                     <li> <a data-toggle="tab" href="#vehicle-add-features">Комплектация</a></li>
-                                    {{--<li> <a data-toggle="tab" href="#vehicle-location">Местонахождение</a> </li>--}}
+                                    <li> <a data-toggle="tab" href="#vehicle-location">На карте</a> </li>
                                     @if(isset($item['obj']['video']))<li> <a data-toggle="tab" href="#vehicle-video">Видео</a> </li>@endif
                                 </ul>
                                 <div class="tab-content">
