@@ -271,6 +271,7 @@
                                             </div>
                                             <div class="result-item-block col2">
                                                 <div class="result-item-pricing">
+                                                    <div class="badge badge-success" >@{{ item.item.price * currencies.BLR/1000000 | ceil }} млн руб.</div>
                                                     <div class="price">$@{{ item.item.price | ceil }}</div>
                                                 </div>
                                                 <div class="result-item-action-buttons">
