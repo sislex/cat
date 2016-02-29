@@ -318,7 +318,8 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                     year = month / 12;
                                     percent = 12
                                     ">
-                                        <input type="text" class="form-control" placeholder="Сумма займа" ng-value="price - downPayment">
+                                        <label>Сумма займа</label>
+                                        <input type="text" class="form-control" placeholder="Введите сумму займа" ng-value="price - downPayment">
                                         <div class="form-group">
                                             <label>Количество месяцев</label>
                                             <div class="btn-group" data-toggle="buttons">
@@ -340,8 +341,10 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control"  ng-model="downPayment" placeholder="Первоночальный взнос">
-                                            <input type="text" class="form-control" ng-model="percent" placeholder="Процентная ставка">
+                                            <label>Первоначальный взнос</label>
+                                            <input type="text" class="form-control"  ng-model="downPayment" placeholder="Введите первоночальный взнос">
+                                            <label>Процентная ставка</label>
+                                            <input type="text" class="form-control" ng-model="percent" placeholder="Введите процентную ставку">
                                         </div>
                                     </div>
                                     <div class="calculations-result">
