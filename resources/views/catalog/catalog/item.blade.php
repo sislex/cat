@@ -31,15 +31,24 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
     <div class="utility-bar">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-sm-6 col-xs-8">
+                <div class="col-md-7 col-sm-6 col-xs-8">
                     <ol class="breadcrumb">
-                        <li><a href="/catalog/index">Каталог</a></li>
+                        <li><a href="/catalog/index"> Каталог </a></li>
                         <li class="active">
                             {{$item['obj']['type_auto'][0]['children'][0]['text'] or ''}}
                             {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text'] or ''}}
                             {{$item['obj']['God_vypuska'][0]['text'] or ''}}
                         </li>
                     </ol>
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-4">
+
+                    <div class="ya-share2 pull-right" style="padding-top: 8px" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,viber,whatsapp"></div>
+                    <span class="share-text pull-right" style="margin-right: 20px"><i class="icon-share"></i> Поделиться </span>
+
+                    <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+                    <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+
                 </div>
                 {{--<div class="col-md-4 col-sm-6 col-xs-4">--}}
                     {{--<span class="share-text"><i class="icon-share"></i> Share this</span>--}}
@@ -549,6 +558,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
     <script src="/admin/assets/global/plugins/angularjs/angular.min.js"></script>
     <script src="/admin/js/checklist-model.js" type="text/javascript"></script>
     <script src="/admin/assets/global/plugins/angularjs/angular-cookies.min.js"></script>
+
 
 @endsection
 
