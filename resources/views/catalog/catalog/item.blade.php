@@ -139,7 +139,6 @@
                                     @if(isset($item['obj']['Обмен'][0]['text']))<li class="list-group-item"> <span class="badge">Обмен</span> {{$item['obj']['Обмен'][0]['text']}}</li>@endif
 
                                     {{--<li class="list-group-item"> <span class="badge">Расход</span> 6.8 L/100km</li>--}}
-                                    {{--<li class="list-group-item"> <span class="badge">Мощность</span> 168 kW</li>--}}
                                 </ul>
                             </div>
                         </div>
