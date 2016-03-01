@@ -40,8 +40,8 @@ myApp.controller('lastCarsWidget', ['$scope', '$http',
 
 myApp.controller('lastNewsWidget', ['$scope', '$http',
     function($scope, $http) {
-        (function(){
-            $http.post('/news/last', {type:'news', limit:6}).
+        $scope.getLastNews = function(limit){
+            $http.post('/news/last', {type:'news', limit:limit}).
                 success(function(data, status, headers, config) {
                     $scope.news = data;
                     setTimeout(function(){
@@ -51,7 +51,7 @@ myApp.controller('lastNewsWidget', ['$scope', '$http',
                 error(function(data, status, headers, config) {
                     console.log('ошибка при отправке объекта');
                 });
-        })();
+        };
     }
 ]);
 

@@ -49,7 +49,7 @@
                         </div>
                     @endif
 
-                    <div class="widget sidebar-widget widget_recent_posts" ng-controller="lastNewsWidget">
+                    <div class="widget sidebar-widget widget_recent_posts" ng-controller="lastNewsWidget" ng-init="getLastNews(5)">
 
                         <div ng-if="news.length > 0">
                             <h3 class="widgettitle">
@@ -58,23 +58,23 @@
                             <ul>
                                 <li class="" ng-repeat="single_news in news">
                                     <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
-                                        <img src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbnail">
-                                    </a>
-                                    <h5>
-                                        <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
-                                            @{{ single_news['name'] }}
-                                        </a>
-                                    </h5>
-                                    <div class="post-actions">
-                                        <div class="post-date">
-                                            @{{ single_news['date'] }}
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                                        <img src="@{{ single_news['previewImageURL'] }}" alt="" class="img-thumbna
+                </div>il">
+                </a>
+                <h5>
+                    <a href="{{ action('Catalog\CatalogController@news')}}/@{{ single_news['pseudo_url'] }}">
+                        @{{ single_news['name'] }}
+                    </a>
+                </h5>
+                <div class="post-actions">
+                    <div class="post-date">
+                        @{{ single_news['date'] }}
                     </div>
                 </div>
+                </li>
+                </ul>
+            </div>
+        </div>
             </div>
         </div>
     </div>

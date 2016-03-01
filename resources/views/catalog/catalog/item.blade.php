@@ -50,17 +50,6 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                     <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
 
                 </div>
-                {{--<div class="col-md-4 col-sm-6 col-xs-4">--}}
-                    {{--<span class="share-text"><i class="icon-share"></i> Share this</span>--}}
-                    {{--<ul class="utility-icons social-icons social-icons-colored">--}}
-                        {{--<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
-                        {{--<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
-                        {{--<li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
-                        {{--<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>--}}
-                        {{--<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>--}}
-                        {{--<li class="delicious"><a href="#"><i class="fa fa-delicious"></i></a></li>--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
             </div>
         </div>
     </div>
@@ -299,7 +288,6 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                             {{--<a href="tel://{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}">--}}
                                                 {{--{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}--}}
                                             {{--</a>--}}
-
                                                 <a href="tel://+375-(29)-7-832-832"> +375-(29)-7-832-832 </a>
                                             </strong>
                                         </span>

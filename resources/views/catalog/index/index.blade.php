@@ -90,7 +90,7 @@
                     <div class="spacer-60"></div>
 
                     <!-- Latest News -->
-                    <section class="listing-block latest-news" ng-controller="lastNewsWidget">
+                    <section class="listing-block latest-news" ng-controller="lastNewsWidget" ng-init="getLastNews(6)">
                             <div ng-if="news.length > 0">
                                 <div class="listing-header">
                                     <h3>
