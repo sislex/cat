@@ -288,14 +288,14 @@
                                                 {{--{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}--}}
                                             {{--</a>--}}
 
-                                                <a href="tel://+375-(29)-7-832-832"> +375-(29)-7-832-832 </a>
+                                                <a href="tel://+375-(29)-7-832-832"> +375-(29)-3-746-666 </a>
                                             </strong>
                                         </span>
                                         <br>
                                         <span>
                                             <i class="fa fa-phone" style="font-size: medium"></i>
                                             <strong>
-                                                <a href="tel://+375-(29)-7-832-832"> +375-(44)-7-832-832 </a>
+                                                <a href="tel://+375-(29)-7-832-832"> +375-(33)-3-746-666 </a>
                                             </strong>
                                             Продавец: Голденмоторс
                                         </span>
@@ -313,10 +313,21 @@
                                     downPayment = 0;
                                     month = 24;
                                     year = month / 12;
-                                    percent = 12
+                                    percent = 20
                                     ">
-                                        <label>Сумма займа</label>
-                                        <input type="text" class="form-control" placeholder="Введите сумму займа" ng-value="price - downPayment">
+                                        <div class="form-group">
+                                            <label>Первоначальный взнос</label>
+                                            <input type="text" class="form-control"  ng-model="downPayment" placeholder="Введите первоночальный взнос">
+
+                                            <label>Сумма займа</label>
+                                            <input type="text" class="form-control" placeholder="Введите сумму займа" ng-value="price - downPayment">
+
+                                            <div class="hidden">
+                                                <label>Процентная ставка</label>
+                                                <input type="text" class="form-control" ng-model="percent" placeholder="Введите процентную ставку">
+                                            </div>
+                                        </div>
+
                                         <div class="form-group">
                                             <label>Количество месяцев</label>
                                             <div class="btn-group" data-toggle="buttons">
@@ -334,18 +345,19 @@
                                                 <label class="btn btn-info" ng-click="month=60">
                                                     <input type="radio" name="Loan Tenure" id="option3" autocomplete="off"> 60
                                                 </label>
+                                                <label class="btn btn-info" ng-click="month=72">
+                                                    <input type="radio" name="Loan Tenure" id="option3" autocomplete="off"> 72
+                                                </label>
+                                                <label class="btn btn-info" ng-click="month=84">
+                                                    <input type="radio" name="Loan Tenure" id="option3" autocomplete="off"> 84
+                                                </label>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Первоначальный взнос</label>
-                                            <input type="text" class="form-control"  ng-model="downPayment" placeholder="Введите первоночальный взнос">
-                                            <label>Процентная ставка</label>
-                                            <input type="text" class="form-control" ng-model="percent" placeholder="Введите процентную ставку">
-                                        </div>
+
                                     </div>
                                     <div class="calculations-result">
-                                        <span class="meta-data">Средняя плата в месяц</span>
+                                        <span class="meta-data">Выплата</span>
                                     <span class="loan-amount">
                                         <span ng-if="((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month)>0">
                                             $@{{ ((((price - downPayment) * (month/12) * percent/100) + (price - downPayment))/month) | ceil }}
@@ -356,6 +368,16 @@
                                     </span>
                                     </div>
                                 </form>
+                            </div>
+
+                            <div class="vehicle-enquiry-foot">
+                                        <span>
+                                            <i class="fa fa-phone" style="font-size: medium"></i>
+                                            <strong>
+                                                <a href="tel://+375-(29)-7-832-832"> +375-(44)-7-832-832 </a>
+                                            </strong>
+                                            Кредитный консультант
+                                        </span>
                             </div>
                         </div>
                     </div>
