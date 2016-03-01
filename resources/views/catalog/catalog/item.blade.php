@@ -369,7 +369,7 @@
                                 </form>
                             </div>
 
-                            <div class="vehicle-enquiry-foot">
+                            <div class="vehicle-enquiry-foot widget">
                                 <span>
                                     <i class="fa fa-phone" style="font-size: medium"></i>
                                     <strong>
