@@ -20,6 +20,9 @@ class Items extends Model
     ];
 
     static function modifiedData($input){
+        $item = Items::where('id', '=', $input['id'])->get()->first();
+        $text = '';
+        if($item){$text = $item->text;}
         if($input && $input['obj']){
             $obj = json_decode($input['obj'], true);
 
@@ -33,10 +36,10 @@ class Items extends Model
                 $input['title'] = "Купить {$mark} {$model} {$god} {$toplivo} {$price} в Минске Голденмоторс";
             }
             if(isset($input['description']) && $input['description']==''){
-                $input['description'] = "{$mark} {$model}";
+                $input['description'] = "Продажа в РБ {$mark} {$model} {$text}";
             }
             if(isset($input['keywords']) && $input['keywords']==''){
-                $input['keywords'] = "Продажа в РБ {$mark} {$model} {$input['short_text']}";
+                $input['keywords'] = "{$mark} {$model}";
             }
         }
 

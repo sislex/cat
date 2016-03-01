@@ -37,6 +37,14 @@ myApp.controller('myCtrl', ['$scope', '$http',
                     console.log('Ошибка при отправке объекта');
                 });
 
+            $http.post('/admin/settings/currencies/getCurrencies').
+                success(function(data, status, headers, config) {
+                    $scope.currencies = data;
+                    //console.log($scope.currencies);
+                }).
+                error(function(data, status, headers, config) {
+                    console.log('Ошибка при отправки объекта');
+                });
 
             $http.post('/specifications/ajax').
                 success(function(data, status, headers, config) {

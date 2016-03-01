@@ -14,7 +14,7 @@ class SettingsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
 
@@ -172,5 +172,19 @@ class SettingsController extends Controller
         Email::destroy($id);
         return \Redirect::action('Admin\SettingsController@email');
     }
+
+    public function getCurrencies()
+    {
+        $currencies = Currencies::get();
+
+        $arr = [];
+        if($currencies->count()){
+            foreach($currencies as $value){
+                $arr[$value->name] = $value->rate;
+            }
+        }
+        return $arr;
+    }
+
 
 }

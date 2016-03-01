@@ -236,8 +236,9 @@ var AUTOSTARS = window.AUTOSTARS || {};
 /* ==================================================
    PrettyPhoto
 ================================================== */
-	AUTOSTARS.PrettyPhoto = function() {
-		$("a[data-rel^='prettyPhoto']").prettyPhoto({
+	AUTOSTARS.PrettyPhoto = function(obj) {
+		if(!obj){obj = $("a[data-rel^='prettyPhoto']");}
+		obj.prettyPhoto({
 			  opacity: 0.5,
 			  social_tools: "",
 			  deeplinking: false

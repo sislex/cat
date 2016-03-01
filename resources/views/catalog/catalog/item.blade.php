@@ -1,20 +1,10 @@
 @extends('catalog.layout')
 
-<?php
+@section('title', $item->title)
+@section('description', $item->description)
+@section('keywords', $item->keywords)
 
-$mark = isset($item['obj']['type_auto'][0]['children'][0]['text'])?$item['obj']['type_auto'][0]['children'][0]['text']:''.' ';
-$model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'])?$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']:''.' ';
-        $god = isset($item['obj']['God_vypuska'][0]['text'])?$item['obj']['God_vypuska'][0]['text']:''. 'г.';
-        $toplivo = isset($item['obj']['Тип двигателя'][0]['text'])?$item['obj']['Тип двигателя'][0]['text']:'';
-        $price = isset($item['price'])?"Цена {$item['price']}$":'';
-        $title = "Купить {$mark} {$model} {$god} {$toplivo} {$price} в Минске Голденмоторс";
-        $keywords = "{$mark} {$model}";
-        $description = "Продажа в РБ {$mark} {$model} {$item['short_text']}";
-?>
 
-@section('title', $title)
-@section('description', $description)
-@section('keywords', $keywords)
 
 @section('content')
     <!-- Start Page header -->
@@ -35,9 +25,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                     <ol class="breadcrumb">
                         <li><a href="/catalog/index"> Каталог </a></li>
                         <li class="active">
-                            {{$item['obj']['type_auto'][0]['children'][0]['text'] or ''}}
-                            {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text'] or ''}}
-                            {{$item['obj']['God_vypuska'][0]['text'] or ''}}
+                            {{$item['name'] or ''}}
                         </li>
                     </ol>
                 </div>
@@ -65,10 +53,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                     <div class="single-vehicle-title">
                         <span class="badge-premium-listing">№{{$item['id']}} добавлено: {{date('d-m-Y', strtotime($item['created_at']))}}</span>
                         <h1 class="post-title">
-                            {{$item['obj']['type_auto'][0]['children'][0]['text'] or ''}}
-                            {{$item['obj']['type_auto'][0]['children'][0]['children'][0]['text'] or ''}}
-                            {{$item['obj']['Версия/Модификация'] or ''}}
-                            {{$item['obj']['God_vypuska'][0]['text'] or ''}}
+                            {{$item['name'] or ''}}
                         </h1>
                     </div>
                     <div class="single-listing-actions">
@@ -85,6 +70,8 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                             <a href="javascript:void(0)" onclick="window.print();" class="btn btn-default" title="Print"><i class="fa fa-print"></i> <span>Распечатать</span></a>
                         </div>
                         <div class="btn btn-info price">${{ intval($item['price']) }}</div>
+                        <div class="btn btn-info price" >@{{ obj.obj.price * currencies.BYR | ceil }} руб.</div>
+                        {{--<div class="btn btn-info price">${{ intval($item['price']) }}</div>--}}
 
                         @if(isset($item['obj']['Старая цена']))
                             <div class="btn btn-warning old-price">${{$item['obj']['Старая цена']}}</div>
@@ -99,7 +86,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                     @if(isset($item['images'][0]))
                                         @if(!file_exists('/images/items/'.$item['id'].'/'.$item['images'][0]))
                                         <a href="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" data-rel="prettyPhoto[gallery]" class="media-box">
-                                            <img src="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" alt="">
+                                            <img src="/images/items/{{ $item['id'] }}/{{ $item['images'][0] }}" alt="Фотография 1 {{$item['name']}}">
                                         </a>
                                         @endif
                                     @endif
@@ -107,11 +94,12 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                                 @if(isset($item['images']) && is_array($item['images']) && count($item['images']) > 1)
                                 <div class="additional-images">
                                     <ul class="owl-carousel" id="images-slider" data-columns="4" data-pagination="no" data-arrows="yes" data-single-item="no" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-mobile="3">
+                                        <?php $i = 1;?>
                                         @foreach($item['images'] as $key => $img)
                                             @if($key)
                                                 <li class="item format-image">
                                                     <a href="/images/items/{{ $item['id'] }}/{{ $img }}" data-rel="prettyPhoto[gallery]" class="media-box">
-                                                        <img src="/images/items/{{ $item['id'] }}/thumbnail/{{ $img }}" alt="">
+                                                        <img src="/images/items/{{ $item['id'] }}/thumbnail/{{ $img }}" alt="Фотография {{++$i}} {{$item['name']}}">
                                                     </a>
                                                 </li>
                                             @endif
@@ -151,9 +139,9 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
                             <div class="tabs vehicle-details-tabs">
                                 <ul class="nav nav-tabs">
                                     <li class="active"> <a data-toggle="tab" href="#vehicle-overview">Описание</a></li>
-                                    <li> <a data-toggle="tab" href="#vehicle-specs">Технические характеристики</a></li>
+                                    <li> <a data-toggle="tab" href="#vehicle-specs">Тех. характеристики</a></li>
                                     <li> <a data-toggle="tab" href="#vehicle-add-features">Комплектация</a></li>
-                                    {{--<li> <a data-toggle="tab" href="#vehicle-location">Местонахождение</a> </li>--}}
+                                    <li> <a data-toggle="tab" href="#vehicle-location">На карте</a> </li>
                                     @if(isset($item['obj']['video']))<li> <a data-toggle="tab" href="#vehicle-video">Видео</a> </li>@endif
                                 </ul>
                                 <div class="tab-content">
@@ -557,6 +545,7 @@ $model = isset($item['obj']['type_auto'][0]['children'][0]['children'][0]['text'
         setTimeout(function() {
             if (window.AUTOSTARS) {
                 window.AUTOSTARS.OwlCarousel($('#images-slider'));
+                AUTOSTARS.PrettyPhoto($(".single-listing-images a[data-rel^='prettyPhoto']"));
             }
         }, 500);
     </script>

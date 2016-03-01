@@ -271,6 +271,7 @@
                                             </div>
                                             <div class="result-item-block col2">
                                                 <div class="result-item-pricing">
+                                                    <div class="badge badge-success" >@{{ item.item.price * currencies.BYR | ceil }} руб.</div>
                                                     <div class="price">$@{{ item.item.price | ceil }}</div>
                                                 </div>
                                                 <div class="result-item-action-buttons">
@@ -285,7 +286,6 @@
                                         </div>
                                         <div class="result-item-features">
                                             <ul class="inline">
-
                                                 <li ng-if="item['Объем куб. см.']">@{{ item['Объем куб. см.']}} см<sup style="font-size: 8px">3</sup></li>
                                                 <li ng-if="item['Probeg']">@{{ item['Probeg']}} km</li>
                                                 <li ng-if="item['Тип двигателя']">@{{ item['Тип двигателя'][0].text}}</li>
