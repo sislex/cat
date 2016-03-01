@@ -35,7 +35,7 @@ class MailController extends Controller
                     \Mail::send('catalog.mail.tpl2-share-with-friend', ['mail_data' => $mail_data], function($message) use ($mail_data)
                     {
                         $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
-                        $message->to($mail_data['friend'])->subject("Письмо с сайта [new.goldenmotors.by] - " .$mail_data['type']. " (тест)");
+                        $message->to($mail_data['friend'])->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
                     });
 
                     return 'письмо отправлено';
@@ -45,7 +45,7 @@ class MailController extends Controller
                     \Mail::send('catalog.mail.tpl1-general', ['mail_data' => $mail_data], function($message) use ($mail_data)
                     {
                         $message->from('new.goldenmotors@tut.by', 'Автосалон Golden Motors');
-                        $message->to('new.goldenmotors@tut.by', 'Автосалон Golden Motors')->subject("Письмо с сайта [new.goldenmotors.by] - " .$mail_data['type']. " (тест)");
+                        $message->to('goldenmotors.by@gmail.com', 'Автосалон Golden Motors')->subject("Письмо с сайта [goldenmotors.by] - " .$mail_data['type']);
                     });
 
                     return 'письмо отправлено';
