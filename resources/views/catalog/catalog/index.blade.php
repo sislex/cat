@@ -271,7 +271,7 @@
                                             </div>
                                             <div class="result-item-block col2">
                                                 <div class="result-item-pricing">
-                                                    <div class="badge badge-success" >@{{ item.item.price * currencies.BYR | ceil }} руб.</div>
+                                                    <div class="badge badge-success" >@{{ item.item.price * currencies.BYR | ceil }} <span style="font-size: 10px">руб</span>.</div>
                                                     <div class="price">$@{{ item.item.price | ceil }}</div>
                                                 </div>
                                                 <div class="result-item-action-buttons">
