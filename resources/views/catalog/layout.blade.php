@@ -59,6 +59,15 @@
                         Продавай и покупай,<br>на GOLDENMOTORS.BY!
                     </span>
                 </div>
+                <div class="header-right">
+                    {{--<div class="user-login-panel logged-in-user">--}}
+                        {{--<img class="user-login-btn" src="http://placehold.it/100x100&amp;text=IMAGE+PLACEHOLDER" alt="">--}}
+                    {{--</div>--}}
+                    <div class="badge badge-success ng-binding pull-right" style="font-size: 20px; margin: 4px 0 0 20px;">+375-(44)-783-28-32</div>
+                    {{--<div class="user-login-panel logged-in-user">--}}
+                        {{--<img class="user-login-btn" src="http://placehold.it/100x100&amp;text=IMAGE+PLACEHOLDER" alt="">--}}
+                    {{--</div>--}}
+                </div>
             </div>
         </header>
         <!-- End Site Header -->
