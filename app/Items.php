@@ -23,7 +23,7 @@ class Items extends Model
         $item = Items::where('id', '=', $input['id'])->get()->first();
         $text = '';
         if($item){$text = $item->text;}
-        if($input && $input['obj']){
+        if($input && isset($input['obj']) && $input['obj']){
             $obj = json_decode($input['obj'], true);
 
             $mark = isset($obj['type_auto'][0]['children'][0]['text'])?$obj['type_auto'][0]['children'][0]['text']:'';
