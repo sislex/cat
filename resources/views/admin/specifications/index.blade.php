@@ -33,12 +33,13 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#specifications-panel"
+                                        <a class="accordion-toggle accordion-toggle-styled collapsed"  data-toggle="collapse" data-parent="#specifications-panel"
                                            href="#spec_group_id{{ $spec_group['id'] }}">
-                                            {{ $spec_group['name'] }} </a>
+                                            {{ $spec_group['name'] }}
+                                        </a>
                                     </h4>
                                 </div>
-                                <div id="spec_group_id{{ $spec_group['id'] }}" class="panel-collapse in">
+                                <div id="spec_group_id{{ $spec_group['id'] }}" class="panel-collapse collapse">
                                     <!-- BEGIN BORDERED TABLE PORTLET-->
                                     <div class="portlet light portlet-fit bordered">
                                         <div class="portlet-body">
