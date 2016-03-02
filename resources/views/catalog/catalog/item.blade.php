@@ -287,14 +287,14 @@
                                                 {{--{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}--}}
                                             {{--</a>--}}
 
-                                                <a href="tel://+375-(29)-7-832-832"> +375-(29)-3-746-666 </a>
+                                                <a href="tel://+375293746666"> +375-(29)-374-66-66 </a>
                                             </strong>
                                         </span>
                                         <br>
                                         <span>
                                             <i class="fa fa-phone" style="font-size: medium"></i>
                                             <strong>
-                                                <a href="tel://+375-(29)-7-832-832"> +375-(33)-3-746-666 </a>
+                                                <a href="tel://+375333746666"> +375-(33)-374-66-66 </a>
                                             </strong>
                                             Продавец: Голденмоторс
                                         </span>
@@ -369,14 +369,14 @@
                                 </form>
                             </div>
 
-                            <div class="vehicle-enquiry-foot">
-                                        <span>
-                                            <i class="fa fa-phone" style="font-size: medium"></i>
-                                            <strong>
-                                                <a href="tel://+375-(29)-7-832-832"> +375-(44)-7-832-832 </a>
-                                            </strong>
-                                            Кредитный консультант
-                                        </span>
+                            <div class="vehicle-enquiry-foot widget">
+                                <span>
+                                    <i class="fa fa-phone" style="font-size: medium"></i>
+                                    <strong>
+                                        <a href="tel://+375447832832"> +375-(44)-7-832-832 </a>
+                                    </strong>
+                                    Кредитный консультант
+                                </span>
                             </div>
                         </div>
                     </div>
