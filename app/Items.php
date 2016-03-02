@@ -30,11 +30,10 @@ class Items extends Model
             $model = isset($obj['type_auto'][0]['children'][0]['children'][0]['text'])?$obj['type_auto'][0]['children'][0]['children'][0]['text']:'';
             $god = isset($obj['God_vypuska'][0]['text'])?$obj['God_vypuska'][0]['text']:''. 'г.';
             $toplivo = isset($obj['Тип двигателя'][0]['text'])?$obj['Тип двигателя'][0]['text']:'';
+            $input['price'] = intval($input['price']);
             $price = isset($input['price'])?"Цена {$input['price']}$":'';
 
             if(isset($input['title']) && $input['title']==''){
-                $input['price'] = intval($input['price']);
-//                dd($input['price']);
                 $input['title'] = "Купить {$mark} {$model} {$god} {$toplivo} {$price} в Минске Голденмоторс";
             }
             if(isset($input['description']) && $input['description']==''){
