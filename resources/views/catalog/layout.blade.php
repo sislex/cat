@@ -123,17 +123,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 copyrights-left">
-                        <p>&copy; 2014 AutoStars. All Rights Reserved</p>
+                        <p>2016 &copy; ООО "Голден Моторс" УНП 191570638 выдано Минским Горисполкомом 19.12.2011г.
+                        <br>220006, г.Минск, ул.Маяковского 2, оф.11, тел. +375-(44)-7-832-832</p>
                     </div>
                     <div class="col-md-6 col-sm-6 copyrights-right">
                         <ul class="social-icons social-icons-colored pull-right">
-                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li class="youtube"><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li class="flickr"><a href="#"><i class="fa fa-flickr"></i></a></li>
-                            <li class="vimeo"><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
-                            <li class="digg"><a href="#"><i class="fa fa-digg"></i></a></li>
+                            <li class="facebook"><a href="https://www.facebook.com/goldenmotors.by/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li class="vk"><a href="https://vk.com/club37638314" target="_blank"><i class="fa fa-vk"></i></a></li>
+                            <li class="twitter"><a href="https://twitter.com/goldenmotors_by" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li class="google-plus"><a href="https://plus.google.com/+GoldenmotorsBy" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="youtube"><a href="http://www.youtube.com/user/goldenmotorsby" target="_blank"><i class="fa fa-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
