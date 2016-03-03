@@ -122,7 +122,7 @@
         <div class="site-footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 copyrights-left">
+                    <div class="col-md-6 col-sm-6 copyrights-left" style="font-size: small">
                         <p>
                             2016 &copy; ООО "Голден Моторс"
                             <br>УНП 191570638 выдано Минским Горисполкомом 19.12.2011г.

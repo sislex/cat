@@ -267,9 +267,9 @@
                                             </div>
                                         </div>
                                         <textarea ng-model="callMeBack.comment" name="comment" class="form-control" placeholder="Комментарий"></textarea>
-                                        <label class="checkbox-inline">
-                                            <input ng-model="callMeBack.subscribe" name="subscribe" type="checkbox" id="inlineCheckbox2" value="false"> Подписаться на новости
-                                        </label>
+                                        {{--<label class="checkbox-inline">--}}
+                                            {{--<input ng-model="callMeBack.subscribe" name="subscribe" type="checkbox" id="inlineCheckbox2" value="false"> Подписаться на новости--}}
+                                        {{--</label>--}}
                                         <input ng-click="callMeBack.send()" name="send" type="button" class="btn btn-primary" value="Перезвоните мне">
                                     </form>
                                 </div>
