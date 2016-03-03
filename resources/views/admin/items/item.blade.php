@@ -603,7 +603,7 @@
                             <input ng-init="obj.objJson='{{ $item['obj'] or '' }}'" type="text" name="obj" ng-model="obj.objJson" class="col-md-12 hidden"/>
                             <input type="text" name="price" value="{{ $item['price'] or '' }}" class="col-md-12 hidden">
                             <input type="text" name="short_text" value="{{ $item['short_text'] or '' }}" class="col-md-12 hidden">
-                            <input type="hidden" name="tab" value="#tab_2" />
+                            <input type="hidden" name="tab" value="#tab_1" />
 
                             <div class="form-body">
                                 <div class="form-group">
