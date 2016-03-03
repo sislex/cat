@@ -30,6 +30,7 @@ class Items extends Model
             $model = isset($obj['type_auto'][0]['children'][0]['children'][0]['text'])?$obj['type_auto'][0]['children'][0]['children'][0]['text']:'';
             $god = isset($obj['God_vypuska'][0]['text'])?$obj['God_vypuska'][0]['text']:''. 'г.';
             $toplivo = isset($obj['Тип двигателя'][0]['text'])?$obj['Тип двигателя'][0]['text']:'';
+
             if($input['price']){
                 $input['price'] = intval($input['price']);
                 $price = "Цена {$input['price']}$";
