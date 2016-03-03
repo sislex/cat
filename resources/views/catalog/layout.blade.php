@@ -59,35 +59,46 @@
                         Продавай и покупай,<br>на GOLDENMOTORS.BY!
                     </span>
                 </div>
-                <div class="header-right">
+                <div class="header-right" style="font-size: 20px">
                     {{--<div class="user-login-panel logged-in-user">--}}
                         {{--<img class="user-login-btn" src="http://placehold.it/100x100&amp;text=IMAGE+PLACEHOLDER" alt="">--}}
                     {{--</div>--}}
-                    {{--<div class="badge badge-success ng-binding pull-right" style="font-size: 30px; margin: 4px 0 0 20px;">+375-(44)-783-28-32</div>--}}
-                    {{--<div class="user-login-panel logged-in-user">--}}
-                        {{--<img class="user-login-btn" src="http://placehold.it/100x100&amp;text=IMAGE+PLACEHOLDER" alt="">--}}
-                    {{--</div>--}}
+                    {{--<i class="fa fa-phone"></i>--}}
+                    {{--<div class="badge badge-success ng-binding">+375-(44)-783-28-32</div>--}}
+                    <div class="copyrights-right">
+                        <div class="phone"><a href="tel://+375447832832"><i class="fa fa-phone"></i> +375-(44)-783-28-32 </a></div>
+
+                        <ul class="social-icons social-icons-colored pull-right">
+                            <li class="skype"><a href="skype:goldenmotors.by?add"><i class="fa fa-skype"></i></a></li>
+                            <li class="envelope"><a href="mailto:goldenmotors.by@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            <li class="facebook"><a href="https://www.facebook.com/goldenmotors.by/"><i class="fa fa-facebook"></i></a></li>
+                            <li class="vk"><a href="https://vk.com/club37638314"><i class="fa fa-vk"></i></a></li>
+                            <li class="twitter"><a href="https://twitter.com/goldenmotors_by"><i class="fa fa-twitter"></i></a></li>
+                            <li class="google-plus"><a href="https://plus.google.com/+GoldenmotorsBy"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="youtube"><a href="http://www.youtube.com/user/goldenmotorsby"><i class="fa fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </header>
         <!-- End Site Header -->
         <div class="navbar">
             <div class="container sp-cont">
-                <div class="search-function">
+                {{--<div class="search-function">--}}
                     {{--<a href="#" class="search-trigger"><i class="fa fa-search"></i></a>--}}
-                    @if(\App\Phones::where('type','=','мобильный телефон')->first())
-                        <div>
-                            <i class="fa fa-phone"></i>
+                    {{--@if(\App\Phones::where('type','=','мобильный телефон')->first())--}}
+                        {{--<div>--}}
+                            {{--<i class="fa fa-phone"></i>--}}
                             {{--Позвони нам <strong>+ 375 (29) 5761520</strong>--}}
-                            Позвони нам
-                            <strong>
-                                <a href="tel://{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}">
-                                    {{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}
-                                </a>
-                            </strong>
-                        </div>
-                    @endif
-                </div>
+                            {{--Позвони нам--}}
+                            {{--<strong>--}}
+                                {{--<a href="tel://{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}">--}}
+                                    {{--{{ \App\Phones::where('type','=','мобильный телефон')->first()->value('phone') }}--}}
+                                {{--</a>--}}
+                            {{--</strong>--}}
+                        {{--</div>--}}
+                    {{--@endif--}}
+                {{--</div>--}}
                 <a href="#" class="visible-sm visible-xs" id="menu-toggle"><i class="fa fa-bars"></i></a>
                 <!-- Main Navigation -->
                 <nav class="main-navigation dd-menu toggle-menu" role="navigation">
