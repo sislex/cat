@@ -123,8 +123,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 copyrights-left">
-                        <p>2016 &copy; ООО "Голден Моторс" УНП 191570638 выдано Минским Горисполкомом 19.12.2011г.
-                        <br>220006, г.Минск, ул.Маяковского 2, оф.11, тел. +375-(44)-7-832-832</p>
+                        <p>
+                            2016 &copy; ООО "Голден Моторс"
+                            <br>УНП 191570638 выдано Минским Горисполкомом 19.12.2011г.
+                            <br>220006, г.Минск, ул.Маяковского 2, оф.11, тел. +375-(44)-7-832-832
+                        </p>
                     </div>
                     <div class="col-md-6 col-sm-6 copyrights-right">
                         <ul class="social-icons social-icons-colored pull-right">
@@ -182,6 +185,7 @@
         </div>
     </div>
 </div>
+
 <script src="/catalog/js/utils.js"></script> <!-- Jquery Library Call -->
 <script src="/catalog/js/jquery-2.0.0.min.js"></script> <!-- Jquery Library Call -->
 <script src="/catalog/vendor/prettyphoto/js/prettyphoto.js"></script> <!-- PrettyPhoto Plugin -->
