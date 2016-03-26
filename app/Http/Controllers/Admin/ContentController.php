@@ -93,25 +93,35 @@ class ContentController extends Controller
         $input = \Request::all();
 
         if (isset($input['title']) && trim($input['title']) == '') {
-            $input['title'] = trim($input['name']);
+            if(isset($input['name']) && trim($input['name']) != ''){
+                $input['title'] = trim($input['name']);
+            }
         }
         if (isset($input['keywords']) && trim($input['keywords']) == '') {
-            $input['keywords'] = trim($input['name']);
+            if(isset($input['name']) && trim($input['name']) != '') {
+                $input['keywords'] = trim($input['name']);
+            }
         }
         if (isset($input['description']) && trim($input['description']) == '') {
-            $input['description'] = trim($input['short_text']);
+            if(isset($input['short_text']) && trim($input['short_text']) != '') {
+                $input['description'] = trim($input['short_text']);
+            }
         }
 
         if ($input['id']) {
             if (isset($input['pseudo_url']) && trim($input['pseudo_url']) == '') {
-                $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['name']), array('transliterate' => true)),$input['id']);
+                if(isset($input['name']) && trim($input['name']) != '') {
+                    $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['name']), array('transliterate' => true)), $input['id']);
+                }
             }elseif(isset($input['pseudo_url']) && trim($input['pseudo_url']) != '') {
                 $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['pseudo_url']), array('transliterate' => true)),$input['id']);
             }
             Content::find($input['id'])->update($input);
-        }else{
+        } else {
             if (isset($input['pseudo_url']) && trim($input['pseudo_url']) == '') {
-                $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['name']), array('transliterate' => true)),null);
+                if(isset($input['name']) && trim($input['name']) != '') {
+                    $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['name']), array('transliterate' => true)), null);
+                }
             }elseif(isset($input['pseudo_url']) && trim($input['pseudo_url']) != '') {
                 $input['pseudo_url'] = Content::checkURL(url_slug(trim($input['pseudo_url']), array('transliterate' => true)),null);
             }

@@ -229,7 +229,7 @@
                                             ng-options="item.text for item in filter['Трансмиссия'] | orderBy:'text':false"
                                             ng-change="obj.helpers.makeObj('Трансмиссия')"
                                             >
-                                        <option value="">Трансмиссия: любой</option>
+                                        <option value="">Трансмиссия: любая</option>
                                     </select>
                                 </div>
                             </div>
@@ -264,7 +264,8 @@
                                     </div>
                                     <div class="result-item-in">
                                         <h4 class="result-item-title"><a  href="{{action('Catalog\CatalogController@item')}}/@{{ item.item['id'] }}">
-                                                @{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h4>
+                                                @{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item['Версия/Модификация'] }} @{{ item.God_vypuska[0].text }}</a></h4>
+                                                {{--@{{ item.type_auto[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].text }} @{{ item.type_auto[0].children[0].children[0].children[0].text }} @{{ item.God_vypuska[0].text }}</a></h4>--}}
                                         <div class="result-item-cont">
                                             <div class="result-item-block col1">
                                                 <p>@{{ (item.item.text).substr(0, 180) }}<span ng-if="(item.item.text).length>180">...</span></p>

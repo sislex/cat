@@ -55,8 +55,12 @@
                         </a>
                     @endif
 
+                    {{--<span class="site-tagline">--}}
+                        {{--Продавай и покупай,<br>на GOLDENMOTORS.BY!--}}
+                    {{--</span>--}}
+
                     <span class="site-tagline">
-                        Продавай и покупай,<br>на GOLDENMOTORS.BY!
+                        Надежное авто на вес золота!
                     </span>
                 </div>
                 <div class="header-right" style="font-size: 20px">
@@ -125,20 +129,54 @@
                     <div class="col-md-6 col-sm-6 copyrights-left" style="font-size: small">
                         <p>
                             2016 &copy; ООО "Голден Моторс"
-                            <br>УНП 191570638 выдано Минским Горисполкомом 19.12.2011г.
-                            <br>220006, г.Минск, ул.Маяковского 2, оф.11, тел. +375-(44)-7-832-832
+                            <br>
+                            <noindex>
+                                УНП 191570638 выдано Минским Горисполкомом 19.12.2011г.
+                                <br>220006, г.Минск, ул.Маяковского 2, оф.11, тел. +375-(44)-7-832-832
+                            </noindex>
+                            <div style="font-size: smaller">
+                                <a href="http://goldenmotors.by" style="color: darkorange">Купить авто в Минске.</a> Продажа любых автомобилей в Беларуси.
+                            </div>
                         </p>
                     </div>
                     <div class="col-md-6 col-sm-6 copyrights-right">
                         <ul class="social-icons social-icons-colored pull-right">
-                            <li class="facebook"><a href="https://www.facebook.com/goldenmotors.by/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li class="vk"><a href="https://vk.com/club37638314" target="_blank"><i class="fa fa-vk"></i></a></li>
-                            <li class="twitter"><a href="https://twitter.com/goldenmotors_by" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            <li class="google-plus"><a href="https://plus.google.com/+GoldenmotorsBy" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                            <li class="youtube"><a href="http://www.youtube.com/user/goldenmotorsby" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                            <li class="facebook"><a href="https://www.facebook.com/goldenmotors.by/" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
+                            <li class="vk"><a href="https://vk.com/club37638314" target="_blank" rel="nofollow"><i class="fa fa-vk"></i></a></li>
+                            <li class="twitter"><a href="https://twitter.com/goldenmotors_by" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>
+                            <li class="google-plus"><a href="https://plus.google.com/+GoldenmotorsBy" target="_blank" rel="nofollow"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="youtube"><a href="http://www.youtube.com/user/goldenmotorsby" target="_blank" rel="nofollow"><i class="fa fa-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
+				<!-- Yandex.Metrika counter -->
+					<script type="text/javascript">
+					(function (d, w, c) {
+						(w[c] = w[c] || []).push(function() {
+							try {
+								w.yaCounter21527971 = new Ya.Metrika({id:21527971,
+										webvisor:true,
+										clickmap:true,
+										trackLinks:true,
+										accurateTrackBounce:true});
+							} catch(e) { }
+						});
+
+						var n = d.getElementsByTagName("script")[0],
+							s = d.createElement("script"),
+							f = function () { n.parentNode.insertBefore(s, n); };
+						s.type = "text/javascript";
+						s.async = true;
+						s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+						if (w.opera == "[object Opera]") {
+							d.addEventListener("DOMContentLoaded", f, false);
+						} else { f(); }
+					})(document, window, "yandex_metrika_callbacks");
+					</script>
+					<noscript><div><img src="//mc.yandex.ru/watch/21527971" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+			   <!-- /Yandex.Metrika counter -->
+				
             </div>
         </div>
     </footer>

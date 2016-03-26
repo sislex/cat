@@ -60,7 +60,17 @@ class CatalogController extends Controller
                 $catalog_banner_arr['html'] = $obj->html;
             }
         }
-        $item['name'] = "{$item['obj']['type_auto'][0]['children'][0]['text']} {$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']} {$item['obj']['God_vypuska'][0]['text']}";
+
+        if(isset($item['obj']['Версия/Модификация']) && trim($item['obj']['Версия/Модификация']) != ''){
+            $item['name'] = "{$item['obj']['type_auto'][0]['children'][0]['text']}"
+                ." {$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}"
+                ." {$item['obj']['Версия/Модификация']}"
+                ." {$item['obj']['God_vypuska'][0]['text']}";
+        } else {
+            $item['name'] = "{$item['obj']['type_auto'][0]['children'][0]['text']}"
+                ." {$item['obj']['type_auto'][0]['children'][0]['children'][0]['text']}"
+                ." {$item['obj']['God_vypuska'][0]['text']}";
+        }
 
         return view('catalog/catalog/item', ['item' => $item, 'catalog_banner' => $catalog_banner_arr]);
     }
