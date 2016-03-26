@@ -1,7 +1,4 @@
 /admin/assets
-/admin/demo/*
-/admin/sass
-/admin/tpl
 /vendor
 /node_modules
 Homestead.yaml
